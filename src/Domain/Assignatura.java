@@ -33,7 +33,6 @@ public class Assignatura {
     }
 
     //getters
-
     public String GetNomAssig () {
         return this.nomAssig;
     }
@@ -46,10 +45,7 @@ public class Assignatura {
         return this.espec;
     }
 
-    public boolean GetNivell () {
+    public int GetNivell () {
         return this.nivell;
     }
-
-
-
 }
