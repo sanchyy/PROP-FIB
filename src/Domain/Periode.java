@@ -8,13 +8,12 @@ public class Periode {
     private Date data_fi;
 
 
-    public Periode (Date data_i, Date data_f) {
+    public Periode (Date data_i, Date data_fi) {
         this.data_i  = data_i;
         this.data_fi = data_fi;
     }
 
-    //setters
-
+    //Setters
     public void setData_i (Date data_i) {
         this.data_i = data_i;
     }
