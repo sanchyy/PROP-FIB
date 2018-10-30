@@ -1,8 +1,16 @@
 package Domain;
 
+import Domain.Caracteristiques;
+
 public class Teoria extends Assignatura {
     private Boolean projector;
     private Integer num_alumnes;
+
+
+    public Teoria(String nomAssig, Boolean quatri, Boolean especialitat, Integer nivell, Boolean projector) {
+        super();
+        this.projector = projector;
+    }
 
     //Setters
     public void setProjector (Boolean projector) {

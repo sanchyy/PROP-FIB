@@ -8,7 +8,7 @@ public class Assignatura {
     private Integer nivell;
 
     //Constructora
-    public Assignatura(String nomAssig, Boolean quatri, Boolean especialitat, Integer nivell) {
+    public Assignatura() {
         this.nomAssig = nomAssig;
         this.quatri   = quatri;
         this.espec    = especialitat;
