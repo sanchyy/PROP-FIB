@@ -6,13 +6,23 @@ public class Assignatura {
     private Boolean quatri;
     private Boolean espec;
     private Integer nivell;
+    private Integer ngrups;
 
     //Constructora
-    public Assignatura() {
+    public Assignatura(String nomAssig, Boolean quatri, Boolean espec, Integer nivell, Integer ngrups) {
         this.nomAssig = nomAssig;
         this.quatri   = quatri;
         this.espec    = especialitat;
         this.nivell   = nivell;
+        this.ngrups   = ngrups;
+    }
+
+    public Assignatura(String nomAssig, Boolean quatri, Boolean espec, Integer nivell) {
+        this.nomAssig = nomAssig;
+        this.quatri   = quatri;
+        this.espec    = especialitat;
+        this.nivell   = nivell;
+        this.grups   = null;
     }
 
     //Setters
@@ -32,6 +42,10 @@ public class Assignatura {
         this.nivell = nivell;
     }
 
+    public void setGrups(Integer ngrups) {
+        this.ngrups = grups;
+    }
+
     //Getters
     public String getNomAssig () {
         return this.nomAssig;
@@ -47,5 +61,20 @@ public class Assignatura {
 
     public int getNivell () {
         return this.nivell;
+    }
+
+    public int getGrups() {
+        return this.grups;
+    }
+
+
+    //Funcions Aux
+
+    public void AddGroup() {
+        ++ this.grups;
+    }
+
+    public void DeleteGroup() {
+        -- this.grups;
     }
 }
