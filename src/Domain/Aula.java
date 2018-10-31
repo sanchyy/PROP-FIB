@@ -1,16 +1,16 @@
 package Domain;
-import Domain.Caracteristiques;
 
 
 public class Aula {
     //Drea
     private String nom_aula;
     private Integer capacitat;
+    private Boolean caracteristiques[6]; // Projector, Ubuntu, Linux/Windows, física, embeded, xarxes
 
-    public Aula (String nom_aula, Integer capacitat) {
+    public Aula (String nom_aula, Integer capacitat, Boolean caracteristiques[] ) {
         this.nom_aula = nom_aula;
         this.capacitat = capacitat;
-        //this.caracteristics = caracteristics;
+        this.caracteristiques = caracteristiques;
     }
 
     // Setters
@@ -23,8 +23,8 @@ public class Aula {
         this.capacitat = capacitat;
     }
 
-    public void setCaracteristiques (Boolean[] caracteristics) {
-        this.caracteristics = caracteristics;
+    public void setCaracteristiques (Boolean[] caracteristiques) {
+        this.caracteristiques = caracteristiques;
     }
 
     // Getters
@@ -38,6 +38,6 @@ public class Aula {
     }
 
     public Boolean[] getCaracteristics() {
-        return this.caracteristics;
+        return this.caracteristiques;
     }
 }
