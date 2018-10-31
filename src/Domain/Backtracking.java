@@ -1,7 +1,9 @@
 package Domain;
-
+// Berni
 public class Backtracking {
-    //Berni
+    // Horari -> Conjunt de slots
+    // Aules disponibles
+    // Sessions a posar
 }
 
 // BACKTRACKING CRONOLOGIC
@@ -15,11 +17,8 @@ public class Backtracking {
 // [forward checking] Si faig aquesta assignacio, que passa al futur, es a dir les seguents assignacions
 // A priori, reduim els dominis -> Arc consistencia (No hi haura backtracking a nivell 2)
 
-
 // BACKJUMPING CRONOLOGIC (MOLA MÉS QUE EL BACKTRACKING)
 // En comptes de tirar enrere a la variable anterior, anem a la variable anterior més bona
-
-
 
 // RESUM - BACKTRACKING
 // Primer de tot reduim dominis -> Arconsistència

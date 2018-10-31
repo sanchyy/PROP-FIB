@@ -1,9 +1,8 @@
 package Domain;
-
+// Berni
 public class Sessio {
-    //Berni
-
     // Grup
     // Subgrup
-    // # Pers
+    // Assignatura
+    // Tipus
 }
