@@ -1,5 +1,4 @@
 package Domain;
-import Domain.Caracteristiques;
 
 //Sanchy
 public class Labo extends Assignatura {
