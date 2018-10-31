@@ -2,7 +2,7 @@ package Domain;
 import Domain.Caracteristiques;
 
 import java.util.ArrayList;
-
+//Sanchy
 public class Labo extends Assignatura {
 
     private Integer num_alumnes;

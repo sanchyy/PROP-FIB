@@ -1,7 +1,7 @@
 package Domain;
 
 import Domain.Caracteristiques;
-
+//Sanchy
 public class Teoria extends Assignatura {
     private Boolean projector;
     private Integer num_alumnes;

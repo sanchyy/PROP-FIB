@@ -1,7 +1,8 @@
 package Domain;
 
+//Sanchy
 public class Assignatura {
-    //Sanchy
+
     private String  nomAssig;
     private Boolean quatri;
     private Boolean espec;
@@ -22,6 +23,14 @@ public class Assignatura {
         this.quatri   = quatri;
         this.espec    = especialitat;
         this.nivell   = nivell;
+        this.grups   = null;
+    }
+
+    public Assignatura (String nomAssig) {
+        this.nomAssig = nomAssig;
+        this.quatri   = null;
+        this.espec    = null;
+        this.nivell   = null;
         this.grups   = null;
     }
 
