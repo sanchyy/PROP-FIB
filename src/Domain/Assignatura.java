@@ -4,7 +4,10 @@ package Domain;
 public class Assignatura {
 
     private String  nomAssig;
-    private Boolean quatri; //True si quatri tardor; Else primavera
+    private enum Quatri{
+       PRIMER(1), SEGON(2), TOTS(3);
+       private int quatri;
+    };
     private Boolean espec;  //True si espec; Else no
     private enum Nivell {
         TRONCAL(1), OBLIGATORIA(2), ESPECIALITAT(3);
@@ -13,7 +16,7 @@ public class Assignatura {
     private Integer ngrups;
 
     //Constructora
-    public Assignatura(String nomAssig, Boolean quatri, Boolean espec, Nivell n, Integer ngrups) {
+    public Assignatura(String nomAssig, Quatri quatri, Boolean espec, Nivell n, Integer ngrups) {
         this.nomAssig = nomAssig;
         this.quatri   = quatri;
         this.espec    = especialitat;
@@ -42,7 +45,7 @@ public class Assignatura {
         this.nomAssig = nomAssig;
     }
 
-    public void setQuatri (Boolean quatri) {
+    public void setQuatri (Quatri quatri) {
         this.quatri = quatri;
     }
 
@@ -50,7 +53,7 @@ public class Assignatura {
         this.espec = espec;
     }
 
-    public void setNivell (Integer nivell) {
+    public void setNivell (Nivell nivell) {
         this.nivell = nivell;
     }
 
@@ -81,6 +84,14 @@ public class Assignatura {
 
 
     //Functions Aux
+
+    public Boolean isEqual(Assignatura a) {
+        if (this.NomAssig == a.getNomAssig() && this.nivell == a.getNivell() && this.espec == a.getEspec())
+            return true;
+
+        return false;
+    }
+
     public void AddGroup() {
         ++ this.grups;
     }
