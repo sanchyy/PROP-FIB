@@ -51,7 +51,7 @@ public class Date {
     //FUNCIONS AUXILIARS
 
     //Return true si data "objecte" és més petita
-    public Boolean compareDate(Date d) {
+    public boolean compareDate(Date d) {
         Integer dia = d.getDia();
         Integer mes = d.getMes();
         Integer any = d.getAny();
@@ -66,9 +66,9 @@ public class Date {
         }
         return false;
     }
-/*
+
     //True si d1 < d2
-    public static compareDate(Date date1, Date date2) {
+    public static boolean compareDate(Date date1, Date date2) {
         Integer d1 = date1.getDia();
         Integer m1 = date1.getMes();
         Integer a1 = date1.getAny();
@@ -81,7 +81,7 @@ public class Date {
     }
 
     //return true si si son iguals
-    public Boolean isEqual(Date d) {
+    public boolean isEqual(Date d) {
         Integer dia = d.getDia();
         Integer mes = d.getMes();
         Integer any = d.getAny();
@@ -89,7 +89,7 @@ public class Date {
         return (this.dia == Dia && this.mes == mes && this.any == any);
     }
 
-    public Boolean static isValid (Date d) {
+    public static boolean isValid (Date d) {
         Integer dia = d.getDia();
         Integer mes = d.getMes();
         Integer any = d.getAny();
@@ -110,5 +110,4 @@ public class Date {
                 return true;
         }
     }
-    */
 }
