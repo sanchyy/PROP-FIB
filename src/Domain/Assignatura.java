@@ -2,7 +2,7 @@ package Domain;
 
 //Sanchy
 public class Assignatura {
-
+/*
     private String  nomAssig;
     private enum Quatri{
        PRIMER(1), SEGON(2), TOTS(3);
@@ -99,4 +99,5 @@ public class Assignatura {
     public void DeleteGroup() {
         -- this.grups;
     }
+    */
 }

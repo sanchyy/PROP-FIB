@@ -14,15 +14,15 @@ public class Periode {
         Integer dia = d1.getDia();
         this.data_i  = new Date (any,mes,dia);
 
-        Integer any = d1.getAny();
-        Integer mes = d1.getMes();
-        Integer dia = d1.getDia();
+        any = d2.getAny();
+        mes = d2.getMes();
+        dia = d2.getDia();
         this.data_fi = new Date (any,mes,dia);
     }
 
     public Periode () {
-        this.data_i  = new Data();
-        this.data_fi = new Data();
+        this.data_i  = new Date();
+        this.data_fi = new Date();
     }
 
     //Setters
@@ -34,7 +34,7 @@ public class Periode {
         this.data_i = new Date(any,mes,dia);
     }
 
-    public void setData_fi (Date data_fi) {
+    public void setData_fi (Date d) {
         Integer any = d.getAny();
         Integer mes = d.getMes();
         Integer dia = d.getDia();

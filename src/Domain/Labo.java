@@ -1,17 +1,18 @@
 package Domain;
 
 //Sanchy
-public class Labo extends Assignatura {
-
+// public class Labo extends Assignatura {
+public class Labo {
+/*
     private Integer num_alumnes;
-    private Caracteristiques necessita_caract;
+    // private Caracteristiques necessita_caract;
     private Integer num_hores;
     private Integer nLabs;
 
 
     public Labo(String nomAssig, Boolean quatri, Boolean especialitat, Integer nivell, Boolean[] caract, Integer num_hores, Integer nLabs) {
         super();
-        this.necessita_caract = new Caracteristiques(caract);
+        // this.necessita_caract = new Caracteristiques(caract);
         this.num_hores        = num_hores;
         this.nLabs            = nLabs;
 
@@ -25,7 +26,7 @@ public class Labo extends Assignatura {
         Integer grups   = a.getGrups();
 
         super(nom, quatri, espec, nivell, grups);
-        this.necessita_caract = new Caracteristiques(caract);
+        // this.necessita_caract = new Caracteristiques(caract);
         this.num_hores        = num_hores;
         this.nLabs            = nLabs;
 
@@ -65,4 +66,5 @@ public class Labo extends Assignatura {
     public Integer getnLabs () {
         return this.nLabs;
     }
+    */
 }

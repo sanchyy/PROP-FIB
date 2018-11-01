@@ -1,9 +1,27 @@
 package Domain;
+
+import java.util.ArrayList;
 // Berni
 public class PlaEstudis {
     private Periode quadrimestre_actual;
     private ArrayList<Aula> aules_disponibles = new ArrayList<Aula>();
     private ArrayList<Assignatura> assignatures_disponibles = new ArrayList<Assignatura>();
+
+    private String nomPlaEstudis;
+
+    public void setNomPlaEstudis(String nomPlaEstudis) {
+        this.nomPlaEstudis = nomPlaEstudis;
+    }
+
+    public String getNomPlaEstudis() {
+        return nomPlaEstudis;
+    }
+
+
+    //Constructora
+    public PlaEstudis(String nom) {
+        this.nomPlaEstudis = nom;
+    }
 
     //Constructora
     public PlaEstudis(Periode quadrimestre_actual) {
@@ -25,7 +43,7 @@ public class PlaEstudis {
         this.aules_disponibles = aules_disponibles;
     }
 
-    public void setAssignatures_disponibles(ArrayList<Assignatures> assignatures_disponibles) {
+    public void setAssignatures_disponibles(ArrayList<Assignatura> assignatures_disponibles) {
         this.assignatures_disponibles = assignatures_disponibles;
     }
 

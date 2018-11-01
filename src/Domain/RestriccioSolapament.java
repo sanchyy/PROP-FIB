@@ -5,7 +5,7 @@ import Domain.Assignatura;
 //Sanchy
 //aquesta restricció es dona quan dues assignatures volen estar a la mateixa franja
 public class RestriccioSolapament {
-
+/*
     private ArrayList <pair<Assignatura,grup>>
 
     public RestriccioSolapament() {
@@ -61,5 +61,5 @@ public class RestriccioSolapament {
     public Boolean esSolapa() {
 
     }
-
+*/
 }

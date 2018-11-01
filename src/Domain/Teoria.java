@@ -1,19 +1,20 @@
 package Domain;
 
 //Sanchy
-public class Teoria extends Assignatura {
+// public class Teoria extends Assignatura {
+public class Teoria {
     private Boolean projector;
     private Integer num_alumnes;
     private Integer num_hores;
 
-    public Teoria(String nomAssig, Boolean quatri, Boolean especialitat, Integer nivell, Boolean projector) {
-        super();
+    /*public Teoria(String nomAssig, Boolean quatri, Boolean especialitat, Integer nivell, Boolean projector) {
+        // super();
         this.projector   = projector;
         this.num_alumnes = num_alumnes;
         this.num_hores   = num_hores;
-    }
+    }*/
 
-    public Labo(Assignatura a, Boolean[] caract, Integer num_hores, Integer nLabs) {
+    /*public Labo(Assignatura a, Boolean[] caract, Integer num_hores, Integer nLabs) {
         String nom      = a.getNomAssig();
         Boolean quatri  = a.getQuatri();
         Boolean espec   = a.getEspec();
@@ -25,7 +26,7 @@ public class Teoria extends Assignatura {
         this.num_hores        = num_hores;
         this.nLabs            = nLabs;
 
-    }
+    }*/
 
     //Setters
     public void setProjector (Boolean projector) {

@@ -1,7 +1,7 @@
 package Domain;
 
 import Domain.Labo;
-import Donaim.Teoria;
+import Domain.Teoria;
 import Domain.PlaEstudis;
 
 

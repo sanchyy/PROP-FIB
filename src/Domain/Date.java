@@ -66,17 +66,16 @@ public class Date {
         }
         return false;
     }
-
+/*
     //True si d1 < d2
-    public  static compareDate(Date date1, Date date2) {
+    public static compareDate(Date date1, Date date2) {
         Integer d1 = date1.getDia();
         Integer m1 = date1.getMes();
         Integer a1 = date1.getAny();
-        /*
-        Integer d2 = date2.getDia();
-        Integer m2 = date2.getMes();
-        Integer a2 = date2.getAny();
-        */
+
+        // Integer d2 = date2.getDia();
+        // Integer m2 = date2.getMes();
+        // Integer a2 = date2.getAny();
 
         return date1.compareDate(date2);
     }
@@ -111,4 +110,5 @@ public class Date {
                 return true;
         }
     }
+    */
 }

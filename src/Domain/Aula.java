@@ -5,9 +5,9 @@ public class Aula {
     //Drea
     private String nom_aula;
     private Integer capacitat;
-    private Boolean caracteristiques[6]; // Projector, Ubuntu, Linux/Windows, física, embeded, xarxes
+    private boolean caracteristiques[] = new boolean[6]; // Projector, Ubuntu, Linux/Windows, física, embeded, xarxes
 
-    public Aula (String nom_aula, Integer capacitat, Boolean caracteristiques[] ) {
+    public Aula (String nom_aula, Integer capacitat, boolean caracteristiques[] ) {
         this.nom_aula = nom_aula;
         this.capacitat = capacitat;
         this.caracteristiques = caracteristiques;
@@ -23,7 +23,7 @@ public class Aula {
         this.capacitat = capacitat;
     }
 
-    public void setCaracteristiques (Boolean[] caracteristiques) {
+    public void setCaracteristiques (boolean[] caracteristiques) {
         this.caracteristiques = caracteristiques;
     }
 
@@ -37,7 +37,7 @@ public class Aula {
         return this.capacitat;
     }
 
-    public Boolean[] getCaracteristics() {
+    public boolean[] getCaracteristics() {
         return this.caracteristiques;
     }
 }
