@@ -1,0 +1,43 @@
+package Domain;
+
+
+public class Aula {
+    //Drea
+    private String nom_aula;
+    private Integer capacitat;
+    private Boolean caracteristiques[6]; // Projector, Ubuntu, Linux/Windows, física, embeded, xarxes
+
+    public Aula (String nom_aula, Integer capacitat, Boolean caracteristiques[] ) {
+        this.nom_aula = nom_aula;
+        this.capacitat = capacitat;
+        this.caracteristiques = caracteristiques;
+    }
+
+    // Setters
+
+    public void setNom_aula (String nom_aula) {
+        this.nom_aula = nom_aula;
+    }
+
+    public void setCapacitat (Integer capacitat) {
+        this.capacitat = capacitat;
+    }
+
+    public void setCaracteristiques (Boolean[] caracteristiques) {
+        this.caracteristiques = caracteristiques;
+    }
+
+    // Getters
+
+    public String getNom_aula () {
+        return this.nom_aula;
+    }
+
+    public Integer getCapacitat () {
+        return this.capacitat;
+    }
+
+    public Boolean[] getCaracteristics() {
+        return this.caracteristiques;
+    }
+}

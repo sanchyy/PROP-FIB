@@ -1,0 +1,2 @@
+per l'entrea
+    en paper entreguem els diagrames de casos d'ús i de classes juntament amb l'especificació de casos i de classes, més el repartiment de les classes i la descripció d'algorismes i estructures de dades
