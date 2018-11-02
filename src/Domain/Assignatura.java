@@ -1,6 +1,8 @@
 package Domain;
 
+import java.util.*;
 //Sanchy
+
 public class Assignatura {
 
     private String  nomAssig;

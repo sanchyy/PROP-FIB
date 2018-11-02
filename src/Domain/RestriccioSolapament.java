@@ -1,65 +1,44 @@
 package Domain;
 
 import Domain.Assignatura;
+import java.util.ArrayList;
 
 //Sanchy
 //aquesta restricció es dona quan dues assignatures volen estar a la mateixa franja
+
 public class RestriccioSolapament {
-/*
-    private ArrayList <pair<Assignatura,grup>>
+
+    private ArrayList <Pair <Assignatura, int>> assignSlot;
 
     public RestriccioSolapament() {
-        this.AssAct  = null;
-        this.AssNova = null;
-        this.GrupAct = null;
-        this.GrupNou = null;
+        assignSlot = new ArrayList <Pair <Assignatura, int>> ();
     }
 
-    public RestriccioSolapament(Assignatura AssAct, Assignatura AssNova, Integer NvlAct, Integer NvlNou, Integer GrupAct, Integer GrupNou) {
-        this.AssAct  = AssAct;
-        this.AssNova = AssNova;
-        this.GrupAct = GrupAct;
-        this.GrupNou = GrupNou;
+    public RestriccioSolapament(ArrayList <Assignatura, int> assignSlot) {
+        this.assignaturassignSlotaSlot = assignSlot;
     }
 
     //Setters
-    public void setAssAct(Assignatura assAct) {
-        AssAct = assAct;
+    public void setAssignSlot(ArrayList <Assignatura, int> AssignaturaSlot) {
+        this.AssignaturaSlot = AssignaturaSlot;
     }
-
-    public void setAssNova(Assignatura assNova) {
-        AssNova = assNova;
-    }
-
-    public void setGrupAct(Integer grupAct) {
-        GrupAct = grupAct;
-    }
-
-    public void setGrupNou(Integer grupNou) {
-        GrupNou = grupNou;
-    }
-
     //Getters
-    public Assignatura getAssAct() {
-        return AssAct;
-    }
 
-    public Assignatura getAssNova() {
-        return AssNova;
-    }
-
-    public Integer getGrupAct() {
-        return GrupAct;
-    }
-
-    public Integer getGrupNou() {
-        return GrupNou;
+    public ArrayList<Pair<Assignatura, int>> getAssignSlot() {
+        return assignSlot;
     }
 
     //FUNCTIONS AUX
 
-    public Boolean esSolapa() {
-
+    //Pre: Assignatura a es l'assignatura que es vol afegir i grup el grup on pertany
+    //Post: True si es pot afegir, else si no
+    public Boolean podemSolapar(Assignatura a, int grup) {
+        for (Pair<Assignatura,int> x : assignSlot) {
+            if (x.second == grup) return false;
+            if (x.first.getNivell == a.getNivell()) return false;
+            
+            return true;
+        }
     }
-*/
+
 }
