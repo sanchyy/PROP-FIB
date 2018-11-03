@@ -3,9 +3,9 @@ package Domain;
 //Sanchy
 public class Teoria extends Assignatura {
 
-    private Boolean projector;
-    private Integer num_alumnes;
-    private Integer num_hores;
+    private boolean projector;
+    private int num_alumnes;
+    private int num_hores;
 
     public Teoria(String nomAssig, boolean quatri, boolean especialitat, int nivell, boolean projector) {
         super();

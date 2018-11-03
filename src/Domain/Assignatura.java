@@ -9,6 +9,7 @@ public class Assignatura {
     private boolean espec;  //True si espec; Else no
     private int ngrups;
 
+
     private enum Quatri{
        PRIMER(1), SEGON(2), TOTS(3);
        private int quatri;

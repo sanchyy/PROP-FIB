@@ -1,9 +1,5 @@
 package Domain;
 
-import Domain.Assignatura;
-import Domain.Pair;
-import java.util.ArrayList;
-
 //Sanchy
 //aquesta restricció es dona quan dues assignatures volen estar a la mateixa franja
 
@@ -37,6 +33,7 @@ public class RestriccioSolapament {
         for (Pair<Assignatura,int> x : assignSlot) {
             if (this.isEqual(a)) return false;
             if (/*Mateix Pla d'estudis &&*/x.first.getNivell() == a.getNivell() && grup == x.second) return false;
+            
 
         }
         return true;
