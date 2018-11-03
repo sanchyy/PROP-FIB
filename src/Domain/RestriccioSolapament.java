@@ -31,10 +31,10 @@ public class RestriccioSolapament {
     //Post: True si es pot afegir, else si no
     public boolean podemSolapar(Assignatura a, int grup) {
         for (Pair<Assignatura,int> x : assignSlot) {
-            if (this.isEqual(a)) return false;
+            //Labo i teoria del mateix grup no poden anar junts
+            //En un pla d'estudis, no poden haver dues assig del mateix nivell i del mateix grup
+            if (this.isEqual(a) && this.grup == grup) return false;
             if (/*Mateix Pla d'estudis &&*/x.first.getNivell() == a.getNivell() && grup == x.second) return false;
-            
-
         }
         return true;
     }
