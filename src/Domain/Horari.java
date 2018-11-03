@@ -1,10 +1,10 @@
 package Domain;
 
 import java.util.ArrayList;
-
+import Domain.
 
 public class Horari {
-    private ArrayList<ArrayList<ArrayList<String>>> slot_horari;
+    private ArrayList<ArrayList<ArrayList<Pari<String, String> > > > slot_horari; // Pair string nom aula, string abrev assig
 
     // constructora
     public Horari (ArrayList<ArrayList<ArrayList<String>>> slot_horari) {
@@ -16,7 +16,7 @@ public class Horari {
     }
 
     // Setter
-    public void setSlot_horari(ArrayList<ArrayList<ArrayList<String>>> slot_horari) {
+    public void setSlot_horari(ArrayList<ArrayList<ArrayList<Pair<String>>> slot_horari) {
         this.slot_horari = slot_horari;
     }
 
