@@ -1,6 +1,7 @@
 package Domain;
 
 import Domain.Assignatura;
+import Domain.Pair;
 import java.util.ArrayList;
 
 //Sanchy
@@ -32,13 +33,13 @@ public class RestriccioSolapament {
 
     //Pre: Assignatura a es l'assignatura que es vol afegir i grup el grup on pertany
     //Post: True si es pot afegir, else si no
-    public Boolean podemSolapar(Assignatura a, int grup) {
+    public boolean podemSolapar(Assignatura a, int grup) {
         for (Pair<Assignatura,int> x : assignSlot) {
-            if (x.second == grup) return false;
-            if (x.first.getNivell == a.getNivell()) return false;
-            
-            return true;
+            if (this.isEqual(a)) return false;
+            if (/*Mateix Pla d'estudis &&*/x.first.getNivell() == a.getNivell() && grup == x.second) return false;
+
         }
+        return true;
     }
 
 }
