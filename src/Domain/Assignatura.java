@@ -6,7 +6,6 @@ import java.util.*;
 public class Assignatura {
 
     private String  nomAssig;
-    private boolean espec;  //True si espec; Else no
     private int ngrups;
 
 
@@ -46,18 +45,16 @@ public class Assignatura {
 
 
     //Constructora
-    public Assignatura(String nomAssig, Quatri quatri, boolean espec, Nivell n, int ngrups) {
+    public Assignatura(String nomAssig, Quatri quatri, Nivell n, int ngrups) {
         this.nomAssig = nomAssig;
         this.quatri   = quatri;
-        this.espec    = especialitat;
         this.nivell   = n;
         this.ngrups   = ngrups;
     }
 
-    public Assignatura(String nomAssig, boolean quatri, boolean espec, int nivell) {
+    public Assignatura(String nomAssig, boolean quatri, int nivell) {
         this.nomAssig = nomAssig;
         this.quatri   = quatri;
-        this.espec    = especialitat;
         this.nivell   = nivell;
         this.grups    = null;
     }
@@ -79,9 +76,6 @@ public class Assignatura {
         this.quatri = quatri;
     }
 */
-    public void setEspec (boolean espec) {
-        this.espec = espec;
-    }
 /*
     public void setNivell (Nivell nivell) {
         this.nivell = nivell;
@@ -100,9 +94,6 @@ public class Assignatura {
         return quatri;
     }
 */
-    public boolean getEspec () {
-        return espec;
-    }
 /*
     public int getNivell () {
         return nivell;
