@@ -1,6 +1,4 @@
-package Domain;
-
-import Domain.Date;
+package Domini;
 
 public class Date {
 
@@ -86,7 +84,7 @@ public class Date {
         Integer mes = d.getMes();
         Integer any = d.getAny();
 
-        return (this.dia == Dia && this.mes == mes && this.any == any);
+        return (this.dia == dia && this.mes == mes && this.any == any);
     }
 
     public static boolean isValid (Date d) {
@@ -105,7 +103,7 @@ public class Date {
             case 11:
                 return dia < 31;
             case 2:
-                return ((any%400 == 0 || (any%4 == 0 && any%100 != 0)) ? return < 28 : return < 29);
+                // return ((any%400 == 0 || (any%4 == 0 && any%100 != 0)) ? return < 28 : return < 29);
             default:
                 return true;
         }

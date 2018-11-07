@@ -1,6 +1,4 @@
-package Domain;
-
-import Domain.Date;
+package Domini;
 
 public class Periode {
 

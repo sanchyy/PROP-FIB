@@ -1,4 +1,4 @@
-package Domain;
+package Domini;
 
 public class RestriccioReserva {
 

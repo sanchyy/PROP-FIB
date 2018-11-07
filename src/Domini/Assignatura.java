@@ -1,14 +1,13 @@
-package Domain;
+package Domini;
 
-import java.util.*;
 //Sanchy
 
 public class Assignatura {
 
-    private String  nomAssig;
+    private String nomAssig;
     private int ngrups;
 
-
+/*
     private enum Quatri{
        PRIMER(1), SEGON(2), TOTS(3);
        private int quatri;
@@ -42,9 +41,14 @@ public class Assignatura {
             return this.nivell;
         }
     }
-
-
+*/
     //Constructora
+    public Assignatura() {
+        this.nomAssig = null;
+        this.ngrups   = 0;
+    }
+
+/*
     public Assignatura(String nomAssig, Quatri quatri, Nivell n, int ngrups) {
         this.nomAssig = nomAssig;
         this.quatri   = quatri;
@@ -66,7 +70,7 @@ public class Assignatura {
         this.nivell   = null;
         this.grups    = null;
     }
-
+*/
     //Setters
     public void setNomAssig (String nomAssig) {
         this.nomAssig = nomAssig;
@@ -93,29 +97,28 @@ public class Assignatura {
     public boolean getQuatri () {
         return quatri;
     }
-*/
-/*
+
     public int getNivell () {
         return nivell;
     }
-*/
+
     public int getGrups() {
-        return grups;
+        return this.grups;
     }
 
 
     //Functions Aux
 
     public boolean isEqual(Assignatura a) {
-        return (NomAssig == a.getNomAssig() && nivell == a.getNivell() && espec == a.getEspec())
+        return (this.nomAssig == a.getNomAssig() && nivell == a.getNivell() && espec == a.getEspec());
     }
 
     public void AddGroup() {
-        ++ this.grups;
+        ++this.grups;
     }
 
     public void DeleteGroup() {
         -- this.grups;
     }
-
+*/
 }

@@ -1,4 +1,4 @@
-package Domain;
+package Domini;
 
 //Sanchy
 public class Teoria extends Assignatura {
@@ -13,7 +13,7 @@ public class Teoria extends Assignatura {
         this.num_alumnes = num_alumnes;
         this.num_hores   = num_hores;
     }
-
+/*
     public Labo(Assignatura a, int num_hores, int nLabs) {
         String nom      = a.getNomAssig();
         boolean quatri  = a.getQuatri();
@@ -26,7 +26,7 @@ public class Teoria extends Assignatura {
         this.nLabs     = nLabs;
 
     }
-
+*/
     //Setters
     public void setProjector (Boolean projector) {
         this.projector = projector;

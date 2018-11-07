@@ -14,4 +14,37 @@ Codificación y tests:
     Drivers, stubs, tests (JUnit) + Juegos de pruebas
 
 Si la multiplicidad es 1, la clase B definirá un atributo PRIVADO de tipo A -> private A NomRelacio
-Si la multiplicidad es > 1, 
+Si la multiplicidad es > 1, la clase B definirá una estructura de elementos de la clase A -> private A[] NomRelacio
+
+Capas:
+    Persisténcia (Gestión de Datos)
+    Dominio
+    Presentación
+
+Presentación
+------------
+Interacció amb l'usuari, presenta les dades a l'usuari
+Es relaciona amb la capa de DOMINI pasant les peticions externes i recollint els resultats
+Gestiona la interfície de comunicació amb l'usuari
+
+Domini
+------
+Nucli del programa
+Transforma i manipula les dades de l'usuari
+La capa només transforma i manipula!! No recull ni emmagatzema
+Rep les peticions de la capa de presentació
+Es relaciona amb la capa de persistència passant les operacions de consulta i la modificació de dades i rebent els resultats
+
+Persistència
+-----------
+S'encarrega de emmagatzemar les dades
+Es relaciona amb la capa de domini rebent les operacions de consulta i actualització de dades i retornant respostes.
+Es relaciona amb el sistema de gestió de base de dades/fitxers/etc...
+Permet que alguns objectes del domini siguin persistents i que el domini ignori on estàn emmagatzemats
+
+CONTROLADORS -> Classes propies que tenen la responsabilitat de:
+    Comunicació entre capes
+    Ajuntar funcionalitats dels casos d'ús
+
+
+

@@ -1,6 +1,5 @@
-package Domain;
+package Domini;
 
-import java.util.*;
 //Sanchy
 public class Labo extends Assignatura {
 
@@ -16,7 +15,7 @@ public class Labo extends Assignatura {
         this.nLabs     = nLabs;
         this.necessita = necessita;
     }
-
+/*
     public Labo(Assignatura a, int num_hores, int nLabs, boolean[] necessita) {
         String nom      = a.getNomAssig();
         boolean quatri  = a.getQuatri();
@@ -30,7 +29,7 @@ public class Labo extends Assignatura {
         this.necessita = nec;
 
     }
-
+*/
     //Setters
 
     public void setNum_alumnes (int num_alumnes) {

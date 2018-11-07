@@ -1,3 +1,4 @@
+/*
 package test.domini;
 
 import Domini.Aula;
@@ -39,3 +40,4 @@ public class TestingAula {
         assertEquals( expected, calculator.add(valueOne,valueTwo), 0 );
     }
 }
+*/

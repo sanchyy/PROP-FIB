@@ -1,5 +1,4 @@
-package Domain;
-import java.utils.*;
+package Domini;
 
 public class Pair <A,B> {
     private A first;
@@ -11,6 +10,14 @@ public class Pair <A,B> {
         this.second = second;
     }
 
+    public A getFirst() {
+        return first;
+    }
+
+    public B getSecond() {
+        return second;
+    }
+
     public static <A,B> Pair<A,B> of(A first, B second) {
         return new Pair<A, B>(first,second);
     }
@@ -18,7 +25,11 @@ public class Pair <A,B> {
     public boolean equals(Object o) {
         if (!(o instanceof Pair)) return false;
         Pair pairo = (Pair) o;
-        return this.left.equals(pairo.getLeft()) && this.right.equals(pairo.getRight());
+        return this.first.equals(pairo.getFirst()) && this.second.equals(pairo.getSecond());
+    }
+
+    public String toString() {
+        return "(" + first.toString() + "," + second.toString() + ")";
     }
 
 }
