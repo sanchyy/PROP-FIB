@@ -75,19 +75,20 @@ public class Assignatura {
     public void setNomAssig (String nomAssig) {
         this.nomAssig = nomAssig;
     }
+
+    public void setGrups(int ngrups) {
+        this.ngrups = ngrups;
+    }
+
 /*
     public void setQuatri (Quatri quatri) {
         this.quatri = quatri;
     }
-*/
-/*
+
     public void setNivell (Nivell nivell) {
         this.nivell = nivell;
     }
 */
-    public void setGrups(int ngrups) {
-        this.ngrups = ngrups;
-    }
 
     //Getters
     public String getNomAssig () {

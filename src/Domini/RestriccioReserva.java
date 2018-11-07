@@ -1,5 +1,5 @@
 package Domini;
 
-public class RestriccioReserva {
+public class RestriccioReserva extends Restriccio {
 
 }

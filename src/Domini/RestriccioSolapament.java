@@ -5,7 +5,7 @@ package Domini;
 
 import java.util.ArrayList;
 
-public class RestriccioSolapament {
+public class RestriccioSolapament extends Restriccio{
 
     private ArrayList <Pair <Assignatura, Integer>> assignSlot;
 
