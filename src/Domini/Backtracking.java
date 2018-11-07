@@ -18,7 +18,7 @@ public class Backtracking {
 
     public void generarHorari() {
         generarTaulaAules(pe.getAules_disponibles());
-        produirHorari(horari, pe.getAules_disponibles(), sessions, 0, 0);
+        produirHorari(horari, aules_disponibles, sessions, 0, 0);
     }
 
     public Horari getHorari() {
@@ -32,6 +32,22 @@ public class Backtracking {
                 dia.add(clonarAulesDisponibles(aulas));
             }
             aules_disponibles.add(dia);
+        }
+    }
+
+    public void mostrarTaulaAules(ArrayList< ArrayList< ArrayList <Aula> > > taulaaules) {
+        System.out.println("----------------------------");
+        System.out.println("---------- AULES  ----------");
+        System.out.println("----------------------------");
+        Integer dayI = 0;
+        for (ArrayList< ArrayList<Aula>> dia : taulaaules) {
+            System.out.println(dayI++);
+            for (ArrayList<Aula> hora : dia) {
+                System.out.println("Size: " + hora.size());
+                for (Aula aula : hora) {
+                    System.out.println("    " + aula.getNom_aula());
+                }
+            }
         }
     }
 
@@ -79,28 +95,24 @@ public class Backtracking {
         return restriccio.getFirst() == (hora+8);
     }
 
-    private Aula buscarAula(Sessio sessio, ArrayList<Aula> aules) {
+    private Aula buscarAula(Sessio sessio, ArrayList< ArrayList< ArrayList <Aula> > > aules, Integer dia, Integer hora) {
         // Buscar una aula que es correspongui amb els requeriments de la sessio
-        // return aules.get(0).get(0).get(0);
-        return aules.get(0);
+        if (aules.get(dia).get(hora).size() == 0) return null;
+        else return aules.get(dia).get(hora).get(0);
     }
 
-    // El tema de les aules està malament, no són aules generals, són aules per cada slot de hora
-    private boolean produirHorari(Horari hor, ArrayList<Aula> aules, ArrayList<Sessio> sessions, Integer dia, Integer hora) {
+    // TODO: El tema de les aules està malament, no són aules generals, són aules per cada slot de hora
+    private boolean produirHorari(Horari hor, ArrayList< ArrayList< ArrayList <Aula> > > aules, ArrayList<Sessio> sessions, Integer dia, Integer hora) {
         if (sessions.size() == 0) {
             // Hem trobat una solució valida, retornem true
             this.horari = hor;
             return true;
-        } else if (dia == 6) {
+        } else if (dia == 5) {
             // Hem acabat els dies de l'horari, retornem FALSE per indicar que no és una branca valida
             return false;
         } else if (hora == 12) {
             // Saltem al seguent dia
             return produirHorari(hor, aules, sessions, dia+1, 0);
-        // } else if (aules.get(dia).get(hora).size() == 0) {
-        } else if (aules.size() == 0) {
-            // S'han acabat les aules disponibles, no podem trobar un horari correcte
-            return false;
         } else {
             // TODO: Ordenar les llistes per a que vagi més ràpid
 
@@ -108,16 +120,16 @@ public class Backtracking {
             for (Sessio sessioActual : sessions) {
                 Horari cHor = hor.clonar();
                 ArrayList<Sessio> cSessions = clonarSessionsDisponibles(sessions);
-                ArrayList<Aula> cAules = clonarAulesDisponibles(aules);
+                ArrayList< ArrayList< ArrayList <Aula> > > cAules = clonarTaulaAules(aules);
 
                 // Mirem si la sessio que tenim pot anar a aquest slot
                 if (potAnarAqui(sessioActual, dia, hora)) {
                     // Li busquem una aula adequada
-                    Aula a = buscarAula(sessioActual, cAules);
+                    Aula a = buscarAula(sessioActual, cAules, dia, hora);
                     if (a != null) {
                         sessioActual.setAula(a);
                         cHor.setSessio(sessioActual, dia, hora);
-                        cAules.remove(a);
+                        borrarAula(cAules, a, dia, hora);
                         cSessions.remove(sessioActual);
                         found = found || produirHorari(cHor, cAules, cSessions, dia, hora);
                         if (found) {
