@@ -62,16 +62,40 @@ public class Horari {
         System.out.println("----------------------------");
         System.out.println("---------- HORARI ----------");
         System.out.println("----------------------------");
-        System.out.println("Dies: " + horari.size());
+        Integer dayI = 0;
         for (ArrayList< ArrayList<Sessio>> dia : horari) {
-            System.out.println("    Hores: " + dia.size());
+            System.out.println(intAdia(dayI++));
             for (ArrayList<Sessio> hora : dia) {
-                // System.out.println("        Sessions: " + hora.size());
                 for (Sessio sessio : hora) {
-                    System.out.println("            " + sessio.getAssignatura().getNomAssig() + ", Aula " + sessio.getAula().getNom_aula() + ", Dia " + horari.indexOf(dia) + ", Hora " + dia.indexOf(hora));
+                    System.out.println("    " + (dia.indexOf(hora)+8) + ":00 -> " + sessio.getAssignatura().getNomAssig() + " (" + sessio.getAula().getNom_aula() + ")");
                 }
             }
         }
+    }
+
+    public String intAdia(Integer d) {
+        String dia;
+        switch (d) {
+            case 0:
+                dia = "Dilluns";
+            break;
+            case 1:
+                dia = "Dimarts";
+            break;
+            case 2:
+                dia = "Dimecres";
+            break;
+            case 3:
+                dia = "Dijous";
+            break;
+            case 4:
+                dia = "Divendres";
+            break;
+            default:
+                dia = "";
+            break;
+        }
+        return dia;
     }
 
 }

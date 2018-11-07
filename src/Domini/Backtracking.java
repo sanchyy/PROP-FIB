@@ -41,7 +41,9 @@ public class Backtracking {
 
     private boolean potAnarAqui(Sessio sessio, Integer dia, Integer hora) {
         // Mirar si aquesta sessió pot anar a aquest slot horari
-        return true;
+
+        Pair<Integer, Integer> restriccio = sessio.getRestriccio();
+        return restriccio.getFirst() == (hora+8);
     }
 
     private Aula buscarAula(Sessio sessio, ArrayList<Aula> aules) {
@@ -49,6 +51,7 @@ public class Backtracking {
         return aules.get(0);
     }
 
+    // El tema de les aules està malament, no són aules generals, són aules per cada slot de hora
     private boolean produirHorari(Horari hor, ArrayList<Aula> aules, ArrayList<Sessio> sessions, Integer dia, Integer hora) {
         if (sessions.size() == 0) {
             // Hem trobat una solució valida, retornem true
@@ -65,7 +68,7 @@ public class Backtracking {
                 // Saltem al seguent dia
                 return produirHorari(hor, aules, sessions, dia+1, 0);
             } else {
-                // TODO: Comprovar totes les altres combinacions, pero retallar perquè n'hi hauran motles
+                // TODO: Ordenar les llistes per a que vagi més ràpid
 
                 boolean found = false;
                 for (Sessio sessioActual : sessions) {
@@ -77,16 +80,19 @@ public class Backtracking {
                     if (potAnarAqui(sessioActual, dia, hora)) {
                         // Li busquem una aula adequada
                         Aula a = buscarAula(sessioActual, cAules);
-                        cAules.remove(a);
-                        cSessions.remove(sessioActual);
-                        sessioActual.setAula(a);
-                        cHor.setSessio(sessioActual, dia, hora);
-                    } else {
-                        // No pot anar a aquest slot horari, passem al seguent
+                        if (a != null) {
+                            sessioActual.setAula(a);
+                            cHor.setSessio(sessioActual, dia, hora);
+                            cAules.remove(a);
+                            cSessions.remove(sessioActual);
+                            found = found || produirHorari(cHor, cAules, cSessions, dia, hora);
+                            if (found) {
+                                aules = cAules;
+                                sessions = cSessions;
+                                break;
+                            }
+                        }
                     }
-
-                    // Seguim amb el backtracking
-                    found = found || produirHorari(cHor, cAules, cSessions, dia, hora+1);
 
                 }
                 if (!found) {
