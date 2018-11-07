@@ -4,122 +4,98 @@ package Domini;
 
 public class Assignatura {
 
-    private String nomAssig;
-    private int ngrups;
+    private String  nomAssig;
+    private Integer num_alumnes;
+    private Integer ngrups;
+    private Integer nsubgrups;
+    private Integer quatri; //1r 2n o tots (3)
+    private Integer nivell; //1, 2 o 3
 
-/*
-    private enum Quatri{
-       PRIMER(1), SEGON(2), TOTS(3);
-       private int quatri;
 
-       private Quatri(int q) {
-           quatri = q;
-       }
-
-        public void setQuatri (int quatri) {
-            this.quatri = quatri;
-        }
-
-        public int getQuatri () {
-           return this.quatri;
-        }
-    }
-
-    private enum Nivell {
-        TRONCAL(1), OBLIGATORIA(2), ESPECIALITAT(3);
-        private int nivell;
-
-        private Nivell(int nvl) {
-            nivell = nvl;
-        }
-
-        public void setNivell (int nivell) {
-            this.nivell = nivell;
-        }
-
-        public int getNivell () {
-            return this.nivell;
-        }
-    }
-*/
     //Constructora
     public Assignatura() {
-        this.nomAssig = null;
-        this.ngrups   = 0;
+        this.nomAssig    = null;
+        this.ngrups      = 0;
+        this.nsubgrups   = 0;
+        this.num_alumnes = 0;
+        this.quatri      = 0;
+        this.nivell      = 0;
     }
 
-/*
-    public Assignatura(String nomAssig, Quatri quatri, Nivell n, int ngrups) {
-        this.nomAssig = nomAssig;
-        this.quatri   = quatri;
-        this.nivell   = n;
-        this.ngrups   = ngrups;
+    public Assignatura(String nomAssig) {
+         this.nomAssig    = nomAssig;
+         this.ngrups      = 0;
+         this.nsubgrups   = 0;
+         this.num_alumnes = 0;
+         this.quatri      = 0;
+         this.nivell      = 0;
     }
 
-    public Assignatura(String nomAssig, boolean quatri, int nivell) {
-        this.nomAssig = nomAssig;
-        this.quatri   = quatri;
-        this.nivell   = nivell;
-        this.grups    = null;
+    public Assignatura(String nomAssig, Integer num_alumnes, Integer ngrups, Integer nsubgrups, Integer quatri, Integer nivell) {
+        this.nomAssig    = nomAssig;
+        this.num_alumnes = num_alumnes;
+        this.ngrups      = ngrups;
+        this.nsubgrups   = nsubgrups;
+        this.quatri      = quatri;
+        this.nivell      = nivell;
     }
 
-    public Assignatura (String nomAssig) {
-        this.nomAssig = nomAssig;
-        this.quatri   = null;
-        this.espec    = null;
-        this.nivell   = null;
-        this.grups    = null;
-    }
-*/
+
     //Setters
+    public void setNum_alumnes(Integer num_alumnes) {
+        this.num_alumnes = num_alumnes;
+    }
+
     public void setNomAssig (String nomAssig) {
         this.nomAssig = nomAssig;
     }
 
-    public void setGrups(int ngrups) {
+    public void setGrups(Integer ngrups) {
         this.ngrups = ngrups;
     }
 
-/*
-    public void setQuatri (Quatri quatri) {
+    public void setQuatri(Integer quatri) {
         this.quatri = quatri;
     }
 
-    public void setNivell (Nivell nivell) {
+    public void setNivell(Integer nivell) {
         this.nivell = nivell;
     }
-*/
+
+    public void setNsubgrups(Integer nsubgrups) {
+        this.nsubgrups = nsubgrups;
+    }
+
 
     //Getters
     public String getNomAssig () {
         return nomAssig;
     }
-/*
-    public boolean getQuatri () {
-        return quatri;
-    }
 
-    public int getNivell () {
-        return nivell;
+    public Integer getNum_alumnes() {
+        return num_alumnes;
     }
 
     public int getGrups() {
-        return this.grups;
+        return ngrups;
     }
 
+    public Integer getQuatri() {
+        return quatri;
+    }
 
+    public Integer getNivell() {
+        return nivell;
+    }
+
+    public Integer getNsubgrups() {
+        return nsubgrups;
+    }
+
+/*
     //Functions Aux
-
     public boolean isEqual(Assignatura a) {
-        return (this.nomAssig == a.getNomAssig() && nivell == a.getNivell() && espec == a.getEspec());
-    }
-
-    public void AddGroup() {
-        ++this.grups;
-    }
-
-    public void DeleteGroup() {
-        -- this.grups;
+        return (this.nomAssig == a.getNomAssig() && nivell == a.getNivell() && this.quatri == quatri);
     }
 */
 }

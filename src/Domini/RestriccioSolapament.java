@@ -5,7 +5,7 @@ package Domini;
 
 import java.util.ArrayList;
 
-public class RestriccioSolapament extends Restriccio{
+public class RestriccioSolapament extends Restriccio {
 
     private ArrayList <Pair <Assignatura, Integer>> assignSlot;
 
@@ -32,10 +32,10 @@ public class RestriccioSolapament extends Restriccio{
     //Pre: Assignatura a es l'assignatura que es vol afegir i grup el grup on pertany
     //Post: True si es pot afegir, else si no
     public boolean podemSolapar(Assignatura a, int grup) {
-        for (Pair<Assignatura,int> x : assignSlot) {
+        for (Pair<Assignatura,Integer> x : assignSlot) {
             //Labo i teoria del mateix grup no poden anar junts
             //En un pla d'estudis, no poden haver dues assig del mateix nivell i del mateix grup
-            if (this.isEqual(a) && this.grup == grup) return false;
+            if (this.isEqual(a)) return false;
             // Mateix Pla d'estudis && if (x.first.getNivell() == a.getNivell() && grup == x.second) return false;
         }
         return true;

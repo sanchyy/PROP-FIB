@@ -3,44 +3,27 @@ package Domini;
 //Sanchy
 public class Labo extends Assignatura {
 
-    private int num_alumnes;
-    private int num_hores;
-    private int nLabs;
+    private Integer num_hores;
+    private Integer nLabs;
+    private Integer freq;
     private boolean[] necessita;
 
 
-    public Labo(String nomAssig, boolean quatri, boolean especialitat, int nivell, int num_hores, int nLabs, boolean[] necessita) {
+    public Labo(String nomAssig, boolean quatri, Integer num_alumnes, Integer nivell, Integer num_hores, Integer nLabs, Integer freq, boolean[] necessita) {
         super();
-        this.num_hores = num_hores;
-        this.nLabs     = nLabs;
-        this.necessita = necessita;
-    }
-/*
-    public Labo(Assignatura a, int num_hores, int nLabs, boolean[] necessita) {
-        String nom      = a.getNomAssig();
-        boolean quatri  = a.getQuatri();
-        boolean espec   = a.getEspec();
-        int nivell      = a.getNivell();
-        int grups       = a.getGrups();
-
-        super(nom, quatri, espec, nivell, grups,);
-        this.num_hores = num_hores;
-        this.nLabs     = nLabs;
-        this.necessita = nec;
-
-    }
-*/
-    //Setters
-
-    public void setNum_alumnes (int num_alumnes) {
         this.num_alumnes = num_alumnes;
+        this.num_hores   = num_hores;
+        this.nLabs       = nLabs;
+        this.necessita   = necessita;
+        this.freq        = freq;
     }
 
-    public void setNum_hores (int num_hores) {
+    //Setters
+    public void setNum_hores (Integer num_hores) {
         this.num_hores = num_hores;
     }
 
-    public void setnLabs (int nLabs) {
+    public void setnLabs (Integer nLabs) {
         this.nLabs = nLabs;
     }
 
@@ -48,15 +31,12 @@ public class Labo extends Assignatura {
         this.necessita = necessita;
     }
 
-    public boolean[] getNecessita() {
-        return necessita;
+    public void setFreq(Integer freq) {
+        this.freq = freq;
     }
+
 
     //Getters
-    public Integer getNum_alumnes () {
-        return num_alumnes;
-    }
-
     public Integer getNum_hores () {
         return num_hores;
     }
@@ -65,11 +45,24 @@ public class Labo extends Assignatura {
         return nLabs;
     }
 
-    public boolean hoNecesita (int i) {
+    public Integer getFreq() {
+        return freq;
+    }
+
+    public boolean[] getNecessitat() { return necessita; }
+
+
+    //AUXILIAR FUNCTIONS
+
+    public Integer getNum_alumnes () {
+        return super.getNum_alumnes() / super.getNsubgrups();
+    }
+
+    public boolean hoNecesita (Integer i) {
         return necessita[i];
     }
 
-    public void canviNecessitat(int i, boolean b) {
+    public void canviNecessitat(Integer i, boolean b) {
         necessita[i] = b;
     }
 }
