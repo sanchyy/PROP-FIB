@@ -8,6 +8,7 @@ public class Backtracking {
     private Horari horari;
     private PlaEstudis pe;
     private ArrayList<Sessio> sessions;
+    private ArrayList< ArrayList< ArrayList <Aula> > > aules_disponibles = new ArrayList<>();
 
     public Backtracking(Horari horariBuit, PlaEstudis plaEstudis, ArrayList<Sessio> sessios) {
         this.horari = horariBuit;
@@ -16,11 +17,43 @@ public class Backtracking {
     }
 
     public void generarHorari() {
+        generarTaulaAules(pe.getAules_disponibles());
         produirHorari(horari, pe.getAules_disponibles(), sessions, 0, 0);
     }
 
     public Horari getHorari() {
         return horari;
+    }
+
+    public void generarTaulaAules(ArrayList<Aula> aulas) {
+        for (int i=0; i<5; ++i) {
+            ArrayList< ArrayList<Aula> > dia = new ArrayList<>();
+            for (int j=0; j<12; ++j) {
+                dia.add(clonarAulesDisponibles(aulas));
+            }
+            aules_disponibles.add(dia);
+        }
+    }
+
+    public ArrayList< ArrayList< ArrayList <Aula> > > clonarTaulaAules(ArrayList< ArrayList< ArrayList <Aula> > > taulaAules) {
+        ArrayList< ArrayList< ArrayList <Aula> > > novaTaula = new ArrayList<>();
+        for (ArrayList< ArrayList<Aula>> dia : taulaAules) {
+            ArrayList< ArrayList<Aula>> nDia = new ArrayList<>();
+            for (ArrayList<Aula> hora : dia) {
+                ArrayList<Aula> nHora = new ArrayList<>();
+                for (Aula aula : hora) {
+                    nHora.add(aula);
+                }
+                nDia.add(nHora);
+            }
+            novaTaula.add(nDia);
+        }
+        return novaTaula;
+    }
+
+    public ArrayList< ArrayList< ArrayList <Aula> > > borrarAula(ArrayList< ArrayList< ArrayList <Aula> > > taulaAules, Aula a, Integer dia, Integer hora) {
+        taulaAules.get(dia).get(hora).remove(a);
+        return taulaAules;
     }
 
     public ArrayList<Aula> clonarAulesDisponibles(ArrayList<Aula> aulesDisponibles) {
@@ -48,6 +81,7 @@ public class Backtracking {
 
     private Aula buscarAula(Sessio sessio, ArrayList<Aula> aules) {
         // Buscar una aula que es correspongui amb els requeriments de la sessio
+        // return aules.get(0).get(0).get(0);
         return aules.get(0);
     }
 
@@ -57,56 +91,51 @@ public class Backtracking {
             // Hem trobat una solució valida, retornem true
             this.horari = hor;
             return true;
-        } else if (aules.size() == 0) {
-            // S'han acabat les aules disponibles, no podem trobar un horari correcte
-            return false;
         } else if (dia == 6) {
             // Hem acabat els dies de l'horari, retornem FALSE per indicar que no és una branca valida
             return false;
+        } else if (hora == 12) {
+            // Saltem al seguent dia
+            return produirHorari(hor, aules, sessions, dia+1, 0);
+        // } else if (aules.get(dia).get(hora).size() == 0) {
+        } else if (aules.size() == 0) {
+            // S'han acabat les aules disponibles, no podem trobar un horari correcte
+            return false;
         } else {
-            if (hora == 12) {
-                // Saltem al seguent dia
-                return produirHorari(hor, aules, sessions, dia+1, 0);
-            } else {
-                // TODO: Ordenar les llistes per a que vagi més ràpid
+            // TODO: Ordenar les llistes per a que vagi més ràpid
 
-                boolean found = false;
-                for (Sessio sessioActual : sessions) {
-                    Horari cHor = hor.clonar();
-                    ArrayList<Sessio> cSessions = clonarSessionsDisponibles(sessions);
-                    ArrayList<Aula> cAules = clonarAulesDisponibles(aules);
+            boolean found = false;
+            for (Sessio sessioActual : sessions) {
+                Horari cHor = hor.clonar();
+                ArrayList<Sessio> cSessions = clonarSessionsDisponibles(sessions);
+                ArrayList<Aula> cAules = clonarAulesDisponibles(aules);
 
-                    // Mirem si la sessio que tenim pot anar a aquest slot
-                    if (potAnarAqui(sessioActual, dia, hora)) {
-                        // Li busquem una aula adequada
-                        Aula a = buscarAula(sessioActual, cAules);
-                        if (a != null) {
-                            sessioActual.setAula(a);
-                            cHor.setSessio(sessioActual, dia, hora);
-                            cAules.remove(a);
-                            cSessions.remove(sessioActual);
-                            found = found || produirHorari(cHor, cAules, cSessions, dia, hora);
-                            if (found) {
-                                aules = cAules;
-                                sessions = cSessions;
-                                break;
-                            }
+                // Mirem si la sessio que tenim pot anar a aquest slot
+                if (potAnarAqui(sessioActual, dia, hora)) {
+                    // Li busquem una aula adequada
+                    Aula a = buscarAula(sessioActual, cAules);
+                    if (a != null) {
+                        sessioActual.setAula(a);
+                        cHor.setSessio(sessioActual, dia, hora);
+                        cAules.remove(a);
+                        cSessions.remove(sessioActual);
+                        found = found || produirHorari(cHor, cAules, cSessions, dia, hora);
+                        if (found) {
+                            aules = cAules;
+                            sessions = cSessions;
+                            break;
                         }
                     }
+                }
 
-                }
-                if (!found) {
-                    return produirHorari(hor, aules, sessions, dia, hora + 1);
-                } else {
-                    return true;
-                }
+            }
+            if (!found) {
+                return produirHorari(hor, aules, sessions, dia, hora + 1);
+            } else {
+                return true;
             }
         }
     }
-
-    // Horari -> Conjunt de slots
-    // Aules disponibles
-    // Sessions a posar
 }
 
 // BACKTRACKING CRONOLOGIC
