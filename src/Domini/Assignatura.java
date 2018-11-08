@@ -106,7 +106,7 @@ public class Assignatura {
     /*
     //Functions Aux
     public boolean isEqual(Assignatura a) {
-        return (this.nomAssig == a.getNomAssig() && nivell == a.getNivell() && this.quatri == quatri);
+        return (this.plaEstudis = a.getPlaEstudis() && this.nomAssig == a.getNomAssig() && nivell == a.getNivell() && this.quatri == quatri);
     }
 */
 }
