@@ -34,9 +34,12 @@ public class RestriccioSolapament extends Restriccio {
     public boolean podemSolapar(Assignatura a, int grup) {
         for (Pair<Assignatura,Integer> x : assignSlot) {
             //Labo i teoria del mateix grup no poden anar junts
-            //En un pla d'estudis, no poden haver dues assig del mateix nivell i del mateix grup
-            if (this.isEqual(a)) return false;
-            // Mateix Pla d'estudis && if (x.first.getNivell() == a.getNivell() && grup == x.second) return false;
+            if (this.isEqual(a)) return false; //dues assignatures iguals en la mateixa franja
+            if (a.getPlaEstudis()        == (x.first).getPlaEstudis()
+                && (x.first).getNivell() == a.getNivell()
+                && grup == x.second)
+                    return false; //mateix pla d'estudis, nivell i grup no pot coincidir en una franja
+
         }
         return true;
     }
