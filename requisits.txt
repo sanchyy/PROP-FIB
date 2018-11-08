@@ -1,0 +1,4 @@
+prerequisit: A prerequisit B -> per fer B cal haver aprovat l’assignatura A.
+corequisit: A corequisit B -> per fer B cal haver aprovat o estar matriculat de A.
+Precorequisit: A precorequisit B -> per fer B cal haver fet A.
+orequisit: A orequisit B -> per fer B caldrà haver aprovat A i per fer A caldrà haver aprovat B.

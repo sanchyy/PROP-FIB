@@ -29,6 +29,16 @@ public class RestriccioSolapament extends Restriccio {
 
     //FUNCTIONS AUX
 /*
+    public boolean esPotSolaparRequisit() {
+
+        incorporar grafo de requisits
+        recorrer grafo i es podrà posar si:
+            1) Pre-requisit (ja que com no es poden fer les dues, es podrà solapar)
+            2)
+
+
+    }
+
     //Pre: Assignatura a es l'assignatura que es vol afegir i grup el grup on pertany
     //Post: True si es pot afegir, else si no
     public boolean podemSolapar(Assignatura a, int grup) {
