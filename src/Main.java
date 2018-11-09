@@ -103,7 +103,7 @@ public class Main {
         String nom = llegirString();
         a.setNomAssig(nom);
         System.out.println("Introdueix el nombre de grups");
-        a.setGrups(llegirNumero());
+        a.setNgrups(llegirNumero());
         PlaEstudisActual.addAssignatura_Disponible(a);
     }
 
@@ -146,7 +146,7 @@ public class Main {
         for (Sessio s : sessions) {
             System.out.println("        - " + s.getAssignatura().getNomAssig() + " " + s.getRestriccio().toString());
         }
-        Backtracking bt = new Backtracking(horariActual, PlaEstudisActual, sessions);
+        Generador bt = new Generador(horariActual, PlaEstudisActual, sessions);
         bt.generarHorari();
         horariActual = bt.getHorari();
         horariActual.mostrar();

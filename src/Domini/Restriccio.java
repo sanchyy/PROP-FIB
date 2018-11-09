@@ -1,11 +1,11 @@
 package Domini;
 
 //Sanchy
-public abstract class Restricio {
+public abstract class Restriccio {
 
     private int id; //identificador restriccio
 
-    public Restricio(id) {
+    public Restriccio(Integer id) {
         this.id = id;
     }
 

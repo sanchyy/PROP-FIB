@@ -8,10 +8,8 @@ public class Labo extends Assignatura {
     private Integer freq;
     private boolean[] necessita;
 
-
-    public Labo(String nomAssig, boolean quatri, Integer num_alumnes, Integer nivell, Integer num_hores, Integer nLabs, Integer freq, boolean[] necessita) {
+    public Labo(String nomAssig, boolean quatri, Integer nivell, Integer num_hores, Integer nLabs, Integer freq, boolean[] necessita) {
         super();
-        this.num_alumnes = num_alumnes;
         this.num_hores   = num_hores;
         this.nLabs       = nLabs;
         this.necessita   = necessita;

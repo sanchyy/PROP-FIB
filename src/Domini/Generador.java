@@ -3,14 +3,14 @@ package Domini;
 import java.util.ArrayList;
 
 // Berni
-public class Backtracking {
+public class Generador {
 
     private Horari horari;
     private PlaEstudis pe;
     private ArrayList<Sessio> sessions;
     private ArrayList< ArrayList< ArrayList <Aula> > > aules_disponibles = new ArrayList<>();
 
-    public Backtracking(Horari horariBuit, PlaEstudis plaEstudis, ArrayList<Sessio> sessios) {
+    public Generador(Horari horariBuit, PlaEstudis plaEstudis, ArrayList<Sessio> sessios) {
         this.horari = horariBuit;
         this.pe = plaEstudis;
         this.sessions = sessios;
