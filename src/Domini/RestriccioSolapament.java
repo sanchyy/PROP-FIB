@@ -21,7 +21,8 @@ public class RestriccioSolapament extends Restriccio {
     public void setAssignSlot(ArrayList <Pair <Assignatura, Integer>> AssignaturaSlot) {
         this.assignSlot = AssignaturaSlot;
     }
-    //Getters
+
+    //Getterss
 
     public ArrayList <Pair <Assignatura, Integer>> getAssignSlot() {
         return assignSlot;
@@ -31,8 +32,8 @@ public class RestriccioSolapament extends Restriccio {
 /*
     public boolean esPotSolaparRequisit() {
 
-        incorporar grafo de requisits
-        recorrer grafo i es podrà posar si:
+        incorporar "type" de requisits
+        recorrer "type" i es podrà posar si:
             1) Pre-requisit (ja que com no es poden fer les dues, es podrà solapar)
             2)
 
