@@ -3,7 +3,6 @@ package Domini;
 import java.util.ArrayList;
 
 public class Horari {
-    // private ArrayList<ArrayList<ArrayList<Pair<String, String> > > > slot_horari; // Pair string nom aula, string abrev assig
     private ArrayList< ArrayList< ArrayList <Sessio> > > horari = new ArrayList<>(); // Dies -> Hores -> Sessions
 
     // constructora

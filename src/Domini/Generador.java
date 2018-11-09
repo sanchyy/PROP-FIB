@@ -9,6 +9,7 @@ public class Generador {
     private PlaEstudis pe;
     private ArrayList<Sessio> sessions;
     private ArrayList< ArrayList< ArrayList <Aula> > > aules_disponibles = new ArrayList<>();
+    // private TaulaAules aules_disponibless = new TaulaAules();
 
     public Generador(Horari horariBuit, PlaEstudis plaEstudis, ArrayList<Sessio> sessios) {
         this.horari = horariBuit;
