@@ -7,12 +7,14 @@ public class RestriccioReserva extends Restriccio {
     Integer hora;
 
     public RestriccioReserva (String aula, String dia, Integer hora) {
+        super(0);
         this.aula = aula;
         this.dia  = dia ;
         this.hora = hora;
     }
 
     public RestriccioReserva (String aula, String dia) {
+        super(0);
         this.aula = aula;
         this.dia  = dia ;
         this.hora = null;
@@ -48,6 +50,9 @@ public class RestriccioReserva extends Restriccio {
 
 
     //Auxiliar Functions
+    public boolean compleixRestriccio() {
+        return true;
+    }
 /*
     public boolean esPot() {
 

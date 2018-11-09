@@ -9,7 +9,6 @@ public abstract class Restriccio {
         this.id = id;
     }
 
-
     //Setters
     public void setId(int id) {
         this.id = id;

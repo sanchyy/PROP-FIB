@@ -10,10 +10,12 @@ public class RestriccioSolapament extends Restriccio {
     private ArrayList <Pair <Assignatura, Integer>> assignSlot;
 
     public RestriccioSolapament() {
+        super(0);
         assignSlot = new ArrayList <Pair <Assignatura, Integer>> ();
     }
 
     public RestriccioSolapament(ArrayList <Pair <Assignatura, Integer>> assignSlot) {
+        super(0);
         this.assignSlot = assignSlot;
     }
 
@@ -29,6 +31,10 @@ public class RestriccioSolapament extends Restriccio {
     }
 
     //FUNCTIONS AUX
+    public boolean compleixRestriccio() {
+        return true;
+    }
+
 /*
     public boolean esPotSolaparRequisit() {
 
