@@ -9,76 +9,21 @@ public class Generador {
     private PlaEstudis pe;
     private ArrayList<Sessio> sessions;
     private ArrayList< ArrayList< ArrayList <Aula> > > aules_disponibles = new ArrayList<>();
-    // private TaulaAules aules_disponibless = new TaulaAules();
+    private TaulaAules aules_disponibless;
 
     public Generador(Horari horariBuit, PlaEstudis plaEstudis, ArrayList<Sessio> sessios) {
         this.horari = horariBuit;
         this.pe = plaEstudis;
         this.sessions = sessios;
+        this.aules_disponibless = new TaulaAules(pe.getAules_disponibles());
     }
 
     public void generarHorari() {
-        generarTaulaAules(pe.getAules_disponibles());
-        produirHorari(horari, aules_disponibles, sessions, 0, 0);
+        produirHorari(horari, aules_disponibless, sessions, 0, 0);
     }
 
     public Horari getHorari() {
         return horari;
-    }
-
-    public void generarTaulaAules(ArrayList<Aula> aulas) {
-        for (int i=0; i<5; ++i) {
-            ArrayList< ArrayList<Aula> > dia = new ArrayList<>();
-            for (int j=0; j<12; ++j) {
-                dia.add(clonarAulesDisponibles(aulas));
-            }
-            aules_disponibles.add(dia);
-        }
-    }
-
-    public void mostrarTaulaAules(ArrayList< ArrayList< ArrayList <Aula> > > taulaaules) {
-        System.out.println("----------------------------");
-        System.out.println("---------- AULES  ----------");
-        System.out.println("----------------------------");
-        Integer dayI = 0;
-        for (ArrayList< ArrayList<Aula>> dia : taulaaules) {
-            System.out.println(dayI++);
-            for (ArrayList<Aula> hora : dia) {
-                System.out.println("Size: " + hora.size());
-                for (Aula aula : hora) {
-                    System.out.println("    " + aula.getNom_aula());
-                }
-            }
-        }
-    }
-
-    public ArrayList< ArrayList< ArrayList <Aula> > > clonarTaulaAules(ArrayList< ArrayList< ArrayList <Aula> > > taulaAules) {
-        ArrayList< ArrayList< ArrayList <Aula> > > novaTaula = new ArrayList<>();
-        for (ArrayList< ArrayList<Aula>> dia : taulaAules) {
-            ArrayList< ArrayList<Aula>> nDia = new ArrayList<>();
-            for (ArrayList<Aula> hora : dia) {
-                ArrayList<Aula> nHora = new ArrayList<>();
-                for (Aula aula : hora) {
-                    nHora.add(aula);
-                }
-                nDia.add(nHora);
-            }
-            novaTaula.add(nDia);
-        }
-        return novaTaula;
-    }
-
-    public ArrayList< ArrayList< ArrayList <Aula> > > borrarAula(ArrayList< ArrayList< ArrayList <Aula> > > taulaAules, Aula a, Integer dia, Integer hora) {
-        taulaAules.get(dia).get(hora).remove(a);
-        return taulaAules;
-    }
-
-    public ArrayList<Aula> clonarAulesDisponibles(ArrayList<Aula> aulesDisponibles) {
-        ArrayList<Aula> novaLlista = new ArrayList<>();
-        for (Aula a : aulesDisponibles) {
-            novaLlista.add(a);
-        }
-        return novaLlista;
     }
 
     public ArrayList<Sessio> clonarSessionsDisponibles(ArrayList<Sessio> sessionsDisponibles) {
@@ -96,14 +41,13 @@ public class Generador {
         return restriccio.getFirst() == (hora+8);
     }
 
-    private Aula buscarAula(Sessio sessio, ArrayList< ArrayList< ArrayList <Aula> > > aules, Integer dia, Integer hora) {
+    private Aula buscarAula(Sessio sessio, TaulaAules aules, Integer dia, Integer hora) {
         // Buscar una aula que es correspongui amb els requeriments de la sessio
-        if (aules.get(dia).get(hora).size() == 0) return null;
-        else return aules.get(dia).get(hora).get(0);
+        if (aules.getTaula().get(dia).get(hora).size() == 0) return null;
+        else return aules.getTaula().get(dia).get(hora).get(0);
     }
 
-    // TODO: El tema de les aules està malament, no són aules generals, són aules per cada slot de hora
-    private boolean produirHorari(Horari hor, ArrayList< ArrayList< ArrayList <Aula> > > aules, ArrayList<Sessio> sessions, Integer dia, Integer hora) {
+    private boolean produirHorari(Horari hor, TaulaAules aules, ArrayList<Sessio> sessions, Integer dia, Integer hora) {
         if (sessions.size() == 0) {
             // Hem trobat una solució valida, retornem true
             this.horari = hor;
@@ -121,7 +65,7 @@ public class Generador {
             for (Sessio sessioActual : sessions) {
                 Horari cHor = hor.clonar();
                 ArrayList<Sessio> cSessions = clonarSessionsDisponibles(sessions);
-                ArrayList< ArrayList< ArrayList <Aula> > > cAules = clonarTaulaAules(aules);
+                TaulaAules cAules = aules.clonarTaula();
 
                 // Mirem si la sessio que tenim pot anar a aquest slot
                 if (potAnarAqui(sessioActual, dia, hora)) {
@@ -130,7 +74,7 @@ public class Generador {
                     if (a != null) {
                         sessioActual.setAula(a);
                         cHor.setSessio(sessioActual, dia, hora);
-                        borrarAula(cAules, a, dia, hora);
+                        cAules.borrar(a, dia, hora);
                         cSessions.remove(sessioActual);
                         found = found || produirHorari(cHor, cAules, cSessions, dia, hora);
                         if (found) {
