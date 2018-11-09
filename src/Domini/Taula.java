@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 // Berni
 public abstract class Taula <A> {
-    private ArrayList< ArrayList<ArrayList<A>> > taula;
+    private ArrayList< ArrayList<ArrayList<A>> > taula = new ArrayList<>();
     private Integer files = 12;
     private Integer columnes = 5;
 

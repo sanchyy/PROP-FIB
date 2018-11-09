@@ -9,7 +9,6 @@ public class TaulaAules extends Taula<Aula> {
     }
 
     public TaulaAules (ArrayList<Aula> aules) {
-        super();
         Integer i = 0;
         for (ArrayList< ArrayList<Aula>> dia : super.getTaula()) {
             ArrayList< ArrayList<Aula>> nDia = new ArrayList<>();
