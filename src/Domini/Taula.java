@@ -19,6 +19,18 @@ public abstract class Taula <A> {
         }
     }
 
+    public void borrar(A a, Integer dia, Integer hora) {
+        taula.get(dia).get(hora).remove(a);
+    }
+
+    public void afegir(ArrayList<ArrayList<A>> atom) {
+        taula.add(atom);
+    }
+
+    public void posar(ArrayList<ArrayList<A>> atomDia, Integer dia) {
+        taula.set(dia, atomDia);
+    }
+
     public ArrayList< ArrayList<ArrayList<A>> > getTaula() {
         return this.taula;
     }
