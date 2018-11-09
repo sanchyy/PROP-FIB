@@ -1,5 +1,9 @@
 import Domini.*;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,6 +17,15 @@ public class Main {
     public static void main(String[] args) {
         mostrarTextInici();
         mostrarMenuInici();
+
+        /*
+        try {
+            String data = readFile("./tests.txt");
+            System.out.println(data);
+        } catch(IOException ex) {
+            System.out.println("Format del fitxer incorrecte");
+        }
+        */
 
         Integer seleccio = llegirNumero();
         while (seleccio != 0) {
@@ -58,6 +71,12 @@ public class Main {
 
         Aula aula = new Aula(name, capacity, caracteristics);
         */
+    }
+
+    static String readFile(String path) throws IOException {
+        Charset encoding = Charset.defaultCharset();
+        byte[] encoded = Files.readAllBytes(Paths.get(path));
+        return new String(encoded, encoding);
     }
 
     public static void mostrarTextInici() {
