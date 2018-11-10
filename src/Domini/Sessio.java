@@ -7,7 +7,8 @@ public class Sessio {
 
     private Assignatura assignatura;
     private Aula aula;
-    private ArrayList< Pair<Integer, Integer> > restriccions_horaries = new ArrayList<>();
+    private Integer grup;
+    private ArrayList< Pair<Integer, Integer> > restriccionsHoraries = new ArrayList<>();
 
     //Constructora
     public Sessio() {
@@ -20,15 +21,23 @@ public class Sessio {
     }
 
     public void setRestriccions_horaries(ArrayList< Pair<Integer, Integer> > restriccions_horaries) {
-        this.restriccions_horaries = restriccions_horaries;
+        this.restriccionsHoraries = restriccions_horaries;
     }
 
     public void addRestriccio_horaria(Pair<Integer, Integer> restriccio_horaria) {
-        this.restriccions_horaries.add(restriccio_horaria);
+        this.restriccionsHoraries.add(restriccio_horaria);
+    }
+
+    public Integer getGrup() {
+        return grup;
     }
 
     public void setAula(Aula aula) {
         this.aula = aula;
+    }
+
+    public void setGrup(Integer grup) {
+        this.grup = grup;
     }
 
     //Getters
@@ -37,7 +46,7 @@ public class Sessio {
     }
 
     public ArrayList< Pair<Integer, Integer> > getRestriccions_horaries() {
-        return restriccions_horaries;
+        return restriccionsHoraries;
     }
 
     public Aula getAula() {
@@ -45,7 +54,7 @@ public class Sessio {
     }
 
     public Pair<Integer, Integer> getRestriccio() {
-        return restriccions_horaries.get(0);
+        return restriccionsHoraries.get(0);
     }
 
 }

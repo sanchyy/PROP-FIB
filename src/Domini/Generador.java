@@ -8,17 +8,21 @@ public class Generador {
     private Horari horari;
     private PlaEstudis pe;
     private ArrayList<Sessio> sessions;
-    private TaulaAules aules_disponibles;
+    private TaulaAules aulesDisponibles;
 
-    public Generador(Horari horariBuit, PlaEstudis plaEstudis, ArrayList<Sessio> sessions) {
+    private RestriccioSolapar rs;
+
+    public Generador(Horari horariBuit, PlaEstudis plaEstudis, ArrayList<Sessio> sessions, RestriccioSolapar rs) {
         this.horari = horariBuit;
         this.pe = plaEstudis;
         this.sessions = sessions;
+
+        this.rs = rs;
     }
 
-    public void generarHorari(ArrayList<Aula> aulesDisponibles) {
-        this.aules_disponibles = new TaulaAules(aulesDisponibles);
-        produirHorari(horari, aules_disponibles, sessions, 0, 0);
+    public void generarHorari(ArrayList<Aula> aules) {
+        this.aulesDisponibles = new TaulaAules(aules);
+        produirHorari(horari, aulesDisponibles, sessions, 0, 0);
     }
 
     public Horari getHorari() {
@@ -33,11 +37,15 @@ public class Generador {
         return novaLlista;
     }
 
-    private boolean potAnarAqui(Sessio sessio, Integer dia, Integer hora) {
+    private boolean potAnarAqui(Sessio sessio, Integer dia, Integer hora, Horari hor) {
         // Mirar si aquesta sessió pot anar a aquest slot horari
 
         Pair<Integer, Integer> restriccio = sessio.getRestriccio();
-        return restriccio.getFirst() == (hora+8);
+        if (restriccio.getFirst() != (hora+8)) return false;
+
+        if (!rs.comprovaRestriccio(sessio, hor.getAtoms(dia, hora))) return false;
+
+        return true;
     }
 
     private Aula buscarAula(Sessio sessio, TaulaAules aules, Integer dia, Integer hora) {
@@ -67,7 +75,7 @@ public class Generador {
                 TaulaAules cAules = aules.clonarTaulaAules();
 
                 // Mirem si la sessio que tenim pot anar a aquest slot
-                if (potAnarAqui(sessioActual, dia, hora)) {
+                if (potAnarAqui(sessioActual, dia, hora, cHor)) {
                     // Li busquem una aula adequada
                     Aula a = buscarAula(sessioActual, cAules, dia, hora);
                     if (a != null) {

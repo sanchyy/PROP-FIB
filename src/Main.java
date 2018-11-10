@@ -14,6 +14,8 @@ public class Main {
     public static PlaEstudis plaEstudisSeleccionat = null;
     public static Quadrimestre quadrimestreSeleccionat = null;
 
+    public static RestriccioSolapar rs;
+
     private  static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -51,6 +53,9 @@ public class Main {
                     crearSessio();
                     break;
                 case 7:
+                    crearRestriccio();
+                    break;
+                case 8:
                     generarHorari();
                     break;
                 default:
@@ -110,7 +115,8 @@ public class Main {
         System.out.println("[4] Crear Aula");
         System.out.println("[5] Crear Assignatura");
         System.out.println("[6] Crear Sessió");
-        System.out.println("[7] Generar horari");
+        System.out.println("[7] Crear Restricció");
+        System.out.println("[8] Generar horari");
         System.out.println("[0] SORTIR\n");
     }
 
@@ -140,10 +146,10 @@ public class Main {
         System.out.println("Introdueix el nom de l'assignatura");
         String nom = llegirString();
         a.setNomAssig(nom);
-        System.out.println("A quin quadrimestre vols que peratnyi aquesta assignatura? (1,2,3)");
+        System.out.println("A quin quadrimestre vols que peratnyi aquesta assignatura? (1/2/3)");
         Integer quadri = llegirNumero();
         a.setQuatri(quadri);
-        System.out.println("De quin nivell és aquesta assignatura? (1,2,3)");
+        System.out.println("De quin nivell és aquesta assignatura? (1/2/3)");
         Integer nivell = llegirNumero();
         a.setNivell(nivell);
         plaEstudisSeleccionat.afegirAssignatura(a);
@@ -156,6 +162,8 @@ public class Main {
         if (a == null) {
             System.out.println("No existeix cap assignatura amb aquest nom");
         } else {
+            System.out.println("Indica el grup d'aquesta assignatura");
+            s.setGrup(llegirNumero());
             System.out.println("Vols afegir una restricció a aquesta sessió? (S/N)");
             String response = llegirString();
             System.out.println("Indica: " + response);
@@ -169,8 +177,8 @@ public class Main {
                 s.addRestriccio_horaria(restriccioHoraria);
             }
             s.setAssignatura(a);
+            quadrimestreSeleccionat.afegirSessio(s);
         }
-        quadrimestreSeleccionat.afegirSessio(s);
     }
 
     public static void generarHorari() {
@@ -189,7 +197,7 @@ public class Main {
         for (Sessio s : quadrimestreSeleccionat.getSessions()) {
             System.out.println("        - " + s.getAssignatura().getNomAssig() + " " + s.getRestriccio().toString());
         }
-        Generador bt = new Generador(horariActual, plaEstudisSeleccionat, quadrimestreSeleccionat.getSessions());
+        Generador bt = new Generador(horariActual, plaEstudisSeleccionat, quadrimestreSeleccionat.getSessions(), rs);
         bt.generarHorari(unitatDocentSeleccionada.getAulesDisponibles());
         horariActual = bt.getHorari();
         horariActual.mostrarHorari();
@@ -209,6 +217,18 @@ public class Main {
         Quadrimestre q = new Quadrimestre();
         quadrimestreSeleccionat = q;
         plaEstudisSeleccionat.afegirQuadrimestre(q);
+    }
+
+    public static void crearRestriccio() {
+        System.out.println("    Sessions: ");
+        Integer i = 0;
+        for (Sessio s : quadrimestreSeleccionat.getSessions()) {
+            System.out.println("[" + i++ + "] " + s.getAssignatura().getNomAssig() + "-" + s.getGrup());
+        }
+        System.out.println("Introdueix les dos sessions que no vols que es solapin:");
+        Sessio a = quadrimestreSeleccionat.getSessions().get(llegirNumero());
+        Sessio b = quadrimestreSeleccionat.getSessions().get(llegirNumero());
+        rs = new RestriccioSolapar(a, b);
     }
 
     public static String llegirString() {
