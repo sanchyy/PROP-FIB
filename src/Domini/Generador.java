@@ -18,7 +18,7 @@ public class Generador {
 
     public void generarHorari() {
         aules_disponibles = new TaulaAules(pe.getAules_disponibles());
-        aules_disponibles.mostrarTaulaAules();
+        // aules_disponibles.mostrarTaulaAules();
         produirHorari(horari, aules_disponibles, sessions, 0, 0);
     }
 
@@ -43,8 +43,8 @@ public class Generador {
 
     private Aula buscarAula(Sessio sessio, TaulaAules aules, Integer dia, Integer hora) {
         // Buscar una aula que es correspongui amb els requeriments de la sessio
-        if (aules.agafarAules(dia, hora).size() == 0) return null;
-        else return aules.agafarAules(dia, hora).get(0);
+        if (aules.agafar(dia, hora).size() == 0) return null;
+        else return aules.agafar(dia, hora).get(0);
     }
 
     private boolean produirHorari(Horari hor, TaulaAules aules, ArrayList<Sessio> sessions, Integer dia, Integer hora) {
@@ -74,7 +74,7 @@ public class Generador {
                     if (a != null) {
                         sessioActual.setAula(a);
                         cHor.setSessio(sessioActual, dia, hora);
-                        cAules.borrarAula(a, dia, hora);
+                        cAules.borrar(a, dia, hora);
                         cSessions.remove(sessioActual);
                         found = found || produirHorari(cHor, cAules, cSessions, dia, hora);
                         if (found) {

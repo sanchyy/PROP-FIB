@@ -29,6 +29,16 @@ public abstract class Taula <A> {
         }
     }
 
+    public void novaTaula (ArrayList<A> slot) {
+        for (int i=0; i<columnes; ++i) {
+            ArrayList< ArrayList<A> > dia = new ArrayList<>();
+            for (int j=0; j<files; ++j) {
+                dia.add(clonarSlot(slot));
+            }
+            this.taula.set(i, dia);
+        }
+    }
+
     public ArrayList<A> getAtoms(Integer dia, Integer hora) {
         return this.taula.get(dia).get(hora);
     }
@@ -37,8 +47,8 @@ public abstract class Taula <A> {
         this.taula.get(dia).get(hora).remove(a);
     }
 
-    public void afegir(ArrayList<ArrayList<A>> atom) {
-        this.taula.add(atom);
+    public ArrayList<A> agafar (Integer dia, Integer hora) {
+        return this.taula.get(dia).get(hora);
     }
 
     public void posar(ArrayList<ArrayList<A>> atomDia, Integer dia) {
