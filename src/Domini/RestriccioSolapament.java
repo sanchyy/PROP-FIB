@@ -48,7 +48,7 @@ public class RestriccioSolapament extends Restriccio {
 */
     //Pre: Assignatura a es l'assignatura que es vol afegir i grup el grup on pertany
     //Post: True si es pot afegir, else si no
-    public boolean podemSolapar(Assignatura a, int grup) {
+    public boolean esPotSolapar(Assignatura a, int grup) {
         for (Pair<Assignatura,Integer> x : assignSlot) {
             //Labo i teoria del mateix grup no poden anar junts
             if ((x.getFirst()).isEqual(a)) return false; //dues assignatures iguals en la mateixa franja

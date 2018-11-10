@@ -2,9 +2,9 @@ package Domini;
 
 public class RestriccioReserva extends Restriccio {
 
-    String  aula;
-    String  dia ;
-    Integer hora;
+    private String  aula;
+    private String  dia ;
+    private Integer hora;
 
     public RestriccioReserva (String aula, String dia, Integer hora) {
         super(0);
@@ -54,7 +54,7 @@ public class RestriccioReserva extends Restriccio {
         return true;
     }
 
-    public boolean esPot(Integer h, String a, String d) {
+    public boolean esPotReserva(Integer h, String a, String d) {
         //Esta reservat tot el dia?
 
         if (hora == null) {
