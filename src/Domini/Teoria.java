@@ -34,7 +34,7 @@ public class Teoria extends Assignatura {
 
     //Auxiliars function
     public Integer getNum_alumnes () {
-        return super.getNum_alumnes();
+        return super.getNum_alumnes()/super.getNgrups();
     }
 
 }

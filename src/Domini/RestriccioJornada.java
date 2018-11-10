@@ -4,15 +4,17 @@ import java.util.ArrayList;
 
 public class RestriccioJornada extends Restriccio {
 
-    private Integer hora;
+    private Integer hora_inici;
+    private Integer hora_fi;
     private ArrayList<Integer>[] grups;
     private boolean jornada; // 0 <- mati (8 -14) : 1 <- tarda (14-20)
 
-    public RestriccioJornada(Integer hora, ArrayList<Integer>[] grups, boolean jornada) {
+    public RestriccioJornada(Integer hora_inici, Integer hora_fi, ArrayList<Integer>[] grups, boolean jornada) {
         super(1);
-        this.hora    = hora;
-        this.grups   = grups;
-        this.jornada = jornada;
+        this.hora_inici = hora_inici;
+        this.hora_fi    = hora_fi;
+        this.grups      = grups;
+        this.jornada    = jornada;
 
     }
 
@@ -22,12 +24,16 @@ public class RestriccioJornada extends Restriccio {
         this.grups = grups;
     }
 
-    public void setHora(Integer hora) {
-        this.hora = hora;
-    }
-
     public void setJornada(boolean jornada) {
         this.jornada = jornada;
+    }
+
+    public void setHora_inici(Integer hora_inici) {
+        this.hora_inici = hora_inici;
+    }
+
+    public void setHora_fi(Integer hora_fi) {
+        this.hora_fi = hora_fi;
     }
 
     //Getters
@@ -35,8 +41,12 @@ public class RestriccioJornada extends Restriccio {
         return grups;
     }
 
-    public Integer getHora() {
-        return hora;
+    public Integer getHora_inici() {
+        return hora_inici;
+    }
+
+    public Integer getHora_fi() {
+        return hora_fi;
     }
 
     public boolean getJornada() {
@@ -49,8 +59,21 @@ public class RestriccioJornada extends Restriccio {
     }
 
     public boolean esPotJornada() {
-        //!Jornada <- (8h - 14h )
+        //!Jornada <- (8h  - 14h)
         // Jornada <- (14h - 20h)
-        return (!jornada ? (hora >= 8 && hora < 14) : (hora >= 14 && hora < 20));
+        int marge = hora_fi - hora_inici; //dura 1 o 2h la classe
+        return (!jornada ? (pertany(8,((marge == 1) ? 13 : 12),hora_fi)) : (pertany(14,((marge == 1) ? 19 : 18),hora_fi)));
+
+        /*
+        if (!jornada) {
+            if (marge == 1)
+                return pertany(8,13,hora_fi);
+            return pertany(8,12,hora_fi);
+        }
+        if (marge == 1)
+            return pertany(14,19,hora_fi);
+        return pertany(14,18,hora_fi);
+        */
     }
+
 }

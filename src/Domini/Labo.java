@@ -53,7 +53,7 @@ public class Labo extends Assignatura {
     //AUXILIAR FUNCTIONS
 
     public Integer getNum_alumnes () {
-        return super.getNum_alumnes() / super.getNsubgrups();
+        return (super.getNum_alumnes()/super.getNgrups()) / super.getNsubgrups();
     }
 
     public boolean hoNecesita (Integer i) {
