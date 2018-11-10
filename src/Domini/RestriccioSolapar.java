@@ -21,15 +21,13 @@ public class RestriccioSolapar extends Restriccio {
         Sessio comprovar = null;
         if (sessio_A.getGrup() == comp.getGrup() && sessio_A.getAssignatura().getNomAssig().equals(comp.getAssignatura().getNomAssig())) {
             comprovar = sessio_B;
-            System.out.println("AAA");
         } else if (sessio_B.getGrup() == comp.getGrup() && sessio_B.getAssignatura().getNomAssig().equals(comp.getAssignatura().getNomAssig())) {
             comprovar = sessio_A;
-            System.out.println("BBB");
         }
         if (comprovar != null) {
             for (Sessio sessio : sessions) {
                 if (sessio.getGrup() == comprovar.getGrup() && sessio.getAssignatura().getNomAssig().equals(comprovar.getAssignatura().getNomAssig())) {
-                    return true;
+                    return false;
                 }
             }
         }
