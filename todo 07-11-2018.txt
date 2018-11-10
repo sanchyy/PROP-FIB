@@ -1,0 +1,9 @@
+todo:
+    - reestructurar aula, fer subclasses -> Andrea
+    - Drivers: en java
+    - Stubs: en java
+    - JUnit: una classe, Aula -> Andrea
+    - Fer funcionalitat de testejar des d'un fitxer
+    - Documentació
+    - Fer restriccions -> Víctor
+    
