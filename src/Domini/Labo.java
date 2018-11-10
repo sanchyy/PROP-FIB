@@ -12,8 +12,8 @@ public class Labo extends Assignatura {
         this.necessita   = necessita;
     }
 
-    public Labo(String nomAssig, Integer num_alumnes, Integer ngrups, Integer nsub, Integer quatri, Integer nivell, Integer num_hores, boolean[] necessita) {
-        super(nomAssig,num_alumnes,ngrups,nsub ,quatri, nivell);
+    public Labo(String nomAssig, Integer ngrups, Integer nsub, Integer quatri, Integer nivell, Integer num_hores, boolean[] necessita) {
+        super(nomAssig,ngrups,nsub ,quatri, nivell);
         this.numHores   = num_hores;
         this.necessita   = necessita;
     }
@@ -38,10 +38,6 @@ public class Labo extends Assignatura {
 
 
     //AUXILIAR FUNCTIONS
-
-    public Integer getNum_alumnes () {
-        return (super.getNumAlumnes()/super.getNgrups()) / super.getNsubgrups();
-    }
 
     public boolean hoNecesita (Integer i) {
         return necessita[i-1];

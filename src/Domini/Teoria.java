@@ -6,8 +6,8 @@ public class Teoria extends Assignatura {
     private boolean projector;
     private Integer numHores;
 
-    public Teoria(String nomAssig, Integer num_alumnes, Integer ngrups, Integer nsub, Integer quatri, boolean especialitat, int nivell, boolean projector, Integer numHores) {
-        super(nomAssig, num_alumnes, ngrups, nsub, quatri, nivell);
+    public Teoria(String nomAssig, Integer ngrups, Integer nsub, Integer quatri, boolean especialitat, int nivell, boolean projector, Integer numHores) {
+        super(nomAssig, ngrups, nsub, quatri, nivell);
         this.projector   = projector;
         this.numHores    = numHores;
     }
@@ -33,8 +33,5 @@ public class Teoria extends Assignatura {
 
 
     //Auxiliars function
-    public Integer getNumAlumnes () {
-        return super.getNumAlumnes()/super.getNgrups();
-    }
 
 }

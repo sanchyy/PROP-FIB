@@ -140,8 +140,12 @@ public class Main {
         System.out.println("Introdueix el nom de l'assignatura");
         String nom = llegirString();
         a.setNomAssig(nom);
-        System.out.println("Introdueix el nombre de grups");
-        a.setNgrups(llegirNumero());
+        System.out.println("A quin quadrimestre vols que peratnyi aquesta assignatura? (1,2,3)");
+        Integer quadri = llegirNumero();
+        a.setQuatri(quadri);
+        System.out.println("De quin nivell és aquesta assignatura? (1,2,3)");
+        Integer nivell = llegirNumero();
+        a.setNivell(nivell);
         plaEstudisSeleccionat.afegirAssignatura(a);
     }
 

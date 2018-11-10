@@ -19,8 +19,7 @@ public class RestriccioSolapament extends Restriccio {
         this.assignSlot = AssignaturaSlot;
     }
 
-    //Getterss
-
+    //Getters
     public ArrayList <Pair <Assignatura, Integer>> getAssignSlot() {
         return assignSlot;
     }
@@ -30,17 +29,15 @@ public class RestriccioSolapament extends Restriccio {
         return true;
     }
 
-/*
+    /*
     public boolean esPotSolaparRequisit() {
 
         incorporar "type" de requisits
         recorrer "type" i es podrà posar si:
             1) Pre-requisit (ja que com no es poden fer les dues, es podrà solapar)
             2)
-
-
     }
-*/
+    */
     //Pre: Assignatura a es l'assignatura que es vol afegir i grup el grup on pertany
     //Post: True si es pot afegir, else si no
     public boolean esPotSolapar(Assignatura a, int grup) {
