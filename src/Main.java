@@ -25,7 +25,7 @@ public class Main {
 
         /*
         try {
-            String data = readFile("./tests.txt");
+            String data = readFile("./TEST_1.txt");
             System.out.println(data);
         } catch(IOException ex) {
             System.out.println("Format del fitxer incorrecte");
@@ -135,7 +135,7 @@ public class Main {
         a.setNom_aula(llegirString());
         System.out.println("Introdueix la capacitat de l'aula");
         a.setCapacitat(llegirNumero());
-        plaEstudisSeleccionat.addAula_Disponible(a);
+        unitatDocentSeleccionada.afegirAulaDisponible(a);
     }
 
     public static void crearAssignatura() {
@@ -145,7 +145,7 @@ public class Main {
         a.setNomAssig(nom);
         System.out.println("Introdueix el nombre de grups");
         a.setNgrups(llegirNumero());
-        plaEstudisSeleccionat.addAssignatura_Disponible(a);
+        plaEstudisSeleccionat.afegirAssignatura(a);
     }
 
     public static void crearSessio() {
@@ -169,6 +169,7 @@ public class Main {
             }
             s.setAssignatura(a);
         }
+        quadrimestreSeleccionat.afegirSessio(s);
         sessions.add(s);
     }
 
@@ -176,11 +177,11 @@ public class Main {
         System.out.println("Es generarà l'horari amb els següents objectes:");
         System.out.println("    Pla d'Estudis: " + plaEstudisSeleccionat.getNom());
         System.out.println("    Aules: ");
-        for (Aula a : plaEstudisSeleccionat.getAules_disponibles()) {
+        for (Aula a : unitatDocentSeleccionada.getAulesDisponibles()) {
             System.out.println("        - " + a.getNom_aula());
         }
         System.out.println("    Assignatures: ");
-        for (Assignatura a : plaEstudisSeleccionat.getAssignatures_disponibles()) {
+        for (Assignatura a : plaEstudisSeleccionat.getAssignatures()) {
             System.out.println("        - " + a.getNomAssig());
         }
         System.out.println("    Sessions: ");
@@ -188,7 +189,7 @@ public class Main {
             System.out.println("        - " + s.getAssignatura().getNomAssig() + " " + s.getRestriccio().toString());
         }
         Generador bt = new Generador(horariActual, plaEstudisSeleccionat, sessions);
-        bt.generarHorari();
+        bt.generarHorari(unitatDocentSeleccionada.getAulesDisponibles());
         horariActual = bt.getHorari();
         horariActual.mostrarHorari();
     }
@@ -205,7 +206,8 @@ public class Main {
     public static void crearQuadrimestre() {
         System.out.println("Crear quadrimestre:");
         Quadrimestre q = new Quadrimestre();
-        // plaEstudisSeleccionat.afe
+        quadrimestreSeleccionat = q;
+        plaEstudisSeleccionat.afegirQuadrimestre(q);
     }
 
     public static String llegirString() {

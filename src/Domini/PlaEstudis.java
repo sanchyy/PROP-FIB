@@ -4,12 +4,11 @@ import java.util.ArrayList;
 // Berni
 public class PlaEstudis {
     private String nom;
-    private Periode quadrimestre_actual;
-    private ArrayList<Aula> aules_disponibles = new ArrayList<>();
-    private ArrayList<Assignatura> assignatures_disponibles = new ArrayList<>();
+    private ArrayList<Quadrimestre> quadrimestres;
+    private ArrayList<Assignatura> assignatures = new ArrayList<>();
 
-    public void setNomPlaEstudis(String nomPlaEstudis) {
-        this.nom = nomPlaEstudis;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public String getNom() {
@@ -19,56 +18,30 @@ public class PlaEstudis {
     //Constructora
     public PlaEstudis(String nom) {
         this.nom = nom;
-    }
-
-    //Constructora
-    public PlaEstudis(Periode quadrimestre_actual) {
-        this.quadrimestre_actual = quadrimestre_actual;
-    }
-
-    public PlaEstudis(Periode quadrimestre_actual, ArrayList<Aula> aules_disponibles, ArrayList<Assignatura> assignatures_disponibles) {
-        this.quadrimestre_actual      = quadrimestre_actual;
-        this.aules_disponibles        = aules_disponibles;
-        this.assignatures_disponibles = assignatures_disponibles;
+        this.quadrimestres = new ArrayList<>();
     }
 
     //Setters
-    public void setQuadrimestre_actual (Periode quadrimestre_actual) {
-        this.quadrimestre_actual = quadrimestre_actual;
+    public void setAssignatures(ArrayList<Assignatura> assignatura) {
+        this.assignatures = assignatura;
     }
 
-    public void setAules_disponibles (ArrayList<Aula> aules_disponibles) {
-        this.aules_disponibles = aules_disponibles;
+    public void afegirAssignatura (Assignatura assignatura) {
+        this.assignatures.add(assignatura);
     }
 
-    public void setAssignatures_disponibles(ArrayList<Assignatura> assignatures_disponibles) {
-        this.assignatures_disponibles = assignatures_disponibles;
-    }
-
-    public void addAula_Disponible (Aula aula_disponible) {
-        this.aules_disponibles.add(aula_disponible);
-    }
-
-    public void addAssignatura_Disponible (Assignatura assignatura_disponible) {
-        this.assignatures_disponibles.add(assignatura_disponible);
+    public void afegirQuadrimestre(Quadrimestre q) {
+        this.quadrimestres.add(q);
     }
 
     //Getters
-    public Periode getQuadrimestre_actual() {
-        return quadrimestre_actual;
+    public ArrayList<Assignatura> getAssignatures() {
+        return assignatures;
     }
 
-    public ArrayList<Aula> getAules_disponibles() {
-        return aules_disponibles;
-    }
-
-    public ArrayList<Assignatura> getAssignatures_disponibles() {
-        return assignatures_disponibles;
-    }
-
-    public Assignatura getAssignatura(String nomAssignatura) {
-        for (Assignatura a : assignatures_disponibles) {
-            if (a.getNomAssig().equals(nomAssignatura)) {
+    public Assignatura getAssignatura(String nom) {
+        for (Assignatura a : assignatures) {
+            if (a.getNomAssig().equals(nom)) {
                 return a;
             }
         }

@@ -28,4 +28,8 @@ public class Quadrimestre {
     public void setSessions(ArrayList<Sessio> sessions) {
         this.sessions = sessions;
     }
+
+    public void afegirSessio(Sessio sessio) {
+        this.sessions.add(sessio);
+    }
 }

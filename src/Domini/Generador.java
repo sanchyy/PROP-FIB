@@ -10,15 +10,14 @@ public class Generador {
     private ArrayList<Sessio> sessions;
     private TaulaAules aules_disponibles;
 
-    public Generador(Horari horariBuit, PlaEstudis plaEstudis, ArrayList<Sessio> sessios) {
+    public Generador(Horari horariBuit, PlaEstudis plaEstudis, ArrayList<Sessio> sessions) {
         this.horari = horariBuit;
         this.pe = plaEstudis;
-        this.sessions = sessios;
+        this.sessions = sessions;
     }
 
-    public void generarHorari() {
-        aules_disponibles = new TaulaAules(pe.getAules_disponibles());
-        // aules_disponibles.mostrarTaulaAules();
+    public void generarHorari(ArrayList<Aula> aulesDisponibles) {
+        this.aules_disponibles = new TaulaAules(aulesDisponibles);
         produirHorari(horari, aules_disponibles, sessions, 0, 0);
     }
 
