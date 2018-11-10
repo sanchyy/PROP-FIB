@@ -5,7 +5,6 @@ package Domini;
 public class Assignatura {
 
     private String  nomAssig;
-    private String  plaEstudis;
     private Integer num_alumnes;
     private Integer ngrups;
     private Integer nsubgrups;
@@ -14,29 +13,19 @@ public class Assignatura {
 
 
     //Constructora
-    public Assignatura() {
-        this.nomAssig    = null;
-        this.plaEstudis  = null;
-        this.ngrups      = 0;
-        this.nsubgrups   = 0;
-        this.num_alumnes = 0;
-        this.quatri      = 0;
-        this.nivell      = 0;
+
+    public  Assignatura () {
+
+        nomAssig = null;
+        num_alumnes = 0;
+        ngrups = 0;
+        nsubgrups = 0;
+        quatri = 0;
+        nivell = 0;
     }
 
-    public Assignatura(String nomAssig, String plaEstudis) {
-         this.nomAssig    = nomAssig;
-         this.plaEstudis  = plaEstudis;
-         this.ngrups      = 0;
-         this.nsubgrups   = 0;
-         this.num_alumnes = 0;
-         this.quatri      = 0;
-         this.nivell      = 0;
-    }
-
-    public Assignatura(String nomAssig, String plaEstudis, Integer num_alumnes, Integer ngrups, Integer nsubgrups, Integer quatri, Integer nivell) {
+    public Assignatura(String nomAssig, Integer num_alumnes, Integer ngrups, Integer nsubgrups, Integer quatri, Integer nivell) {
         this.nomAssig    = nomAssig;
-        this.plaEstudis  = plaEstudis;
         this.num_alumnes = num_alumnes;
         this.ngrups      = ngrups;
         this.nsubgrups   = nsubgrups;
@@ -70,9 +59,6 @@ public class Assignatura {
         this.nsubgrups = nsubgrups;
     }
 
-    public void setPlaEstudis(String plaEstudis) {
-        this.plaEstudis = plaEstudis;
-    }
 
     //Getters
     public String getNomAssig () {
@@ -99,14 +85,10 @@ public class Assignatura {
         return nsubgrups;
     }
 
-    public String getPlaEstudis() {
-        return plaEstudis;
-    }
 
-    /*
     //Functions Aux
     public boolean isEqual(Assignatura a) {
-        return (this.plaEstudis = a.getPlaEstudis() && this.nomAssig == a.getNomAssig() && nivell == a.getNivell() && this.quatri == quatri);
+        return (this.nomAssig.equals(a.getNomAssig()) && nivell.intValue() == a.getNivell().intValue() && this.quatri.intValue() == quatri.intValue());
     }
-*/
+
 }
