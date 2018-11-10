@@ -53,9 +53,13 @@ public class RestriccioReserva extends Restriccio {
     public boolean compleixRestriccio() {
         return true;
     }
-/*
-    public boolean esPot() {
 
+    public boolean esPot(Integer h, String a, String d) {
+        //Esta reservat tot el dia?
+
+        if (hora == null) {
+            return !(dia == d && aula == a);
+        }
+         return !(h.intValue() == hora.intValue() && d.equals(dia) && aula.equals(a));
     }
-    */
 }
