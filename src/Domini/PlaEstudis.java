@@ -3,23 +3,22 @@ package Domini;
 import java.util.ArrayList;
 // Berni
 public class PlaEstudis {
+    private String nom;
     private Periode quadrimestre_actual;
     private ArrayList<Aula> aules_disponibles = new ArrayList<>();
     private ArrayList<Assignatura> assignatures_disponibles = new ArrayList<>();
 
-    private String nomPlaEstudis;
-
     public void setNomPlaEstudis(String nomPlaEstudis) {
-        this.nomPlaEstudis = nomPlaEstudis;
+        this.nom = nomPlaEstudis;
     }
 
-    public String getNomPlaEstudis() {
-        return nomPlaEstudis;
+    public String getNom() {
+        return nom;
     }
 
     //Constructora
     public PlaEstudis(String nom) {
-        this.nomPlaEstudis = nom;
+        this.nom = nom;
     }
 
     //Constructora

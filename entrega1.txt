@@ -2,9 +2,6 @@ per l'entrega
     en paper entreguem els diagrames de casos d'�s i de classes juntament amb l'especificaci� de casos i de classes, m�s el repartiment de les classes i la descripci� d'algorismes i estructures de dades
 
 ---------------------------------------------------
-Victor avui:
-    Assignatura - Labo - Teoria - Restriccions
----------------------------------------------------
 UnitatDocent
     CREAR | MOSTRAR | SELECCIONAR | BORRAR
     - Nom, [PlaEstudis], [Aules]

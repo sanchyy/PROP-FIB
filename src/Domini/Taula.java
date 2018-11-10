@@ -1,13 +1,12 @@
 package Domini;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 // Berni
 public abstract class Taula <A> {
     private ArrayList< ArrayList<ArrayList<A>> > taula = new ArrayList<>();
-    private Integer files = 12;
-    private Integer columnes = 5;
+    public Integer files = 12;
+    public Integer columnes = 5;
 
     public Taula () {
         for (int i=0; i<columnes; ++i) {
@@ -56,6 +55,10 @@ public abstract class Taula <A> {
         this.taula.set(dia, atomDia);
     }
 
+    public void afegirAtom(Integer dia, Integer hora, A atom) {
+        this.taula.get(dia).get(hora).add(atom);
+    }
+
     public ArrayList< ArrayList<ArrayList<A>> > getTaula() {
         return this.taula;
     }
@@ -84,6 +87,5 @@ public abstract class Taula <A> {
     }
 
     public abstract String mostrarAtom(A tipus);
-    // public abstract ArrayList<A> clonarSlot(ArrayList<A> slot);
 
 }

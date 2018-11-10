@@ -4,10 +4,6 @@ import java.util.ArrayList;
 
 // Berni
 public class Sessio {
-    // Grup
-    // Subgrup
-    // Assignatura
-    // Tipus
 
     private Assignatura assignatura;
     private Aula aula;

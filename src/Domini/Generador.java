@@ -63,7 +63,7 @@ public class Generador {
 
             boolean found = false;
             for (Sessio sessioActual : sessions) {
-                Horari cHor = hor.clonar();
+                Horari cHor = hor.clonarHorari();
                 ArrayList<Sessio> cSessions = clonarSessionsDisponibles(sessions);
                 TaulaAules cAules = aules.clonarTaulaAules();
 

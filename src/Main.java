@@ -9,9 +9,14 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static PlaEstudis PlaEstudisActual = null;
-    private static Horari horariActual = new Horari();
-    private static ArrayList<Sessio> sessions = new ArrayList<>();
+    private static ArrayList<UnitatDocent> unitatsDocents = new ArrayList<>();
+    public static UnitatDocent unitatDocentSeleccionada = null;
+    public static PlaEstudis plaEstudisSeleccionat = null;
+    public static Quadrimestre quadrimestreSeleccionat = null;
+
+    public static Horari horariActual = new Horari();
+    public static ArrayList<Sessio> sessions = new ArrayList<>();
+
     private  static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -31,18 +36,24 @@ public class Main {
         while (seleccio != 0) {
             switch (seleccio) {
                 case 1:
-                    crearPlaEstudis();
+                    crearUnitatDocent();
                     break;
                 case 2:
-                    crearAula();
+                    crearPlaEstudis();
                     break;
                 case 3:
-                    crearAssignatura();
+                    crearQuadrimestre();
                     break;
                 case 4:
-                    crearSessio();
+                    crearAula();
                     break;
                 case 5:
+                    crearAssignatura();
+                    break;
+                case 6:
+                    crearSessio();
+                    break;
+                case 7:
                     generarHorari();
                     break;
                 default:
@@ -85,16 +96,24 @@ public class Main {
     }
 
     public static void mostrarMenuInici() {
-        if (PlaEstudisActual != null) {
-            System.out.println("-----------------");
-            System.out.println("PlaEstudis: " + PlaEstudisActual.getNomPlaEstudis());
-            System.out.println("-----------------");
+        System.out.println("-----------------");
+        if (unitatDocentSeleccionada != null) {
+            System.out.println("UnitatDocent: " + unitatDocentSeleccionada.getNom());
+            if (plaEstudisSeleccionat != null) {
+                System.out.println("PlaEstudis: " + plaEstudisSeleccionat.getNom());
+                if (quadrimestreSeleccionat != null) {
+                    System.out.println("QUADRIMESTRE SELECCIONAT");
+                }
+            }
         }
-        System.out.println("[1] Crear PlaEstudis");
-        System.out.println("[2] Crear Aula");
-        System.out.println("[3] Crear Assignatura");
-        System.out.println("[4] Crear Sessió");
-        System.out.println("[5] Generar horari");
+        System.out.println("-----------------");
+        System.out.println("[1] Crear UnitatDocent");
+        System.out.println("[2] Crear PlaEstudis");
+        System.out.println("[3] Crear Quadrimestre");
+        System.out.println("[4] Crear Aula");
+        System.out.println("[5] Crear Assignatura");
+        System.out.println("[6] Crear Sessió");
+        System.out.println("[7] Generar horari");
         System.out.println("[0] SORTIR\n");
     }
 
@@ -104,7 +123,10 @@ public class Main {
 
     public static void crearPlaEstudis() {
         System.out.println("Introdueix el nom del pla d'estudis");
-        PlaEstudisActual = new PlaEstudis(llegirString());
+        String nom = llegirString();
+        PlaEstudis pe = new PlaEstudis(nom);
+        plaEstudisSeleccionat = pe;
+        unitatDocentSeleccionada.afegirPlaEstudis(pe);
     }
 
     public static void crearAula() {
@@ -113,7 +135,7 @@ public class Main {
         a.setNom_aula(llegirString());
         System.out.println("Introdueix la capacitat de l'aula");
         a.setCapacitat(llegirNumero());
-        PlaEstudisActual.addAula_Disponible(a);
+        plaEstudisSeleccionat.addAula_Disponible(a);
     }
 
     public static void crearAssignatura() {
@@ -123,13 +145,13 @@ public class Main {
         a.setNomAssig(nom);
         System.out.println("Introdueix el nombre de grups");
         a.setNgrups(llegirNumero());
-        PlaEstudisActual.addAssignatura_Disponible(a);
+        plaEstudisSeleccionat.addAssignatura_Disponible(a);
     }
 
     public static void crearSessio() {
         Sessio s = new Sessio();
         System.out.println("De quina assignatura és aquesta sessió?");
-        Assignatura a = PlaEstudisActual.getAssignatura(llegirString());
+        Assignatura a = plaEstudisSeleccionat.getAssignatura(llegirString());
         if (a == null) {
             System.out.println("No existeix cap assignatura amb aquest nom");
         } else {
@@ -152,23 +174,38 @@ public class Main {
 
     public static void generarHorari() {
         System.out.println("Es generarà l'horari amb els següents objectes:");
-        System.out.println("    Pla d'Estudis: " + PlaEstudisActual.getNomPlaEstudis());
+        System.out.println("    Pla d'Estudis: " + plaEstudisSeleccionat.getNom());
         System.out.println("    Aules: ");
-        for (Aula a : PlaEstudisActual.getAules_disponibles()) {
+        for (Aula a : plaEstudisSeleccionat.getAules_disponibles()) {
             System.out.println("        - " + a.getNom_aula());
         }
         System.out.println("    Assignatures: ");
-        for (Assignatura a : PlaEstudisActual.getAssignatures_disponibles()) {
+        for (Assignatura a : plaEstudisSeleccionat.getAssignatures_disponibles()) {
             System.out.println("        - " + a.getNomAssig());
         }
         System.out.println("    Sessions: ");
         for (Sessio s : sessions) {
             System.out.println("        - " + s.getAssignatura().getNomAssig() + " " + s.getRestriccio().toString());
         }
-        Generador bt = new Generador(horariActual, PlaEstudisActual, sessions);
+        Generador bt = new Generador(horariActual, plaEstudisSeleccionat, sessions);
         bt.generarHorari();
         horariActual = bt.getHorari();
-        horariActual.mostrar();
+        horariActual.mostrarHorari();
+    }
+
+    public static void crearUnitatDocent() {
+        System.out.println("Introdueix un nom per la nova Unitat Docent:");
+        String nom = llegirString();
+        UnitatDocent ud = new UnitatDocent(nom);
+        unitatDocentSeleccionada = ud;
+        unitatsDocents.add(ud);
+
+    }
+
+    public static void crearQuadrimestre() {
+        System.out.println("Crear quadrimestre:");
+        Quadrimestre q = new Quadrimestre();
+        // plaEstudisSeleccionat.afe
     }
 
     public static String llegirString() {

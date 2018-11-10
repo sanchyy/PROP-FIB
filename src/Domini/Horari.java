@@ -2,67 +2,35 @@ package Domini;
 
 import java.util.ArrayList;
 
-public class Horari {
-    private ArrayList< ArrayList< ArrayList <Sessio> > > horari = new ArrayList<>(); // Dies -> Hores -> Sessions
-
-    // constructora
-    public Horari (ArrayList< ArrayList< ArrayList <Sessio> > > horari) {
-        this.horari = horari;
-    }
+public class Horari extends Taula<Sessio> {
 
     public Horari () {
-        for (int i=0; i<5; ++i) {
-            ArrayList< ArrayList<Sessio> > dia = new ArrayList<>();
-            for (int j=0; j<12; ++j) {
-                ArrayList<Sessio> sessions = new ArrayList<>();
-                dia.add(sessions);
-            }
-            this.horari.add(dia);
-        }
-    }
-
-    // Setter
-    public void setSlot_horari(ArrayList< ArrayList< ArrayList <Sessio> > > horari) {
-        this.horari = horari;
-    }
-
-    public void setHorari(ArrayList<ArrayList<ArrayList<Sessio>>> horari) {
-        this.horari = horari;
+        ArrayList<Sessio> buit = new ArrayList<>();
+        super.novaTaula(buit);
     }
 
     public void setSessio(Sessio sessio, Integer dia, Integer hora) {
-        this.horari.get(dia).get(hora).add(sessio);
+        super.afegirAtom(dia, hora, sessio);
     }
 
-    // Getter
-    public ArrayList< ArrayList< ArrayList <Sessio> > > getHorari () {
-        return this.horari;
-    }
-
-    public Horari clonar() {
-        Horari nHorari = new Horari();
-        ArrayList< ArrayList< ArrayList <Sessio> > > nouHorari = new ArrayList<>();
-        for (ArrayList< ArrayList<Sessio>> dia : horari) {
-            ArrayList< ArrayList<Sessio>> nDia = new ArrayList<>();
-            for (ArrayList<Sessio> hora : dia) {
-                ArrayList<Sessio> nHora = new ArrayList<>();
-                for (Sessio sessio : hora) {
-                    nHora.add(sessio);
-                }
-                nDia.add(nHora);
+    public Horari clonarHorari() {
+        Horari nouHorari = new Horari();
+        for (int i=0; i<super.columnes; ++i) {
+            ArrayList< ArrayList<Sessio> > dia = new ArrayList<>();
+            for (int j=0; j<super.files; ++j) {
+                dia.add(super.clonarSlot(super.agafar(i, j)));
             }
-            nouHorari.add(nDia);
+            nouHorari.posar(dia, i);
         }
-        nHorari.horari = nouHorari;
-        return nHorari;
+        return nouHorari;
     }
 
-    public void mostrar() {
+    public void mostrarHorari() {
         System.out.println("----------------------------");
         System.out.println("---------- HORARI ----------");
         System.out.println("----------------------------");
         Integer dayI = 0;
-        for (ArrayList< ArrayList<Sessio>> dia : horari) {
+        for (ArrayList< ArrayList<Sessio>> dia : super.getTaula()) {
             System.out.println(intAdia(dayI++));
             for (ArrayList<Sessio> hora : dia) {
                 for (Sessio sessio : hora) {
@@ -97,4 +65,8 @@ public class Horari {
         return dia;
     }
 
+    @Override
+    public String mostrarAtom(Sessio sessio) {
+        return sessio.getAssignatura().getNomAssig() + " (" + sessio.getAula().getNom_aula() + ")";
+    }
 }

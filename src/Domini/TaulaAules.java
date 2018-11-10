@@ -12,22 +12,13 @@ public class TaulaAules extends Taula<Aula> {
     public TaulaAules (ArrayList<Aula> aules) {
         super.novaTaula(aules);
     }
-/*
-    public ArrayList<Aula> clonarAulesDisponibles(ArrayList<Aula> aulesDisponibles) {
-        ArrayList<Aula> novaLlista = new ArrayList<>();
-        for (Aula a : aulesDisponibles) {
-            novaLlista.add(a);
-        }
-        return novaLlista;
-    }
-*/
+
     public TaulaAules clonarTaulaAules() {
         TaulaAules novaTaula = new TaulaAules();
-        for (int i=0; i<5; ++i) {
+        for (int i=0; i<super.columnes; ++i) {
             ArrayList< ArrayList<Aula> > dia = new ArrayList<>();
-            for (int j=0; j<12; ++j) {
+            for (int j=0; j<super.files; ++j) {
                 dia.add(super.clonarSlot(super.agafar(i, j)));
-                // dia.add(clonarAulesDisponibles(super.agafar(i, j)));
             }
             novaTaula.posar(dia, i);
         }
