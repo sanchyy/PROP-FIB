@@ -8,18 +8,20 @@ public class Generador {
     private Horari horari;
     private PlaEstudis pe;
     private ArrayList<Sessio> sessions;
-    private ArrayList< ArrayList< ArrayList <Aula> > > aules_disponibles = new ArrayList<>();
-    private TaulaAules aules_disponibless;
+    private TaulaAules aules_disponibles;
 
     public Generador(Horari horariBuit, PlaEstudis plaEstudis, ArrayList<Sessio> sessios) {
         this.horari = horariBuit;
         this.pe = plaEstudis;
         this.sessions = sessios;
-        this.aules_disponibless = new TaulaAules(pe.getAules_disponibles());
     }
 
     public void generarHorari() {
-        produirHorari(horari, aules_disponibless, sessions, 0, 0);
+        aules_disponibles = new TaulaAules(pe.getAules_disponibles());
+        aules_disponibles.mostrarTaulaAules();
+        TaulaAules copia = aules_disponibles.clonarTaulaAules();
+        copia.mostrarTaulaAules();
+        produirHorari(horari, aules_disponibles, sessions, 0, 0);
     }
 
     public Horari getHorari() {
@@ -43,8 +45,9 @@ public class Generador {
 
     private Aula buscarAula(Sessio sessio, TaulaAules aules, Integer dia, Integer hora) {
         // Buscar una aula que es correspongui amb els requeriments de la sessio
-        if (aules.getTaula().get(dia).get(hora).size() == 0) return null;
-        else return aules.getTaula().get(dia).get(hora).get(0);
+        // aules.mostrarTaulaAules();
+        if (aules.agafarAules(dia, hora).size() == 0) return null;
+        else return aules.agafarAules(dia, hora).get(0);
     }
 
     private boolean produirHorari(Horari hor, TaulaAules aules, ArrayList<Sessio> sessions, Integer dia, Integer hora) {
@@ -65,7 +68,7 @@ public class Generador {
             for (Sessio sessioActual : sessions) {
                 Horari cHor = hor.clonar();
                 ArrayList<Sessio> cSessions = clonarSessionsDisponibles(sessions);
-                TaulaAules cAules = aules.clonarTaula();
+                TaulaAules cAules = aules.clonarTaulaAules();
 
                 // Mirem si la sessio que tenim pot anar a aquest slot
                 if (potAnarAqui(sessioActual, dia, hora)) {
@@ -74,7 +77,7 @@ public class Generador {
                     if (a != null) {
                         sessioActual.setAula(a);
                         cHor.setSessio(sessioActual, dia, hora);
-                        cAules.borrar(a, dia, hora);
+                        cAules.borrarAula(a, dia, hora);
                         cSessions.remove(sessioActual);
                         found = found || produirHorari(cHor, cAules, cSessions, dia, hora);
                         if (found) {

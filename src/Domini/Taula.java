@@ -19,6 +19,10 @@ public abstract class Taula <A> {
         }
     }
 
+    public ArrayList<A> getAtoms(Integer dia, Integer hora) {
+        return taula.get(dia).get(hora);
+    }
+
     public void borrar(A a, Integer dia, Integer hora) {
         taula.get(dia).get(hora).remove(a);
     }

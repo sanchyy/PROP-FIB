@@ -1,21 +1,30 @@
 package Domini;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class TaulaAules extends Taula<Aula> {
+public class TaulaAules {
+
+    private ArrayList< ArrayList< ArrayList <Aula> > > taula = new ArrayList<>();
 
     public TaulaAules () {
-        super();
+        for (int i=0; i<5; ++i) {
+            ArrayList< ArrayList<Aula> > dia = new ArrayList<>();
+            for (int j=0; j<12; ++j) {
+                ArrayList<Aula> aules = new ArrayList<>();
+                dia.add(aules);
+            }
+            taula.add(dia);
+        }
     }
 
     public TaulaAules (ArrayList<Aula> aules) {
-        Integer i = 0;
-        for (ArrayList< ArrayList<Aula>> dia : super.getTaula()) {
-            ArrayList< ArrayList<Aula>> nDia = new ArrayList<>();
-            for (ArrayList<Aula> hora : dia) {
-                nDia.add(clonarAulesDisponibles(aules));
+        for (int i=0; i<5; ++i) {
+            ArrayList< ArrayList<Aula> > dia = new ArrayList<>();
+            for (int j=0; j<12; ++j) {
+                dia.add(clonarAulesDisponibles(aules));
             }
-            super.posar(nDia, i++);
+            taula.add(dia);
         }
     }
 
@@ -27,9 +36,30 @@ public class TaulaAules extends Taula<Aula> {
         return novaLlista;
     }
 
-    public TaulaAules clonarTaula() {
+    public void afegir (ArrayList< ArrayList <Aula> > dia) {
+        this.taula.add(dia);
+    }
+
+    public void posar (Integer i, ArrayList< ArrayList <Aula> > dia) {
+        this.taula.set(i, dia);
+    }
+
+    public ArrayList<Aula> agafarAules (Integer dia, Integer hora) {
+        return this.taula.get(dia).get(hora);
+    }
+
+    public TaulaAules clonarTaulaAules() {
         TaulaAules novaTaula = new TaulaAules();
-        for (ArrayList< ArrayList<Aula>> dia : super.getTaula()) {
+        for (int i=0; i<5; ++i) {
+            ArrayList< ArrayList<Aula> > dia = new ArrayList<>();
+            for (int j=0; j<12; ++j) {
+                dia.add(clonarAulesDisponibles(taula.get(i).get(j)));
+            }
+            novaTaula.posar(i, dia);
+        }
+
+        /*TaulaAules novaTaula = new TaulaAules();
+        for (ArrayList< ArrayList<Aula>> dia : taula) {
             ArrayList< ArrayList<Aula>> nDia = new ArrayList<>();
             for (ArrayList<Aula> hora : dia) {
                 ArrayList<Aula> nHora = new ArrayList<>();
@@ -39,13 +69,29 @@ public class TaulaAules extends Taula<Aula> {
                 nDia.add(nHora);
             }
             novaTaula.afegir(nDia);
-        }
+        }*/
         return novaTaula;
     }
 
-    //Auxiliar Functions
-    public String mostrarAtom(Aula a) {
-        return a.getNom_aula();
+    public void borrarAula(Aula a, Integer dia, Integer hora) {
+        this.taula.get(dia).get(hora).remove(a);
     }
+
+    public void mostrarTaulaAules() {
+        System.out.println("----------------------------");
+        System.out.println("---------- AULES  ----------");
+        System.out.println("----------------------------");
+        Integer dayI = 0;
+        for (ArrayList< ArrayList<Aula>> dia : taula) {
+            System.out.println(dayI++);
+            for (ArrayList<Aula> hora : dia) {
+                System.out.println("Size: " + hora.size());
+                for (Aula aula : hora) {
+                    System.out.println("    " + aula.getNom_aula());
+                }
+            }
+        }
+    }
+
 
 }
