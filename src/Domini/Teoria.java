@@ -4,12 +4,12 @@ package Domini;
 public class Teoria extends Assignatura {
 
     private boolean projector;
-    private Integer num_hores;
+    private Integer numHores;
 
-    public Teoria(String nomAssig, Integer num_alumnes, Integer ngrups, Integer nsub, Integer quatri, boolean especialitat, int nivell, boolean projector, Integer num_hores) {
+    public Teoria(String nomAssig, Integer num_alumnes, Integer ngrups, Integer nsub, Integer quatri, boolean especialitat, int nivell, boolean projector, Integer numHores) {
         super(nomAssig, num_alumnes, ngrups, nsub, quatri, nivell);
         this.projector   = projector;
-        this.num_hores   = num_hores;
+        this.numHores    = numHores;
     }
 
     //Setters
@@ -17,8 +17,8 @@ public class Teoria extends Assignatura {
         this.projector = projector;
     }
 
-    public void setNum_hores (Integer num_hores) {
-        this.num_hores = num_hores;
+    public void setNumHores (Integer num_hores) {
+        this.numHores = numHores;
     }
 
 
@@ -27,14 +27,14 @@ public class Teoria extends Assignatura {
         return this.projector;
     }
 
-    public int getNum_hores () {
-        return this.num_hores;
+    public int getNumHores () {
+        return this.numHores;
     }
 
 
     //Auxiliars function
-    public Integer getNum_alumnes () {
-        return super.getNum_alumnes()/super.getNgrups();
+    public Integer getNumAlumnes () {
+        return super.getNumAlumnes()/super.getNgrups();
     }
 
 }
