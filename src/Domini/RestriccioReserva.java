@@ -7,14 +7,14 @@ public class RestriccioReserva extends Restriccio {
     private Integer hora;
 
     public RestriccioReserva (String aula, String dia, Integer hora) {
-        super(0);
+        super(1);
         this.aula = aula;
         this.dia  = dia ;
         this.hora = hora;
     }
 
     public RestriccioReserva (String aula, String dia) {
-        super(0);
+        super(1);
         this.aula = aula;
         this.dia  = dia ;
         this.hora = null;

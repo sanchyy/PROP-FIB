@@ -10,14 +10,12 @@ public class RestriccioJornada extends Restriccio {
     private boolean jornada; // 0 <- mati (8 -14) : 1 <- tarda (14-20)
 
     public RestriccioJornada(Integer hora_inici, Integer hora_fi, ArrayList<Integer>[] grups, boolean jornada) {
-        super(1);
+        super(2);
         this.hora_inici = hora_inici;
         this.hora_fi    = hora_fi;
         this.grups      = grups;
         this.jornada    = jornada;
-
     }
-
 
     //Setters
     public void setGrups(ArrayList<Integer>[] grups) {
@@ -70,7 +68,7 @@ public class RestriccioJornada extends Restriccio {
         if (marge == 1)
             return pertany(14,19,hora_fi);
         return pertany(14,18,hora_fi);
-        
+
     }
 
 }
