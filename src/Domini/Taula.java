@@ -19,20 +19,30 @@ public abstract class Taula <A> {
         }
     }
 
+    public Taula (ArrayList<A> slot) {
+        for (int i=0; i<columnes; ++i) {
+            ArrayList< ArrayList<A> > dia = new ArrayList<>();
+            for (int j=0; j<files; ++j) {
+                dia.add(clonarSlot(slot));
+            }
+            this.taula.add(dia);
+        }
+    }
+
     public ArrayList<A> getAtoms(Integer dia, Integer hora) {
-        return taula.get(dia).get(hora);
+        return this.taula.get(dia).get(hora);
     }
 
     public void borrar(A a, Integer dia, Integer hora) {
-        taula.get(dia).get(hora).remove(a);
+        this.taula.get(dia).get(hora).remove(a);
     }
 
     public void afegir(ArrayList<ArrayList<A>> atom) {
-        taula.add(atom);
+        this.taula.add(atom);
     }
 
     public void posar(ArrayList<ArrayList<A>> atomDia, Integer dia) {
-        taula.set(dia, atomDia);
+        this.taula.set(dia, atomDia);
     }
 
     public ArrayList< ArrayList<ArrayList<A>> > getTaula() {
@@ -41,10 +51,10 @@ public abstract class Taula <A> {
 
     public void mostrarTaula() {
         System.out.println("----------------------------");
-        System.out.println("---------- AULES  ----------");
+        System.out.println("---------- TAULA  ----------");
         System.out.println("----------------------------");
         Integer dayI = 0;
-        for (ArrayList< ArrayList<A>> dia : taula) {
+        for (ArrayList< ArrayList<A>> dia : this.taula) {
             System.out.println(dayI++);
             for (ArrayList<A> hora : dia) {
                 for (A tipus : hora) {
@@ -55,5 +65,6 @@ public abstract class Taula <A> {
     }
 
     public abstract String mostrarAtom(A tipus);
+    public abstract ArrayList<A> clonarSlot(ArrayList<A> slot);
 
 }

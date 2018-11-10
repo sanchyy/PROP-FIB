@@ -19,8 +19,6 @@ public class Generador {
     public void generarHorari() {
         aules_disponibles = new TaulaAules(pe.getAules_disponibles());
         aules_disponibles.mostrarTaulaAules();
-        TaulaAules copia = aules_disponibles.clonarTaulaAules();
-        copia.mostrarTaulaAules();
         produirHorari(horari, aules_disponibles, sessions, 0, 0);
     }
 
@@ -45,7 +43,6 @@ public class Generador {
 
     private Aula buscarAula(Sessio sessio, TaulaAules aules, Integer dia, Integer hora) {
         // Buscar una aula que es correspongui amb els requeriments de la sessio
-        // aules.mostrarTaulaAules();
         if (aules.agafarAules(dia, hora).size() == 0) return null;
         else return aules.agafarAules(dia, hora).get(0);
     }

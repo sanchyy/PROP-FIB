@@ -1,9 +1,8 @@
 package Domini;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class TaulaAules {
+public class TaulaAules extends Taula<Aula> {
 
     private ArrayList< ArrayList< ArrayList <Aula> > > taula = new ArrayList<>();
 
@@ -36,10 +35,6 @@ public class TaulaAules {
         return novaLlista;
     }
 
-    public void afegir (ArrayList< ArrayList <Aula> > dia) {
-        this.taula.add(dia);
-    }
-
     public void posar (Integer i, ArrayList< ArrayList <Aula> > dia) {
         this.taula.set(i, dia);
     }
@@ -57,19 +52,6 @@ public class TaulaAules {
             }
             novaTaula.posar(i, dia);
         }
-
-        /*TaulaAules novaTaula = new TaulaAules();
-        for (ArrayList< ArrayList<Aula>> dia : taula) {
-            ArrayList< ArrayList<Aula>> nDia = new ArrayList<>();
-            for (ArrayList<Aula> hora : dia) {
-                ArrayList<Aula> nHora = new ArrayList<>();
-                for (Aula aula : hora) {
-                    nHora.add(aula);
-                }
-                nDia.add(nHora);
-            }
-            novaTaula.afegir(nDia);
-        }*/
         return novaTaula;
     }
 
@@ -93,5 +75,13 @@ public class TaulaAules {
         }
     }
 
+    @Override
+    public String mostrarAtom(Aula aula) {
+        return aula.getNom_aula();
+    }
 
+    @Override
+    public ArrayList<Aula> clonarSlot(ArrayList<Aula> slot) {
+        return clonarAulesDisponibles(slot);
+    }
 }
