@@ -1,5 +1,6 @@
 package Domini;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 // Berni
@@ -74,7 +75,15 @@ public abstract class Taula <A> {
         }
     }
 
+    public ArrayList<A> clonarSlot(ArrayList<A> slot) {
+        ArrayList<A> novaLlista = new ArrayList<>();
+        for (A a : slot) {
+            novaLlista.add(a);
+        }
+        return novaLlista;
+    }
+
     public abstract String mostrarAtom(A tipus);
-    public abstract ArrayList<A> clonarSlot(ArrayList<A> slot);
+    // public abstract ArrayList<A> clonarSlot(ArrayList<A> slot);
 
 }

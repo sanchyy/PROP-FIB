@@ -7,14 +7,14 @@ public class RestriccioReserva extends Restriccio {
     private Integer hora;
 
     public RestriccioReserva (String aula, String dia, Integer hora) {
-        super(0);
+        super(1);
         this.aula = aula;
         this.dia  = dia ;
         this.hora = hora;
     }
 
     public RestriccioReserva (String aula, String dia) {
-        super(0);
+        super(1);
         this.aula = aula;
         this.dia  = dia ;
         this.hora = null;
@@ -54,12 +54,12 @@ public class RestriccioReserva extends Restriccio {
         return true;
     }
 
-    public boolean esPotReserva(Integer h, String a, String d) {
-        //Esta reservat tot el dia?
+    public boolean esPotReserva (Integer h_i, Integer h_fi, String a, String d) {
 
-        if (hora == null) {
-            return !(dia == d && aula == a);
-        }
-         return !(h.intValue() == hora.intValue() && d.equals(dia) && aula.equals(a));
+        //Esta reservat tot el dia?
+        if (hora == null)
+            return !(dia.equals(d) && aula.equals(a));
+
+         return !(pertany(h_i,h_fi,hora) && dia.equals(d) && aula.equals(a));
     }
 }

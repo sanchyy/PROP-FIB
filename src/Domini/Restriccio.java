@@ -20,5 +20,15 @@ public abstract class Restriccio {
         return id;
     }
 
+
+    //AUXILIAR FUNCTIONS
+
+    public static boolean pertany (Integer h_i, Integer h_f, Integer h) {
+        for (int i = h_i; i <= h_f; ++i) {
+            if (h_i.intValue() == h.intValue()) return true;
+        }
+        return false;
+    }
+
     public abstract boolean compleixRestriccio();
 }

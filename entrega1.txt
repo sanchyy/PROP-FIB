@@ -2,6 +2,37 @@ per l'entrega
     en paper entreguem els diagrames de casos d'�s i de classes juntament amb l'especificaci� de casos i de classes, m�s el repartiment de les classes i la descripci� d'algorismes i estructures de dades
 
 ---------------------------------------------------
+Victor avui:
+    Assignatura - Labo - Teoria - Restriccions
+---------------------------------------------------
+UnitatDocent
+    CREAR | MOSTRAR | SELECCIONAR | BORRAR
+    - Nom, [PlaEstudis], [Aules]
+
+PlaEstudis
+    CREAR | MOSTRAR | SELECCIONAR | BORRAR
+    - Nom, [Quadrimestre], [Assignatura]
+
+Quadrimestre
+    CREAR | MOSTRAR | SELECCIONAR | BORRAR
+    - Periode, [Sessions]
+
+Aula
+    CREAR | MOSTRAR | SELECCIONAR | BORRAR
+    - Nom, Capacitat, [Caracteristiques]
+
+Assignatura
+    CREAR | MOSTRAR | SELECCIONAR | BORRAR
+    - Nom, Nº Alumnes, Nº Grups, Nº SubGrups, Quatri, Nivell
+
+Sessio
+    CREAR | MOSTRAR | SELECCIONAR | BORRAR
+    - Assignatura
+    Podriem fer que quan crea una sessió, diu el nom de l'assignatura, i llavors específica el tipus de la sessió: LABO | TEORIA
+    Nº Grups -> Li hem de preguntar quants vol de matins/tardes i es creen sols
+
+
+---------------------------------------------------
 
 Diseño:
     Arquitectura aplicación (3 capas)

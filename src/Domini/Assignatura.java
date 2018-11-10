@@ -5,7 +5,7 @@ package Domini;
 public class Assignatura {
 
     private String  nomAssig;
-    private Integer num_alumnes;
+    private Integer numAlumnes;
     private Integer ngrups;
     private Integer nsubgrups;
     private Integer quatri; //1r 2n o tots (3)
@@ -17,16 +17,16 @@ public class Assignatura {
     public  Assignatura () {
 
         nomAssig = null;
-        num_alumnes = 0;
+        numAlumnes = 0;
         ngrups = 0;
         nsubgrups = 0;
         quatri = 0;
         nivell = 0;
     }
 
-    public Assignatura(String nomAssig, Integer num_alumnes, Integer ngrups, Integer nsubgrups, Integer quatri, Integer nivell) {
+    public Assignatura(String nomAssig, Integer numAlumnes, Integer ngrups, Integer nsubgrups, Integer quatri, Integer nivell) {
         this.nomAssig    = nomAssig;
-        this.num_alumnes = num_alumnes;
+        this.numAlumnes  = numAlumnes;
         this.ngrups      = ngrups;
         this.nsubgrups   = nsubgrups;
         this.quatri      = quatri;
@@ -36,7 +36,7 @@ public class Assignatura {
 
     //Setters
     public void setNum_alumnes(Integer num_alumnes) {
-        this.num_alumnes = num_alumnes;
+        this.numAlumnes = num_alumnes;
     }
 
     public void setNomAssig (String nomAssig) {
@@ -65,8 +65,8 @@ public class Assignatura {
         return nomAssig;
     }
 
-    public Integer getNum_alumnes() {
-        return num_alumnes;
+    public Integer getNumAlumnes() {
+        return numAlumnes;
     }
 
     public int getNgrups() {
@@ -90,5 +90,4 @@ public class Assignatura {
     public boolean isEqual(Assignatura a) {
         return (this.nomAssig.equals(a.getNomAssig()) && nivell.intValue() == a.getNivell().intValue() && this.quatri.intValue() == quatri.intValue());
     }
-
 }

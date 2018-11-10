@@ -9,11 +9,6 @@ public class RestriccioSolapament extends Restriccio {
 
     private ArrayList <Pair <Assignatura, Integer>> assignSlot;
 
-    public RestriccioSolapament() {
-        super(0);
-        assignSlot = new ArrayList <Pair <Assignatura, Integer>> ();
-    }
-
     public RestriccioSolapament(ArrayList <Pair <Assignatura, Integer>> assignSlot) {
         super(0);
         this.assignSlot = assignSlot;
@@ -54,7 +49,7 @@ public class RestriccioSolapament extends Restriccio {
             if ((x.getFirst()).isEqual(a)) return false; //dues assignatures iguals en la mateixa franja
             if ((x.getFirst()).getNivell().intValue() == a.getNivell().intValue()
                 && grup == x.getSecond())
-                    return false; //mateix pla d'estudis, nivell i grup no pot coincidir en una franja
+                    return false;
 
         }
         return true;
