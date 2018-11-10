@@ -14,9 +14,6 @@ public class Main {
     public static PlaEstudis plaEstudisSeleccionat = null;
     public static Quadrimestre quadrimestreSeleccionat = null;
 
-    public static Horari horariActual = new Horari();
-    public static ArrayList<Sessio> sessions = new ArrayList<>();
-
     private  static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -170,10 +167,10 @@ public class Main {
             s.setAssignatura(a);
         }
         quadrimestreSeleccionat.afegirSessio(s);
-        sessions.add(s);
     }
 
     public static void generarHorari() {
+        Horari horariActual = new Horari();
         System.out.println("Es generarà l'horari amb els següents objectes:");
         System.out.println("    Pla d'Estudis: " + plaEstudisSeleccionat.getNom());
         System.out.println("    Aules: ");
@@ -185,10 +182,10 @@ public class Main {
             System.out.println("        - " + a.getNomAssig());
         }
         System.out.println("    Sessions: ");
-        for (Sessio s : sessions) {
+        for (Sessio s : quadrimestreSeleccionat.getSessions()) {
             System.out.println("        - " + s.getAssignatura().getNomAssig() + " " + s.getRestriccio().toString());
         }
-        Generador bt = new Generador(horariActual, plaEstudisSeleccionat, sessions);
+        Generador bt = new Generador(horariActual, plaEstudisSeleccionat, quadrimestreSeleccionat.getSessions());
         bt.generarHorari(unitatDocentSeleccionada.getAulesDisponibles());
         horariActual = bt.getHorari();
         horariActual.mostrarHorari();
