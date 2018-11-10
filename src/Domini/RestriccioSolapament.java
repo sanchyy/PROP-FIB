@@ -47,12 +47,9 @@ public class RestriccioSolapament extends Restriccio {
         for (Pair<Assignatura,Integer> x : assignSlot) {
             //Labo i teoria del mateix grup no poden anar junts
             if ((x.getFirst()).isEqual(a)) return false; //dues assignatures iguals en la mateixa franja
-            if ((x.getFirst()).getNivell().intValue() == a.getNivell().intValue()
-                && grup == x.getSecond())
+            if ((x.getFirst()).getNivell().intValue() == a.getNivell().intValue() && grup == x.getSecond())
                     return false;
-
         }
         return true;
     }
-
 }
