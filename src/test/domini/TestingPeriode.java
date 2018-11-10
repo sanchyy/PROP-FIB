@@ -1,4 +1,4 @@
-package test.domini;
+/*package test.domini;
 
 import Domini.*;
 
@@ -33,4 +33,4 @@ public class TestingPeriode {
     public void testsomething(){
 
     }
-}
+}*/
