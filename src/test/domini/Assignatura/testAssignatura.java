@@ -1,4 +1,4 @@
-package test.domini;
+package test.domini.Assignatura;
 
 import Domini.Assignatura;
 
@@ -9,7 +9,7 @@ public class testAssignatura {
     public int testAssignatura () {
         System.out.println("Benvingut al test de la classe Assignatura");
         System.out.println("Introdueix quina funció vols provar:");
-        System.out.println("[1] Crear Assignatura amb tots els paràmetres");
+        System.out.println("[1] Crear Assignatura amb la constructora");
         System.out.println("[0] Sortir");
 
 
@@ -24,8 +24,8 @@ public class testAssignatura {
         }
         return 0;
     }
-
-    /*public void crearAssignaturaDrea() {
+/*
+    public static void crearAssignaturaDrea() {
         System.out.println("Introdueix els seguents paràmetres:");
         System.out.println("Nom de l'assignatura:");
         String nomAssig = scanner.next();
@@ -42,7 +42,24 @@ public class testAssignatura {
         System.out.println("[3] Especialitat");
         Integer nivell = scanner.nextInt();
 
-        Assignatura a = new Assignatura(nomAssig, quatri, nivell);
-
+        System.out.println("A quin pla destudis pertany?");
+        String pla = scanner.next();
+        stubPlaEstudis p = findPlaEstudis(pla);
+        if (p != null) {
+            Assignatura a = new Assignatura(nomAssig, quatri, nivell, pla);
+            p.afegirAssignatura(a);
+        }
+        else {
+            System.out.println("No existeix el pla docent especificat, es crea igualment l'assignatura.");
+            Assignatura a = new Assignatura(nomAssig, quatri, nivell);
+        }
+    }
+    public static stubPlaEstudis findPlaEstudis (String namePla) {
+        for (stubPlaEstudis plaEstudis : listpla) {
+            if (plaEstudis.getNom().equals(namePla)) {
+                return plaEstudis;
+            }
+        }
+        return null;
     }*/
 }
