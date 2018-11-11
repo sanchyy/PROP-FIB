@@ -12,8 +12,8 @@ public class Labo extends Assignatura {
         this.necessita   = necessita;
     }
 
-    public Labo(String nomAssig, Integer ngrups, Integer nsub, Integer quatri, Integer nivell, Integer num_hores, boolean[] necessita) {
-        super(nomAssig,ngrups,nsub ,quatri, nivell);
+    public Labo(String nomAssig, Integer quatri, Integer nivell, Integer num_hores, boolean[] necessita) {
+        super(nomAssig, quatri, nivell);
         this.numHores   = num_hores;
         this.necessita   = necessita;
     }

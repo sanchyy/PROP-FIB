@@ -6,8 +6,8 @@ public class Teoria extends Assignatura {
     private boolean projector;
     private Integer numHores;
 
-    public Teoria(String nomAssig, Integer ngrups, Integer nsub, Integer quatri, boolean especialitat, int nivell, boolean projector, Integer numHores) {
-        super(nomAssig, ngrups, nsub, quatri, nivell);
+    public Teoria(String nomAssig, Integer quatri, boolean especialitat, int nivell, boolean projector, Integer numHores) {
+        super(nomAssig, quatri, nivell);
         this.projector   = projector;
         this.numHores    = numHores;
     }

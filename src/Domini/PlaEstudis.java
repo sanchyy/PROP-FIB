@@ -21,6 +21,11 @@ public class PlaEstudis {
         this.quadrimestres = new ArrayList<>();
     }
 
+    public PlaEstudis () {
+        this.nom = null;
+        this.quadrimestres = new ArrayList<>();
+    }
+
     //Setters
     public void setAssignatures(ArrayList<Assignatura> assignatura) {
         this.assignatures = assignatura;

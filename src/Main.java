@@ -16,6 +16,8 @@ public class Main {
 
     public static RestriccioSolapar rs;
 
+    private static ArrayList<PlaEstudis> listpla = new ArrayList<>();
+
     private  static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -57,6 +59,9 @@ public class Main {
                     break;
                 case 8:
                     generarHorari();
+                    break;
+                case 9:
+                    crearAssignaturaDrea();
                     break;
                 default:
                     errorSeleccio();
@@ -117,6 +122,8 @@ public class Main {
         System.out.println("[6] Crear Sessió");
         System.out.println("[7] Crear Restricció");
         System.out.println("[8] Generar horari");
+        System.out.println("[9] Crear assignatura Drea");
+
         System.out.println("[0] SORTIR\n");
     }
 
@@ -130,6 +137,15 @@ public class Main {
         PlaEstudis pe = new PlaEstudis(nom);
         plaEstudisSeleccionat = pe;
         unitatDocentSeleccionada.afegirPlaEstudis(pe);
+        // added by drea
+        listpla.add(pe);
+    }
+
+    public static void crearPlaEstudisDrea () {
+        System.out.println("Introdueix el nom del pla d'estudis");
+        String nom = llegirString();
+        PlaEstudis pe = new PlaEstudis(nom);
+        listpla.add(pe);
     }
 
     public static void crearAula() {
@@ -146,14 +162,53 @@ public class Main {
         System.out.println("Introdueix el nom de l'assignatura");
         String nom = llegirString();
         a.setNomAssig(nom);
-        System.out.println("A quin quadrimestre vols que peratnyi aquesta assignatura? (1/2/3)");
+        System.out.println("A quin quadrimestre vols que pertanyi aquesta assignatura? (1/2/3)");
         Integer quadri = llegirNumero();
         a.setQuatri(quadri);
         System.out.println("De quin nivell és aquesta assignatura? (1/2/3)");
         Integer nivell = llegirNumero();
         a.setNivell(nivell);
+
         plaEstudisSeleccionat.afegirAssignatura(a);
     }
+    public static void crearAssignaturaDrea() {
+        System.out.println("Introdueix els seguents paràmetres:");
+        System.out.println("Nom de l'assignatura:");
+        String nomAssig = scanner.next();
+
+        System.out.println("Quins quatrimestres estarà disponible?");
+        System.out.println("[1] Q1");
+        System.out.println("[2] Q2");
+        System.out.println("[3] Q1 i Q2");
+        Integer quatri = scanner.nextInt();
+
+        System.out.println("A quin nivell del pla d'estudis pertany?");
+        System.out.println("[1] Troncal");
+        System.out.println("[2] Obligatori");
+        System.out.println("[3] Especialitat");
+        Integer nivell = scanner.nextInt();
+
+        System.out.println("A quin pla destudis pertany?");
+        String pla = scanner.next();
+        PlaEstudis p = findPlaEstudis(pla);
+        if (p != null) {
+            Assignatura a = new Assignatura(nomAssig, quatri, nivell, pla);
+            p.afegirAssignatura(a);
+        }
+        else {
+            System.out.println("No existeix el pla docent especificat, es crea igualment l'assignatura.");
+            Assignatura a = new Assignatura(nomAssig, quatri, nivell);
+        }
+    }
+    public static PlaEstudis findPlaEstudis (String namePla) {
+        for (PlaEstudis plaEstudis : listpla) {
+            if (plaEstudis.getNom().equals(namePla)) {
+                return plaEstudis;
+            }
+        }
+        return null;
+    }
+
 
     public static void crearSessio() {
         Sessio s = new Sessio();
