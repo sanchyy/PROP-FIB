@@ -9,7 +9,7 @@ public class Assignatura {
     private String plaEstudis;
 
     //Constructora
-    public  Assignatura () {
+    public Assignatura () {
         nomAssig = null;
         quatri = 0;
         nivell = 0;

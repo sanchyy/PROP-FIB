@@ -1,4 +1,5 @@
 import Domini.*;
+import Drivers.DriverAssignatura;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -158,6 +159,9 @@ public class Main {
     }*/
 
     public static void crearAssignatura() {
+        DriverAssignatura da = new DriverAssignatura();
+        da.llegirAssignatura();
+
         System.out.println("Introdueix els seguents paràmetres:");
         System.out.println("Nom de l'assignatura:");
         String nomAssig = llegirString();
