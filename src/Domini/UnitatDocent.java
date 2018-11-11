@@ -51,4 +51,13 @@ public class UnitatDocent {
         this.plansEstudis.add(pe);
     }
 
+    public PlaEstudis buscarPlaEstudis (String nomPlaEstudis) {
+        for (PlaEstudis plaEstudis : plansEstudis) {
+            if (plaEstudis.getNom().equals(nomPlaEstudis)) {
+                return plaEstudis;
+            }
+        }
+        return null;
+    }
+
 }

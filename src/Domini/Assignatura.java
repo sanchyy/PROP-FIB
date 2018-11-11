@@ -6,8 +6,8 @@ public class Assignatura {
     private String  nomAssig;
     private Integer quatri; //1r 2n o tots (3)
     private Integer nivell; //1, 2 o 3 -> Troncal, Obligatori, Especialitat
-
     private String plaEstudis;
+
     //Constructora
     public  Assignatura () {
         nomAssig = null;
