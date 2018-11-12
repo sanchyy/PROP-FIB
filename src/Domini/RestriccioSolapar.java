@@ -11,7 +11,7 @@ public class RestriccioSolapar extends Restriccio {
     private Sessio sessio_B;
 
     public RestriccioSolapar(Sessio a, Sessio b) {
-        super(0);
+        super(4);
         this.sessio_A = a;
         this.sessio_B = b;
     }
