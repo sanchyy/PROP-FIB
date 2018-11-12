@@ -50,7 +50,6 @@ public class Generador {
         if (!rs.esPotSolapar(sessio, hor.getAtoms(dia, hora))) return false;
         if (!rj.esPotJornada()) return false;
         if (!rr.esPotReserva(hora,hora+2,sessio.getAula().getNom_aula(),dia)) return false;
-
         return true;
     }
 
