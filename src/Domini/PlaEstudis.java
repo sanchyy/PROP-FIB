@@ -40,6 +40,10 @@ public class PlaEstudis {
     }
 
     //Getters
+    public ArrayList<Quadrimestre> getQuadrimestres() {
+        return quadrimestres;
+    }
+
     public ArrayList<Assignatura> getAssignatures() {
         return assignatures;
     }

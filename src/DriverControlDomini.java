@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
+public class DriverControlDomini {
 
     private static ArrayList<UnitatDocent> unitatsDocents = new ArrayList<>();
     public static UnitatDocent unitatDocentSeleccionada = null;
@@ -19,6 +19,7 @@ public class Main {
     public static RestriccioJornada rj;
     public static RestriccioReserva rr;
 
+    public static CtrDomini ctrDomini = new CtrDomini();
     private  static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -134,6 +135,8 @@ public class Main {
         PlaEstudis pe = new PlaEstudis(nom);
         plaEstudisSeleccionat = pe;
         unitatDocentSeleccionada.afegirPlaEstudis(pe);
+        // ctrDomini.afegirPlaEstudis(nom);
+
     }
 
     public static void crearAula() {
