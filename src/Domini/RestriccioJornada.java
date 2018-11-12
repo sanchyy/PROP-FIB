@@ -6,21 +6,16 @@ public class RestriccioJornada extends Restriccio {
 
     private Integer hora_inici;
     private Integer hora_fi;
-    private ArrayList<Integer>[] grups;
     private boolean jornada; // 0 <- mati (8 -14) : 1 <- tarda (14-20)
 
     public RestriccioJornada(Integer hora_inici, Integer hora_fi, ArrayList<Integer>[] grups, boolean jornada) {
         super(2);
         this.hora_inici = hora_inici;
         this.hora_fi    = hora_fi;
-        this.grups      = grups;
         this.jornada    = jornada;
     }
 
     //Setters
-    public void setGrups(ArrayList<Integer>[] grups) {
-        this.grups = grups;
-    }
 
     public void setJornada(boolean jornada) {
         this.jornada = jornada;
@@ -35,9 +30,6 @@ public class RestriccioJornada extends Restriccio {
     }
 
     //Getters
-    public ArrayList<Integer>[] getGrups() {
-        return grups;
-    }
 
     public Integer getHora_inici() {
         return hora_inici;

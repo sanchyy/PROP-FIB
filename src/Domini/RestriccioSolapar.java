@@ -17,7 +17,7 @@ public class RestriccioSolapar extends Restriccio {
     }
 
     //FUNCTIONS AUX
-    public boolean comprovaRestriccio(Sessio comp, ArrayList<Sessio> sessions) {
+    public boolean esPotSolapar(Sessio comp, ArrayList<Sessio> sessions) {
         Sessio comprovar = null;
         if (sessio_A.getGrup().intValue() == comp.getGrup().intValue() && sessio_A.getAssignatura().getNomAssig().equals(comp.getAssignatura().getNomAssig()))
             comprovar = sessio_B;
