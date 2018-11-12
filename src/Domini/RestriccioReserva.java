@@ -3,17 +3,17 @@ package Domini;
 public class RestriccioReserva extends Restriccio {
 
     private String  aula;
-    private String  dia ;
+    private Integer  dia ;
     private Integer hora;
 
-    public RestriccioReserva (String aula, String dia, Integer hora) {
+    public RestriccioReserva (String aula, Integer dia, Integer hora) {
         super(1);
         this.aula = aula;
         this.dia  = dia ;
         this.hora = hora;
     }
 
-    public RestriccioReserva (String aula, String dia) {
+    public RestriccioReserva (String aula, Integer dia) {
         super(1);
         this.aula = aula;
         this.dia  = dia ;
@@ -26,7 +26,7 @@ public class RestriccioReserva extends Restriccio {
         this.aula = aula;
     }
 
-    public void setDia(String dia) {
+    public void setDia(Integer dia) {
         this.dia = dia;
     }
 
@@ -40,7 +40,7 @@ public class RestriccioReserva extends Restriccio {
         return aula;
     }
 
-    public String getDia() {
+    public Integer getDia() {
         return dia;
     }
 
@@ -54,12 +54,12 @@ public class RestriccioReserva extends Restriccio {
         return true;
     }
 
-    public boolean esPotReserva (Integer h_i, Integer h_fi, String a, String d) {
+    public boolean esPotReserva (Integer h_i, Integer h_fi, String aula, Integer dia) {
 
         //Esta reservat tot el dia?
         if (hora == null)
-            return !(dia.equals(d) && aula.equals(a));
+            return !(this.dia.intValue() == dia.intValue() && this.aula.equals(this.aula));
 
-         return !(pertany(h_i,h_fi,hora) && dia.equals(d) && aula.equals(a));
+         return !(pertany(h_i,h_fi,hora) && this.dia.intValue() == dia.intValue() && this.aula.equals(aula));
     }
 }

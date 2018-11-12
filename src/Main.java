@@ -17,6 +17,7 @@ public class Main {
 
     public static RestriccioSolapar rs;
     public static RestriccioJornada rj;
+    public static RestriccioReserva rr;
 
     private  static Scanner scanner = new Scanner(System.in);
 
@@ -234,7 +235,7 @@ public class Main {
         for (Sessio s : quadrimestreSeleccionat.getSessions()) {
             System.out.println("        - " + s.getAssignatura().getNomAssig() + " " + s.getRestriccio().toString());
         }
-        Generador bt = new Generador(horariActual, plaEstudisSeleccionat, quadrimestreSeleccionat.getSessions(), rs, rj);
+        Generador bt = new Generador(horariActual, plaEstudisSeleccionat, quadrimestreSeleccionat.getSessions(), rs, rj, rr);
         bt.generarHorari(unitatDocentSeleccionada.getAulesDisponibles());
         horariActual = bt.getHorari();
         horariActual.mostrarHorari();

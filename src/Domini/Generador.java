@@ -12,14 +12,16 @@ public class Generador {
 
     private RestriccioSolapar rs;
     private RestriccioJornada rj;
+    private RestriccioReserva rr;
 
-    public Generador(Horari horariBuit, PlaEstudis plaEstudis, ArrayList<Sessio> sessions, RestriccioSolapar rs, RestriccioJornada rj) {
+    public Generador(Horari horariBuit, PlaEstudis plaEstudis, ArrayList<Sessio> sessions, RestriccioSolapar rs, RestriccioJornada rj, RestriccioReserva rr) {
         this.horari = horariBuit;
         this.pe = plaEstudis;
         this.sessions = sessions;
 
         this.rs = rs;
         this.rj = rj;
+        this.rr = rr;
     }
 
     public void generarHorari(ArrayList<Aula> aules) {
@@ -47,6 +49,8 @@ public class Generador {
 
         if (!rs.esPotSolapar(sessio, hor.getAtoms(dia, hora))) return false;
         if (!rj.esPotJornada()) return false;
+        if (!rr.esPotReserva(hora,hora+2,sessio.getAula().getNom_aula(),dia)) return false;
+
         return true;
     }
 
