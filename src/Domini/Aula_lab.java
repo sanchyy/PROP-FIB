@@ -1,16 +1,16 @@
 package Domini;
 
-public class Lab_aula extends Aula {
+public class Aula_lab extends Aula {
     private boolean[] caracteristiques  = new boolean[6];
     // Projector, Ubuntu, Linux/Windows, física, embeded, xarxes
 
     // Constructora
-    public Lab_aula (boolean[] caracteristiques) {
+    public Aula_lab(boolean[] caracteristiques) {
         super();
         this.caracteristiques = caracteristiques;
     }
 
-    public Lab_aula (String nom_aula, Integer capacitat, boolean[] caracteristiques) {
+    public Aula_lab(String nom_aula, Integer capacitat, boolean[] caracteristiques) {
         super(nom_aula, capacitat);
         this.caracteristiques = caracteristiques;
     }

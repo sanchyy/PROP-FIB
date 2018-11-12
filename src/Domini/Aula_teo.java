@@ -1,15 +1,15 @@
 package Domini;
 
-public class Teo_aula extends Aula {
+public class Aula_teo extends Aula {
     private boolean projector;
 
     // Constructores
-    public Teo_aula (boolean projector) {
+    public Aula_teo(boolean projector) {
         super();
         this.projector = projector;
     }
 
-    public Teo_aula (String nom_aula, Integer capacitat, boolean projector) {
+    public Aula_teo(String nom_aula, Integer capacitat, boolean projector) {
         super(nom_aula, capacitat);
         this.projector = projector;
     }

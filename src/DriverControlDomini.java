@@ -1,3 +1,5 @@
+import Domini.Aula_lab;
+import Domini.Aula_teo;
 import Domini.CtrDomini;
 import Domini.Pair;
 
@@ -128,12 +130,60 @@ public class DriverControlDomini {
 
     public static void crearAula() {
         System.out.println("Introdueix el nom de l'aula");
-        String nom = llegirString();
+        String name = llegirString();
+
         System.out.println("Introdueix la capacitat de l'aula");
         Integer capacitat = llegirNumero();
-        ctrDomini.afegirAulaUnitatDocent(nom, capacitat);
-    }
 
+        System.out.println("És de teoria (T) o laboratori (L)?");
+        String resp = llegirString();
+        if (resp.equals("T") || resp.equals("t")) {
+            System.out.println("Te projector l'aula? (si o no)");
+            String proj = llegirString();
+            boolean projector = false;
+            if (checkYesorNo(proj)) projector = true;
+            Aula_teo at = new Aula_teo(name, capacitat,  projector);
+            //ctrDomini.getUnitatDocent().afegirAulaTeo(at);
+
+        }
+        else {
+            boolean[] carac = {false, false, false, false, false, false};
+            System.out.println("Te projector l'aula? (si o no)");
+            String carac_resp = llegirString();
+            if (checkYesorNo(carac_resp)) carac[0] = true;
+
+            System.out.println("Tenen Ubuntu els ordinadors? (si o no)");
+            carac_resp = llegirString();
+            if (checkYesorNo(carac_resp)) carac[1] = true;
+
+            System.out.println("Tenen Linux i Windows els ordinadors? (si o no)");
+            carac_resp = llegirString();
+            if (checkYesorNo(carac_resp)) carac[2] = true;
+
+            System.out.println("Es un laboratori amb instrumental de fisica? (si o no)");
+            carac_resp = llegirString();
+            if (checkYesorNo(carac_resp)) carac[3] = true;
+
+            System.out.println("Es un laboratiri amb material embeded? (si o no)");
+            carac_resp = llegirString();
+            if (checkYesorNo(carac_resp)) carac[4] = true;
+
+            System.out.println("Es un laboratori amb material per xarxes? (si o no)");
+            carac_resp = llegirString();
+            if (checkYesorNo(carac_resp)) carac[5] = true;
+
+            Aula_lab al = new Aula_lab(name, capacitat, carac);
+            //ctrDomini.getUnitatDocent().afegirAulaLab(al);
+        }
+
+
+        //unitatDocentSeleccionada.afegirAulaDisponible(a);
+    }
+    public static boolean checkYesorNo (String answer) {
+        if (answer.equals("si") || answer.equals("Si") || answer.equals("SI"))
+            return true;
+        else return false;
+    }
     /*public static void crearAssignatura() {
         Assignatura a = new Assignatura();
         System.out.println("Introdueix el nom de l'assignatura");
