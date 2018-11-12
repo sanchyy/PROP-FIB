@@ -1,7 +1,4 @@
-import Domini.Aula_lab;
-import Domini.Aula_teo;
-import Domini.CtrDomini;
-import Domini.Pair;
+import Domini.*;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -135,7 +132,7 @@ public class DriverControlDomini {
         System.out.println("Introdueix la capacitat de l'aula");
         Integer capacitat = llegirNumero();
 
-        System.out.println("És de teoria (T) o laboratori (L)?");
+        /*System.out.println("És de teoria (T) o laboratori (L)?");
         String resp = llegirString();
         if (resp.equals("T") || resp.equals("t")) {
             System.out.println("Te projector l'aula? (si o no)");
@@ -174,7 +171,9 @@ public class DriverControlDomini {
 
             Aula_lab al = new Aula_lab(name, capacitat, carac);
             //ctrDomini.getUnitatDocent().afegirAulaLab(al);
-        }
+        }*/
+        Aula a = new Aula (name, capacitat);
+        ctrDomini.getUnitatDocent().afegirAulaDisponible(a);
 
 
         //unitatDocentSeleccionada.afegirAulaDisponible(a);
