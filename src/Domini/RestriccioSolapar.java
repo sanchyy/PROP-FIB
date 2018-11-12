@@ -19,14 +19,14 @@ public class RestriccioSolapar extends Restriccio {
     //FUNCTIONS AUX
     public boolean comprovaRestriccio(Sessio comp, ArrayList<Sessio> sessions) {
         Sessio comprovar = null;
-        if (sessio_A.getGrup() == comp.getGrup() && sessio_A.getAssignatura().getNomAssig().equals(comp.getAssignatura().getNomAssig())) {
+        if (sessio_A.getGrup().intValue() == comp.getGrup().intValue() && sessio_A.getAssignatura().getNomAssig().equals(comp.getAssignatura().getNomAssig()))
             comprovar = sessio_B;
-        } else if (sessio_B.getGrup() == comp.getGrup() && sessio_B.getAssignatura().getNomAssig().equals(comp.getAssignatura().getNomAssig())) {
+        else if (sessio_B.getGrup().intValue() == comp.getGrup().intValue() && sessio_B.getAssignatura().getNomAssig().equals(comp.getAssignatura().getNomAssig()))
             comprovar = sessio_A;
-        }
+
         if (comprovar != null) {
             for (Sessio sessio : sessions) {
-                if (sessio.getGrup() == comprovar.getGrup() && sessio.getAssignatura().getNomAssig().equals(comprovar.getAssignatura().getNomAssig())) {
+                if (sessio.getGrup().intValue() == comprovar.getGrup().intValue() && sessio.getAssignatura().getNomAssig().equals(comprovar.getAssignatura().getNomAssig())) {
                     return false;
                 }
             }
