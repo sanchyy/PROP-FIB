@@ -48,8 +48,8 @@ public class Generador {
         if (restriccio.getFirst() != (hora+8)) return false;
 
         if (!rs.esPotSolapar(sessio, hor.getAtoms(dia, hora))) return false;
-        if (!rj.esPotJornada()) return false;
-        if (!rr.esPotReserva(hora,hora+2,sessio.getAula().getNom_aula(),dia)) return false;
+        // if (!rj.esPotJornada()) return false;
+        // if (!rr.esPotReserva(hora,hora+2,sessio.getAula().getNom_aula(),dia)) return false;
         return true;
     }
 
