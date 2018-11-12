@@ -1,24 +1,13 @@
-import Domini.*;
-import Drivers.DriverAssignatura;
+import Domini.CtrDomini;
+import Domini.Pair;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DriverControlDomini {
-
-    private static ArrayList<UnitatDocent> unitatsDocents = new ArrayList<>();
-    public static UnitatDocent unitatDocentSeleccionada = null;
-    public static PlaEstudis plaEstudisSeleccionat = null;
-    public static Quadrimestre quadrimestreSeleccionat = null;
-
-    public static RestriccioSolapar rs;
-    public static RestriccioJornada rj;
-    public static RestriccioReserva rr;
-
     public static CtrDomini ctrDomini = new CtrDomini();
     private  static Scanner scanner = new Scanner(System.in);
 
@@ -103,11 +92,11 @@ public class DriverControlDomini {
 
     public static void mostrarMenuInici() {
         System.out.println("-----------------");
-        if (unitatDocentSeleccionada != null) {
-            System.out.println("UnitatDocent: " + unitatDocentSeleccionada.getNom());
-            if (plaEstudisSeleccionat != null) {
-                System.out.println("PlaEstudis: " + plaEstudisSeleccionat.getNom());
-                if (quadrimestreSeleccionat != null) {
+        if (ctrDomini.getUnitatDocentSeleccionada() != null && ctrDomini.getUnitatDocent() != null) {
+            System.out.println("UnitatDocent: " + ctrDomini.getUnitatDocent().getNom());
+            if (ctrDomini.getPlaEstudisSeleccionat() != null && ctrDomini.getPlaEstudis() != null) {
+                System.out.println("PlaEstudis: " + ctrDomini.getPlaEstudis().getNom());
+                if (ctrDomini.getQuadrimestreSeleccionat() != null && ctrDomini.getQuadrimestre() != null) {
                     System.out.println("QUADRIMESTRE SELECCIONAT");
                 }
             }
@@ -132,20 +121,17 @@ public class DriverControlDomini {
     public static void crearPlaEstudis() {
         System.out.println("Introdueix el nom del pla d'estudis");
         String nom = llegirString();
-        PlaEstudis pe = new PlaEstudis(nom);
-        plaEstudisSeleccionat = pe;
-        unitatDocentSeleccionada.afegirPlaEstudis(pe);
-        // ctrDomini.afegirPlaEstudis(nom);
+        ctrDomini.afegirPlaEstudis(nom);
+        // Seleccionar
 
     }
 
     public static void crearAula() {
-        Aula a = new Aula();
         System.out.println("Introdueix el nom de l'aula");
-        a.setNom_aula(llegirString());
+        String nom = llegirString();
         System.out.println("Introdueix la capacitat de l'aula");
-        a.setCapacitat(llegirNumero());
-        unitatDocentSeleccionada.afegirAulaDisponible(a);
+        Integer capacitat = llegirNumero();
+        ctrDomini.afegirAulaUnitatDocent(nom, capacitat);
     }
 
     /*public static void crearAssignatura() {
@@ -164,18 +150,15 @@ public class DriverControlDomini {
     }*/
 
     public static void crearAssignatura() {
-        DriverAssignatura da = new DriverAssignatura();
-        da.llegirAssignatura();
-
         System.out.println("Introdueix els seguents paràmetres:");
         System.out.println("Nom de l'assignatura:");
-        String nomAssig = llegirString();
+        String nom = llegirString();
 
-        System.out.println("Quins quatrimestres estarà disponible?");
+        System.out.println("Quins quadrimestres estarà disponible?");
         System.out.println("[1] Q1");
         System.out.println("[2] Q2");
         System.out.println("[3] Q1 i Q2");
-        Integer quatri = llegirNumero();
+        Integer quadri = llegirNumero();
 
         System.out.println("A quin nivell del pla d'estudis pertany?");
         System.out.println("[1] Troncal");
@@ -185,26 +168,27 @@ public class DriverControlDomini {
 
         System.out.println("A quin pla destudis pertany?");
         String nomPlaEstudis = llegirString();
-        PlaEstudis p = unitatDocentSeleccionada.buscarPlaEstudis(nomPlaEstudis);
-        if (p != null) {
-            Assignatura a = new Assignatura(nomAssig, quatri, nivell, nomPlaEstudis);
-            p.afegirAssignatura(a);
+
+        if (ctrDomini.existeixPlaEstudis(nomPlaEstudis)) {
+            ctrDomini.afegirAssignaturaPlaEstudis(nom, quadri, nivell, nomPlaEstudis);
         } else {
-            System.out.println("No existeix el pla docent especificat, es crea igualment l'assignatura.");
-            Assignatura a = new Assignatura(nomAssig, quatri, nivell);
-            // S'ha d'afegir l'assignatura a algun lloc, o es perd aquesta instància
+            System.out.println("No existeix el pla d'estudis especificat, es crea igualment l'assignatura.");
+            ctrDomini.afegirAssignaturaPlaEstudis(nom, quadri, nivell);
         }
     }
 
     public static void crearSessio() {
-        Sessio s = new Sessio();
         System.out.println("De quina assignatura és aquesta sessió?");
-        Assignatura a = plaEstudisSeleccionat.getAssignatura(llegirString());
-        if (a == null) {
+        String nomAssignatura = llegirString();
+        System.out.println("NomA: " + ctrDomini.getAssignatura(nomAssignatura).getNomAssig());
+        System.out.println("NomB: " + nomAssignatura);
+        if (!ctrDomini.existeixAssignatura(nomAssignatura)) {
             System.out.println("No existeix cap assignatura amb aquest nom");
         } else {
             System.out.println("Indica el grup d'aquesta assignatura");
-            s.setGrup(llegirNumero());
+            Integer grup = llegirNumero();
+            // TODO: Treure aquesta restricció un cop estiguin algunes altres per provar
+            Pair<Integer, Integer> restriccioHoraria = new Pair<Integer, Integer>(0, 1);
             System.out.println("Vols afegir una restricció a aquesta sessió? (S/N)");
             String response = llegirString();
             System.out.println("Indica: " + response);
@@ -214,62 +198,32 @@ public class DriverControlDomini {
                 Integer primeraHora = llegirNumero();
                 System.out.println("Indica la segona hora: ");
                 Integer segonaHora = llegirNumero();
-                Pair<Integer, Integer> restriccioHoraria = new Pair(primeraHora, segonaHora);
-                s.addRestriccio_horaria(restriccioHoraria);
+                restriccioHoraria = new Pair(primeraHora, segonaHora);
             }
-            s.setAssignatura(a);
-            quadrimestreSeleccionat.afegirSessio(s);
+            ctrDomini.afegirSessioQuadrimestre(grup, nomAssignatura, restriccioHoraria);
         }
     }
 
     public static void generarHorari() {
-        Horari horariActual = new Horari();
-        System.out.println("Es generarà l'horari amb els següents objectes:");
-        System.out.println("    Pla d'Estudis: " + plaEstudisSeleccionat.getNom());
-        System.out.println("    Aules: ");
-        for (Aula a : unitatDocentSeleccionada.getAulesDisponibles()) {
-            System.out.println("        - " + a.getNom_aula());
-        }
-        System.out.println("    Assignatures: ");
-        for (Assignatura a : plaEstudisSeleccionat.getAssignatures()) {
-            System.out.println("        - " + a.getNomAssig());
-        }
-        System.out.println("    Sessions: ");
-        for (Sessio s : quadrimestreSeleccionat.getSessions()) {
-            System.out.println("        - " + s.getAssignatura().getNomAssig() + " " + s.getRestriccio().toString());
-        }
-        Generador bt = new Generador(horariActual, plaEstudisSeleccionat, quadrimestreSeleccionat.getSessions(), rs, rj, rr);
-        bt.generarHorari(unitatDocentSeleccionada.getAulesDisponibles());
-        horariActual = bt.getHorari();
-        horariActual.mostrarHorari();
+        ctrDomini.generarHorari();
     }
 
     public static void crearUnitatDocent() {
         System.out.println("Introdueix un nom per la nova Unitat Docent:");
         String nom = llegirString();
-        UnitatDocent ud = new UnitatDocent(nom);
-        unitatDocentSeleccionada = ud;
-        unitatsDocents.add(ud);
-
+        ctrDomini.afegirUnitatDocent(nom);
     }
 
     public static void crearQuadrimestre() {
         System.out.println("Crear quadrimestre:");
-        Quadrimestre q = new Quadrimestre();
-        quadrimestreSeleccionat = q;
-        plaEstudisSeleccionat.afegirQuadrimestre(q);
+        ctrDomini.afegirQuadrimestre();
     }
 
     public static void crearRestriccio() {
-        System.out.println("    Sessions: ");
-        Integer i = 0;
-        for (Sessio s : quadrimestreSeleccionat.getSessions()) {
-            System.out.println("[" + i++ + "] " + s.getAssignatura().getNomAssig() + "-" + s.getGrup());
-        }
+        System.out.println("Sessions:");
+        System.out.println(ctrDomini.llistaSessions());
         System.out.println("Introdueix les dos sessions que no vols que es solapin:");
-        Sessio a = quadrimestreSeleccionat.getSessions().get(llegirNumero());
-        Sessio b = quadrimestreSeleccionat.getSessions().get(llegirNumero());
-        rs = new RestriccioSolapar(a, b);
+        ctrDomini.crearRestriccio(llegirNumero(), llegirNumero());
     }
 
     public static String llegirString() {

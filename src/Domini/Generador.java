@@ -14,14 +14,15 @@ public class Generador {
     private RestriccioJornada rj;
     private RestriccioReserva rr;
 
-    public Generador(Horari horariBuit, PlaEstudis plaEstudis, ArrayList<Sessio> sessions, RestriccioSolapar rs, RestriccioJornada rj, RestriccioReserva rr) {
+    // public Generador(Horari horariBuit, PlaEstudis plaEstudis, ArrayList<Sessio> sessions, RestriccioSolapar rs, RestriccioJornada rj, RestriccioReserva rr) {
+    public Generador(Horari horariBuit, PlaEstudis plaEstudis, ArrayList<Sessio> sessions, RestriccioSolapar rs) {
         this.horari = horariBuit;
         this.pe = plaEstudis;
         this.sessions = sessions;
 
         this.rs = rs;
-        this.rj = rj;
-        this.rr = rr;
+        // this.rj = rj;
+        // this.rr = rr;
     }
 
     public void generarHorari(ArrayList<Aula> aules) {

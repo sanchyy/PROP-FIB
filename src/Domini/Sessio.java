@@ -15,16 +15,18 @@ public class Sessio {
         this.assignatura = null;
     }
 
+    public Sessio(Integer grup, Assignatura assignatura, Pair<Integer, Integer> restriccioHoraria) {
+        this.grup = grup;
+        this.assignatura = assignatura;
+        this.restriccionsHoraries.add(restriccioHoraria);
+    }
+
     //Setters
     public void setAssignatura(Assignatura assignatura) {
         this.assignatura = assignatura;
     }
 
-    public void setRestriccions_horaries(ArrayList< Pair<Integer, Integer> > restriccions_horaries) {
-        this.restriccionsHoraries = restriccions_horaries;
-    }
-
-    public void addRestriccio_horaria(Pair<Integer, Integer> restriccio_horaria) {
+    public void addRestriccioHoraria(Pair<Integer, Integer> restriccio_horaria) {
         this.restriccionsHoraries.add(restriccio_horaria);
     }
 
@@ -43,10 +45,6 @@ public class Sessio {
     //Getters
     public Assignatura getAssignatura() {
         return assignatura;
-    }
-
-    public ArrayList< Pair<Integer, Integer> > getRestriccions_horaries() {
-        return restriccionsHoraries;
     }
 
     public Aula getAula() {
