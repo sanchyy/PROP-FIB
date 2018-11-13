@@ -9,20 +9,19 @@ public class CtrDomini {
     private Integer plaEstudisSeleccionat;
     private Integer quadrimestreSeleccionat;
 
-    private ArrayList<RestriccioSolapar>   rs;
-    private ArrayList<RestriccioJornada>   rj;
-    private ArrayList<RestriccioReserva>   rr;
-    private ArrayList<RestriccioAssigTemp> ra;
+    //private ArrayList<RestriccioSolapar>   rs;
+    //private ArrayList<RestriccioJornada>   rj;
+    //private ArrayList<RestriccioReserva>   rr;
+    //private ArrayList<RestriccioAssigTemp> ra;
+
+    private CjtRestriccions restriccions;
 
     public CtrDomini() {
         this.unitatsDocents = new ArrayList<>();
         this.unitatDocentSeleccionada = null;
         this.plaEstudisSeleccionat    = null;
         this.quadrimestreSeleccionat  = null;
-        this.rs = new ArrayList<>();
-        this.rj = new ArrayList<>();
-        this.rr = new ArrayList<>();
-        this.ra = new ArrayList<>();
+        this.restriccions             = new CjtRestriccions();
     }
 
     public ArrayList<UnitatDocent> getUnitatsDocents() {
@@ -81,10 +80,9 @@ public class CtrDomini {
         getPlaEstudis().afegirAssignatura(a);
     }
 
-    // TODO: La restriccio horaria no hi hauria de ser
-    public void afegirSessioQuadrimestre(Integer grup, String nomAssignatura, Pair<Integer, Integer> restriccioHoraria) {
+    public void afegirSessioQuadrimestre(Integer grup, String nomAssignatura) {
         Assignatura assignatura = getAssignatura(nomAssignatura);
-        Sessio s = new Sessio(grup, assignatura, restriccioHoraria);
+        Sessio s = new Sessio(grup, assignatura);
         getQuadrimestre().afegirSessio(s);
     }
 
@@ -135,17 +133,17 @@ public class CtrDomini {
         Sessio sa = getQuadrimestre().getSessions().get(a);
         Sessio sb = getQuadrimestre().getSessions().get(b);
         RestriccioSolapar r = new RestriccioSolapar(sa, sb);
-        rs.add(r);
+        restriccions.addRestriccioSolapar(r);
     }
 
     public void crearRestriccioReservar(String aula, Integer dia, Integer hora) {
         RestriccioReserva r = new RestriccioReserva(aula, dia, hora);
-        rr.add(r);
+        restriccions.addRestriccioReserva(r);
     }
 
     public void crearRestriccioAssigTemp(Integer dia, Integer hora, String nomAssig) {
         RestriccioAssigTemp r = new RestriccioAssigTemp(dia,hora,nomAssig);
-        ra.add(r);
+        restriccions.addRestriccioAssigTemp(r);
     }
 
 
@@ -164,9 +162,9 @@ public class CtrDomini {
         }
         System.out.println("    Sessions: ");
         for (Sessio s : getQuadrimestre().getSessions()) {
-            System.out.println("        - " + s.getAssignatura().getNomAssig() + " " + s.getRestriccio().toString());
+            System.out.println("        - " + s.getAssignatura().getNomAssig());
         }
-        Generador bt = new Generador(horariActual, getPlaEstudis(), getQuadrimestre().getSessions(), rs.get(0));
+        Generador bt = new Generador(horariActual, getPlaEstudis(), getQuadrimestre().getSessions(), restriccions);
         bt.generarHorari(getUnitatDocent().getAulesDisponibles());
         horariActual = bt.getHorari();
         horariActual.mostrarHorari();

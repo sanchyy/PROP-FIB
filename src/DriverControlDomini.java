@@ -16,7 +16,7 @@ public class DriverControlDomini {
 
         /*
         try {
-            String data = readFile("./TEST_1.txt");
+            String data = readFile("./TEST_GENERAL.txt");
             System.out.println(data);
         } catch(IOException ex) {
             System.out.println("Format del fitxer incorrecte");
@@ -236,20 +236,7 @@ public class DriverControlDomini {
         } else {
             System.out.println("Indica el grup d'aquesta assignatura");
             Integer grup = llegirNumero();
-            // TODO: Treure aquesta restricció un cop estiguin algunes altres per provar
-            Pair<Integer, Integer> restriccioHoraria = new Pair<Integer, Integer>(0, 1);
-            System.out.println("Vols afegir una restricció a aquesta sessió? (S/N)");
-            String response = llegirString();
-            System.out.println("Indica: " + response);
-            if (response.equals("S")) {
-                System.out.println("Indica a quines franjes horaries ha d'estar aquesta sessió");
-                System.out.println("Indica la primera hora: ");
-                Integer primeraHora = llegirNumero();
-                System.out.println("Indica la segona hora: ");
-                Integer segonaHora = llegirNumero();
-                restriccioHoraria = new Pair(primeraHora, segonaHora);
-            }
-            ctrDomini.afegirSessioQuadrimestre(grup, nomAssignatura, restriccioHoraria);
+            ctrDomini.afegirSessioQuadrimestre(grup, nomAssignatura);
         }
     }
 

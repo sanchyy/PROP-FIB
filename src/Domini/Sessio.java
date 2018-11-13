@@ -8,26 +8,20 @@ public class Sessio {
     private Assignatura assignatura;
     private Aula aula;
     private Integer grup;
-    private ArrayList< Pair<Integer, Integer> > restriccionsHoraries = new ArrayList<>();
 
     //Constructora
     public Sessio() {
         this.assignatura = null;
     }
 
-    public Sessio(Integer grup, Assignatura assignatura, Pair<Integer, Integer> restriccioHoraria) {
+    public Sessio(Integer grup, Assignatura assignatura) {
         this.grup = grup;
         this.assignatura = assignatura;
-        this.restriccionsHoraries.add(restriccioHoraria);
     }
 
     //Setters
     public void setAssignatura(Assignatura assignatura) {
         this.assignatura = assignatura;
-    }
-
-    public void addRestriccioHoraria(Pair<Integer, Integer> restriccio_horaria) {
-        this.restriccionsHoraries.add(restriccio_horaria);
     }
 
     public Integer getGrup() {
@@ -49,10 +43,6 @@ public class Sessio {
 
     public Aula getAula() {
         return aula;
-    }
-
-    public Pair<Integer, Integer> getRestriccio() {
-        return restriccionsHoraries.get(0);
     }
 
 }

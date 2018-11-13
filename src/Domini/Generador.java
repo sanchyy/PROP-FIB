@@ -9,20 +9,14 @@ public class Generador {
     private PlaEstudis pe;
     private ArrayList<Sessio> sessions;
     private TaulaAules aulesDisponibles;
-
-    private RestriccioSolapar rs;
-    private RestriccioJornada rj;
-    private RestriccioReserva rr;
+    private CjtRestriccions restriccions;
 
     // public Generador(Horari horariBuit, PlaEstudis plaEstudis, ArrayList<Sessio> sessions, RestriccioSolapar rs, RestriccioJornada rj, RestriccioReserva rr) {
-    public Generador(Horari horariBuit, PlaEstudis plaEstudis, ArrayList<Sessio> sessions, RestriccioSolapar rs) {
+    public Generador(Horari horariBuit, PlaEstudis plaEstudis, ArrayList<Sessio> sessions, CjtRestriccions restriccions) {
         this.horari = horariBuit;
         this.pe = plaEstudis;
         this.sessions = sessions;
-
-        this.rs = rs;
-        // this.rj = rj;
-        // this.rr = rr;
+        this.restriccions = restriccions;
     }
 
     public void generarHorari(ArrayList<Aula> aules) {
@@ -44,14 +38,11 @@ public class Generador {
 
     private boolean potAnarAqui(Sessio sessio, Integer dia, Integer hora, Horari hor) {
         // Mirar si aquesta sessió pot anar a aquest slot horari
+        return restriccions.comprovarRestriccions(sessio, hor.getAtoms(dia, hora), hor);
 
-        Pair<Integer, Integer> restriccio = sessio.getRestriccio();
-        if (restriccio.getFirst() != (hora+8)) return false;
-
-        if (!rs.esPotSolapar(sessio, hor.getAtoms(dia, hora))) return false;
+        // if (!rs.esPotSolapar(sessio, hor.getAtoms(dia, hora))) return false;
         // if (!rj.esPotJornada()) return false;
         // if (!rr.esPotReserva(hora,hora+2,sessio.getAula().getNom_aula(),dia)) return false;
-        return true;
     }
 
     private Aula buscarAula(Sessio sessio, TaulaAules aules, Integer dia, Integer hora) {

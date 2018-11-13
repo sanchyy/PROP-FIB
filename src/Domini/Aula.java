@@ -1,6 +1,5 @@
 package Domini;
 
-
 public class Aula {
     //Drea
     private String nom;
