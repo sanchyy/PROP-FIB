@@ -148,6 +148,8 @@ public class CtrDomini {
         ra.add(r);
     }
 
+
+
     public void generarHorari() {
         Horari horariActual = new Horari();
         System.out.println("Es generarà l'horari amb els següents objectes:");

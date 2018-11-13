@@ -323,7 +323,11 @@ public class DriverControlDomini {
             hora = llegirNumero();
         }
 
-        ctrDomini.crearRestriccioReservar(assig,dia,hora);
+        ctrDomini.crearRestriccioAssigTemp(dia,hora,assig);
+    }
+
+    public static void crearRestriccioJornada() {
+        
     }
 
 
