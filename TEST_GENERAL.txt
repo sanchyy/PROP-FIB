@@ -9,10 +9,24 @@ FIB_2010
 4
 A5204
 20
+TEORIA
+S
+S
+S
+S
+S
+S
 
 4
 A6102
 20
+TEORIA
+S
+S
+S
+S
+S
+S
 
 5
 LP

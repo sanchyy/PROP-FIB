@@ -9,11 +9,6 @@ public class CtrDomini {
     private Integer plaEstudisSeleccionat;
     private Integer quadrimestreSeleccionat;
 
-    //private ArrayList<RestriccioSolapar>   rs;
-    //private ArrayList<RestriccioJornada>   rj;
-    //private ArrayList<RestriccioReserva>   rr;
-    //private ArrayList<RestriccioAssigTemp> ra;
-
     private CjtRestriccions restriccions;
 
     public CtrDomini() {
@@ -64,8 +59,8 @@ public class CtrDomini {
         return getPlaEstudis().getQuadrimestres().get(quadrimestreSeleccionat);
     }
 
-    public void afegirAulaUnitatDocent(String nom, Integer capacitat) {
-        Aula a = new Aula(nom, capacitat);
+    public void afegirAulaUnitatDocent(String nom, Integer capacitat, String tipus, ArrayList<CaracteristiquesAula> caracteristiques) {
+        Aula a = new Aula(nom, capacitat, tipus, caracteristiques);
         this.getUnitatDocent().afegirAulaDisponible(a);
 
     }
