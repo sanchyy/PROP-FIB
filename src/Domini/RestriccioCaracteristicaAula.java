@@ -19,12 +19,11 @@ public class RestriccioCaracteristicaAula extends Restriccio {
     }
 
     public boolean compleixRestriccio(Sessio comp, Aula aula) {
-        if (sessio.getGrup().intValue() == comp.getGrup().intValue() && sessio.getAssignatura().getNomAssig().equals(comp.getAssignatura().getNomAssig())) {
+        if (sessio.getGrup().equals(comp.getGrup()) && sessio.getAssignatura().getNomAssig().equals(comp.getAssignatura().getNomAssig())) {
             Integer count = 0;
             for (CaracteristiquesAula carac : aula.getCaracteristiques()) {
                 if (caracteristiques.contains(carac)) ++count;
             }
-            System.out.println(count);
             return count == caracteristiques.size();
         }
         return true;

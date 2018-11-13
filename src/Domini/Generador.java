@@ -21,6 +21,24 @@ public class Generador {
 
     public void generarHorari(ArrayList<Aula> aules) {
         this.aulesDisponibles = new TaulaAules(aules);
+        // TODO: IMPORTANT, abans de generar l'horari hemde mirar si hi ha alguna sessió que no trobarà aula, PENSAR SI POT PASSAR MES
+        ArrayList<Sessio> fallen = new ArrayList<>();
+        for (Sessio s : sessions) {
+            Integer Acount = 0;
+            for (Aula a : aules) {
+                if (restriccions.comprovarRestriccionsAula(s, a)) ++Acount;
+            }
+            if (Acount != aules.size()) {
+                fallen.add(s);
+                sessions.remove(s);
+            }
+        }
+        if (fallen.size() > 0) {
+            System.out.println("LES SEGÜENTS SESSIONS NO TENEN CAP AULA DISPONIBLE, ES TREU ATOMATICAMENT");
+            for (Sessio s : fallen) {
+                System.out.println(s.getGrup());
+            }
+        }
         produirHorari(horari, aulesDisponibles, sessions, 0, 0);
     }
 
@@ -49,9 +67,12 @@ public class Generador {
         // Buscar una aula que es correspongui amb els requeriments de la sessio
         ArrayList<Aula> disponibles = aules.agafar(dia, hora);
         if (disponibles.size() == 0) return null;
-        Aula aula = disponibles.get(0);
-        if (!restriccions.comprovarRestriccionsAula(sessio, aula)) return null;
-        return aula;
+        // return disponibles.get(0);
+        for (Aula aula : disponibles) {
+            // System.out.println("Grup: " + sessio.getGrup() + ", " + restriccions.comprovarRestriccionsAula(sessio, aula) + ", " + aula.getNom());
+            if (restriccions.comprovarRestriccionsAula(sessio, aula)) return aula;
+        }
+        return null;
     }
 
     private boolean produirHorari(Horari hor, TaulaAules aules, ArrayList<Sessio> sessions, Integer dia, Integer hora) {
@@ -85,6 +106,7 @@ public class Generador {
                         cSessions.remove(sessioActual);
                         found = found || produirHorari(cHor, cAules, cSessions, dia, hora);
                         if (found) {
+                            hor = cHor;
                             aules = cAules;
                             sessions = cSessions;
                             break;
@@ -94,7 +116,7 @@ public class Generador {
 
             }
             if (!found) {
-                return produirHorari(hor, aules, sessions, dia, hora + 1);
+                return produirHorari(hor, aules, sessions, dia, hora+1);
             } else {
                 return true;
             }
