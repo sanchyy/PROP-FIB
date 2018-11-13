@@ -25,7 +25,11 @@ public class RestriccioSolapament extends Restriccio {
     }
 
     //FUNCTIONS AUX
-    public boolean compleixRestriccio() {
+    public boolean compleixRestriccio(Sessio comp, ArrayList<Sessio> sessions, Horari horari) {
+        return true;
+    }
+
+    public boolean compleixRestriccio(Sessio comp, Aula aula) {
         return true;
     }
 

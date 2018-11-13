@@ -1,5 +1,8 @@
 package Domini;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 //Sanchy
 public abstract class Restriccio {
 
@@ -30,5 +33,6 @@ public abstract class Restriccio {
         return false;
     }
 
-    public abstract boolean compleixRestriccio();
+    public abstract boolean compleixRestriccio(Sessio comp, ArrayList<Sessio> sessions, Horari horari);
+    public abstract boolean compleixRestriccio(Sessio comp, Aula aula);
 }

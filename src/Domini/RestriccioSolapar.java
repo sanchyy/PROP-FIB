@@ -17,7 +17,7 @@ public class RestriccioSolapar extends Restriccio {
     }
 
     //FUNCTIONS AUX
-    public boolean esPotSolapar(Sessio comp, ArrayList<Sessio> sessions) {
+    public boolean compleixRestriccio(Sessio comp, ArrayList<Sessio> sessions, Horari horari) {
         Sessio comprovar = null;
         if (sessio_A.getGrup().intValue() == comp.getGrup().intValue() && sessio_A.getAssignatura().getNomAssig().equals(comp.getAssignatura().getNomAssig()))
             comprovar = sessio_B;
@@ -34,7 +34,7 @@ public class RestriccioSolapar extends Restriccio {
         return true;
     }
 
-    public boolean compleixRestriccio() {
+    public boolean compleixRestriccio(Sessio comp, Aula aula) {
         return true;
     }
 

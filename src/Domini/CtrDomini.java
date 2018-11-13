@@ -149,7 +149,7 @@ public class CtrDomini {
         System.out.println("    Pla d'Estudis: " + getPlaEstudis().getNom());
         System.out.println("    Aules: ");
         for (Aula a : getUnitatDocent().getAulesDisponibles()) {
-            System.out.println("        - " + a.getNom_aula());
+            System.out.println("        - " + a.getNom());
         }
         System.out.println("    Assignatures: ");
         for (Assignatura a : getPlaEstudis().getAssignatures()) {

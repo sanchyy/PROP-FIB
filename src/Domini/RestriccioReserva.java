@@ -1,5 +1,7 @@
 package Domini;
 
+import java.util.ArrayList;
+
 public class RestriccioReserva extends Restriccio {
 
     private String  aula;
@@ -20,7 +22,6 @@ public class RestriccioReserva extends Restriccio {
         this.hora = null;
     }
 
-
     //Setters
     public void setAula(String aula) {
         this.aula = aula;
@@ -33,7 +34,6 @@ public class RestriccioReserva extends Restriccio {
     public void setHora(Integer hora) {
         this.hora = hora;
     }
-
 
     //Getters
     public String getAula() {
@@ -48,14 +48,16 @@ public class RestriccioReserva extends Restriccio {
         return hora;
     }
 
-
     //Auxiliar Functions
-    public boolean compleixRestriccio() {
+    public boolean compleixRestriccio(Sessio comp, ArrayList<Sessio> sessions, Horari horari) {
         return true;
     }
 
-    public boolean esPotReserva (Integer h_i, Integer h_fi, String aula, Integer dia) {
+    public boolean compleixRestriccio(Sessio comp, Aula aula) {
+        return true;
+    }
 
+    public boolean esPotReservar (Integer h_i, Integer h_fi, String aula, Integer dia) {
         //Esta reservat tot el dia?
         if (hora == null)
             return !(this.dia.intValue() == dia.intValue() && this.aula.equals(this.aula));

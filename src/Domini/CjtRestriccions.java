@@ -51,7 +51,7 @@ public class CjtRestriccions {
     public boolean comprovarRestriccions(Sessio actual, ArrayList<Sessio> sessions, Horari horari) {
         boolean compleix = true;
         for (RestriccioSolapar r : rs) {
-            compleix = compleix && r.esPotSolapar(actual, sessions);
+            compleix = compleix && r.compleixRestriccio(actual, sessions, horari);
             if (!compleix) return false;
         }
         return true;

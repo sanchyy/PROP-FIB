@@ -16,7 +16,6 @@ public class RestriccioJornada extends Restriccio {
     }
 
     //Setters
-
     public void setJornada(boolean jornada) {
         this.jornada = jornada;
     }
@@ -30,7 +29,6 @@ public class RestriccioJornada extends Restriccio {
     }
 
     //Getters
-
     public Integer getHora_inici() {
         return hora_inici;
     }
@@ -44,7 +42,11 @@ public class RestriccioJornada extends Restriccio {
     }
 
     //AUXILIAR FUNCTIONS
-    public boolean compleixRestriccio() {
+    public boolean compleixRestriccio(Sessio comp, ArrayList<Sessio> sessions, Horari horari) {
+        return true;
+    }
+
+    public boolean compleixRestriccio(Sessio comp, Aula aula) {
         return true;
     }
 

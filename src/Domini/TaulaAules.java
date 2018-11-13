@@ -27,7 +27,7 @@ public class TaulaAules extends Taula<Aula> {
 
     @Override
     public String mostrarAtom(Aula aula) {
-        return aula.getNom_aula();
+        return aula.getNom();
     }
 
 }

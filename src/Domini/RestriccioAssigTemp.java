@@ -23,7 +23,6 @@ public class RestriccioAssigTemp extends Restriccio {
     }
 
     //Setters
-
     public void setDia(Integer dia) {
         this.dia = dia;
     }
@@ -37,8 +36,6 @@ public class RestriccioAssigTemp extends Restriccio {
     }
 
     //Getters
-
-
     public Integer getDia() {
         return dia;
     }
@@ -52,7 +49,11 @@ public class RestriccioAssigTemp extends Restriccio {
     }
 
     //AUXILIAR FUNCTIONS
-    public boolean compleixRestriccio() {
+    public boolean compleixRestriccio(Sessio comp, ArrayList<Sessio> sessions, Horari horari) {
+        return true;
+    }
+
+    public boolean compleixRestriccio(Sessio comp, Aula aula) {
         return true;
     }
 

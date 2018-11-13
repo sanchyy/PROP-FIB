@@ -17,14 +17,12 @@ public class Aula {
     }
 
     // Setters
-
     public void setNom (String nom_aula) {
         this.nom = nom_aula;
     }
 
     // Getters
-
-    public String getNom_aula () {
+    public String getNom () {
         return this.nom;
     }
 
@@ -32,4 +30,11 @@ public class Aula {
         return this.capacitat;
     }
 
+    public ArrayList<CaracteristiquesAula> getCaracteristiques() {
+        return caracteristiques;
+    }
+
+    public String getTipus() {
+        return tipus;
+    }
 }

@@ -34,7 +34,7 @@ public class Horari extends Taula<Sessio> {
             System.out.println(intAdia(dayI++));
             for (ArrayList<Sessio> hora : dia) {
                 for (Sessio sessio : hora) {
-                    System.out.println("    " + (dia.indexOf(hora)+8) + ":00 -> " + sessio.getAssignatura().getNomAssig() + "-" + sessio.getGrup() + " (" + sessio.getAula().getNom_aula() + ")");
+                    System.out.println("    " + (dia.indexOf(hora)+8) + ":00 -> " + sessio.getAssignatura().getNomAssig() + "-" + sessio.getGrup() + " (" + sessio.getAula().getNom() + ")");
                 }
             }
         }
@@ -67,6 +67,6 @@ public class Horari extends Taula<Sessio> {
 
     @Override
     public String mostrarAtom(Sessio sessio) {
-        return sessio.getAssignatura().getNomAssig() + " (" + sessio.getAula().getNom_aula() + ")";
+        return sessio.getAssignatura().getNomAssig() + " (" + sessio.getAula().getNom() + ")";
     }
 }
