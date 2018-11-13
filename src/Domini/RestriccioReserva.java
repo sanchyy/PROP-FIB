@@ -3,7 +3,7 @@ package Domini;
 public class RestriccioReserva extends Restriccio {
 
     private String  aula;
-    private Integer  dia ;
+    private Integer dia ;
     private Integer hora;
 
     public RestriccioReserva (String aula, Integer dia, Integer hora) {

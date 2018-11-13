@@ -9,18 +9,20 @@ public class CtrDomini {
     private Integer plaEstudisSeleccionat;
     private Integer quadrimestreSeleccionat;
 
-    private ArrayList<RestriccioSolapar> rs;
-    private ArrayList<RestriccioJornada> rj;
-    private ArrayList<RestriccioReserva> rr;
+    private ArrayList<RestriccioSolapar>   rs;
+    private ArrayList<RestriccioJornada>   rj;
+    private ArrayList<RestriccioReserva>   rr;
+    private ArrayList<RestriccioAssigTemp> ra;
 
     public CtrDomini() {
         this.unitatsDocents = new ArrayList<>();
         this.unitatDocentSeleccionada = null;
-        this.plaEstudisSeleccionat = null;
-        this.quadrimestreSeleccionat = null;
+        this.plaEstudisSeleccionat    = null;
+        this.quadrimestreSeleccionat  = null;
         this.rs = new ArrayList<>();
         this.rj = new ArrayList<>();
         this.rr = new ArrayList<>();
+        this.ra = new ArrayList<>();
     }
 
     public ArrayList<UnitatDocent> getUnitatsDocents() {
@@ -127,12 +129,23 @@ public class CtrDomini {
         return sessions;
     }
 
-    // TODO: Restriccio de prova
-    public void crearRestriccio(Integer a, Integer b) {
+    //------ RESTRICCIONS ------
+
+    public void crearRestriccioSolapar(Integer a, Integer b) {
         Sessio sa = getQuadrimestre().getSessions().get(a);
         Sessio sb = getQuadrimestre().getSessions().get(b);
         RestriccioSolapar r = new RestriccioSolapar(sa, sb);
         rs.add(r);
+    }
+
+    public void crearRestriccioReservar(String aula, Integer dia, Integer hora) {
+        RestriccioReserva r = new RestriccioReserva(aula, dia, hora);
+        rr.add(r);
+    }
+
+    public void crearRestriccioAssigTemp(Integer dia, Integer hora, String nomAssig) {
+        RestriccioAssigTemp r = new RestriccioAssigTemp(dia,hora,nomAssig);
+        ra.add(r);
     }
 
     public void generarHorari() {

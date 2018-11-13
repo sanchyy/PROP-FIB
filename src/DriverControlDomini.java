@@ -45,7 +45,7 @@ public class DriverControlDomini {
                     crearSessio();
                     break;
                 case 7:
-                    crearRestriccio();
+                    crearRestriccioSolapar();
                     break;
                 case 8:
                     generarHorari();
@@ -268,12 +268,65 @@ public class DriverControlDomini {
         ctrDomini.afegirQuadrimestre();
     }
 
-    public static void crearRestriccio() {
+    //Restriccions
+    public static void crearRestriccioSolapar() {
         System.out.println("Sessions:");
         System.out.println(ctrDomini.llistaSessions());
         System.out.println("Introdueix les dos sessions que no vols que es solapin:");
-        ctrDomini.crearRestriccio(llegirNumero(), llegirNumero());
+        ctrDomini.crearRestriccioSolapar(llegirNumero(), llegirNumero());
     }
+
+    public static void crearRestriccioReserva() {
+        System.out.println("Introdueix l'aula que vols reservar");
+        String aula = llegirString();
+        System.out.println("has seleccionat l'aula: " + aula);
+
+        System.out.println("Introdueix el dia de la setmana que vols reservar:");
+        System.out.println("[1] Dilluns"  );
+        System.out.println("[2] Dimarts"  );
+        System.out.println("[3] Dimecres" );
+        System.out.println("[4] Dijous"   );
+        System.out.println("[5] Divendres");
+        Integer dia = llegirNumero();
+
+        System.out.println("Vols reservar tot el dia?");
+        System.out.println("[1] Sí");
+        System.out.println("[2] No");
+        Integer hora = null;
+        if (llegirNumero() == 2) {
+            System.out.println("Introdueix la hora que vols que es reservi.");
+            hora = llegirNumero();
+        }
+
+        ctrDomini.crearRestriccioReservar(aula,dia,hora);
+    }
+
+    public static void crearRestriccioAssigTemp() {
+        System.out.println("Introdueix l'assignatura que vols fixar en un dia");
+        String assig = llegirString();
+        System.out.println("has seleccionat l'assignatura: " + assig);
+
+        System.out.println("Introdueix el dia de la setmana que vols fixar:");
+        System.out.println("[1] Dilluns"  );
+        System.out.println("[2] Dimarts"  );
+        System.out.println("[3] Dimecres" );
+        System.out.println("[4] Dijous"   );
+        System.out.println("[5] Divendres");
+        Integer dia = llegirNumero();
+
+        System.out.println("Vols fixar un dia sencer o dia i hora");
+        System.out.println("[1] Dia");
+        System.out.println("[2] Dia i hora");
+        Integer hora = null;
+        if (llegirNumero() == 2) {
+            System.out.println("Introdueix la hora que vols que es reservi.");
+            hora = llegirNumero();
+        }
+
+        ctrDomini.crearRestriccioReservar(assig,dia,hora);
+    }
+
+
 
     public static String llegirString() {
         return scanner.next();
