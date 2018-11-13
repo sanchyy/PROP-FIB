@@ -38,7 +38,7 @@ public class Generador {
 
     private boolean potAnarAqui(Sessio sessio, Integer dia, Integer hora, Horari hor) {
         // Mirar si aquesta sessió pot anar a aquest slot horari
-        return restriccions.comprovarRestriccions(sessio, hor.getAtoms(dia, hora), hor);
+        return restriccions.comprovarRestriccionsColocar(sessio, hor.getAtoms(dia, hora), hor);
 
         // if (!rs.esPotSolapar(sessio, hor.getAtoms(dia, hora))) return false;
         // if (!rj.esPotJornada()) return false;
@@ -47,8 +47,11 @@ public class Generador {
 
     private Aula buscarAula(Sessio sessio, TaulaAules aules, Integer dia, Integer hora) {
         // Buscar una aula que es correspongui amb els requeriments de la sessio
-        if (aules.agafar(dia, hora).size() == 0) return null;
-        else return aules.agafar(dia, hora).get(0);
+        ArrayList<Aula> disponibles = aules.agafar(dia, hora);
+        if (disponibles.size() == 0) return null;
+        Aula aula = disponibles.get(0);
+        if (!restriccions.comprovarRestriccionsAula(sessio, aula)) return null;
+        return aula;
     }
 
     private boolean produirHorari(Horari hor, TaulaAules aules, ArrayList<Sessio> sessions, Integer dia, Integer hora) {

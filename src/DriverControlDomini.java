@@ -11,7 +11,10 @@ import java.util.Scanner;
 
 public class DriverControlDomini {
     public static CtrDomini ctrDomini = new CtrDomini();
-    private  static Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
+
+    // TODO: Per controlador?
+    public static List<CaracteristiquesAula> listEnum = Arrays.asList(CaracteristiquesAula.values());
 
     public static void main(String[] args) {
         mostrarTextInici();
@@ -48,7 +51,8 @@ public class DriverControlDomini {
                     crearSessio();
                     break;
                 case 7:
-                    crearRestriccioSolapar();
+                    // crearRestriccioSolapar();
+                    crearRestriccioCaracteristicaAula();
                     break;
                 case 8:
                     generarHorari();
@@ -115,20 +119,22 @@ public class DriverControlDomini {
         Integer capacitat = llegirNumero();
         System.out.println("És de teoria (TEORIA) o laboratori (LABORATORI)?");
         String tipus = llegirString();
-
-        List<CaracteristiquesAula> list = Arrays.asList(CaracteristiquesAula.values());
-        ArrayList<CaracteristiquesAula> caracteristiques = new ArrayList<>();
-        for (CaracteristiquesAula caracteristica : list) {
-            System.out.println("L'Aula té la següent característica (S/N)? (" + caracteristica.toString() + ")");
-            String resp = llegirString();
-            if (resp.equals("S")) caracteristiques.add(caracteristica);
-        }
-
+        ArrayList<CaracteristiquesAula> caracteristiques = llegirCaracteristiques();
         ctrDomini.afegirAulaUnitatDocent(nom, capacitat, tipus, caracteristiques);
     }
     public static boolean checkYesorNo (String answer) {
         if (answer.equalsIgnoreCase("si")) return true;
         else return false;
+    }
+
+    public static ArrayList<CaracteristiquesAula> llegirCaracteristiques() {
+        ArrayList<CaracteristiquesAula> caracteristiques = new ArrayList<>();
+        for (CaracteristiquesAula caracteristica : listEnum) {
+            System.out.println("L'Aula té la següent característica (S/N)? (" + caracteristica.toString() + ")");
+            String resp = llegirString();
+            if (resp.equals("S")) caracteristiques.add(caracteristica);
+        }
+        return caracteristiques;
     }
 
     /*public static void crearAssignatura() {
@@ -177,8 +183,6 @@ public class DriverControlDomini {
     public static void crearSessio() {
         System.out.println("De quina assignatura és aquesta sessió?");
         String nomAssignatura = llegirString();
-        System.out.println("NomA: " + ctrDomini.getAssignatura(nomAssignatura).getNomAssig());
-        System.out.println("NomB: " + nomAssignatura);
         if (!ctrDomini.existeixAssignatura(nomAssignatura)) {
             System.out.println("No existeix cap assignatura amb aquest nom");
         } else {
@@ -209,6 +213,15 @@ public class DriverControlDomini {
         System.out.println(ctrDomini.llistaSessions());
         System.out.println("Introdueix les dos sessions que no vols que es solapin:");
         ctrDomini.crearRestriccioSolapar(llegirNumero(), llegirNumero());
+    }
+
+    public static void crearRestriccioCaracteristicaAula() {
+        System.out.println("Sessions:");
+        System.out.println(ctrDomini.llistaSessions());
+        Integer sessio = llegirNumero();
+        System.out.println("Caracteristiques:");
+        ArrayList<CaracteristiquesAula> caracteristiques = llegirCaracteristiques();
+        ctrDomini.crearRestriccioCaracteristicaAula(sessio, caracteristiques);
     }
 
     public static void crearRestriccioReserva() {
@@ -262,7 +275,7 @@ public class DriverControlDomini {
     }
 
     public static void crearRestriccioJornada() {
-        
+        //
     }
 
 

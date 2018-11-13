@@ -8,28 +8,14 @@ public class CjtRestriccions {
     private ArrayList<RestriccioJornada>   rj;
     private ArrayList<RestriccioReserva>   rr;
     private ArrayList<RestriccioAssigTemp> ra;
+    private ArrayList<RestriccioCaracteristicaAula> rca;
 
     public CjtRestriccions() {
         this.rs = new ArrayList<>();
         this.rj = new ArrayList<>();
         this.rr = new ArrayList<>();
         this.ra = new ArrayList<>();
-    }
-
-    public ArrayList<RestriccioAssigTemp> getRa() {
-        return ra;
-    }
-
-    public ArrayList<RestriccioJornada> getRj() {
-        return rj;
-    }
-
-    public ArrayList<RestriccioReserva> getRr() {
-        return rr;
-    }
-
-    public ArrayList<RestriccioSolapar> getRs() {
-        return rs;
+        this.rca = new ArrayList<>();
     }
 
     public void addRestriccioAssigTemp(RestriccioAssigTemp r) {
@@ -48,10 +34,23 @@ public class CjtRestriccions {
         this.rs.add(r);
     }
 
-    public boolean comprovarRestriccions(Sessio actual, ArrayList<Sessio> sessions, Horari horari) {
+    public void addRestriccioCaracteristicaAula(RestriccioCaracteristicaAula r) {
+        this.rca.add(r);
+    }
+
+    public boolean comprovarRestriccionsColocar(Sessio actual, ArrayList<Sessio> sessions, Horari horari) {
         boolean compleix = true;
         for (RestriccioSolapar r : rs) {
             compleix = compleix && r.compleixRestriccio(actual, sessions, horari);
+            if (!compleix) return false;
+        }
+        return true;
+    }
+
+    public boolean comprovarRestriccionsAula(Sessio actual, Aula aula) {
+        boolean compleix = true;
+        for (RestriccioCaracteristicaAula r : rca) {
+            compleix = compleix && r.compleixRestriccio(actual, aula);
             if (!compleix) return false;
         }
         return true;

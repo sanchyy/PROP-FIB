@@ -24,6 +24,7 @@ public class RestriccioCaracteristicaAula extends Restriccio {
             for (CaracteristiquesAula carac : aula.getCaracteristiques()) {
                 if (caracteristiques.contains(carac)) ++count;
             }
+            System.out.println(count);
             return count == caracteristiques.size();
         }
         return true;

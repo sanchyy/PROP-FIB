@@ -141,6 +141,11 @@ public class CtrDomini {
         restriccions.addRestriccioAssigTemp(r);
     }
 
+    public void crearRestriccioCaracteristicaAula(Integer a, ArrayList<CaracteristiquesAula> caracteristiques) {
+        Sessio sessio = getQuadrimestre().getSessions().get(a);
+        RestriccioCaracteristicaAula r = new RestriccioCaracteristicaAula(sessio, caracteristiques);
+        restriccions.addRestriccioCaracteristicaAula(r);
+    }
 
 
     public void generarHorari() {
