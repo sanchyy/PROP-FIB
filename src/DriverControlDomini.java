@@ -36,7 +36,6 @@ public class DriverControlDomini {
             switch (seleccio) {
                 case 1:
                     DriverUnitatDocent.main(ctrDomini, scanner);
-                    // crearUnitatDocent();
                     break;
                 case 2:
                     crearPlaEstudis();
@@ -91,8 +90,10 @@ public class DriverControlDomini {
                 }
             }
         }
-        System.out.println("-----------------");
-        System.out.println("[1] Crear UnitatDocent");
+        System.out.println("-------------------");
+        System.out.println("Accions disponibles");
+        System.out.println("-------------------");
+        System.out.println("[1] UnitatDocent");
         System.out.println("[2] Crear PlaEstudis");
         System.out.println("[3] Crear Quadrimestre");
         System.out.println("[4] Crear Aula");
@@ -123,10 +124,6 @@ public class DriverControlDomini {
         String tipus = llegirString();
         ArrayList<CaracteristiquesAula> caracteristiques = llegirCaracteristiques();
         ctrDomini.afegirAulaUnitatDocent(nom, capacitat, tipus, caracteristiques);
-    }
-    public static boolean checkYesorNo (String answer) {
-        if (answer.equalsIgnoreCase("si")) return true;
-        else return false;
     }
 
     public static ArrayList<CaracteristiquesAula> llegirCaracteristiques() {
@@ -212,12 +209,6 @@ public class DriverControlDomini {
 
     public static void generarHorari() {
         ctrDomini.generarHorari();
-    }
-
-    public static void crearUnitatDocent() {
-        System.out.println("Introdueix un nom per la nova Unitat Docent:");
-        String nom = llegirString();
-        ctrDomini.afegirUnitatDocent(nom);
     }
 
     public static void crearQuadrimestre() {
