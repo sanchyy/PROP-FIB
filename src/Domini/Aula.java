@@ -16,8 +16,37 @@ public class Aula {
         this.caracteristiques = caracteristiques;
     }
 
+
+    //Setters
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setCapacitat(Integer capacitat) {
+        this.capacitat = capacitat;
+    }
+
+    public void setTipus(String tipus) {
+        this.tipus = tipus;
+    }
+
+    public void setCaracteristiques(ArrayList<CaracteristiquesAula> caracteristiques) {
+        this.caracteristiques = caracteristiques;
+    }
+
+
+    //Getters
+
     public String getNom() {
         return this.nom;
+    }
+
+    public Integer getCapacitat() {
+        return capacitat;
+    }
+
+    public String getTipus() {
+        return tipus;
     }
 
     public ArrayList<CaracteristiquesAula> getCaracteristiques() {
