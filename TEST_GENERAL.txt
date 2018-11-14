@@ -10,7 +10,7 @@ FIB_2010
 A5204
 20
 TEORIA
-N
+S
 S
 S
 S
@@ -21,7 +21,7 @@ S
 A6102
 20
 TEORIA
-N
+S
 S
 S
 S

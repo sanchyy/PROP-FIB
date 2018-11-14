@@ -26,9 +26,24 @@ public class Horari extends Taula<Sessio> {
     }
 
     public void mostrarHorari() {
-        System.out.println("----------------------------");
-        System.out.println("---------- HORARI ----------");
-        System.out.println("----------------------------");
+        String slot = "-------------";
+        for (int h=0; h<super.files; ++h) {
+            System.out.println("+" + slot + "+" + slot + "+" + slot + "+" + slot + "+" + slot + "+");
+            String hores = "";
+            Integer max = -1;
+            for (int i=0; i<super.columnes; ++i) {
+                if (max == -1 || super.agafar(i, h).size() > max) max = super.agafar(i, h).size();
+            }
+            if (max == -1) max = 0;
+            for (int i=0; i<max; ++i) {
+                for (int d=0; d<super.columnes; ++d) {
+                    if (max < super.agafar(d, h).size()) hores += "+ " + super.agafar(d, h).get(max) + " ";
+                    else hores += "+             ";
+                }
+            }
+            System.out.println(hores);
+        }
+
         Integer dayI = 0;
         for (ArrayList< ArrayList<Sessio>> dia : super.getTaula()) {
             System.out.println(intAdia(dayI++));
