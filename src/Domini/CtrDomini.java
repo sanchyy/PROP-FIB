@@ -117,7 +117,7 @@ public class CtrDomini {
         Integer i = 0;
         String sessions = "";
         for (Sessio s : getQuadrimestre().getSessions()) {
-            sessions += "[" + i++ + "] " + s.getAssignatura().getNomAssig() + "-" + s.getGrup() + "\n";
+            sessions += "[" + i++ + "] " + s.getAssignatura().getNom() + "-" + s.getGrup() + "\n";
         }
         return sessions;
     }
@@ -170,11 +170,11 @@ public class CtrDomini {
         }
         System.out.println("    Assignatures: ");
         for (Assignatura a : getPlaEstudis().getAssignatures()) {
-            System.out.println("        - " + a.getNomAssig());
+            System.out.println("        - " + a.getNom());
         }
         System.out.println("    Sessions: ");
         for (Sessio s : getQuadrimestre().getSessions()) {
-            System.out.println("        - " + s.getAssignatura().getNomAssig());
+            System.out.println("        - " + s.getAssignatura().getNom());
         }
         Generador bt = new Generador(horariActual, getPlaEstudis(), getQuadrimestre().getSessions(), restriccions);
         bt.generarHorari(getUnitatDocent().getAulesDisponibles());
@@ -185,7 +185,7 @@ public class CtrDomini {
     public void llistaAssignatures() {
         System.out.println("LLISTANT ASSIGNATURES");
         for (Assignatura a : getPlaEstudis().getAssignatures()) {
-            System.out.println("Nom: " + a.getNomAssig());
+            System.out.println("Nom: " + a.getNom());
         }
     }
 

@@ -1,4 +1,4 @@
-package Domini;
+/*package Domini;
 
 public class Periode {
 
@@ -50,3 +50,4 @@ public class Periode {
         return this.data_fi;
     }
 }
+*/

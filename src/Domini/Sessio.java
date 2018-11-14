@@ -1,15 +1,11 @@
 package Domini;
 
-import java.util.ArrayList;
-
-// Berni
 public class Sessio {
 
     private Assignatura assignatura;
     private Aula aula;
     private Integer grup;
 
-    //Constructora
     public Sessio() {
         this.assignatura = null;
     }
@@ -19,7 +15,6 @@ public class Sessio {
         this.assignatura = assignatura;
     }
 
-    //Setters
     public void setAssignatura(Assignatura assignatura) {
         this.assignatura = assignatura;
     }
@@ -32,11 +27,6 @@ public class Sessio {
         this.aula = aula;
     }
 
-    public void setGrup(Integer grup) {
-        this.grup = grup;
-    }
-
-    //Getters
     public Assignatura getAssignatura() {
         return assignatura;
     }
@@ -47,13 +37,13 @@ public class Sessio {
 
     public String mostrarSessio() {
         String s = "";
-        if (assignatura != null) s += assignatura.getNomAssig() + "-" + grup;
+        if (assignatura != null) s += assignatura.getNom() + "-" + grup;
         if (aula != null) s += " (" + aula.getNom() + ")";
         return s;
     }
 
     public boolean sonIguals(Sessio comp) {
-        return comp.getGrup() == grup && comp.getAssignatura().getNomAssig().equals(assignatura.getNomAssig());
+        return comp.getGrup() == grup && comp.getAssignatura().getNom().equals(assignatura.getNom());
     }
 
 }

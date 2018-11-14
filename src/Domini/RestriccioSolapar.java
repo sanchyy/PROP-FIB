@@ -1,6 +1,5 @@
 package Domini;
 
-// Berni
 import java.util.ArrayList;
 
 public class RestriccioSolapar extends Restriccio {
@@ -14,7 +13,6 @@ public class RestriccioSolapar extends Restriccio {
         this.sessio_B = b;
     }
 
-    //FUNCTIONS AUX
     public boolean compleixRestriccio(Sessio actual, ArrayList<Sessio> sessions, Integer dia, Integer hora, Horari horari) {
         Sessio comprovar = null;
         if (sessio_A.sonIguals(actual))
@@ -24,7 +22,7 @@ public class RestriccioSolapar extends Restriccio {
 
         if (comprovar != null) {
             for (Sessio sessio : sessions) {
-                if (sessio.getGrup().intValue() == comprovar.getGrup().intValue() && sessio.getAssignatura().getNomAssig().equals(comprovar.getAssignatura().getNomAssig())) {
+                if (sessio.getGrup().intValue() == comprovar.getGrup().intValue() && sessio.getAssignatura().getNom().equals(comprovar.getAssignatura().getNom())) {
                     return false;
                 }
             }

@@ -1,34 +1,21 @@
 package Domini;
 
 import java.util.ArrayList;
-// Berni
+
 public class PlaEstudis {
+
     private String nom;
     private ArrayList<Quadrimestre> quadrimestres;
-    private ArrayList<Assignatura> assignatures = new ArrayList<>();
+    private ArrayList<Assignatura> assignatures;
 
-    public void setNom(String nom) {
+    public PlaEstudis(String nom) {
         this.nom = nom;
+        this.quadrimestres = new ArrayList<>();
+        this.assignatures = new ArrayList<>();
     }
 
     public String getNom() {
         return nom;
-    }
-
-    //Constructora
-    public PlaEstudis(String nom) {
-        this.nom = nom;
-        this.quadrimestres = new ArrayList<>();
-    }
-
-    public PlaEstudis () {
-        this.nom = null;
-        this.quadrimestres = new ArrayList<>();
-    }
-
-    //Setters
-    public void setAssignatures(ArrayList<Assignatura> assignatura) {
-        this.assignatures = assignatura;
     }
 
     public void afegirAssignatura (Assignatura assignatura) {
@@ -39,7 +26,6 @@ public class PlaEstudis {
         this.quadrimestres.add(q);
     }
 
-    //Getters
     public ArrayList<Quadrimestre> getQuadrimestres() {
         return quadrimestres;
     }
@@ -50,7 +36,7 @@ public class PlaEstudis {
 
     public Assignatura getAssignatura(String nom) {
         for (Assignatura a : assignatures) {
-            if (a.getNomAssig().equals(nom)) {
+            if (a.getNom().equals(nom)) {
                 return a;
             }
         }

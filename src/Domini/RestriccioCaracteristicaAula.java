@@ -13,7 +13,6 @@ public class RestriccioCaracteristicaAula extends Restriccio {
         this.caracteristiques = caracteristiques;
     }
 
-    //FUNCTIONS AUX
     public boolean compleixRestriccio(Sessio actual, ArrayList<Sessio> sessions, Integer dia, Integer hora, Horari horari) {
         return true;
     }

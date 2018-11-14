@@ -46,7 +46,7 @@ public class stubPlaEstudis {
     }
     public Assignatura getAssignatura(String nom) {
         for (Assignatura a : assignatures) {
-            if (a.getNomAssig().equals(nom)) {
+            if (a.getNom().equals(nom)) {
                 return a;
             }
         }

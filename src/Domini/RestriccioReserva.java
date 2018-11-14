@@ -22,7 +22,6 @@ public class RestriccioReserva extends Restriccio {
         this.hora = null;
     }
 
-    //Setters
     public void setAula(String aula) {
         this.aula = aula;
     }
@@ -35,7 +34,6 @@ public class RestriccioReserva extends Restriccio {
         this.hora = hora;
     }
 
-    //Getters
     public String getAula() {
         return aula;
     }
@@ -48,7 +46,6 @@ public class RestriccioReserva extends Restriccio {
         return hora;
     }
 
-    //Auxiliar Functions
     public boolean compleixRestriccio(Sessio actual, ArrayList<Sessio> sessions, Integer dia, Integer hora, Horari horari) {
         return true;
     }

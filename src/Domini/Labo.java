@@ -1,4 +1,4 @@
-package Domini;
+/*package Domini;
 
 //Sanchy
 public class Labo extends Assignatura {
@@ -47,3 +47,4 @@ public class Labo extends Assignatura {
         necessita[i-1] = b;
     }
 }
+*/

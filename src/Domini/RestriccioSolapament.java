@@ -1,8 +1,5 @@
 package Domini;
 
-//Sanchy
-//aquesta restricció es dona quan dues assignatures volen estar a la mateixa franja
-
 import java.util.ArrayList;
 
 public class RestriccioSolapament extends Restriccio {
@@ -14,17 +11,14 @@ public class RestriccioSolapament extends Restriccio {
         this.assignSlot = assignSlot;
     }
 
-    //Setters
     public void setAssignSlot(ArrayList <Pair <Assignatura, Integer>> AssignaturaSlot) {
         this.assignSlot = AssignaturaSlot;
     }
 
-    //Getters
     public ArrayList <Pair <Assignatura, Integer>> getAssignSlot() {
         return assignSlot;
     }
 
-    //FUNCTIONS AUX
     public boolean compleixRestriccio(Sessio actual, ArrayList<Sessio> sessions, Integer dia, Integer hora, Horari horari) {
         return true;
     }

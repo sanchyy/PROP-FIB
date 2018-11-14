@@ -1,4 +1,4 @@
-package Domini;
+/*package Domini;
 
 //Sanchy
 public class Teoria extends Assignatura {
@@ -35,3 +35,4 @@ public class Teoria extends Assignatura {
     //Auxiliars function
 
 }
+*/

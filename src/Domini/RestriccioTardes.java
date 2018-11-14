@@ -1,6 +1,5 @@
 package Domini;
 
-// Berni
 import java.util.ArrayList;
 
 public class RestriccioTardes extends Restriccio {
@@ -12,7 +11,6 @@ public class RestriccioTardes extends Restriccio {
         this.sessio = a;
     }
 
-    //FUNCTIONS AUX
     public boolean compleixRestriccio(Sessio actual, ArrayList<Sessio> sessions, Integer dia, Integer hora, Horari horari) {
         if (sessio.sonIguals(actual)) {
             return hora >= 6;

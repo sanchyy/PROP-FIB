@@ -3,8 +3,11 @@
 - Documentació
 - Calmar l'ambient pls xd
 
-Berni
------
+TODO -> Berni
+-------------
+* Abans de generar l'horari hem de mirar si hi ha alguna sessió que no trobarà aula, PENSAR SI POT PASSAR MES AQUEST CAS (QUAN NO ES POT GENERAR PER EX.)
+* La funció buscar aula optimitzar-la i buscar l'aula que compleix el mínim de restriccions d'aquella sessió
+*
 * Poder carregar un fitxer per passar testos
 * Acabar de fer restriccions i provar-les
 * Mirar classe per classe els noms de tot i funcions per crear consistència de noms i tot
@@ -13,7 +16,7 @@ Berni
 * Millorar el driver principal
 * Algunes coses, com la llista de característiques hauría de ser un Set
 
-Víctor
-------
+TODO -> Víctor
+--------------
 * Fer drivers de les altres coses
 * Classe de JUnit de Aula

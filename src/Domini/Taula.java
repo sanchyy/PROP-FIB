@@ -2,7 +2,6 @@ package Domini;
 
 import java.util.ArrayList;
 
-// Berni
 public abstract class Taula <A> {
     private ArrayList< ArrayList<ArrayList<A>> > taula = new ArrayList<>();
     public Integer files = 12;
@@ -14,16 +13,6 @@ public abstract class Taula <A> {
             for (int j=0; j<files; ++j) {
                 ArrayList<A> slot = new ArrayList<>();
                 dia.add(slot);
-            }
-            this.taula.add(dia);
-        }
-    }
-
-    public Taula (ArrayList<A> slot) {
-        for (int i=0; i<columnes; ++i) {
-            ArrayList< ArrayList<A> > dia = new ArrayList<>();
-            for (int j=0; j<files; ++j) {
-                dia.add(clonarSlot(slot));
             }
             this.taula.add(dia);
         }
@@ -57,25 +46,6 @@ public abstract class Taula <A> {
 
     public void afegirAtom(Integer dia, Integer hora, A atom) {
         this.taula.get(dia).get(hora).add(atom);
-    }
-
-    public ArrayList< ArrayList<ArrayList<A>> > getTaula() {
-        return this.taula;
-    }
-
-    public void mostrarTaula() {
-        System.out.println("----------------------------");
-        System.out.println("---------- TAULA  ----------");
-        System.out.println("----------------------------");
-        Integer dayI = 0;
-        for (ArrayList< ArrayList<A>> dia : this.taula) {
-            System.out.println(dayI++);
-            for (ArrayList<A> hora : dia) {
-                for (A tipus : hora) {
-                    System.out.println("    " + mostrarAtom(tipus));
-                }
-            }
-        }
     }
 
     public ArrayList<A> clonarSlot(ArrayList<A> slot) {

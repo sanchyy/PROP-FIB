@@ -3,6 +3,7 @@ package Domini;
 import java.util.ArrayList;
 
 public class RestriccioAssigTemp extends Restriccio {
+
     private Integer dia;
     private Integer hora;
     private String  nomAssig;
@@ -22,7 +23,6 @@ public class RestriccioAssigTemp extends Restriccio {
         this.nomAssig = nomAssig;
     }
 
-    //Setters
     public void setDia(Integer dia) {
         this.dia = dia;
     }
@@ -31,11 +31,6 @@ public class RestriccioAssigTemp extends Restriccio {
         this.hora = hora;
     }
 
-    public void setNomAssig(String nomAssig) {
-        this.nomAssig = nomAssig;
-    }
-
-    //Getters
     public Integer getDia() {
         return dia;
     }
@@ -44,11 +39,6 @@ public class RestriccioAssigTemp extends Restriccio {
         return hora;
     }
 
-    public String getNomAssig() {
-        return nomAssig;
-    }
-
-    //AUXILIAR FUNCTIONS
     public boolean compleixRestriccio(Sessio actual, ArrayList<Sessio> sessions, Integer dia, Integer hora, Horari horari) {
         return true;
     }
@@ -58,13 +48,10 @@ public class RestriccioAssigTemp extends Restriccio {
     }
 
     public boolean esPotAssigTemp(Integer dia, Integer hora, String nomAssig) {
-
         if (this.hora == null) { //Tot el dia
             return this.dia.intValue() == dia.intValue() && this.nomAssig.equals(nomAssig);
         }
-
         return this.dia.intValue() == dia.intValue() && this.hora.intValue() == hora.intValue() && this.nomAssig.equals(nomAssig);
-
     }
 
 }

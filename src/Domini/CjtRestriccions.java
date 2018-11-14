@@ -2,32 +2,26 @@ package Domini;
 
 import java.util.ArrayList;
 
-// Berni
 public class CjtRestriccions {
-    private ArrayList<RestriccioSolapar>   rs;
-    private ArrayList<RestriccioJornada>   rj;
-    private ArrayList<RestriccioReserva>   rr;
+
+    private ArrayList<RestriccioSolapar> rs;
+    private ArrayList<RestriccioReserva> rr;
     private ArrayList<RestriccioAssigTemp> ra;
-    private ArrayList<RestriccioMatins>    rm;
-    private ArrayList<RestriccioTardes>    rt;
+    private ArrayList<RestriccioMatins> rm;
+    private ArrayList<RestriccioTardes> rt;
     private ArrayList<RestriccioCaracteristicaAula> rca;
 
     public CjtRestriccions() {
-        this.rs = new ArrayList<>();
-        this.rj = new ArrayList<>();
-        this.rr = new ArrayList<>();
-        this.ra = new ArrayList<>();
-        this.rm = new ArrayList<>();
-        this.rt = new ArrayList<>();
+        this.rs  = new ArrayList<>();
+        this.rr  = new ArrayList<>();
+        this.ra  = new ArrayList<>();
+        this.rm  = new ArrayList<>();
+        this.rt  = new ArrayList<>();
         this.rca = new ArrayList<>();
     }
 
     public void addRestriccioAssigTemp(RestriccioAssigTemp r) {
         this.ra.add(r);
-    }
-
-    public void addRestriccioJornada(RestriccioJornada r) {
-        this.rj.add(r);
     }
 
     public void addRestriccioReserva(RestriccioReserva r) {

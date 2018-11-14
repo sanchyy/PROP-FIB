@@ -53,7 +53,7 @@ public class Horari extends Taula<Sessio> {
                 if (i == 0) hores = hrs;
                 for (int d=0; d<super.columnes; ++d) {
                     if (i < super.agafar(d, h).size()) {
-                        int length = super.agafar(d, h).get(i).getAssignatura().getNomAssig().length();
+                        int length = super.agafar(d, h).get(i).getAssignatura().getNom().length();
                         hores += "|    ";
                         for (int j=0; j<3-(length-1); ++j) hores += " ";
                         hores += mostrarAtom(super.agafar(d, h).get(i)) + "   ";
@@ -63,43 +63,6 @@ public class Horari extends Taula<Sessio> {
             }
         }
         System.out.println("+" + slot + "+" + slot + "+" + slot + "+" + slot + "+" + slot + "+" + slot + "+");
-
-        /*
-        Integer dayI = 0;
-        for (ArrayList< ArrayList<Sessio>> dia : super.getTaula()) {
-            System.out.println(intAdia(dayI++));
-            for (ArrayList<Sessio> hora : dia) {
-                for (Sessio sessio : hora) {
-                    System.out.println("    " + (dia.indexOf(hora)+8) + ":00 -> " + sessio.getAssignatura().getNomAssig() + "-" + sessio.getGrup() + " (" + sessio.getAula().getNom() + ")");
-                }
-            }
-        }
-        */
-    }
-
-    public String intAdia(Integer d) {
-        String dia;
-        switch (d) {
-            case 0:
-                dia = "Dilluns";
-            break;
-            case 1:
-                dia = "Dimarts";
-            break;
-            case 2:
-                dia = "Dimecres";
-            break;
-            case 3:
-                dia = "Dijous";
-            break;
-            case 4:
-                dia = "Divendres";
-            break;
-            default:
-                dia = "";
-            break;
-        }
-        return dia;
     }
 
     @Override

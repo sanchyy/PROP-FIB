@@ -2,7 +2,6 @@ package Domini;
 
 import java.util.ArrayList;
 
-// Berni
 public class Generador {
 
     private Horari horari;
@@ -11,17 +10,15 @@ public class Generador {
     private TaulaAules aulesDisponibles;
     private CjtRestriccions restriccions;
 
-    // public Generador(Horari horariBuit, PlaEstudis plaEstudis, ArrayList<Sessio> sessions, RestriccioSolapar rs, RestriccioJornada rj, RestriccioReserva rr) {
     public Generador(Horari horariBuit, PlaEstudis plaEstudis, ArrayList<Sessio> sessions, CjtRestriccions restriccions) {
-        this.horari = horariBuit;
-        this.pe = plaEstudis;
-        this.sessions = sessions;
+        this.horari       = horariBuit;
+        this.pe           = plaEstudis;
+        this.sessions     = sessions;
         this.restriccions = restriccions;
     }
 
     public void generarHorari(ArrayList<Aula> aules) {
         this.aulesDisponibles = new TaulaAules(aules);
-        // TODO: IMPORTANT, abans de generar l'horari hemde mirar si hi ha alguna sessió que no trobarà aula, PENSAR SI POT PASSAR MES
         ArrayList<Sessio> fallen = new ArrayList<>();
         for (Sessio s : clonarSessionsDisponibles(sessions)) {
             Integer Acount = 0;
@@ -55,12 +52,10 @@ public class Generador {
     }
 
     private boolean potAnarAqui(Sessio sessio, Integer dia, Integer hora, Horari hor) {
-        // Mirar si aquesta sessió pot anar a aquest slot horari
         return restriccions.comprovarRestriccionsColocar(sessio, hor.getAtoms(dia, hora), dia, hora, hor);
     }
 
     private Aula buscarAula(Sessio sessio, TaulaAules aules, Integer dia, Integer hora) {
-        // Buscar una aula que es correspongui amb els requeriments de la sessio
         ArrayList<Aula> disponibles = aules.agafar(dia, hora);
         if (disponibles.size() == 0) return null;
         for (Aula aula : disponibles) {
