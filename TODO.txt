@@ -1,7 +1,6 @@
 - Stubs
 - Fer funcionalitat de testejar des d'un fitxer
 - Documentació
-- Classe de JUnit de Aula
 
 TODO -> Berni
 -------------
@@ -23,3 +22,4 @@ TODO -> Víctor
 --------------
 * Fer Drivers i Stubs de les altres coses
 * Acabar JUnit
+* Try catch xd que amb la conya no hem fet re haha
