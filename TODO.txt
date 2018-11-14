@@ -1,22 +1,23 @@
 - Stubs
 - Fer funcionalitat de testejar des d'un fitxer
 - Documentació
-- Calmar l'ambient pls xd
+- Classe de JUnit de Aula
 
 TODO -> Berni
 -------------
+Algorisme:
 * Abans de generar l'horari hem de mirar si hi ha alguna sessió que no trobarà aula, PENSAR SI POT PASSAR MES AQUEST CAS (QUAN NO ES POT GENERAR PER EX.)
 * La funció buscar aula optimitzar-la i buscar l'aula que compleix el mínim de restriccions d'aquella sessió
-*
+* Ordenar les llistes per a que vagi més ràpid el Generador
+
+Driver:
+* Acabar el driver principal
 * Poder carregar un fitxer per passar testos
+
 * Acabar de fer restriccions i provar-les
-* Mirar classe per classe els noms de tot i funcions per crear consistència de noms i tot
+* Mirar periode i date de Quadrimestre
 * A sessió mirar lo de Teoria o Laboratori com fer-ho
-* Poder crear les sessions automaticament a partir de nomès l'assignatura i dir-li les hores que hi han
-* Millorar el driver principal
-* Algunes coses, com la llista de característiques hauría de ser un Set
 
 TODO -> Víctor
 --------------
-* Fer drivers de les altres coses
-* Classe de JUnit de Aula
+* Fer Drivers i Stubs de les altres coses

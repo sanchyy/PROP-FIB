@@ -136,21 +136,6 @@ public class DriverControlDomini {
         return caracteristiques;
     }
 
-    /*public static void crearAssignatura() {
-        Assignatura a = new Assignatura();
-        System.out.println("Introdueix el nom de l'assignatura");
-        String nom = llegirString();
-        a.setNomAssig(nom);
-        System.out.println("A quin quadrimestre vols que pertanyi aquesta assignatura? (1/2/3)");
-        Integer quadri = llegirNumero();
-        a.setQuatri(quadri);
-        System.out.println("De quin nivell és aquesta assignatura? (1/2/3)");
-        Integer nivell = llegirNumero();
-        a.setNivell(nivell);
-
-        plaEstudisSeleccionat.afegirAssignatura(a);
-    }*/
-
     public static void crearAssignatura() {
         System.out.println("Introdueix els seguents paràmetres:");
         System.out.println("Nom de l'assignatura:");

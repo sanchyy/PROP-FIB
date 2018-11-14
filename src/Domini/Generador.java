@@ -76,8 +76,6 @@ public class Generador {
             // Saltem al seguent dia
             return produirHorari(hor, aules, sessions, dia+1, 0);
         } else {
-            // TODO: Ordenar les llistes per a que vagi més ràpid
-
             boolean found = false;
             for (Sessio sessioActual : sessions) {
                 Horari cHor = hor.clonarHorari();
