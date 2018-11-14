@@ -26,23 +26,30 @@ public class Horari extends Taula<Sessio> {
     }
 
     public void mostrarHorari() {
-        String slot = "-------------";
+        String slot = "----------------------";
+        System.out.println("+" + slot + "+" + slot + "+" + slot + "+" + slot + "+" + slot + "+" + slot + "+");
+        System.out.println("|        HORA          |       DILLUNS        |       DIMARTS        |       DIMECRES       |        DIJOUS        |       DIVENDRES      |");
         for (int h=0; h<super.files; ++h) {
-            System.out.println("+" + slot + "+" + slot + "+" + slot + "+" + slot + "+" + slot + "+");
-            String hores = "";
+            System.out.println("+" + slot + "+" + slot + "+" + slot + "+" + slot + "+" + slot + "+" + slot + "+");
             Integer max = -1;
             for (int i=0; i<super.columnes; ++i) {
                 if (max == -1 || super.agafar(i, h).size() > max) max = super.agafar(i, h).size();
             }
             if (max == -1) max = 0;
             for (int i=0; i<max; ++i) {
+                String hores = "|    " + h+8 + ":00 - " + h+9 + ":00     ";
                 for (int d=0; d<super.columnes; ++d) {
-                    if (max < super.agafar(d, h).size()) hores += "+ " + super.agafar(d, h).get(max) + " ";
-                    else hores += "+             ";
+                    if (i < super.agafar(d, h).size()) {
+                        int length = super.agafar(d, h).get(i).getAssignatura().getNomAssig().length();
+                        hores += "|    ";
+                        for (int j=0; j<3-(length-1); ++j) hores += " ";
+                        hores += mostrarAtom(super.agafar(d, h).get(i)) + "   ";
+                    } else hores += "|                      ";
                 }
+                System.out.println(hores + "|");
             }
-            System.out.println(hores);
         }
+        System.out.println("+" + slot + "+" + slot + "+" + slot + "+" + slot + "+" + slot + "+" + slot + "+");
 
         Integer dayI = 0;
         for (ArrayList< ArrayList<Sessio>> dia : super.getTaula()) {
@@ -82,6 +89,6 @@ public class Horari extends Taula<Sessio> {
 
     @Override
     public String mostrarAtom(Sessio sessio) {
-        return sessio.getAssignatura().getNomAssig() + " (" + sessio.getAula().getNom() + ")";
+        return sessio.getAssignatura().getNomAssig() + "-" + sessio.getGrup() + " (" + sessio.getAula().getNom() + ")";
     }
 }
