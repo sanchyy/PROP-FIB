@@ -2,24 +2,23 @@ package Domini;
 
 import java.util.ArrayList;
 
-// Berni
 public class CtrDomini {
-    private ArrayList<UnitatDocent> unitatsDocents;
+
+    private CjtUnitatDocent unitatsDocents = CjtUnitatDocent.getInstance();
+
     private Integer unitatDocentSeleccionada;
     private Integer plaEstudisSeleccionat;
     private Integer quadrimestreSeleccionat;
-
     private CjtRestriccions restriccions;
 
     public CtrDomini() {
-        this.unitatsDocents = new ArrayList<>();
         this.unitatDocentSeleccionada = null;
         this.plaEstudisSeleccionat    = null;
         this.quadrimestreSeleccionat  = null;
         this.restriccions             = new CjtRestriccions();
     }
 
-    public ArrayList<UnitatDocent> getUnitatsDocents() {
+    public CjtUnitatDocent getUnitatsDocents() {
         return unitatsDocents;
     }
 

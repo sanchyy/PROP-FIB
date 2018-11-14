@@ -1,13 +1,12 @@
 package Drivers;
 
-import Domini.UnitatDocent;
-
 public class DriverUnitatDocent {
 
-    public UnitatDocent ud;
+    // CtrDomini ctrDomini = CtrD;
 
-    public UnitatDocent llegirUnitatDocent() {
-        return ud;
+    public static void main(String[] args) {
+        System.out.println("unitat docent");
     }
+
 
 }

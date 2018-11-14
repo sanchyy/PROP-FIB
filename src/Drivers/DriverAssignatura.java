@@ -1,7 +1,5 @@
 package Drivers;
 
-import Domini.Assignatura;
-
 public class DriverAssignatura {
 
     /*private Assignatura assignatura = new Assignatura();
