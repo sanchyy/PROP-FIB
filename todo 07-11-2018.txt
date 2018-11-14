@@ -1,9 +1,19 @@
-todo:
-    - reestructurar aula, fer subclasses -> Andrea
-    - Drivers: en java
-    - Stubs: en java
-    - JUnit: una classe, Aula -> Andrea
-    - Fer funcionalitat de testejar des d'un fitxer
-    - Documentació
-    - Fer restriccions -> Víctor
-    
+- Stubs
+- Fer funcionalitat de testejar des d'un fitxer
+- Documentació
+- Calmar l'ambient pls xd
+
+Berni
+-----
+* Poder carregar un fitxer per passar testos
+* Acabar de fer restriccions i provar-les
+* Mirar classe per classe els noms de tot i funcions per crear consistència de noms i tot
+* A sessió mirar lo de Teoria o Laboratori com fer-ho
+* Poder crear les sessions automaticament a partir de nomès l'assignatura i dir-li les hores que hi han
+* Millorar el driver principal
+* Algunes coses, com la llista de característiques hauría de ser un Set
+
+Víctor
+------
+* Fer drivers de les altres coses
+* Classe de JUnit de Aula
