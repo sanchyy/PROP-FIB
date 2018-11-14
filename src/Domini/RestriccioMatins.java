@@ -8,7 +8,7 @@ public class RestriccioMatins extends Restriccio {
     private Sessio sessio;
 
     public RestriccioMatins(Sessio a) {
-        super(6);
+        super(7);
         this.sessio = a;
     }
 

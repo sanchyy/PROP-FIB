@@ -207,7 +207,7 @@ public class DriverControlDomini {
                     if (i > (grups-tardes-1)) {
                         ctrDomini.crearRestriccioTardes(numSessioS);
                     } else {
-                        ctrDomini.crearRestriccioMatins(numSessio);
+                        ctrDomini.crearRestriccioMatins(numSessioS);
                     }
                 }
             }
