@@ -14,6 +14,7 @@ Driver:
 * Acabar el driver principal
 * Poder carregar un fitxer per passar testos
 
+* Quan crees una nova Unitat Docent no comprova si ja existeix
 * Acabar de fer restriccions i provar-les
 * Mirar periode i date de Quadrimestre
 * A sessió mirar lo de Teoria o Laboratori com fer-ho

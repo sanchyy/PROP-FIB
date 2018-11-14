@@ -14,6 +14,14 @@ class CjtUnitatDocent {
         return instancia;
     }
 
+    public ArrayList<UnitatDocent> getUnitatsDocents() {
+        return unitatsDocents;
+    }
+
+    public void del(UnitatDocent ud) {
+        this.unitatsDocents.remove(ud);
+    }
+
     public UnitatDocent get(Integer i) {
         return unitatsDocents.get(i);
     }

@@ -112,6 +112,12 @@ public class CtrDomini {
         quadrimestreSeleccionat = getPlaEstudis().getQuadrimestres().size()-1;
     }
 
+    public void borrarUnitatDocent(Integer i) {
+        UnitatDocent ud = unitatsDocents.get(i);
+        unitatsDocents.del(ud);
+        this.unitatDocentSeleccionada = null;
+    }
+
     public String llistaSessions() {
         Integer i = 0;
         String sessions = "";
@@ -179,6 +185,17 @@ public class CtrDomini {
         bt.generarHorari(getUnitatDocent().getAulesDisponibles());
         horariActual = bt.getHorari();
         horariActual.mostrarHorari();
+    }
+
+    public void llistaUnitatsDocents() {
+        Integer i = 0;
+        for (UnitatDocent ud : unitatsDocents.getUnitatsDocents()) {
+            System.out.println("[" + i++ + "] " + ud.getNom());
+        }
+    }
+
+    public Integer midaUnitatsDocents() {
+        return getUnitatsDocents().size();
     }
 
     public void llistaAssignatures() {

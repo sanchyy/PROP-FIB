@@ -1,4 +1,5 @@
 import Domini.*;
+import Drivers.DriverUnitatDocent;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -34,7 +35,8 @@ public class DriverControlDomini {
         while (seleccio != 0) {
             switch (seleccio) {
                 case 1:
-                    crearUnitatDocent();
+                    DriverUnitatDocent.main(ctrDomini, scanner);
+                    // crearUnitatDocent();
                     break;
                 case 2:
                     crearPlaEstudis();
@@ -307,8 +309,6 @@ public class DriverControlDomini {
     public static void crearRestriccioJornada() {
         //
     }
-
-
 
     public static String llegirString() {
         return scanner.next();
