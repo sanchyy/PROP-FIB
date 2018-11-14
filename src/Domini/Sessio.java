@@ -45,4 +45,11 @@ public class Sessio {
         return aula;
     }
 
+    public String mostrarSessio() {
+        String s = "";
+        if (assignatura != null) s += assignatura.getNomAssig() + "-" + grup;
+        if (aula != null) s += " (" + aula.getNom() + ")";
+        return s;
+    }
+
 }

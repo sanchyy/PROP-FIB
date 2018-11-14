@@ -23,7 +23,7 @@ public class Generador {
         this.aulesDisponibles = new TaulaAules(aules);
         // TODO: IMPORTANT, abans de generar l'horari hemde mirar si hi ha alguna sessió que no trobarà aula, PENSAR SI POT PASSAR MES
         ArrayList<Sessio> fallen = new ArrayList<>();
-        for (Sessio s : sessions) {
+        for (Sessio s : clonarSessionsDisponibles(sessions)) {
             Integer Acount = 0;
             for (Aula a : aules) {
                 if (restriccions.comprovarRestriccionsAula(s, a)) ++Acount;
@@ -36,7 +36,7 @@ public class Generador {
         if (fallen.size() > 0) {
             System.out.println("LES SEGÜENTS SESSIONS NO TENEN CAP AULA DISPONIBLE, ES TREU ATOMATICAMENT");
             for (Sessio s : fallen) {
-                System.out.println(s.getGrup());
+                System.out.println("    > " + s.mostrarSessio());
             }
         }
         produirHorari(horari, aulesDisponibles, sessions, 0, 0);

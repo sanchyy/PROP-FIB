@@ -64,6 +64,7 @@ public class Horari extends Taula<Sessio> {
         }
         System.out.println("+" + slot + "+" + slot + "+" + slot + "+" + slot + "+" + slot + "+" + slot + "+");
 
+        /*
         Integer dayI = 0;
         for (ArrayList< ArrayList<Sessio>> dia : super.getTaula()) {
             System.out.println(intAdia(dayI++));
@@ -73,6 +74,7 @@ public class Horari extends Taula<Sessio> {
                 }
             }
         }
+        */
     }
 
     public String intAdia(Integer d) {
@@ -102,6 +104,6 @@ public class Horari extends Taula<Sessio> {
 
     @Override
     public String mostrarAtom(Sessio sessio) {
-        return sessio.getAssignatura().getNomAssig() + "-" + sessio.getGrup() + " (" + sessio.getAula().getNom() + ")";
+        return sessio.mostrarSessio();
     }
 }
