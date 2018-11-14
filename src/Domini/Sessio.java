@@ -52,4 +52,8 @@ public class Sessio {
         return s;
     }
 
+    public boolean sonIguals(Sessio comp) {
+        return comp.getGrup() == grup && comp.getAssignatura().getNomAssig().equals(assignatura.getNomAssig());
+    }
+
 }

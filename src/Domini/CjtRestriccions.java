@@ -1,13 +1,15 @@
 package Domini;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+// Berni
 public class CjtRestriccions {
     private ArrayList<RestriccioSolapar>   rs;
     private ArrayList<RestriccioJornada>   rj;
     private ArrayList<RestriccioReserva>   rr;
     private ArrayList<RestriccioAssigTemp> ra;
+    private ArrayList<RestriccioMatins>    rm;
+    private ArrayList<RestriccioTardes>    rt;
     private ArrayList<RestriccioCaracteristicaAula> rca;
 
     public CjtRestriccions() {
@@ -15,6 +17,8 @@ public class CjtRestriccions {
         this.rj = new ArrayList<>();
         this.rr = new ArrayList<>();
         this.ra = new ArrayList<>();
+        this.rm = new ArrayList<>();
+        this.rt = new ArrayList<>();
         this.rca = new ArrayList<>();
     }
 
@@ -38,10 +42,26 @@ public class CjtRestriccions {
         this.rca.add(r);
     }
 
-    public boolean comprovarRestriccionsColocar(Sessio actual, ArrayList<Sessio> sessions, Horari horari) {
+    public void addRestriccioMatins(RestriccioMatins r) {
+        this.rm.add(r);
+    }
+
+    public void addRestriccioTardes(RestriccioTardes r) {
+        this.rt.add(r);
+    }
+
+    public boolean comprovarRestriccionsColocar(Sessio actual, ArrayList<Sessio> sessions, Integer dia, Integer hora, Horari horari) {
         boolean compleix = true;
         for (RestriccioSolapar r : rs) {
-            compleix = compleix && r.compleixRestriccio(actual, sessions, horari);
+            compleix = compleix && r.compleixRestriccio(actual, sessions, dia, hora, horari);
+            if (!compleix) return false;
+        }
+        for (RestriccioMatins r : rm) {
+            compleix = compleix && r.compleixRestriccio(actual, sessions, dia, hora, horari);
+            if (!compleix) return false;
+        }
+        for (RestriccioTardes r : rt) {
+            compleix = compleix && r.compleixRestriccio(actual, sessions, dia, hora, horari);
             if (!compleix) return false;
         }
         return true;

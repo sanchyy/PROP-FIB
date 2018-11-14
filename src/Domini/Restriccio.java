@@ -33,6 +33,6 @@ public abstract class Restriccio {
         return false;
     }
 
-    public abstract boolean compleixRestriccio(Sessio comp, ArrayList<Sessio> sessions, Horari horari);
+    public abstract boolean compleixRestriccio(Sessio actual, ArrayList<Sessio> sessions, Integer dia, Integer hora, Horari horari);
     public abstract boolean compleixRestriccio(Sessio comp, Aula aula);
 }

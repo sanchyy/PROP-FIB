@@ -42,7 +42,7 @@ public class RestriccioJornada extends Restriccio {
     }
 
     //AUXILIAR FUNCTIONS
-    public boolean compleixRestriccio(Sessio comp, ArrayList<Sessio> sessions, Horari horari) {
+    public boolean compleixRestriccio(Sessio actual, ArrayList<Sessio> sessions, Integer dia, Integer hora, Horari horari) {
         return true;
     }
 

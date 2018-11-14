@@ -147,6 +147,18 @@ public class CtrDomini {
         restriccions.addRestriccioCaracteristicaAula(r);
     }
 
+    public void crearRestriccioTardes(Integer a) {
+        Sessio sessio = getQuadrimestre().getSessions().get(a);
+        RestriccioTardes r = new RestriccioTardes(sessio);
+        restriccions.addRestriccioTardes(r);
+    }
+
+    public void crearRestriccioMatins(Integer a) {
+        Sessio sessio = getQuadrimestre().getSessions().get(a);
+        RestriccioMatins r = new RestriccioMatins(sessio);
+        restriccions.addRestriccioMatins(r);
+    }
+
 
     public void generarHorari() {
         Horari horariActual = new Horari();

@@ -56,20 +56,14 @@ public class Generador {
 
     private boolean potAnarAqui(Sessio sessio, Integer dia, Integer hora, Horari hor) {
         // Mirar si aquesta sessió pot anar a aquest slot horari
-        return restriccions.comprovarRestriccionsColocar(sessio, hor.getAtoms(dia, hora), hor);
-
-        // if (!rs.esPotSolapar(sessio, hor.getAtoms(dia, hora))) return false;
-        // if (!rj.esPotJornada()) return false;
-        // if (!rr.esPotReserva(hora,hora+2,sessio.getAula().getNom_aula(),dia)) return false;
+        return restriccions.comprovarRestriccionsColocar(sessio, hor.getAtoms(dia, hora), dia, hora, hor);
     }
 
     private Aula buscarAula(Sessio sessio, TaulaAules aules, Integer dia, Integer hora) {
         // Buscar una aula que es correspongui amb els requeriments de la sessio
         ArrayList<Aula> disponibles = aules.agafar(dia, hora);
         if (disponibles.size() == 0) return null;
-        // return disponibles.get(0);
         for (Aula aula : disponibles) {
-            // System.out.println("Grup: " + sessio.getGrup() + ", " + restriccions.comprovarRestriccionsAula(sessio, aula) + ", " + aula.getNom());
             if (restriccions.comprovarRestriccionsAula(sessio, aula)) return aula;
         }
         return null;
@@ -106,7 +100,7 @@ public class Generador {
                         cSessions.remove(sessioActual);
                         found = found || produirHorari(cHor, cAules, cSessions, dia, hora);
                         if (found) {
-                            hor = cHor;
+                            // hor = cHor;
                             aules = cAules;
                             sessions = cSessions;
                             break;

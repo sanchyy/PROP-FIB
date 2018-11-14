@@ -14,12 +14,12 @@ public class RestriccioCaracteristicaAula extends Restriccio {
     }
 
     //FUNCTIONS AUX
-    public boolean compleixRestriccio(Sessio comp, ArrayList<Sessio> sessions, Horari horari) {
+    public boolean compleixRestriccio(Sessio actual, ArrayList<Sessio> sessions, Integer dia, Integer hora, Horari horari) {
         return true;
     }
 
     public boolean compleixRestriccio(Sessio comp, Aula aula) {
-        if (sessio.getGrup().equals(comp.getGrup()) && sessio.getAssignatura().getNomAssig().equals(comp.getAssignatura().getNomAssig())) {
+        if (comp.sonIguals(sessio)) {
             Integer count = 0;
             for (CaracteristiquesAula carac : aula.getCaracteristiques()) {
                 if (caracteristiques.contains(carac)) ++count;
