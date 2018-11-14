@@ -35,9 +35,22 @@ public class Horari extends Taula<Sessio> {
             for (int i=0; i<super.columnes; ++i) {
                 if (max == -1 || super.agafar(i, h).size() > max) max = super.agafar(i, h).size();
             }
-            if (max == -1) max = 0;
+            String h1 = (h+8) + "";
+            String h2 = (h+9) + "";
+            if (h < 2) h1 = "0" + h1;
+            if (h < 1) h2 = "0" + h2;
+            String hrs = "|    " + h1 + ":00 - " + h2 + ":00     ";
+            if (max <= 0) {
+                String hores = hrs;
+                for (int d=0; d<super.columnes; ++d) {
+                    hores += "|                      ";
+                }
+                System.out.println(hores + "|");
+                max = 0;
+            }
             for (int i=0; i<max; ++i) {
-                String hores = "|    " + h+8 + ":00 - " + h+9 + ":00     ";
+                String hores = "|                      ";
+                if (i == 0) hores = hrs;
                 for (int d=0; d<super.columnes; ++d) {
                     if (i < super.agafar(d, h).size()) {
                         int length = super.agafar(d, h).get(i).getAssignatura().getNomAssig().length();
