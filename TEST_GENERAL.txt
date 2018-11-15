@@ -10,7 +10,6 @@ FIB_2010
 4
 A7002
 80
-TEORIA
 S
 S
 S
@@ -21,7 +20,6 @@ S
 4
 A6002
 80
-TEORIA
 S
 S
 S

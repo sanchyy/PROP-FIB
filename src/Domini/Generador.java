@@ -66,12 +66,12 @@ public class Generador {
 
     private boolean produirHorari(Horari hor, TaulaAules aules, ArrayList<Sessio> sessions, Integer dia, Integer hora) {
         if (sessions.size() == 0) {
-            // Hem trobat una solució valida, retornem true
+            // Hem trobat una solució valida
             this.horari = hor;
             return true;
         } else if (dia == hor.columnes) {
-            // Hem acabat els dies de l'horari, retornem FALSE per indicar que no és una branca valida
-            return false;
+            // Hem acabat els dies de l'horari
+            return true;
         } else if (hora == hor.files) {
             // Saltem al seguent dia
             return produirHorari(hor, aules, sessions, dia+1, 0);
@@ -92,8 +92,8 @@ public class Generador {
                         cAules.borrar(a, dia, hora);
                         cSessions.remove(sessioActual);
                         found = found || produirHorari(cHor, cAules, cSessions, dia, hora);
-                        if (found) {
-                            // hor = cHor;
+                        if (found && sessions.size() == 0) {
+                            hor = cHor;
                             aules = cAules;
                             sessions = cSessions;
                             break;
