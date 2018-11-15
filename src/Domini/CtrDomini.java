@@ -93,6 +93,10 @@ public class CtrDomini {
         return getPlaEstudis().getAssignatura(nom);
     }
 
+    public Assignatura getAssignatura(Integer i) {
+        return getPlaEstudis().getAssignatura(i);
+    }
+
     public void afegirPlaEstudis(String nom) {
         PlaEstudis pe = new PlaEstudis(nom);
         getUnitatDocent().afegirPlaEstudis(pe);
@@ -211,11 +215,30 @@ public class CtrDomini {
     }
 
     public void llistaAssignatures() {
-        System.out.println("LLISTANT ASSIGNATURES");
+        System.out.println("LLISTAT ASSIGNATURES");
         int i = 1;
         for (Assignatura a : getPlaEstudis().getAssignatures()) {
             System.out.println("["+(i++)+"]Nom: " + a.getNom());
         }
     }
 
+    public void llistaPlaEstudi() {
+        System.out.println("LLISTAT PLANS D'ESTUDI");
+        int i = 1;
+        for (PlaEstudis pe : getUnitatDocent().getPlansEstudis()) {
+            System.out.println("["+(i++)+"]Nom: " + pe.getNom());
+        }
+    }
+
+    public void borrarPlaEstudis(Integer b) {
+        getUnitatDocent().getPlansEstudis().remove(getUnitatDocent().getPlansEstudis().get(b-1));
+    }
+
+    public void llistaQuadrimestres() {
+        System.out.println("LLISTAT QUADRIMESTRES");
+        int i = 1;
+        for (Quadrimestre q : getPlaEstudis().getQuadrimestres()) {
+            System.out.println("["+(i++)+"] Q"+i);
+        }
+    }
 }

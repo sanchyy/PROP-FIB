@@ -22,7 +22,7 @@ public class DriverAssignatura {
         System.out.println(" [2] Seleccionar Assignatura");
         System.out.println(" [3] Crear Assignatura");
         System.out.println(" [4] Borrar Assignatura");
-        Integer sel = llegirNumero();
+        int sel = llegirNumero();
         if (sel == 1) {
             ctrDomini.llistaAssignatures();
         } else if (sel == 2) {
@@ -30,8 +30,8 @@ public class DriverAssignatura {
             String s = llegirString();
             if (s.equals("S") || s.equals("s")) ctrDomini.llistaAssignatures();
             System.out.println("Quina Assignatures vols seleccionar?");
-            String ass = llegirString();
-            try { ctrDomini.getAssignatura(ass);}
+            Integer b = llegirNumero();
+            try { ctrDomini.getAssignatura(b);}
             catch (Exception e) {System.out.println("No hi ha cap Assignatura amb aquesta selecció");}
         } else if (sel == 3) {
             System.out.println("Nom de l'assignatura:");

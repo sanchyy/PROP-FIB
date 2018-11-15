@@ -43,7 +43,15 @@ public class PlaEstudis {
         return null;
     }
 
+    public Assignatura getAssignatura(Integer x) {
+        return assignatures.get(x-1);
+    }
+
     public void borrarAssignatura(int i) {
         assignatures.remove(i-1);
+    }
+
+    public void borrarQuadimestre(Integer b) {
+        quadrimestres.remove(b-1);
     }
 }
