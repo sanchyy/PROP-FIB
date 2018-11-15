@@ -10,6 +10,7 @@ public class CjtRestriccions {
     private ArrayList<RestriccioMatins> rm;
     private ArrayList<RestriccioTardes> rt;
     private ArrayList<RestriccioCaracteristicaAula> rca;
+    private ArrayList<RestriccioNivell> rn;
 
     public CjtRestriccions() {
         this.rs  = new ArrayList<>();
@@ -18,6 +19,7 @@ public class CjtRestriccions {
         this.rm  = new ArrayList<>();
         this.rt  = new ArrayList<>();
         this.rca = new ArrayList<>();
+        this.rn  = new ArrayList<>();
     }
 
     public void addRestriccioAssigTemp(RestriccioAssigTemp r) {
@@ -44,6 +46,10 @@ public class CjtRestriccions {
         this.rt.add(r);
     }
 
+    public void addRestriccioNivell(RestriccioNivell r) {
+        this.rn.add(r);
+    }
+
     public boolean comprovarRestriccionsColocar(Sessio actual, ArrayList<Sessio> sessions, Integer dia, Integer hora, Horari horari) {
         boolean compleix = true;
         for (RestriccioSolapar r : rs) {
@@ -55,6 +61,10 @@ public class CjtRestriccions {
             if (!compleix) return false;
         }
         for (RestriccioTardes r : rt) {
+            compleix = compleix && r.compleixRestriccio(actual, sessions, dia, hora, horari);
+            if (!compleix) return false;
+        }
+        for (RestriccioNivell r : rn) {
             compleix = compleix && r.compleixRestriccio(actual, sessions, dia, hora, horari);
             if (!compleix) return false;
         }

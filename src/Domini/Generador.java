@@ -69,10 +69,10 @@ public class Generador {
             // Hem trobat una solució valida, retornem true
             this.horari = hor;
             return true;
-        } else if (dia == 5) {
+        } else if (dia == hor.columnes) {
             // Hem acabat els dies de l'horari, retornem FALSE per indicar que no és una branca valida
             return false;
-        } else if (hora == 12) {
+        } else if (hora == hor.files) {
             // Saltem al seguent dia
             return produirHorari(hor, aules, sessions, dia+1, 0);
         } else {
