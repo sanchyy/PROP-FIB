@@ -68,6 +68,7 @@ public class Generador {
         if (sessions.size() == 0) {
             // Hem trobat una solució valida
             this.horari = hor;
+            this.horari.setSolucionat(true);
             return true;
         } else if (dia == hor.columnes) {
             // Hem acabat els dies de l'horari
