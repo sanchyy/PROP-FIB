@@ -118,6 +118,10 @@ public class CtrDomini {
         this.unitatDocentSeleccionada = null;
     }
 
+    public void borrarPlaEstudis(Integer i) {
+
+    }
+
     public String llistaSessions() {
         Integer i = 0;
         String sessions = "";

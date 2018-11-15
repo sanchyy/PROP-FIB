@@ -42,4 +42,8 @@ public class UnitatDocent {
         return null;
     }
 
+    public void BorrarPlaEstudis(int i) {
+        plansEstudis.remove(i-1);
+    }
+
 }
