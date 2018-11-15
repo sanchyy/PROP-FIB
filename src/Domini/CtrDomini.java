@@ -64,13 +64,13 @@ public class CtrDomini {
 
     }
 
-    public void afegirAssignaturaPlaEstudis(String nom, Integer quadri, Integer nivell) {
-        Assignatura a = new Assignatura(nom, quadri, nivell);
+    public void afegirAssignaturaPlaEstudis(String nom, Integer quadri, Integer nivell, ArrayList<CaracteristiquesAula> teo, ArrayList<CaracteristiquesAula> lab) {
+        Assignatura a = new Assignatura(nom, quadri, nivell, teo, lab);
         getPlaEstudis().afegirAssignatura(a);
     }
 
-    public void afegirAssignaturaPlaEstudis(String nom, Integer quadri, Integer nivell, String plaEstudis) {
-        Assignatura a = new Assignatura(nom, quadri, nivell, plaEstudis);
+    public void afegirAssignaturaPlaEstudis(String nom, Integer quadri, Integer nivell, String plaEstudis, ArrayList<CaracteristiquesAula> teo, ArrayList<CaracteristiquesAula> lab) {
+        Assignatura a = new Assignatura(nom, quadri, nivell, plaEstudis, teo, lab);
         getPlaEstudis().afegirAssignatura(a);
     }
 
@@ -196,6 +196,18 @@ public class CtrDomini {
         for (UnitatDocent ud : unitatsDocents.getUnitatsDocents()) {
             System.out.println("[" + i++ + "] " + ud.getNom());
         }
+    }
+
+    public ArrayList<CaracteristiquesAula> getLlistaCaracteristiquesTeoria(String nom) {
+        Assignatura a = getPlaEstudis().getAssignatura(nom);
+        if (a == null) return new ArrayList<>();
+        else return a.getCaracteristiquesTeoria();
+    }
+
+    public ArrayList<CaracteristiquesAula> getLlistaCaracteristiquesLab(String nom) {
+        Assignatura a = getPlaEstudis().getAssignatura(nom);
+        if (a == null) return new ArrayList<>();
+        else return a.getCaracteristiquesLabo();
     }
 
     public Integer midaUnitatsDocents() {

@@ -1,6 +1,8 @@
 - Documentació
 - Període de classes
+
 - Propietats de cada assignatrua
+
 - Restricció no solapament assignatures mateix nivell
 - Restricció correquisits entre assignatures
 - Número, Tipus i Duració de les sessions de cada assignatura
@@ -27,3 +29,4 @@ TODO -> Víctor
 * Acabar el driver principal
 * Acabar JUnit
 * Try catch xd que amb la conya no hem fet re haha
+

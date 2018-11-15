@@ -129,7 +129,7 @@ public class DriverControlDomini {
     public static ArrayList<CaracteristiquesAula> llegirCaracteristiques() {
         ArrayList<CaracteristiquesAula> caracteristiques = new ArrayList<>();
         for (CaracteristiquesAula caracteristica : listEnum) {
-            System.out.println("L'Aula té la següent característica (S/N)? (" + caracteristica.toString() + ")");
+            System.out.println("Té la següent característica (S/N)? (" + caracteristica.toString() + ")");
             String resp = llegirString();
             if (resp.equals("S")) caracteristiques.add(caracteristica);
         }
@@ -153,14 +153,20 @@ public class DriverControlDomini {
         System.out.println("[3] Especialitat");
         Integer nivell = llegirNumero();
 
+        System.out.println("Quines característiques tenen les classes de Teoria?");
+        ArrayList<CaracteristiquesAula> teo = llegirCaracteristiques();
+
+        System.out.println("Quines característiques tenen les classes de Laboratori?");
+        ArrayList<CaracteristiquesAula> lab = llegirCaracteristiques();
+
         System.out.println("A quin pla destudis pertany?");
         String nomPlaEstudis = llegirString();
 
         if (ctrDomini.existeixPlaEstudis(nomPlaEstudis)) {
-            ctrDomini.afegirAssignaturaPlaEstudis(nom, quadri, nivell, nomPlaEstudis);
+            ctrDomini.afegirAssignaturaPlaEstudis(nom, quadri, nivell, nomPlaEstudis, teo, lab);
         } else {
             System.out.println("No existeix el pla d'estudis especificat, es crea igualment l'assignatura.");
-            ctrDomini.afegirAssignaturaPlaEstudis(nom, quadri, nivell);
+            ctrDomini.afegirAssignaturaPlaEstudis(nom, quadri, nivell, teo, lab);
         }
     }
 
@@ -184,6 +190,7 @@ public class DriverControlDomini {
                 } else {
                     ctrDomini.crearRestriccioMatins(numSessio);
                 }
+                ctrDomini.crearRestriccioCaracteristicaAula(numSessio, ctrDomini.getLlistaCaracteristiquesTeoria(nomAssignatura));
                 for (int j=0; j<subGrups; ++j) {
                     Integer subGrup = grup + j+1;
                     ctrDomini.afegirSessioQuadrimestre(subGrup, nomAssignatura);
@@ -194,6 +201,7 @@ public class DriverControlDomini {
                     } else {
                         ctrDomini.crearRestriccioMatins(numSessioS);
                     }
+                    ctrDomini.crearRestriccioCaracteristicaAula(numSessioS, ctrDomini.getLlistaCaracteristiquesLab(nomAssignatura));
                 }
             }
         } else {

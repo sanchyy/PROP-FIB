@@ -25,7 +25,7 @@ public class Generador {
             for (Aula a : aules) {
                 if (restriccions.comprovarRestriccionsAula(s, a)) ++Acount;
             }
-            if (Acount != aules.size()) {
+            if (Acount == 0) {
                 fallen.add(s);
                 sessions.remove(s);
             }
