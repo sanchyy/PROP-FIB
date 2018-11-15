@@ -1,25 +1,22 @@
-- Número, Tipus i Duració de les sessions de cada assignatura
-- Període lectiu
+// Període lectiu
+- Duració de les sessions de cada assignatura
 
 TODO -> Berni
 -------------
 Algorisme:
-* Abans de generar l'horari hem de mirar si hi ha alguna sessió que no trobarà aula, PENSAR SI POT PASSAR MES AQUEST CAS (QUAN NO ES POT GENERAR PER EX.)
-* La funció buscar aula optimitzar-la i buscar l'aula que compleix el mínim de restriccions d'aquella sessió
-* Ordenar les llistes per a que vagi més ràpid el Generador
-* Si no hi ha solució avisar a l'usuari
+// La funció buscar aula optimitzar-la i buscar l'aula que compleix el mínim de restriccions d'aquella sessió
 
+* Si no hi ha solució avisar a l'usuari
 * Poder carregar un fitxer per passar testos
+
 * Restricció correquisits entre assignatures
 * Restricció no solapament assignatures mateix nivell
-* A sessió mirar lo de Teoria o Laboratori com fer-ho
 
 TODO -> Víctor
 --------------
+// Quan crees una nova classe, comprova si existeix?
 * Fer Drivers i Stubs de les altres coses
-* Quan crees una nova classe, comprova si existeix?
 * Acabar el driver principal
-* Try catch xd que amb la conya no hem fet re haha
 
 TODO -> Andrea
 --------------
