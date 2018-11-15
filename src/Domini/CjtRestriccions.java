@@ -24,6 +24,109 @@ public class CjtRestriccions {
         this.rc  = new ArrayList<>();
     }
 
+    //Setters
+    public void setRs(ArrayList<RestriccioSolapar> rs) {
+        this.rs = rs;
+    }
+
+    public void setRr(ArrayList<RestriccioReserva> rr) {
+        this.rr = rr;
+    }
+
+    public void setRa(ArrayList<RestriccioAssigTemp> ra) {
+        this.ra = ra;
+    }
+
+    public void setRm(ArrayList<RestriccioMatins> rm) {
+        this.rm = rm;
+    }
+
+    public void setRt(ArrayList<RestriccioTardes> rt) {
+        this.rt = rt;
+    }
+
+    public void setRca(ArrayList<RestriccioCaracteristicaAula> rca) {
+        this.rca = rca;
+    }
+
+    public void setRc(ArrayList<RestriccioCorrequisit> rc) {
+        this.rc = rc;
+    }
+
+    public void setRn(ArrayList<RestriccioNivell> rn) {
+        this.rn = rn;
+    }
+
+    //Getters
+
+
+    public ArrayList<RestriccioSolapar> getRs() {
+        return rs;
+    }
+
+    public ArrayList<RestriccioReserva> getRr() {
+        return rr;
+    }
+
+    public ArrayList<RestriccioAssigTemp> getRa() {
+        return ra;
+    }
+
+    public ArrayList<RestriccioMatins> getRm() {
+        return rm;
+    }
+
+    public ArrayList<RestriccioTardes> getRt() {
+        return rt;
+    }
+
+    public ArrayList<RestriccioCaracteristicaAula> getRca() {
+        return rca;
+    }
+
+    public ArrayList<RestriccioCorrequisit> getRc() {
+        return rc;
+    }
+
+    public ArrayList<RestriccioNivell> getRn() {
+        return rn;
+    }
+
+
+    public void borraRs(int i) {
+        rs.remove(i-1);
+    }
+
+    public void borraRr(int i) {
+        rr.remove(i-1);
+    }
+
+    public void borraRa(int i) {
+        ra.remove(i-1);
+    }
+
+    public void borraRm(int i) {
+        rm.remove(i-1);
+    }
+
+    public void borraRt(int i) {
+        rt.remove(i-1);
+    }
+
+    public void borraRca(int i) {
+        rca.remove(i-1);
+    }
+
+    public void borraRc(int i) {
+        rc.remove(i-1);
+    }
+
+    public void borraRn(int i) {
+        rn.remove(i-1);
+    }
+
+
+
     public void addRestriccioAssigTemp(RestriccioAssigTemp r) {
         this.ra.add(r);
     }

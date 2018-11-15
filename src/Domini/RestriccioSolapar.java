@@ -34,4 +34,7 @@ public class RestriccioSolapar extends Restriccio {
         return true;
     }
 
+    public String escriuParellSessio() {
+        return (sessio_A.mostrarSessio() + " " + sessio_B.mostrarSessio());
+    }
 }

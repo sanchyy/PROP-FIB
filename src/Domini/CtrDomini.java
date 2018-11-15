@@ -34,6 +34,8 @@ public class CtrDomini {
         return unitatDocentSeleccionada;
     }
 
+    public CjtRestriccions getRestriccions() { return restriccions; }
+
     public void setPlaEstudisSeleccionat(Integer plaEstudisSeleccionat) {
         this.plaEstudisSeleccionat = plaEstudisSeleccionat;
     }
@@ -247,6 +249,4 @@ public class CtrDomini {
             System.out.println("["+(i++)+"] " + a.getNom());
         }
     }
-
-
 }
