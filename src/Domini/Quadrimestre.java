@@ -24,7 +24,7 @@ public class Quadrimestre {
     }
 
     public Sessio getSessio(int i) {
-        sessions.get(i-1);
+        return sessions.get(i-1);
     }
 
     public void borrarSessio(Integer b) {
