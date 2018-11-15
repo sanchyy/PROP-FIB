@@ -5,7 +5,6 @@ public class Sessio {
     private Assignatura assignatura;
     private Aula aula;
     private Integer grup;
-    private String tipus; // "TEORIA" o "LABORATORI"
 
     public Sessio() {
         this.assignatura = null;

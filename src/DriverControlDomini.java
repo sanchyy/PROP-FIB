@@ -120,10 +120,8 @@ public class DriverControlDomini {
         String nom = llegirString();
         System.out.println("Introdueix la capacitat de l'aula");
         Integer capacitat = llegirNumero();
-        System.out.println("És de teoria (TEORIA) o laboratori (LABORATORI)?");
-        String tipus = llegirString();
         ArrayList<CaracteristiquesAula> caracteristiques = llegirCaracteristiques();
-        ctrDomini.afegirAulaUnitatDocent(nom, capacitat, tipus, caracteristiques);
+        ctrDomini.afegirAulaUnitatDocent(nom, capacitat, caracteristiques);
     }
 
     public static ArrayList<CaracteristiquesAula> llegirCaracteristiques() {

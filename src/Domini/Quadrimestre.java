@@ -4,12 +4,10 @@ import java.util.ArrayList;
 
 public class Quadrimestre {
 
-    // private Periode periode;
     private ArrayList<Sessio> sessions;
 
     //Constructora
     public Quadrimestre() {
-        // this.periode = null;
         this.sessions = new ArrayList<>();
     }
 

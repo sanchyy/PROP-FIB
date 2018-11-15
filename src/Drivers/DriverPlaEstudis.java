@@ -18,7 +18,7 @@ public class DriverPlaEstudis {
         System.out.println(" [4] Borrar Pla d'estudi");
         Integer sel = llegirNumero();
         if (sel == 1) {
-            ctrDomini.;
+            //ctrDomini.;
         } else if (sel == 2) {
             System.out.println("Vols mostrar les Unitats Docents abans? (S/N)");
             String s = llegirString();

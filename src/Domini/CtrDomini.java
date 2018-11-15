@@ -58,10 +58,9 @@ public class CtrDomini {
         return getPlaEstudis().getQuadrimestres().get(quadrimestreSeleccionat);
     }
 
-    public void afegirAulaUnitatDocent(String nom, Integer capacitat, String tipus, ArrayList<CaracteristiquesAula> caracteristiques) {
-        Aula a = new Aula(nom, capacitat, tipus, caracteristiques);
+    public void afegirAulaUnitatDocent(String nom, Integer capacitat, ArrayList<CaracteristiquesAula> caracteristiques) {
+        Aula a = new Aula(nom, capacitat, caracteristiques);
         this.getUnitatDocent().afegirAulaDisponible(a);
-
     }
 
     public void afegirAssignaturaPlaEstudis(String nom, Integer quadri, Integer nivell, ArrayList<CaracteristiquesAula> teo, ArrayList<CaracteristiquesAula> lab) {

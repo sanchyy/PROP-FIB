@@ -1,9 +1,5 @@
 - Número, Tipus i Duració de les sessions de cada assignatura
 - Període lectiu
-- Si no hi ha solució avisar a l'usuari
-
-- Restricció correquisits entre assignatures
-- Restricció no solapament assignatures mateix nivell
 
 TODO -> Berni
 -------------
@@ -11,19 +7,18 @@ Algorisme:
 * Abans de generar l'horari hem de mirar si hi ha alguna sessió que no trobarà aula, PENSAR SI POT PASSAR MES AQUEST CAS (QUAN NO ES POT GENERAR PER EX.)
 * La funció buscar aula optimitzar-la i buscar l'aula que compleix el mínim de restriccions d'aquella sessió
 * Ordenar les llistes per a que vagi més ràpid el Generador
+* Si no hi ha solució avisar a l'usuari
 
-Driver:
 * Poder carregar un fitxer per passar testos
-
-* Quan crees una nova Unitat Docent no comprova si ja existeix
-* Mirar periode i date de Quadrimestre
+* Restricció correquisits entre assignatures
+* Restricció no solapament assignatures mateix nivell
 * A sessió mirar lo de Teoria o Laboratori com fer-ho
 
 TODO -> Víctor
 --------------
 * Fer Drivers i Stubs de les altres coses
+* Quan crees una nova classe, comprova si existeix?
 * Acabar el driver principal
-* Acabar JUnit
 * Try catch xd que amb la conya no hem fet re haha
 
 TODO -> Andrea

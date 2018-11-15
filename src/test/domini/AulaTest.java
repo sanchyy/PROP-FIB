@@ -14,10 +14,9 @@ public class AulaTest {
     public void checkAula() {
         String  nom = "A500";
         Integer cap = 20;
-        String  tip = "laboratori";
         ArrayList<CaracteristiquesAula> car= null;
 
-        Aula a = new Aula(nom,cap,tip,car);
+        Aula a = new Aula(nom,cap,car);
         Assert.assertNotNull(a);
     }
 
@@ -33,13 +32,6 @@ public class AulaTest {
         Aula a = new  Aula();
         a.setCapacitat(20);
         Assert.assertEquals(20,a.getCapacitat().intValue());
-    }
-
-    @Test
-    public void checkTipus() {
-        Aula a = new Aula();
-        a.setTipus("Laboratori");
-        Assert.assertEquals("Laboratori",a.getTipus());
     }
 
 }
