@@ -65,7 +65,7 @@ public class DriverAssignatura {
                 ctrDomini.afegirAssignaturaPlaEstudis(nom, quadri, nivell, teo, lab);
             }
         } else if (sel == 4) {
-            System.out.println("Vols mostrar l'assignatura abans? (S/N)");
+            System.out.println("Vols mostrar les Assignatures abans? (S/N)");
             String s = llegirString();
             if (s.equals("S") || s.equals("s")) ctrDomini.llistaAssignatures();
             System.out.println("Quina Assignatura vols borrar?");

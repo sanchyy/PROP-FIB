@@ -22,4 +22,12 @@ public class Quadrimestre {
     public void afegirSessio(Sessio sessio) {
         this.sessions.add(sessio);
     }
+
+    public Sessio getSessio(int i) {
+        sessions.get(i-1);
+    }
+
+    public void borrarSessio(Integer b) {
+        sessions.remove(b-1);
+    }
 }

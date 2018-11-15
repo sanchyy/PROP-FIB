@@ -28,10 +28,10 @@ public class DriverAula {
             System.out.println("Vols mostrar les Aules (S/N)");
             String s = llegirString();
             if (s.equals("S") || s.equals("s")) ctrDomini.llistaAules();
-            System.out.println("Quina Assignatures vols seleccionar?");
+            System.out.println("Quina Aula vols seleccionar?");
             Integer b = llegirNumero();
             try { ctrDomini.getAssignatura(b);}
-            catch (Exception e) {System.out.println("No hi ha cap Assignatura amb aquesta selecció");}
+            catch (Exception e) {System.out.println("No hi ha cap Aula amb aquesta selecció");}
         } else if (sel == 3) {
             System.out.println("Introdueix el nom de l'aula");
             String nom = llegirString();
@@ -40,14 +40,14 @@ public class DriverAula {
             ArrayList<CaracteristiquesAula> caracteristiques = llegirCaracteristiques();
             ctrDomini.afegirAulaUnitatDocent(nom, capacitat, caracteristiques);
         } else if (sel == 4) {
-            System.out.println("Vols mostrar l'Aula abans? (S/N)");
+            System.out.println("Vols mostrar les Aules abans? (S/N)");
             String s = llegirString();
             if (s.equals("S") || s.equals("s")) ctrDomini.llistaAssignatures();
             System.out.println("Quina Aula vols borrar?");
             Integer b = llegirNumero();
             try {
                 UnitatDocent ud = ctrDomini.getUnitatDocent(); ud.borrarAula(b);}
-            catch (Exception e) {System.out.println("No existeix aquesta assignatura");}
+            catch (Exception e) {System.out.println("No existeix aquesta aula");}
         } else {
             System.out.println("No hi ha cap acció disponible");
         }
