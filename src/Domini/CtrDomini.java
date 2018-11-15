@@ -173,20 +173,6 @@ public class CtrDomini {
 
     public void generarHorari() {
         Horari horariActual = new Horari();
-        System.out.println("Es generarà l'horari amb els següents objectes:");
-        System.out.println("    Pla d'Estudis: " + getPlaEstudis().getNom());
-        System.out.println("    Aules: ");
-        for (Aula a : getUnitatDocent().getAulesDisponibles()) {
-            System.out.println("        - " + a.getNom());
-        }
-        System.out.println("    Assignatures: ");
-        for (Assignatura a : getPlaEstudis().getAssignatures()) {
-            System.out.println("        - " + a.getNom());
-        }
-        System.out.println("    Sessions: ");
-        for (Sessio s : getQuadrimestre().getSessions()) {
-            System.out.println("        - " + s.getAssignatura().getNom());
-        }
         Generador bt = new Generador(horariActual, getPlaEstudis(), getQuadrimestre().getSessions(), restriccions);
         bt.generarHorari(getUnitatDocent().getAulesDisponibles());
         horariActual = bt.getHorari();

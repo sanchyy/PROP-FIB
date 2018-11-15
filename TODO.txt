@@ -1,20 +1,12 @@
-// Període lectiu
-* Duració de les sessions de cada assignatura
-
 TODO -> Berni
 -------------
-Algorisme:
-// La funció buscar aula optimitzar-la i buscar l'aula que compleix el mínim de restriccions d'aquella sessió
-
-* Restricció correquisits entre assignatures
-* Restricció no solapament assignatures mateix nivell
+* La funció buscar aula optimitzar-la i buscar l'aula que compleix el mínim de restriccions d'aquella sessió
+* Duració de les sessions de cada assignatura (Afegir restricció)
 
 TODO -> Víctor
 --------------
-// Quan crees una nova classe, comprova si existeix?
-* Fer Drivers i de les altres coses
-* Acabar el driver principal
+* Drivers
 
 TODO -> Andrea
 --------------
-* Documentació
+* Documentació & UML

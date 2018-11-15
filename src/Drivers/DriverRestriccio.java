@@ -24,15 +24,15 @@ public class DriverRestriccio {
         if (sel == 1) {
             DriverRestriccioSolapar.main(ctrDomini, scnr);
         } else if (sel == 2) {
-            DriverRestriccioMatins.main(ctrDomini, scnr);
+            // DriverRestriccioMatins.main(ctrDomini, scnr);
         } else if (sel == 3) {
-            DriverRestriccioTardes.main(ctrDomini, scnr);
+            // DriverRestriccioTardes.main(ctrDomini, scnr);
         } else if (sel == 4) {
-            DriverRestriccioCaracteristicaAula.main(ctrDomini, scnr);
+            // DriverRestriccioCaracteristicaAula.main(ctrDomini, scnr);
         } else if (sel == 5){
-            DriverRestriccioNivell.main(ctrDomini, scnr);
+            // DriverRestriccioNivell.main(ctrDomini, scnr);
         } else if (sel == 6) {
-            DriverRestriccioCorrequisit.main(ctrDomini, scnr);
+            // DriverRestriccioCorrequisit.main(ctrDomini, scnr);
         } else {
             System.out.println("No hi ha cap acció disponible");
         }

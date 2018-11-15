@@ -55,16 +55,16 @@ public class DriverControlDomini {
                     DriverAssignatura.main(ctrDomini, scanner);
                     break;
                 case 6:
-                    crearSessio();
+                    DriverSessio.main(ctrDomini, scanner);
                     break;
                 case 7:
-                    crearRestriccio();
+                    DriverRestriccio.main(ctrDomini, scanner);
                     break;
                 case 8:
                     ctrDomini.generarHorari();
                     break;
                 default:
-                    errorSeleccio();
+                    System.out.println("> Selecció incorrecta");
                     break;
             }
             mostrarMenuInici();
@@ -103,10 +103,6 @@ public class DriverControlDomini {
         System.out.println("[0] SORTIR\n");
     }
 
-    public static void errorSeleccio() {
-        System.out.println("> Selecció incorrecta");
-    }
-
     public static ArrayList<CaracteristiquesAula> llegirCaracteristiques() {
         ArrayList<CaracteristiquesAula> caracteristiques = new ArrayList<>();
         for (CaracteristiquesAula caracteristica : listEnum) {
@@ -117,51 +113,6 @@ public class DriverControlDomini {
         return caracteristiques;
     }
 
-    public static void crearSessio() {
-        System.out.println("De quina assignatura és aquesta sessió?");
-        String nomAssignatura = llegirString();
-        System.out.println("Vols crear les sessions d'una assignatura automàticament? (S/N)");
-        if (llegirString().equals("S")) {
-            System.out.println("Quants grups té aquesta assignatura?");
-            Integer grups = llegirNumero();
-            System.out.println("Quants sub-grups té cada grup?");
-            Integer subGrups = llegirNumero();
-            System.out.println("Quants són de tardes?");
-            Integer tardes = llegirNumero();
-            for (int i=0; i<grups; ++i) {
-                Integer grup = i*10 + 10;
-                ctrDomini.afegirSessioQuadrimestre(grup, nomAssignatura);
-                Integer numSessio = ctrDomini.getQuadrimestre().getSessions().size()-1;
-                if (i > (grups-tardes-1)) {
-                    ctrDomini.crearRestriccioTardes(numSessio);
-                } else {
-                    ctrDomini.crearRestriccioMatins(numSessio);
-                }
-                ctrDomini.crearRestriccioCaracteristicaAula(numSessio, ctrDomini.getLlistaCaracteristiquesTeoria(nomAssignatura));
-                for (int j=0; j<subGrups; ++j) {
-                    Integer subGrup = grup + j+1;
-                    ctrDomini.afegirSessioQuadrimestre(subGrup, nomAssignatura);
-                    Integer numSessioS = ctrDomini.getQuadrimestre().getSessions().size()-1;
-                    ctrDomini.crearRestriccioSolapar(numSessio, numSessioS);
-                    if (i > (grups-tardes-1)) {
-                        ctrDomini.crearRestriccioTardes(numSessioS);
-                    } else {
-                        ctrDomini.crearRestriccioMatins(numSessioS);
-                    }
-                    ctrDomini.crearRestriccioCaracteristicaAula(numSessioS, ctrDomini.getLlistaCaracteristiquesLab(nomAssignatura));
-                }
-            }
-        } else {
-            if (!ctrDomini.existeixAssignatura(nomAssignatura)) {
-                System.out.println("No existeix cap assignatura amb aquest nom");
-            } else {
-                System.out.println("Indica el grup d'aquesta assignatura");
-                Integer grup = llegirNumero();
-                ctrDomini.afegirSessioQuadrimestre(grup, nomAssignatura);
-            }
-        }
-    }
-
     public static void crearRestriccio() {
         System.out.println("Indica quina restricció vols crear:");
         System.out.println("[1] Característiques Aula");
@@ -170,17 +121,10 @@ public class DriverControlDomini {
         if (sel == 1) {
             crearRestriccioCaracteristicaAula();
         } else if (sel == 2) {
-            crearRestriccioSolapar();
+            // crearRestriccioSolapar();
         } else {
             System.out.println("Selecció incorrecte");
         }
-    }
-
-    public static void crearRestriccioSolapar() {
-        System.out.println("Sessions:");
-        System.out.println(ctrDomini.llistaSessions());
-        System.out.println("Introdueix les dos sessions que no vols que es solapin:");
-        ctrDomini.crearRestriccioSolapar(llegirNumero(), llegirNumero());
     }
 
     public static void crearRestriccioCaracteristicaAula() {
