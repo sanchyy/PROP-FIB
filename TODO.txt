@@ -1,7 +1,7 @@
 TODO -> Berni
 -------------
-* La funció buscar aula optimitzar-la i buscar l'aula que compleix el mínim de restriccions d'aquella sessió
-* Duració de les sessions de cada assignatura (Afegir restricció)
+// La funció buscar aula optimitzar-la i buscar l'aula que compleix el mínim de restriccions d'aquella sessió
+// * Duració de les sessions de cada assignatura (Afegir restricció)
 
 TODO -> Víctor
 --------------
@@ -10,4 +10,3 @@ TODO -> Víctor
 TODO -> Andrea
 --------------
 * Documentació & UML
-
