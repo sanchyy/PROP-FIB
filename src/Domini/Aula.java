@@ -44,7 +44,7 @@ public class Aula {
 
     //Getters
     public String getNom() {
-        return nom;
+        return this.nom;
     }
 
     public Integer getCapacitat() {
