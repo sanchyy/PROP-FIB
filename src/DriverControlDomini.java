@@ -96,7 +96,7 @@ public class DriverControlDomini {
         System.out.println("[3] Quadrimestre");
         System.out.println("[4] Aula");
         System.out.println("[5] Assignatura");
-        System.out.println("[6]  Sessió");
+        System.out.println("[6] Sessió");
         System.out.println("[7] Restricció");
         System.out.println("[8] Generar horari");
 
