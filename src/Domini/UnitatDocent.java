@@ -55,4 +55,7 @@ public class UnitatDocent {
         plansEstudis.remove(i-1);
     }
 
+    public void borrarAula(Integer b) {
+        aulesDisponibles.remove(b-1);
+    }
 }

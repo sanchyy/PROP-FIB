@@ -241,4 +241,13 @@ public class CtrDomini {
             System.out.println("["+(i++)+"] Q"+i);
         }
     }
+
+    public void llistaAules() {
+        int i = 1;
+        for (Aula a : getUnitatDocent().getAulesDisponibles()) {
+            System.out.println("["+(i++)+"] " + a.getNom());
+        }
+    }
+
+
 }
