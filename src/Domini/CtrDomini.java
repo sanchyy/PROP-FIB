@@ -123,7 +123,7 @@ public class CtrDomini {
 
 
     public String llistaSessions() {
-        Integer i = 0;
+        Integer i = 1;
         String sessions = "";
         for (Sessio s : getQuadrimestre().getSessions()) {
             sessions += "[" + i++ + "] " + s.getAssignatura().getNom() + "-" + s.getGrup() + "\n";
@@ -231,6 +231,8 @@ public class CtrDomini {
     public void borrarPlaEstudis(Integer b) {
         getUnitatDocent().getPlansEstudis().remove(getUnitatDocent().getPlansEstudis().get(b-1));
     }
+
+
 
     public void llistaQuadrimestres() {
         int i = 1;
