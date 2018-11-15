@@ -9,6 +9,13 @@ public class Aula {
     private String tipus; // "TEORIA" o "LABORATORI"
     private ArrayList<CaracteristiquesAula> caracteristiques;
 
+    public Aula() {
+        this.nom              = null;
+        this.capacitat        = 0;
+        this.tipus            = null;
+        this.caracteristiques = new ArrayList<CaracteristiquesAula>();
+    }
+
     public Aula(String nom, Integer capacitat, String tipus, ArrayList<CaracteristiquesAula> caracteristiques) {
         this.nom              = nom;
         this.capacitat        = capacitat;
@@ -38,7 +45,7 @@ public class Aula {
     //Getters
 
     public String getNom() {
-        return this.nom;
+        return nom;
     }
 
     public Integer getCapacitat() {

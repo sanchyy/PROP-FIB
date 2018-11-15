@@ -21,5 +21,4 @@ Driver:
 TODO -> Víctor
 --------------
 * Fer Drivers i Stubs de les altres coses
-* Acabar JUnit
 * Try catch xd que amb la conya no hem fet re haha
