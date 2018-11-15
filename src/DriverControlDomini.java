@@ -92,12 +92,12 @@ public class DriverControlDomini {
         System.out.println("Accions disponibles");
         System.out.println("-------------------");
         System.out.println("[1] UnitatDocent");
-        System.out.println("[2] Crear PlaEstudis");
-        System.out.println("[3] Crear Quadrimestre");
-        System.out.println("[4] Crear Aula");
-        System.out.println("[5] Crear Assignatura");
-        System.out.println("[6] Crear Sessió");
-        System.out.println("[7] Crear Restricció");
+        System.out.println("[2] PlaEstudis");
+        System.out.println("[3] Quadrimestre");
+        System.out.println("[4] Aula");
+        System.out.println("[5] Assignatura");
+        System.out.println("[6]  Sessió");
+        System.out.println("[7] Restricció");
         System.out.println("[8] Generar horari");
 
         System.out.println("[0] SORTIR\n");
