@@ -6,7 +6,6 @@ TODO -> Berni
 Algorisme:
 // La funció buscar aula optimitzar-la i buscar l'aula que compleix el mínim de restriccions d'aquella sessió
 
-* Si no hi ha solució avisar a l'usuari
 * Poder carregar un fitxer per passar testos
 
 * Restricció correquisits entre assignatures
@@ -15,7 +14,7 @@ Algorisme:
 TODO -> Víctor
 --------------
 // Quan crees una nova classe, comprova si existeix?
-* Fer Drivers i Stubs de les altres coses
+* Fer Drivers i de les altres coses
 * Acabar el driver principal
 
 TODO -> Andrea

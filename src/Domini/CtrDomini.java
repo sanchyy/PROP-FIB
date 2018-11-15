@@ -192,7 +192,7 @@ public class CtrDomini {
     }
 
     public void llistaUnitatsDocents() {
-        Integer i = 0;
+        Integer i = 1;
         for (UnitatDocent ud : unitatsDocents.getUnitatsDocents()) {
             System.out.println("[" + i++ + "] " + ud.getNom());
         }
@@ -215,18 +215,16 @@ public class CtrDomini {
     }
 
     public void llistaAssignatures() {
-        System.out.println("LLISTAT ASSIGNATURES");
         int i = 1;
         for (Assignatura a : getPlaEstudis().getAssignatures()) {
-            System.out.println("["+(i++)+"]Nom: " + a.getNom());
+            System.out.println("["+(i++)+"] " + a.getNom());
         }
     }
 
     public void llistaPlaEstudi() {
-        System.out.println("LLISTAT PLANS D'ESTUDI");
         int i = 1;
         for (PlaEstudis pe : getUnitatDocent().getPlansEstudis()) {
-            System.out.println("["+(i++)+"]Nom: " + pe.getNom());
+            System.out.println("["+(i++)+"] " + pe.getNom());
         }
     }
 
@@ -235,7 +233,6 @@ public class CtrDomini {
     }
 
     public void llistaQuadrimestres() {
-        System.out.println("LLISTAT QUADRIMESTRES");
         int i = 1;
         for (Quadrimestre q : getPlaEstudis().getQuadrimestres()) {
             System.out.println("["+(i++)+"] Q"+i);

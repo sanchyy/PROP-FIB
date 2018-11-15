@@ -30,7 +30,8 @@ public class DriverQuadrimestre {
             try { ctrDomini.getQuadrimestre();}
             catch (Exception e) {System.out.println("No hi ha cap Assignatura amb aquesta selecció");}
         } else if (sel == 3) {
-            System.out.println("creant el quatrimestre");
+            System.out.println("Creant el quatrimestre");
+            ctrDomini.afegirQuadrimestre();
         } else if (sel == 4) {
             System.out.println("Vols mostrar els Quadrimestres abans? (S/N)");
             String s = llegirString();

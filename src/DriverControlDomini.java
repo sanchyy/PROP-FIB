@@ -1,10 +1,8 @@
 import Domini.*;
-import Drivers.DriverUnitatDocent;
+import Drivers.*;
 
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,22 +13,29 @@ public class DriverControlDomini {
     public static CtrDomini ctrDomini = new CtrDomini();
     private static Scanner scanner = new Scanner(System.in);
 
-    // TODO: Per controlador?
     public static List<CaracteristiquesAula> listEnum = Arrays.asList(CaracteristiquesAula.values());
 
     public static void main(String[] args) {
         mostrarTextInici();
-        mostrarMenuInici();
+        System.out.println("Vols carregar l'horari a partir d'un fitxer? (S/N)");
+        String sel = llegirString();
+        if (sel.equalsIgnoreCase("S")) {
 
-        /*
-        try {
-            String data = readFile("./TEST_GENERAL.txt");
-            System.out.println(data);
-        } catch(IOException ex) {
-            System.out.println("Format del fitxer incorrecte");
+            File tests = new File("./tests/");
+            for (final File fileEntry : tests.listFiles()) {
+                System.out.println(fileEntry.getName());
+            }
+
+            System.out.println("Introdueix el test que vols usar:");
+            String test = llegirString();
+
+            try {
+                scanner = new Scanner(new File(test));
+            } catch (FileNotFoundException c) {
+                System.out.println("El fitxer no existeix");
+            }
         }
-        */
-
+        mostrarMenuInici();
         Integer seleccio = llegirNumero();
         while (seleccio != 0) {
             switch (seleccio) {
@@ -38,16 +43,16 @@ public class DriverControlDomini {
                     DriverUnitatDocent.main(ctrDomini, scanner);
                     break;
                 case 2:
-                    crearPlaEstudis();
+                    DriverPlaEstudis.main(ctrDomini, scanner);
                     break;
                 case 3:
-                    crearQuadrimestre();
+                    DriverQuadrimestre.main(ctrDomini, scanner);
                     break;
                 case 4:
-                    crearAula();
+                    DriverAula.main(ctrDomini, scanner);
                     break;
                 case 5:
-                    crearAssignatura();
+                    DriverAssignatura.main(ctrDomini, scanner);
                     break;
                 case 6:
                     crearSessio();
@@ -56,7 +61,7 @@ public class DriverControlDomini {
                     crearRestriccio();
                     break;
                 case 8:
-                    generarHorari();
+                    ctrDomini.generarHorari();
                     break;
                 default:
                     errorSeleccio();
@@ -65,13 +70,6 @@ public class DriverControlDomini {
             mostrarMenuInici();
             seleccio = llegirNumero();
         }
-
-    }
-
-    static String readFile(String path) throws IOException {
-        Charset encoding = Charset.defaultCharset();
-        byte[] encoded = Files.readAllBytes(Paths.get(path));
-        return new String(encoded, encoding);
     }
 
     public static void mostrarTextInici() {
@@ -109,21 +107,6 @@ public class DriverControlDomini {
         System.out.println("> Selecció incorrecta");
     }
 
-    public static void crearPlaEstudis() {
-        System.out.println("Introdueix el nom del pla d'estudis");
-        String nom = llegirString();
-        ctrDomini.afegirPlaEstudis(nom);
-    }
-
-    public static void crearAula() {
-        System.out.println("Introdueix el nom de l'aula");
-        String nom = llegirString();
-        System.out.println("Introdueix la capacitat de l'aula");
-        Integer capacitat = llegirNumero();
-        ArrayList<CaracteristiquesAula> caracteristiques = llegirCaracteristiques();
-        ctrDomini.afegirAulaUnitatDocent(nom, capacitat, caracteristiques);
-    }
-
     public static ArrayList<CaracteristiquesAula> llegirCaracteristiques() {
         ArrayList<CaracteristiquesAula> caracteristiques = new ArrayList<>();
         for (CaracteristiquesAula caracteristica : listEnum) {
@@ -132,40 +115,6 @@ public class DriverControlDomini {
             if (resp.equals("S")) caracteristiques.add(caracteristica);
         }
         return caracteristiques;
-    }
-
-    public static void crearAssignatura() {
-        System.out.println("Introdueix els seguents paràmetres:");
-        System.out.println("Nom de l'assignatura:");
-        String nom = llegirString();
-
-        System.out.println("Quins quadrimestres estarà disponible?");
-        System.out.println("[1] Q1");
-        System.out.println("[2] Q2");
-        System.out.println("[3] Q1 i Q2");
-        Integer quadri = llegirNumero();
-
-        System.out.println("A quin nivell del pla d'estudis pertany?");
-        System.out.println("[1] Troncal");
-        System.out.println("[2] Obligatori");
-        System.out.println("[3] Especialitat");
-        Integer nivell = llegirNumero();
-
-        System.out.println("Quines característiques tenen les classes de Teoria?");
-        ArrayList<CaracteristiquesAula> teo = llegirCaracteristiques();
-
-        System.out.println("Quines característiques tenen les classes de Laboratori?");
-        ArrayList<CaracteristiquesAula> lab = llegirCaracteristiques();
-
-        System.out.println("A quin pla destudis pertany?");
-        String nomPlaEstudis = llegirString();
-
-        if (ctrDomini.existeixPlaEstudis(nomPlaEstudis)) {
-            ctrDomini.afegirAssignaturaPlaEstudis(nom, quadri, nivell, nomPlaEstudis, teo, lab);
-        } else {
-            System.out.println("No existeix el pla d'estudis especificat, es crea igualment l'assignatura.");
-            ctrDomini.afegirAssignaturaPlaEstudis(nom, quadri, nivell, teo, lab);
-        }
     }
 
     public static void crearSessio() {
@@ -213,16 +162,6 @@ public class DriverControlDomini {
         }
     }
 
-    public static void generarHorari() {
-        ctrDomini.generarHorari();
-    }
-
-    public static void crearQuadrimestre() {
-        System.out.println("Crear quadrimestre:");
-        ctrDomini.afegirQuadrimestre();
-    }
-
-    //Restriccions
     public static void crearRestriccio() {
         System.out.println("Indica quina restricció vols crear:");
         System.out.println("[1] Característiques Aula");
@@ -301,10 +240,6 @@ public class DriverControlDomini {
         }
 
         ctrDomini.crearRestriccioAssigTemp(dia,hora,assig);
-    }
-
-    public static void crearRestriccioJornada() {
-        //
     }
 
     public static String llegirString() {
