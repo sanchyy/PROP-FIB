@@ -1,6 +1,11 @@
-- Stubs
-- Fer funcionalitat de testejar des d'un fitxer
 - Documentació
+- Període de classes
+- Propietats de cada assignatrua
+- Restricció no solapament assignatures mateix nivell
+- Restricció correquisits entre assignatures
+- Número, Tipus i Duració de les sessions de cada assignatura
+- Període lectiu
+- Si no hi ha solució avisar a l'usuari
 
 TODO -> Berni
 -------------
@@ -10,15 +15,15 @@ Algorisme:
 * Ordenar les llistes per a que vagi més ràpid el Generador
 
 Driver:
-* Acabar el driver principal
 * Poder carregar un fitxer per passar testos
 
 * Quan crees una nova Unitat Docent no comprova si ja existeix
-* Acabar de fer restriccions i provar-les
 * Mirar periode i date de Quadrimestre
 * A sessió mirar lo de Teoria o Laboratori com fer-ho
 
 TODO -> Víctor
 --------------
 * Fer Drivers i Stubs de les altres coses
+* Acabar el driver principal
+* Acabar JUnit
 * Try catch xd que amb la conya no hem fet re haha
