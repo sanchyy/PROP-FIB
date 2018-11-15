@@ -43,9 +43,7 @@ public class PlaEstudis {
         return null;
     }
 
-    public void borrarAssignatura(String nomAssig) {
-       Assignatura a = getAssignatura(nomAssig);
-        assignatures.remove(a);
+    public void borrarAssignatura(int i) {
+        assignatures.remove(i-1);
     }
-
 }

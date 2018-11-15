@@ -70,7 +70,7 @@ public class DriverAssignatura {
             if (s.equals("S") || s.equals("s")) ctrDomini.llistaAssignatures();
             System.out.println("Quina Assignatura vols borrar?");
             Integer b = llegirNumero();
-            try {PlaEstudis pe = ctrDomini.getPlaEstudis(); pe.borrarAssignatura();}
+            try {PlaEstudis pe = ctrDomini.getPlaEstudis(); pe.borrarAssignatura(b);}
             catch (Exception e) {System.out.println("No existeix aquesta assignatura");}
         } else {
             System.out.println("No hi ha cap acció disponible");

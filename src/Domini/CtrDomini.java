@@ -118,9 +118,6 @@ public class CtrDomini {
         this.unitatDocentSeleccionada = null;
     }
 
-    public void borrarPlaEstudis(Integer i) {
-
-    }
 
     public String llistaSessions() {
         Integer i = 0;
@@ -216,8 +213,9 @@ public class CtrDomini {
 
     public void llistaAssignatures() {
         System.out.println("LLISTANT ASSIGNATURES");
+        int i = 1;
         for (Assignatura a : getPlaEstudis().getAssignatures()) {
-            System.out.println("Nom: " + a.getNom());
+            System.out.println("["+(i++)+"]Nom: " + a.getNom());
         }
     }
 
