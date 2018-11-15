@@ -43,7 +43,6 @@ public class Aula {
 
 
     //Getters
-
     public String getNom() {
         return this.nom;
     }

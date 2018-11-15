@@ -42,6 +42,15 @@ public class UnitatDocent {
         return null;
     }
 
+    public Aula getAula(String nom) {
+        for (Aula a : aulesDisponibles) {
+            if (a.getNom().equals(nom)) {
+                return a;
+            }
+        }
+        return null;
+    }
+
     public void BorrarPlaEstudis(int i) {
         plansEstudis.remove(i-1);
     }
