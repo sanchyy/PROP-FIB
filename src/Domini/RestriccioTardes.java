@@ -19,6 +19,10 @@ public class RestriccioTardes extends Restriccio {
         }
     }
 
+    public String getSessio() {
+        return sessio.mostrarSessio();
+    }
+
     public boolean compleixRestriccio(Sessio comp, Aula aula) {
         return true;
     }

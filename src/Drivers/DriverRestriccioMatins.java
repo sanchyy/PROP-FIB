@@ -22,8 +22,8 @@ public class DriverRestriccioMatins {
         if (sel == 1) {
             ArrayList<RestriccioMatins> lrm = ctrDomini.getRestriccions().getRm();
             int i = 1;
-            for (RestriccioMatins rs : lrm) {
-                System.out.println("["+(i++)+"]"+rs.getSessio());
+            for (RestriccioMatins rm : lrm) {
+                System.out.println("["+(i++)+"]"+rm.getSessio());
             }
         } else if (sel == 2) {
 
