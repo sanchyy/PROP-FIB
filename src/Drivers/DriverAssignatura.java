@@ -1,7 +1,12 @@
 package Drivers;
 
+import Domini.CaracteristiquesAula;
 import Domini.CtrDomini;
+import Domini.PlaEstudis;
 
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class DriverAssignatura {
@@ -19,26 +24,54 @@ public class DriverAssignatura {
         System.out.println(" [4] Borrar Assignatura");
         Integer sel = llegirNumero();
         if (sel == 1) {
-            ctrDomini.llistaUnitatsDocents();
+            ctrDomini.llistaAssignatures();
         } else if (sel == 2) {
-            System.out.println("Vols mostrar les Unitats Docents abans? (S/N)");
+            System.out.println("Vols mostrar les Assignatures (S/N)");
             String s = llegirString();
-            if (s.equals("S")) ctrDomini.llistaUnitatsDocents();
-            System.out.println("Quina Unitat Docent vols seleccionar?");
-            Integer ud = llegirNumero();
-            if (ud < ctrDomini.midaUnitatsDocents()) ctrDomini.setUnitatDocentSeleccionada(ud);
-            else System.out.println("No hi ha cap Unitat Docent amb aquesta selecció");
+            if (s.equals("S") || s.equals("s")) ctrDomini.llistaAssignatures();
+            System.out.println("Quina Assignatures vols seleccionar?");
+            String ass = llegirString();
+            try { ctrDomini.getAssignatura(ass);}
+            catch (Exception e) {System.out.println("No hi ha cap Assignatura amb aquesta selecció");}
         } else if (sel == 3) {
-            System.out.println("Introdueix un nom per la nova Unitat Docent:");
+            System.out.println("Nom de l'assignatura:");
             String nom = llegirString();
-            ctrDomini.afegirUnitatDocent(nom);
+
+            System.out.println("Quins quadrimestres estarà disponible?");
+            System.out.println("[1] Q1");
+            System.out.println("[2] Q2");
+            System.out.println("[3] Q1 i Q2");
+            Integer quadri = llegirNumero();
+
+            System.out.println("A quin nivell del pla d'estudis pertany?");
+            System.out.println("[1] Troncal");
+            System.out.println("[2] Obligatori");
+            System.out.println("[3] Especialitat");
+            Integer nivell = llegirNumero();
+
+            System.out.println("Quines característiques tenen les classes de Teoria?");
+            ArrayList<CaracteristiquesAula> teo = llegirCaracteristiques();
+
+            System.out.println("Quines característiques tenen les classes de Laboratori?");
+            ArrayList<CaracteristiquesAula> lab = llegirCaracteristiques();
+
+            System.out.println("A quin pla destudis pertany?");
+            String nomPlaEstudis = llegirString();
+
+            if (ctrDomini.existeixPlaEstudis(nomPlaEstudis)) {
+                ctrDomini.afegirAssignaturaPlaEstudis(nom, quadri, nivell, nomPlaEstudis, teo, lab);
+            } else {
+                System.out.println("No existeix el pla d'estudis especificat, es crea igualment l'assignatura.");
+                ctrDomini.afegirAssignaturaPlaEstudis(nom, quadri, nivell, teo, lab);
+            }
         } else if (sel == 4) {
-            System.out.println("Vols mostrar les Unitats Docents abans? (S/N)");
+            System.out.println("Vols mostrar els Plans d'Estudi abans? (S/N)");
             String s = llegirString();
-            if (s.equals("S")) ctrDomini.llistaUnitatsDocents();
+            if (s.equals("S") || s.equals("s")) ctrDomini.llistaUnitatsDocents();
             System.out.println("Quina Unitat Docent vols borrar?");
             Integer b = llegirNumero();
-            ctrDomini.borrarUnitatDocent(b);
+            try {}
+            catch (Exception e) {System.out.println("No existeix aquesta assignatura");}
         } else {
             System.out.println("No hi ha cap acció disponible");
         }
@@ -50,6 +83,16 @@ public class DriverAssignatura {
 
     public static Integer llegirNumero() {
         return scanner.nextInt();
+    }
+
+    public static ArrayList<CaracteristiquesAula> llegirCaracteristiques() {
+        ArrayList<CaracteristiquesAula> caracteristiques = new ArrayList<>();
+        for (CaracteristiquesAula caracteristica : Arrays.asList(CaracteristiquesAula.values())) {
+            System.out.println("Té la següent característica (S/N)? (" + caracteristica.toString() + ")");
+            String resp = llegirString();
+            if (resp.equals("S")) caracteristiques.add(caracteristica);
+        }
+        return caracteristiques;
     }
 
 
