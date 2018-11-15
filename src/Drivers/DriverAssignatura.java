@@ -61,16 +61,16 @@ public class DriverAssignatura {
             if (ctrDomini.existeixPlaEstudis(nomPlaEstudis)) {
                 ctrDomini.afegirAssignaturaPlaEstudis(nom, quadri, nivell, nomPlaEstudis, teo, lab);
             } else {
-                System.out.println("No existeix el pla d'estudis especificat, es crea igualment l'assignatura.");
+                System.out.println("No existeix l'Assignatura especificada, es crea igualment l'assignatura.");
                 ctrDomini.afegirAssignaturaPlaEstudis(nom, quadri, nivell, teo, lab);
             }
         } else if (sel == 4) {
-            System.out.println("Vols mostrar els Plans d'Estudi abans? (S/N)");
+            System.out.println("Vols mostrar l'assignatura abans? (S/N)");
             String s = llegirString();
-            if (s.equals("S") || s.equals("s")) ctrDomini.llistaUnitatsDocents();
-            System.out.println("Quina Unitat Docent vols borrar?");
+            if (s.equals("S") || s.equals("s")) ctrDomini.llistaAssignatures();
+            System.out.println("Quina Assignatura vols borrar?");
             Integer b = llegirNumero();
-            try {}
+            try {PlaEstudis pe = ctrDomini.getPlaEstudis(); pe.borrarAssignatura();}
             catch (Exception e) {System.out.println("No existeix aquesta assignatura");}
         } else {
             System.out.println("No hi ha cap acció disponible");
