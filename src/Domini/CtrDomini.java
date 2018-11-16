@@ -142,6 +142,22 @@ public class CtrDomini {
         restriccions.addRestriccioSolapar(r);
     }
 
+    public void crearRestriccioCorrequisit(Integer a, Integer b) {
+        Sessio A = getQuadrimestre().getSessions().get(a);
+        Sessio B = getQuadrimestre().getSessions().get(b);
+
+        RestriccioCorrequisit r = new RestriccioCorrequisit(A,B);
+        restriccions.addRestriccioCorrequisit(r);
+    }
+
+    public void crearRestriccioNivell(Integer a, Integer b) {
+        Sessio A = getQuadrimestre().getSessions().get(a);
+        Sessio B = getQuadrimestre().getSessions().get(b);
+
+        RestriccioNivell r = new RestriccioNivell(A,B);
+        restriccions.addRestriccioNivell(r);
+    }
+
     public void crearRestriccioReservar(String aula, Integer dia, Integer hora) {
         RestriccioReserva r = new RestriccioReserva(aula, dia, hora);
         restriccions.addRestriccioReserva(r);

@@ -108,7 +108,7 @@ public class DriverControlDomini {
         for (CaracteristiquesAula caracteristica : listEnum) {
             System.out.println("Té la següent característica (S/N)? (" + caracteristica.toString() + ")");
             String resp = llegirString();
-            if (resp.equals("S")) caracteristiques.add(caracteristica);
+            if (resp.equals("S") || resp.equals("s")) caracteristiques.add(caracteristica);
         }
         return caracteristiques;
     }

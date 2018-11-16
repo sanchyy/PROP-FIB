@@ -30,6 +30,10 @@ public class RestriccioCorrequisit extends Restriccio {
         return true;
     }
 
+    public String escriuParellSessio() {
+        return (sessio_A.mostrarSessio() + " " + sessio_B.mostrarSessio());
+    }
+
     public boolean compleixRestriccio(Sessio comp, Aula aula) {
         return true;
     }

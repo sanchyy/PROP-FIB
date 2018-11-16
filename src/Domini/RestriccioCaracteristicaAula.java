@@ -17,6 +17,10 @@ public class RestriccioCaracteristicaAula extends Restriccio {
         return true;
     }
 
+    public Pair<String,ArrayList<CaracteristiquesAula>> getSessioCarac() {
+        return new Pair<String,ArrayList<CaracteristiquesAula>>(sessio.mostrarSessio(),caracteristiques);
+    }
+
     public boolean compleixRestriccio(Sessio comp, Aula aula) {
         if (comp.sonIguals(sessio)) {
             Integer count = 0;
