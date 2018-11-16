@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class DriverRestriccio {
 
     public static Scanner scanner = new Scanner(System.in);
-    public static CtrDomini ctrDomini = new CtrDomini(1);
+    public static CtrDomini ctrDomini = null;
 
     public static void runDriver(CtrDomini ctr, Scanner scnr) {
         ctrDomini = ctr;
@@ -18,6 +18,7 @@ public class DriverRestriccio {
     }
 
     public static void main(String[] args) {
+        if (ctrDomini == null) new CtrDomini(1);
         System.out.println("---------------------------");
         System.out.println("Quina acció vols realitzar?");
         System.out.println("---------------------------");

@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class DriverQuadrimestre {
 
     public static Scanner scanner = new Scanner(System.in);
-    public static CtrDomini ctrDomini = new CtrDomini(3);
+    public static CtrDomini ctrDomini = null;
 
     public static void runDriver(CtrDomini ctr, Scanner scnr) {
         ctrDomini = ctr;
@@ -18,6 +18,7 @@ public class DriverQuadrimestre {
     }
 
     public static void main(String[] args) {
+        if (ctrDomini == null) new CtrDomini(3);
         System.out.println("---------------------------");
         System.out.println("Quina acció vols realitzar?");
         System.out.println("---------------------------");

@@ -12,13 +12,20 @@ public class CtrDomini {
     private CjtRestriccions restriccions;
 
     public CtrDomini(Integer lvl) {
-        if (lvl > 0) afegirUnitatDocent("FIB");
-        if (lvl > 1) afegirPlaEstudis("FIB_2010");
-        if (lvl > 2) afegirQuadrimestre();
-        if (lvl > 3) afegirAssignaturaPlaEstudis("PROP", 3, 2, "FIB", new ArrayList<>(), new ArrayList<>());
-        if (lvl > 4) afegirAulaUnitatDocent("A6203", 30, new ArrayList<>());
-        if (lvl > 5) afegirSessioQuadrimestre(11, "PROP");
-        this.restriccions = new CjtRestriccions();
+        if (lvl == 0) {
+            this.unitatDocentSeleccionada = null;
+            this.plaEstudisSeleccionat    = null;
+            this.quadrimestreSeleccionat  = null;
+            this.restriccions             = new CjtRestriccions();
+        } else {
+            if (lvl > 0) afegirUnitatDocent("FIB");
+            if (lvl > 1) afegirPlaEstudis("FIB_2010");
+            if (lvl > 2) afegirQuadrimestre();
+            if (lvl > 3) afegirAssignaturaPlaEstudis("PROP", 3, 2, "FIB", new ArrayList<>(), new ArrayList<>());
+            if (lvl > 4) afegirAulaUnitatDocent("A6203", 30, new ArrayList<>());
+            if (lvl > 5) afegirSessioQuadrimestre(11, "PROP");
+            this.restriccions = new CjtRestriccions();
+        }
     }
 
     public CtrDomini() {

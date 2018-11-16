@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class DriverControlDomini {
 
-    public static CtrDomini ctrDomini = new CtrDomini();
+    public static CtrDomini ctrDomini = new CtrDomini(0);
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
