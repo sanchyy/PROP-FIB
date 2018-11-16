@@ -46,7 +46,7 @@ public class DriverRestriccioTardes {
             System.out.println("Quina Restricció vols borrar?");
             Integer b = llegirNumero();
             try {
-                ctrDomini.getRestriccions().borraRt(b-1);}
+                ctrDomini.getRestriccions().borraRt(b);}
             catch (Exception e) {System.out.println("No existeix aquesta aula");}
         } else {
             System.out.println("No hi ha cap acció disponible");

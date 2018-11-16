@@ -46,8 +46,8 @@ public class DriverRestriccioMatins {
             System.out.println("Quina Restricció vols borrar?");
             Integer b = llegirNumero();
             try {
-                ctrDomini.getRestriccions().borraRm(b-1);}
-            catch (Exception e) {System.out.println("No existeix aquesta aula");}
+                ctrDomini.getRestriccions().borraRm(b);}
+            catch (Exception e) {System.out.println("No existeix aquesta Restriccio");}
         } else {
             System.out.println("No hi ha cap acció disponible");
         }

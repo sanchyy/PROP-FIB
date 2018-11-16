@@ -48,7 +48,7 @@ public class DriverRestriccioSolapar {
             System.out.println("Quina Restricció vols borrar?");
             Integer b = llegirNumero();
             try {
-                ctrDomini.getRestriccions().borraRs(b-1);}
+                ctrDomini.getRestriccions().borraRs(b);}
             catch (Exception e) {System.out.println("No existeix aquesta aula");}
         } else {
             System.out.println("No hi ha cap acció disponible");

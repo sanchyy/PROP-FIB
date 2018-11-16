@@ -46,7 +46,7 @@ public class DriverRestriccioNivell {
             System.out.println("Quina Restricció vols borrar?");
             Integer b = llegirNumero();
             try {
-                ctrDomini.getRestriccions().borraRn(b-1);}
+                ctrDomini.getRestriccions().borraRn(b);}
             catch (Exception e) {System.out.println("No existeix aquesta Restricció");}
         } else {
             System.out.println("No hi ha cap acció disponible");
