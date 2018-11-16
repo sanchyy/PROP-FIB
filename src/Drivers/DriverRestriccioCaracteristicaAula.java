@@ -32,7 +32,7 @@ public class DriverRestriccioCaracteristicaAula {
         } else if (sel == 3) {
             System.out.println("Sessions:");
             System.out.println(ctrDomini.llistaSessions());
-            Integer sessio = llegirNumero();
+            Integer sessio = llegirNumero()-1;
             System.out.println("Caracteristiques:");
             ArrayList<CaracteristiquesAula> caracteristiques = llegirCaracteristiques();
             ctrDomini.crearRestriccioCaracteristicaAula(sessio, caracteristiques);

@@ -31,7 +31,7 @@ public class DriverRestriccioNivell {
             System.out.println("Llistat Sessions:");
             System.out.println(ctrDomini.llistaSessions());
             System.out.println("Introdueix la sessio que");
-            ctrDomini.crearRestriccioNivell(llegirNumero(), llegirNumero());
+            ctrDomini.crearRestriccioNivell(llegirNumero()-1, llegirNumero()-1);
 
         } else if (sel == 4) {
             System.out.println("Vols mostrar les Restriccions abans? (S/N)");

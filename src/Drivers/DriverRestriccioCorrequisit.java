@@ -31,7 +31,7 @@ public class DriverRestriccioCorrequisit {
             System.out.println("Llistat Sessions:");
             System.out.println(ctrDomini.llistaSessions());
             System.out.println("Introdueix la sessio A i sessió B, tal que A sigui correquisit de B");
-            ctrDomini.crearRestriccioCorrequisit(llegirNumero(), llegirNumero());
+            ctrDomini.crearRestriccioCorrequisit(llegirNumero()-1, llegirNumero()-1);
 
         } else if (sel == 4) {
             System.out.println("Vols mostrar les Restriccions abans? (S/N)");

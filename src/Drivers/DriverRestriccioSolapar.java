@@ -33,7 +33,7 @@ public class DriverRestriccioSolapar {
             System.out.println("Llistat Sessions:");
             System.out.println(ctrDomini.llistaSessions());
             System.out.println("Introdueix les dos sessions que no vols que es solapin:");
-            ctrDomini.crearRestriccioSolapar(llegirNumero(), llegirNumero());
+            ctrDomini.crearRestriccioSolapar(llegirNumero()-1, llegirNumero()-1);
 
         } else if (sel == 4) {
             System.out.println("Vols mostrar les Restriccions abans? (S/N)");

@@ -31,7 +31,7 @@ public class DriverRestriccioTardes {
             System.out.println("Llistat Sessions:");
             System.out.println(ctrDomini.llistaSessions());
             System.out.println("Introdueix la sessio que vols que vagi a matin");
-            ctrDomini.crearRestriccioTardes(llegirNumero());
+            ctrDomini.crearRestriccioTardes(llegirNumero()-1);
 
         } else if (sel == 4) {
             System.out.println("Vols mostrar les Restriccions abans? (S/N)");
