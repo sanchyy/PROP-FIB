@@ -7,10 +7,17 @@ import java.util.Scanner;
 
 public class DriverQuadrimestre {
 
-    public static Scanner scanner;
+    public static Scanner scanner = new Scanner(System.in);
+    public static CtrDomini ctrDomini = new CtrDomini(1);
 
-    public static void main(CtrDomini ctrDomini, Scanner scnr) {
+    public static void runDriver(CtrDomini ctr, Scanner scnr) {
+        ctrDomini = ctr;
         scanner = scnr;
+        String[] str = new String[0];
+        main(str);
+    }
+
+    public static void main(String[] args) {
         System.out.println("---------------------------");
         System.out.println("Quina acció vols realitzar?");
         System.out.println("---------------------------");
@@ -44,6 +51,9 @@ public class DriverQuadrimestre {
         } else {
             System.out.println("No hi ha cap acció disponible");
         }
+        System.out.println("Vols realitzar una altre acció? (S/N)");
+        String sn = llegirString();
+        if (sn.equalsIgnoreCase("s")) main(new String[0]);
     }
 
     public static String llegirString() {

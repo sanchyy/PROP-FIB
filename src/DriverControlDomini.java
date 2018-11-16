@@ -43,22 +43,22 @@ public class DriverControlDomini {
                     DriverUnitatDocent.runDriver(ctrDomini, scanner);
                     break;
                 case 2:
-                    DriverPlaEstudis.main(ctrDomini, scanner);
+                    DriverPlaEstudis.runDriver(ctrDomini, scanner);
                     break;
                 case 3:
-                    DriverQuadrimestre.main(ctrDomini, scanner);
+                    DriverQuadrimestre.runDriver(ctrDomini, scanner);
                     break;
                 case 4:
-                    DriverAula.main(ctrDomini, scanner);
+                    DriverAula.runDriver(ctrDomini, scanner);
                     break;
                 case 5:
-                    DriverAssignatura.main(ctrDomini, scanner);
+                    DriverAssignatura.runDriver(ctrDomini, scanner);
                     break;
                 case 6:
-                    DriverSessio.main(ctrDomini, scanner);
+                    DriverSessio.runDriver(ctrDomini, scanner);
                     break;
                 case 7:
-                    DriverRestriccio.main(ctrDomini, scanner);
+                    DriverRestriccio.runDriver(ctrDomini, scanner);
                     break;
                 case 8:
                     ctrDomini.generarHorari();

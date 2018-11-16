@@ -49,6 +49,9 @@ public class DriverUnitatDocent {
         } else {
             System.out.println("No hi ha cap acció disponible");
         }
+        System.out.println("Vols realitzar una altre acció? (S/N)");
+        String sn = llegirString();
+        if (sn.equalsIgnoreCase("s")) main(new String[0]);
     }
 
     public static String llegirString() {
