@@ -6,10 +6,17 @@ import java.util.Scanner;
 
 public class DriverUnitatDocent {
 
-    public static Scanner scanner;
+    public static Scanner scanner = new Scanner(System.in);
+    public static CtrDomini ctrDomini = new CtrDomini(1);
 
-    public static void main(CtrDomini ctrDomini, Scanner scnr) {
+    public static void runDriver(CtrDomini ctr, Scanner scnr) {
+        ctrDomini = ctr;
         scanner = scnr;
+        String[] str = new String[0];
+        main(str);
+    }
+
+    public static void main(String[] args) {
         System.out.println("---------------------------");
         System.out.println("Quina acció vols realitzar?");
         System.out.println("---------------------------");

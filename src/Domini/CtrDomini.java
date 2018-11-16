@@ -11,6 +11,13 @@ public class CtrDomini {
     private Integer quadrimestreSeleccionat;
     private CjtRestriccions restriccions;
 
+    public CtrDomini(Integer lvl) {
+        if (lvl > 0) afegirUnitatDocent("FIB");
+        if (lvl > 1) afegirPlaEstudis("FIB_2010");
+        if (lvl > 2) afegirQuadrimestre();
+        this.restriccions = new CjtRestriccions();
+    }
+
     public CtrDomini() {
         this.unitatDocentSeleccionada = null;
         this.plaEstudisSeleccionat    = null;
@@ -185,7 +192,6 @@ public class CtrDomini {
         RestriccioMatins r = new RestriccioMatins(sessio);
         restriccions.addRestriccioMatins(r);
     }
-
 
     public void generarHorari() {
         Horari horariActual = new Horari();

@@ -30,7 +30,7 @@ public class DriverControlDomini {
             String test = llegirString();
 
             try {
-                scanner = new Scanner(new File(test));
+                scanner = new Scanner(new File("./tests/" + test));
             } catch (FileNotFoundException c) {
                 System.out.println("El fitxer no existeix");
             }
@@ -40,7 +40,7 @@ public class DriverControlDomini {
         while (seleccio != 0) {
             switch (seleccio) {
                 case 1:
-                    DriverUnitatDocent.main(ctrDomini, scanner);
+                    DriverUnitatDocent.runDriver(ctrDomini, scanner);
                     break;
                 case 2:
                     DriverPlaEstudis.main(ctrDomini, scanner);
