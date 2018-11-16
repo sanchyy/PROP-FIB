@@ -5,6 +5,7 @@ import Domini.CtrDomini;
 import Domini.RestriccioCaracteristicaAula;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class DriverRestriccioCaracteristicaAula {
@@ -63,4 +64,15 @@ public class DriverRestriccioCaracteristicaAula {
     public static Integer llegirNumero() {
         return scanner.nextInt();
     }
+
+    public static ArrayList<CaracteristiquesAula> llegirCaracteristiques() {
+        ArrayList<CaracteristiquesAula> caracteristiques = new ArrayList<>();
+        for (CaracteristiquesAula caracteristica : Arrays.asList(CaracteristiquesAula.values())) {
+            System.out.println("Té la següent característica (S/N)? (" + caracteristica.toString() + ")");
+            String resp = llegirString();
+            if (resp.equals("S")) caracteristiques.add(caracteristica);
+        }
+        return caracteristiques;
+    }
+
 }
