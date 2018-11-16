@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class DriverAula {
 
     public static Scanner scanner = new Scanner(System.in);
-    public static CtrDomini ctrDomini = new CtrDomini(1);
+    public static CtrDomini ctrDomini = new CtrDomini(5);
 
     public static void runDriver(CtrDomini ctr, Scanner scnr) {
         ctrDomini = ctr;
@@ -31,7 +31,7 @@ public class DriverAula {
         System.out.println(" [4] Borrar Aula");
         int sel = llegirNumero();
         if (sel == 1) {
-            ctrDomini.llistaAssignatures();
+            ctrDomini.llistaAules();
         } else if (sel == 2) {
             System.out.println("Vols mostrar les Aules (S/N)");
             String s = llegirString();
@@ -50,7 +50,7 @@ public class DriverAula {
         } else if (sel == 4) {
             System.out.println("Vols mostrar les Aules abans? (S/N)");
             String s = llegirString();
-            if (s.equals("S") || s.equals("s")) ctrDomini.llistaAssignatures();
+            if (s.equals("S") || s.equals("s")) ctrDomini.llistaAules();
             System.out.println("Quina Aula vols borrar?");
             Integer b = llegirNumero();
             try {

@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class DriverAssignatura {
 
     public static Scanner scanner = new Scanner(System.in);
-    public static CtrDomini ctrDomini = new CtrDomini(1);
+    public static CtrDomini ctrDomini = new CtrDomini(4);
 
     public static void runDriver(CtrDomini ctr, Scanner scnr) {
         ctrDomini = ctr;
@@ -68,7 +68,7 @@ public class DriverAssignatura {
             if (ctrDomini.existeixPlaEstudis(nomPlaEstudis)) {
                 ctrDomini.afegirAssignaturaPlaEstudis(nom, quadri, nivell, nomPlaEstudis, teo, lab);
             } else {
-                System.out.println("No existeix l'Assignatura especificada, es crea igualment l'assignatura.");
+                System.out.println("No existeix el pla d'estudis especificat, es crea igualment l'assignatura.");
                 ctrDomini.afegirAssignaturaPlaEstudis(nom, quadri, nivell, teo, lab);
             }
         } else if (sel == 4) {

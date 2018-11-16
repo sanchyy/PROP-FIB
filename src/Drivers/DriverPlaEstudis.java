@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class DriverPlaEstudis {
 
     public static Scanner scanner = new Scanner(System.in);
-    public static CtrDomini ctrDomini = new CtrDomini(1);
+    public static CtrDomini ctrDomini = new CtrDomini(2);
 
     public static void runDriver(CtrDomini ctr, Scanner scnr) {
         ctrDomini = ctr;

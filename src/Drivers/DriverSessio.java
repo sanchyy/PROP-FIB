@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class DriverSessio {
 
     public static Scanner scanner = new Scanner(System.in);
-    public static CtrDomini ctrDomini = new CtrDomini(1);
+    public static CtrDomini ctrDomini = new CtrDomini(6);
 
     public static void runDriver(CtrDomini ctr, Scanner scnr) {
         ctrDomini = ctr;
@@ -28,11 +28,11 @@ public class DriverSessio {
         System.out.println(" [4] Borrar Sessio");
         int sel = llegirNumero();
         if (sel == 1) {
-            ctrDomini.llistaSessions();
+            System.out.println(ctrDomini.llistaSessions());
         } else if (sel == 2) {
             System.out.println("Vols mostrar les Sessions (S/N)");
             String s = llegirString();
-            if (s.equals("S") || s.equals("s")) ctrDomini.llistaSessions();
+            if (s.equals("S") || s.equals("s")) System.out.println(ctrDomini.llistaSessions());
             System.out.println("Quina Sessio vols seleccionar?");
             Integer b = llegirNumero();
             try { ctrDomini.getQuadrimestre().getSessio(b);}
@@ -83,7 +83,7 @@ public class DriverSessio {
         } else if (sel == 4) {
             System.out.println("Vols mostrar les sessions abans? (S/N)");
             String s = llegirString();
-            if (s.equals("S") || s.equals("s")) ctrDomini.llistaSessions();
+            if (s.equals("S") || s.equals("s")) System.out.println(ctrDomini.llistaSessions());
             System.out.println("Quina Sessió vols borrar?");
             Integer b = llegirNumero();
             try {

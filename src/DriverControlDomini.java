@@ -13,8 +13,6 @@ public class DriverControlDomini {
     public static CtrDomini ctrDomini = new CtrDomini();
     private static Scanner scanner = new Scanner(System.in);
 
-    public static List<CaracteristiquesAula> listEnum = Arrays.asList(CaracteristiquesAula.values());
-
     public static void main(String[] args) {
         mostrarTextInici();
         System.out.println("Vols carregar l'horari a partir d'un fitxer? (S/N)");
@@ -101,89 +99,6 @@ public class DriverControlDomini {
         System.out.println("[8] Generar horari");
 
         System.out.println("[0] SORTIR\n");
-    }
-
-    public static ArrayList<CaracteristiquesAula> llegirCaracteristiques() {
-        ArrayList<CaracteristiquesAula> caracteristiques = new ArrayList<>();
-        for (CaracteristiquesAula caracteristica : listEnum) {
-            System.out.println("Té la següent característica (S/N)? (" + caracteristica.toString() + ")");
-            String resp = llegirString();
-            if (resp.equals("S") || resp.equals("s")) caracteristiques.add(caracteristica);
-        }
-        return caracteristiques;
-    }
-
-    public static void crearRestriccio() {
-        System.out.println("Indica quina restricció vols crear:");
-        System.out.println("[1] Característiques Aula");
-        System.out.println("[2] Solapament");
-        Integer sel = llegirNumero();
-        if (sel == 1) {
-            crearRestriccioCaracteristicaAula();
-        } else if (sel == 2) {
-            // crearRestriccioSolapar();
-        } else {
-            System.out.println("Selecció incorrecte");
-        }
-    }
-
-    public static void crearRestriccioCaracteristicaAula() {
-        System.out.println("Sessions:");
-        System.out.println(ctrDomini.llistaSessions());
-        Integer sessio = llegirNumero();
-        System.out.println("Caracteristiques:");
-        ArrayList<CaracteristiquesAula> caracteristiques = llegirCaracteristiques();
-        ctrDomini.crearRestriccioCaracteristicaAula(sessio, caracteristiques);
-    }
-
-    public static void crearRestriccioReserva() {
-        System.out.println("Introdueix l'aula que vols reservar");
-        String aula = llegirString();
-        System.out.println("has seleccionat l'aula: " + aula);
-
-        System.out.println("Introdueix el dia de la setmana que vols reservar:");
-        System.out.println("[1] Dilluns"  );
-        System.out.println("[2] Dimarts"  );
-        System.out.println("[3] Dimecres" );
-        System.out.println("[4] Dijous"   );
-        System.out.println("[5] Divendres");
-        Integer dia = llegirNumero();
-
-        System.out.println("Vols reservar tot el dia?");
-        System.out.println("[1] Sí");
-        System.out.println("[2] No");
-        Integer hora = null;
-        if (llegirNumero() == 2) {
-            System.out.println("Introdueix la hora que vols que es reservi.");
-            hora = llegirNumero();
-        }
-
-        ctrDomini.crearRestriccioReservar(aula,dia,hora);
-    }
-
-    public static void crearRestriccioAssigTemp() {
-        System.out.println("Introdueix l'assignatura que vols fixar en un dia");
-        String assig = llegirString();
-        System.out.println("has seleccionat l'assignatura: " + assig);
-
-        System.out.println("Introdueix el dia de la setmana que vols fixar:");
-        System.out.println("[1] Dilluns"  );
-        System.out.println("[2] Dimarts"  );
-        System.out.println("[3] Dimecres" );
-        System.out.println("[4] Dijous"   );
-        System.out.println("[5] Divendres");
-        Integer dia = llegirNumero();
-
-        System.out.println("Vols fixar un dia sencer o dia i hora");
-        System.out.println("[1] Dia");
-        System.out.println("[2] Dia i hora");
-        Integer hora = null;
-        if (llegirNumero() == 2) {
-            System.out.println("Introdueix la hora que vols que es reservi.");
-            hora = llegirNumero();
-        }
-
-        ctrDomini.crearRestriccioAssigTemp(dia,hora,assig);
     }
 
     public static String llegirString() {

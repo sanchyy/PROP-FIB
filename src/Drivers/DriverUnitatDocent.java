@@ -33,7 +33,7 @@ public class DriverUnitatDocent {
             if (s.equals("S")) ctrDomini.llistaUnitatsDocents();
             System.out.println("Quina Unitat Docent vols seleccionar?");
             Integer ud = llegirNumero();
-            if (ud < ctrDomini.midaUnitatsDocents()) ctrDomini.setUnitatDocentSeleccionada(ud-1);
+            if (ud <= ctrDomini.midaUnitatsDocents()) ctrDomini.setUnitatDocentSeleccionada(ud-1);
             else System.out.println("No hi ha cap Unitat Docent amb aquesta selecció");
         } else if (sel == 3) {
             System.out.println("Introdueix un nom per la nova Unitat Docent:");
@@ -45,7 +45,7 @@ public class DriverUnitatDocent {
             if (s.equals("S")) ctrDomini.llistaUnitatsDocents();
             System.out.println("Quina Unitat Docent vols borrar?");
             Integer b = llegirNumero();
-            ctrDomini.borrarUnitatDocent(b);
+            ctrDomini.borrarUnitatDocent(b-1);
         } else {
             System.out.println("No hi ha cap acció disponible");
         }

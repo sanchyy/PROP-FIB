@@ -5,8 +5,6 @@ import java.util.ArrayList;
 public class CjtRestriccions {
 
     private ArrayList<RestriccioSolapar> rs;
-    private ArrayList<RestriccioReserva> rr;
-    private ArrayList<RestriccioAssigTemp> ra;
     private ArrayList<RestriccioMatins> rm;
     private ArrayList<RestriccioTardes> rt;
     private ArrayList<RestriccioCaracteristicaAula> rca;
@@ -15,8 +13,6 @@ public class CjtRestriccions {
 
     public CjtRestriccions() {
         this.rs  = new ArrayList<>();
-        this.rr  = new ArrayList<>();
-        this.ra  = new ArrayList<>();
         this.rm  = new ArrayList<>();
         this.rt  = new ArrayList<>();
         this.rca = new ArrayList<>();
@@ -27,14 +23,6 @@ public class CjtRestriccions {
     //Setters
     public void setRs(ArrayList<RestriccioSolapar> rs) {
         this.rs = rs;
-    }
-
-    public void setRr(ArrayList<RestriccioReserva> rr) {
-        this.rr = rr;
-    }
-
-    public void setRa(ArrayList<RestriccioAssigTemp> ra) {
-        this.ra = ra;
     }
 
     public void setRm(ArrayList<RestriccioMatins> rm) {
@@ -64,14 +52,6 @@ public class CjtRestriccions {
         return rs;
     }
 
-    public ArrayList<RestriccioReserva> getRr() {
-        return rr;
-    }
-
-    public ArrayList<RestriccioAssigTemp> getRa() {
-        return ra;
-    }
-
     public ArrayList<RestriccioMatins> getRm() {
         return rm;
     }
@@ -97,14 +77,6 @@ public class CjtRestriccions {
         rs.remove(i-1);
     }
 
-    public void borraRr(int i) {
-        rr.remove(i-1);
-    }
-
-    public void borraRa(int i) {
-        ra.remove(i-1);
-    }
-
     public void borraRm(int i) {
         rm.remove(i-1);
     }
@@ -123,16 +95,6 @@ public class CjtRestriccions {
 
     public void borraRn(int i) {
         rn.remove(i-1);
-    }
-
-
-
-    public void addRestriccioAssigTemp(RestriccioAssigTemp r) {
-        this.ra.add(r);
-    }
-
-    public void addRestriccioReserva(RestriccioReserva r) {
-        this.rr.add(r);
     }
 
     public void addRestriccioSolapar(RestriccioSolapar r) {

@@ -15,6 +15,9 @@ public class CtrDomini {
         if (lvl > 0) afegirUnitatDocent("FIB");
         if (lvl > 1) afegirPlaEstudis("FIB_2010");
         if (lvl > 2) afegirQuadrimestre();
+        if (lvl > 3) afegirAssignaturaPlaEstudis("PROP", 3, 2, "FIB", new ArrayList<>(), new ArrayList<>());
+        if (lvl > 4) afegirAulaUnitatDocent("A6203", 30, new ArrayList<>());
+        if (lvl > 5) afegirSessioQuadrimestre(11, "PROP");
         this.restriccions = new CjtRestriccions();
     }
 
@@ -130,7 +133,6 @@ public class CtrDomini {
         this.unitatDocentSeleccionada = null;
     }
 
-
     public String llistaSessions() {
         Integer i = 1;
         String sessions = "";
@@ -163,16 +165,6 @@ public class CtrDomini {
 
         RestriccioNivell r = new RestriccioNivell(A,B);
         restriccions.addRestriccioNivell(r);
-    }
-
-    public void crearRestriccioReservar(String aula, Integer dia, Integer hora) {
-        RestriccioReserva r = new RestriccioReserva(aula, dia, hora);
-        restriccions.addRestriccioReserva(r);
-    }
-
-    public void crearRestriccioAssigTemp(Integer dia, Integer hora, String nomAssig) {
-        RestriccioAssigTemp r = new RestriccioAssigTemp(dia,hora,nomAssig);
-        restriccions.addRestriccioAssigTemp(r);
     }
 
     public void crearRestriccioCaracteristicaAula(Integer a, ArrayList<CaracteristiquesAula> caracteristiques) {
@@ -247,7 +239,7 @@ public class CtrDomini {
     public void llistaQuadrimestres() {
         int i = 1;
         for (Quadrimestre q : getPlaEstudis().getQuadrimestres()) {
-            System.out.println("["+(i++)+"] Q"+i);
+            System.out.println("["+i+"] Q"+i++);
         }
     }
 
