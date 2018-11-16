@@ -1,0 +1,18 @@
+usb segueix estructura carpetes
+codis en el usb
+uml amb funcions, no getters setters
+separar tots els casos dus en punts diferents
+executables .jar, executar des de la consola i que es puguin executar posteriorment des de carpeta on esta .jar
+    no compilar en entorn programació -> passa llavors que al executar des de consola no funciona.
+
+cada driver genera un jar. cada driver te un main intern. tants .jar com drivers hi ha, com classes, inclos el controlador.
+Cada classe es prova.
+
+
+posar amb un retolador al usb que entreguem el numero de grup 4.4
+
+posar al uml les classes creades auxiliars per les estructures de dades.
+
+si a la creadora posem que utilitza una instacia duna altra classe no fa falta posar la "fletxa"
+
+posar a la bustia de lluis padro si no entra a la seva i si no esta ell. altra opcio es intentar passarho per sota la porta.
