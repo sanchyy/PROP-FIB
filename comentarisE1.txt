@@ -1,0 +1,29 @@
+entrega E1 comentaris
+tenim un 7
+casos us:
+    modificar pla estudis: implica cas us assignar assignatures
+que passa amb precorrequisits? relacions amb les que esta implicada
+    modificar horari: intercanviar sessio
+    modificar restriccions: modificar restriccios no implica generar horari
+    generar horari hauria de ser 
+
+des del punt de vista user en el controlador la creacio restriccio, usuair no et dira es aquesta restriccio, et dira una assignatura el que vols restringir, pot ser un grup determinat pero tambe pot ser lassignatura completa. Per nosaltres sessio es un grup. En aquests casos lassignatura es important. Falta en el controlador sessions per cada assignar
+
+controlador domini  no pot escriure per pantalla
+controlador no ha de mostrar per pantalla horari
+
+algorisme sha de corregir si ens dona temps, esta xunguillo. Nota esta inflada
+concepte de variable, que seleccionem per ser variable. Backtracking crono diu que es sol quan totes var estan assignades, per naltrus es slot horari. var hauria de ser la sessio. Fa que algorisme sigui mes complicat i no está be
+No sembla que reduim els dominis previament, eficiencia, facil de fer, tenir consciencia de les restriccions horaries
+abans de començar reduir dominis amb restriccions
+
+no tenim stubs, jocs de prova no estan documentats segons documentacio, no hem aportats jocs de proves (els txt de cada driver)
+hi ha println a generra horari, es malament.
+Taula aula no sap que es, no ho enten
+
+
+MILLORAR:
+algorisme, esta mal dissenyat, sha de canviar
+el mes important es guanyar en eficiència, no tenim forward checking
+millor si acabem tot.
+

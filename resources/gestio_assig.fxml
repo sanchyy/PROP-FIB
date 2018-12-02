@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar prefHeight="25.0" prefWidth="600.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TabPane prefHeight="374.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Pla d'estudis">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView layoutX="16.0" layoutY="131.0" prefHeight="200.0" prefWidth="569.0">
+                          <columns>
+                            <TableColumn prefWidth="378.0" text="Nom" />
+                            <TableColumn prefWidth="63.0" text="Consultar" />
+                              <TableColumn prefWidth="67.0" text="Modificar" />
+                              <TableColumn prefWidth="60.0" text="Eliminar" />
+                          </columns>
+                        </TableView>
+                        <Button layoutX="105.0" layoutY="50.0" mnemonicParsing="false" text="Crear pla d'estudis" />
+                        <Button layoutX="355.0" layoutY="50.0" mnemonicParsing="false" text="Carregar pla d'estudis" />
+                        <Label layoutX="16.0" layoutY="104.0" text="Plans d'estudis creats">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="16.0" layoutY="14.0" text="GESTIÓ DE PLANS D'ESTUDI">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+          <Tab text="Assignatures" />
+            <Tab text="Horaris">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Aula" />
+            <Tab text="Assignatures">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView layoutX="16.0" layoutY="131.0" prefHeight="200.0" prefWidth="569.0">
+                           <columns>
+                              <TableColumn prefWidth="378.0" text="Nom" />
+                              <TableColumn prefWidth="63.0" text="Consultar" />
+                              <TableColumn prefWidth="67.0" text="Modificar" />
+                              <TableColumn prefWidth="60.0" text="Eliminar" />
+                           </columns>
+                        </TableView>
+                        <Button layoutX="105.0" layoutY="50.0" mnemonicParsing="false" text="Crear assignatura" />
+                        <Button layoutX="355.0" layoutY="50.0" mnemonicParsing="false" text="Carregar assignatura" />
+                        <Label layoutX="16.0" layoutY="104.0" text="Assignatures creades">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="16.0" layoutY="14.0" text="GESTIÓ DE ASSIGNATURES">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</FlowPane>
