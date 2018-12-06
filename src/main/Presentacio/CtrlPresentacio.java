@@ -25,6 +25,7 @@ public class CtrlPresentacio extends Application{
 
     private CtrDomini controladorDomini;
     private Stage primaryStage;
+    private Scene mainView;
     private Scene viewPla;
 
     /*private VistaSecundaria vistaSecundaria;
@@ -36,14 +37,14 @@ public class CtrlPresentacio extends Application{
         this.primaryStage = primaryStage;
         controladorDomini = new CtrDomini();
         FXMLLoader loader = new FXMLLoader();
-        Pane p = loader.load(getClass().getResource("/ViewPla.fxml").openStream()); // Change when the main view is done
-        ViewPla mainController = loader.getController();   // change when the main view is done
+        Pane p = loader.load(getClass().getResource("/MainView.fxml").openStream()); // Change when the main view is done
+        MainView mainController = loader.getController();   // change when the main view is done
         mainController.setViewController(this);
 
-        primaryStage.setTitle("Main Menu");
-        viewPla = new Scene(p,800,500); // change when the main view is done
+        primaryStage.setTitle("Generador d'horaris");
+        mainView = new Scene(p,600,400); // change when the main view is done
         //viewPla.getStylesheets().add("/mainMenuStyle.css"); // add it if we have a css
-        primaryStage.setScene(viewPla);
+        primaryStage.setScene(mainView);
         primaryStage.show();
     }
     /**

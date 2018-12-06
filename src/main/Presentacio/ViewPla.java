@@ -30,5 +30,14 @@ public class ViewPla {
         this.ctrlPresentacio = ctrlPresentacio;
     }
 
+    /**
+     * Crear pla d'estudis clicat.
+     */
+
+    @FXML
+    public void crearPEpressed () {
+        debbuging.appendText("pressed crear\n");
+
+    }
 
 }

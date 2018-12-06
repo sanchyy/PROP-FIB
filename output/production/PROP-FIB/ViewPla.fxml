@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
@@ -44,7 +45,10 @@
                               <TableColumn prefWidth="60.0" text="Eliminar" />
                           </columns>
                         </TableView>
-                        <Button fx:id="crearPE" layoutX="105.0" layoutY="50.0" mnemonicParsing="false" text="Crear pla d'estudis" />
+                        <Button fx:id="crearPE" layoutX="105.0" layoutY="50.0" mnemonicParsing="false" onAction="#crearPEpressed" text="Crear pla d'estudis">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                         <Button layoutX="355.0" layoutY="50.0" mnemonicParsing="false" text="Carregar pla d'estudis" />
                         <Label layoutX="16.0" layoutY="104.0" text="Plans d'estudis creats">
                            <font>
@@ -56,7 +60,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextArea layoutX="247.0" layoutY="41.0" prefHeight="74.0" prefWidth="90.0" />
+                        <TextArea fx:id="debbuging" layoutX="247.0" layoutY="41.0" prefHeight="74.0" prefWidth="90.0" />
                      </children>
                   </AnchorPane>
                </content>
