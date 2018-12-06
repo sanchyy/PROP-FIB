@@ -15,10 +15,11 @@ import java.util.logging.Level;
 
 
 public class ViewPla {
-    @FXML private Label label;
+    @FXML private Button crearPE;
+    @FXML private TextArea debbuging;
     private CtrlPresentacio ctrlPresentacio;
 
-    private Scene scene;
+
 
     /**
      * Assignar controlador de presentació.
@@ -28,4 +29,6 @@ public class ViewPla {
     public void setViewController(CtrlPresentacio ctrlPresentacio){
         this.ctrlPresentacio = ctrlPresentacio;
     }
+
+
 }
