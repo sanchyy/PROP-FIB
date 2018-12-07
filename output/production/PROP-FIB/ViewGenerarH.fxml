@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.ViewGenerarH">
+   <children>
+      <Label layoutX="30.0" layoutY="24.0" text="GENERAR HORARI" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="crearAula" layoutX="494.0" layoutY="348.0" mnemonicParsing="false" onAction="#oncrearHorari_pressed" text="Crear horari" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="25.0" />
+      <TextArea fx:id="debbuging" layoutX="203.0" layoutY="158.0" prefHeight="68.0" prefWidth="110.0" />
+   </children>
+</AnchorPane>

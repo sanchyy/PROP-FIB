@@ -86,6 +86,6 @@ public class MainView {
      */
     @FXML
     public void onSortir_pressed () {
-        singleP.handleCloseButtonAction();
+        //singleP.handleCloseButtonAction();
     }
 }

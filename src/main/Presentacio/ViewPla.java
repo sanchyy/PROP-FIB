@@ -15,8 +15,9 @@ import java.util.logging.Level;
 
 
 public class ViewPla {
-    @FXML private Button crearPE;
+    @FXML private Button crearPE, carregarPE;
     @FXML private TextArea debbuging;
+
     private CtrlPresentacio ctrlPresentacio;
 
 

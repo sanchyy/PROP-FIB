@@ -10,69 +10,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.ViewPla">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.ViewPla">
    <children>
-      <MenuBar prefHeight="25.0" prefWidth="600.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <TabPane prefHeight="374.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="Pla d'estudis">
-               <content>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                     <children>
-                        <TableView layoutX="16.0" layoutY="131.0" prefHeight="200.0" prefWidth="569.0">
-                          <columns>
-                            <TableColumn prefWidth="378.0" text="Nom" />
-                            <TableColumn prefWidth="63.0" text="Consultar" />
-                              <TableColumn prefWidth="67.0" text="Modificar" />
-                              <TableColumn prefWidth="60.0" text="Eliminar" />
-                          </columns>
-                        </TableView>
-                        <Button fx:id="crearPE" layoutX="105.0" layoutY="50.0" mnemonicParsing="false" onAction="#crearPEpressed" text="Crear pla d'estudis">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></Button>
-                        <Button layoutX="355.0" layoutY="50.0" mnemonicParsing="false" text="Carregar pla d'estudis" />
-                        <Label layoutX="16.0" layoutY="104.0" text="Plans d'estudis creats">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="16.0" layoutY="14.0" text="GESTIÓ DE PLANS D'ESTUDI">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <TextArea fx:id="debbuging" layoutX="247.0" layoutY="41.0" prefHeight="74.0" prefWidth="90.0" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-          <Tab text="Assignatures" />
-            <Tab text="Horaris">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
-            </Tab>
-            <Tab text="Aula" />
-        </tabs>
-      </TabPane>
+      <Button fx:id="crearPE" layoutX="166.0" layoutY="108.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="carregarPE" layoutX="341.0" layoutY="200.0" mnemonicParsing="false" text="Button" />
+      <TextArea fx:id="debbuging" layoutX="32.0" layoutY="155.0" prefHeight="200.0" prefWidth="200.0" />
    </children>
-</FlowPane>
+</AnchorPane>
