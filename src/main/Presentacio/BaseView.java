@@ -14,9 +14,14 @@ public class BaseView {
     @FXML private Button PlaE, Assig, Aules, GenerarH, Sortir;
 
     private CtrlPresentacio ctrlPresentacio;
+    private ViewPlaEstudis plaController;
 
     public void setViewController (CtrlPresentacio ctrlPresentacio) {
         this.ctrlPresentacio = ctrlPresentacio;
+    }
+
+    public AnchorPane getGestioView () {
+        return gestioView;
     }
 
     /**
@@ -26,11 +31,12 @@ public class BaseView {
      */
     @FXML
     private void onPlaE_pressed () throws IOException {
-        FXMLLoader loader = new FXMLLoader();
+        /*FXMLLoader loader = new FXMLLoader();
         AnchorPane a = loader.load(getClass().getResource("/ViewPlaEstudis.fxml").openStream()); //change
-        ViewPlaEstudis plaController = loader.getController(); // change
+        plaController = loader.getController(); // change
         plaController.setViewController(ctrlPresentacio); // change
-        gestioView.getChildren().setAll(a);
+        gestioView.getChildren().setAll(a);*/
+        ctrlPresentacio.showPlaView();
     }
 
     /**
@@ -38,11 +44,12 @@ public class BaseView {
      */
     @FXML
     public void onAssig_pressed () throws IOException {
-        FXMLLoader loader = new FXMLLoader();
+        /*FXMLLoader loader = new FXMLLoader();
         AnchorPane a = loader.load(getClass().getResource("/ViewAssignatura.fxml").openStream()); //change
         ViewAssignatura assigController = loader.getController(); // change
         assigController.setViewController(ctrlPresentacio); // change
-        gestioView.getChildren().setAll(a);
+        gestioView.getChildren().setAll(a);*/
+        ctrlPresentacio.showAssignatures();
     }
 
     /**
@@ -52,11 +59,12 @@ public class BaseView {
      */
     @FXML
     public void onAules_pressed () throws IOException {
-        FXMLLoader loader = new FXMLLoader();
+        /*FXMLLoader loader = new FXMLLoader();
         AnchorPane a = loader.load(getClass().getResource("/ViewAules.fxml").openStream()); //change
         ViewAules aulesController = loader.getController(); // change
         aulesController.setViewController(ctrlPresentacio); // change
-        gestioView.getChildren().setAll(a);
+        gestioView.getChildren().setAll(a);*/
+        ctrlPresentacio.showAules();
     }
 
     /**
@@ -66,11 +74,12 @@ public class BaseView {
      */
     @FXML
     public void onGenerarH_pressed ()throws IOException {
-        FXMLLoader loader = new FXMLLoader();
+        /*FXMLLoader loader = new FXMLLoader();
         AnchorPane a = loader.load(getClass().getResource("/ViewGenerarH.fxml").openStream()); //change
         ViewGenerarH horariController = loader.getController(); // change
         horariController.setViewController(ctrlPresentacio); // change
-        gestioView.getChildren().setAll(a);
+        gestioView.getChildren().setAll(a);*/
+        ctrlPresentacio.showGenerarH();
     }
 
     /**
@@ -81,9 +90,21 @@ public class BaseView {
     @FXML
     public void onSortir_pressed () throws IOException {
         // get a handle to the stage
-        Stage stage = (Stage) Sortir.getScene().getWindow();
+        //Stage stage = (Stage) Sortir.getScene().getWindow();
         // do what you have to do
-        stage.close();
+        //stage.close();
+        ctrlPresentacio.exit_app(Sortir);
     }
+
+
+    // Return buttons
+
+    public void return_pressed (String view) {
+        switch (view) {
+            case "PlaEstudis":
+                ;
+        }
+    }
+
 
 }

@@ -19,6 +19,7 @@ public class ViewPlaEstudis {
     @FXML private TableView taulaPE;
 
     private CtrlPresentacio ctrlPresentacio;
+    private BaseView baseV;
     //private SingletonPresentacio singleP = SingletonPresentacio.getInstance(); // pels botons de canvi de gestió
 
     /**
@@ -28,6 +29,10 @@ public class ViewPlaEstudis {
      */
     public void setViewController(CtrlPresentacio ctrlPresentacio) {
         this.ctrlPresentacio = ctrlPresentacio;
+    }
+
+    public void setBaseV (BaseView baseV) {
+        this.baseV = baseV;
     }
 
     // Botons nou pla

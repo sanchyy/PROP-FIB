@@ -23,7 +23,7 @@ public class ViewAules {
 
     // Botons nova Aula
     /**
-     * S'ha clicat el botó Crear pla d'estudis.
+     * S'ha clicat el botó Crear aula.
      */
     @FXML
     public void oncrearAula_pressed () {
@@ -31,7 +31,7 @@ public class ViewAules {
     }
 
     /**
-     * S'ha clicat el botó Carregar .
+     * S'ha clicat el botó Carregar aula.
      */
     @FXML
     public void oncarregarAula_pressed () {
