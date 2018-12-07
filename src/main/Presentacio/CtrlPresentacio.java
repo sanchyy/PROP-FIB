@@ -26,7 +26,7 @@ public class CtrlPresentacio extends Application{
     private CtrDomini controladorDomini;
     private Stage primaryStage;
     private Scene mainView;
-    private Scene viewPla;
+    private Scene viewPlaEstudis;
 
     /*private VistaSecundaria vistaSecundaria;
     private VistaLEEME vistaLEEME;*/
@@ -55,4 +55,21 @@ public class CtrlPresentacio extends Application{
     public static void main(String[] args) {
         launch(args);
     }
+
+    /**
+     * Veure la vista de gestió de plans d'estudi.
+     *
+     * @throws IOException Excepcio Entrada/Sortida.
+     */
+    public void view_gestioPlaEstudis () throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        Pane p = loader.load(getClass().getResource("/ViewPlaEstudis.fxml").openStream());
+        ViewPlaEstudis PEcontroller = loader.getController();
+        PEcontroller.setViewController(this);
+
+
+
+    }
+
+
 }

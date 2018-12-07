@@ -13,47 +13,30 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.logging.Level;
 
-public class MainView {
-    @FXML private  Button PlaE, Assig, Aules, GenerarH, Sortir;
+public class ViewPlaEstudis {
+    //@FXML private  Button PlaE, Assig, Aules, GenerarH, Sortir;
+    @FXML private Button crearPE, carregarPE;
     @FXML private TextArea debbuging;
+    @FXML private TableView taulaPE;
 
     private CtrlPresentacio ctrlPresentacio;
-    private SingletonPresentacio singleP = SingletonPresentacio.getInstance(); // pels botons de canvi de gestip
+    private SingletonPresentacio singleP = SingletonPresentacio.getInstance(); // pels botons de canvi de gestió
 
-    public void setViewController(CtrlPresentacio ctrlPresentacio){
+    /**
+     * Assignar controlador de presentació.
+     *
+     * @param ctrlPresentacio el controlador de la capa de presentació.
+     */
+    public void setViewController(CtrlPresentacio ctrlPresentacio) {
         this.ctrlPresentacio = ctrlPresentacio;
     }
 
-    /*@FXML
-    public void onGestioPE_pressed () {
-        debbuging.appendText("Gestio Pla estudis pressed");
-    }
-
-    @FXML
-    public void onGestioAssig_pressed () {
-        debbuging.appendText("Gestio Assig pressed");
-    }
-
-    @FXML
-    public void onGestioAu_pressed () {
-        debbuging.appendText("Gestio Aula pressed");
-    }
-
-    @FXML
-    public void onGenerarH_pressed () {
-        debbuging.appendText("Generar horar pressed");
-    }
-
-    @FXML
-    public void onSortir_pressed () {
-        debbuging.appendText("Sortir pressed");
-    }*/
-
-    /**
+    // Botons canvi de gestió
+     /**
      * S'ha clicat el botó Pla d'estudis.
      */
     @FXML
-    public void onGestioPE_pressed () {
+    public void onPlaE_pressed () {
         singleP.onPlaE_pressed();
     }
 
@@ -61,7 +44,7 @@ public class MainView {
      * S'ha clicat el botó Assignatures.
      */
     @FXML
-    public void onGestioAssig_pressed () {
+    public void onAssig_pressed () {
         singleP.onAssig_pressed();
     }
 
@@ -69,7 +52,7 @@ public class MainView {
      * S'ha clicat el botó Aules.
      */
     @FXML
-    public void onGestioAu_pressed () {
+    public void onAules_pressed () {
         singleP.onAules_pressed();
     }
 
@@ -86,6 +69,26 @@ public class MainView {
      */
     @FXML
     public void onSortir_pressed () {
-        singleP.handleCloseButtonAction();
+        singleP.onSortir_pressed();
     }
+
+
+    // Botons nou pla
+    /**
+     * S'ha clicat el botó Crear pla d'estudis.
+     */
+
+    @FXML
+    public void oncrearPE_pressed () {
+        debbuging.appendText("pressed crear\n");
+    }
+
+    /**
+     * S'ha clicat el botó Carregar pla d'estudis.
+     */
+    @FXML
+    public void oncarregarPE_pressed () {
+        debbuging.appendText("pressed crear\n");
+    }
+
 }

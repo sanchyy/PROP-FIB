@@ -31,7 +31,7 @@ public class ViewPla {
     }
 
     /**
-     * Crear pla d'estudis clicat.
+     * S'ha clicat el botó Crear pla d'estudis.
      */
 
     @FXML
