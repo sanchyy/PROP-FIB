@@ -12,7 +12,7 @@
   <items>
       <VBox fx:id="baseView" alignment="CENTER" prefHeight="398.0" prefWidth="140.0" spacing="20.0">
          <children>
-            <Button fx:id="PlaE" mnemonicParsing="false" onAction="#onPlaE_pressed" text="Plans d'estudi">
+            <Button fx:id="PlaE" mnemonicParsing="false" onAction="#onPlaE_pressed" text="Plans d'estudis">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>

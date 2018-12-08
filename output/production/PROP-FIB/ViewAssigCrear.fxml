@@ -7,7 +7,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.ViewAssigCrear">
    <children>
       <Label layoutX="54.0" layoutY="39.0" text="CREAR ASSIGNATURA" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
@@ -33,9 +32,9 @@
       <Label fx:id="name_label" layoutX="25.0" layoutY="82.0" text="Nom:" />
       <TextField fx:id="name_input" layoutX="113.0" layoutY="78.0" />
       <Label fx:id="quatri_label" layoutX="26.0" layoutY="120.0" text="Quatrimestre:" />
-      <Label fx:id="teo_label" layoutX="26.0" layoutY="155.0" text="Requereix de projector per les classes de teoria?" />
-      <Label layoutX="26.0" layoutY="211.0" text="Requereix d'alguna característica el laboratori?" />
-      <HBox alignment="CENTER" layoutX="25.0" layoutY="228.0" prefHeight="27.0" prefWidth="543.0" spacing="20.0">
+      <Label fx:id="teo_label" layoutX="27.0" layoutY="200.0" text="Requereix de projector per les classes de teoria?" />
+      <Label layoutX="30.0" layoutY="244.0" text="Requereix d'alguna característica el laboratori?" />
+      <HBox alignment="CENTER" layoutX="29.0" layoutY="261.0" prefHeight="27.0" prefWidth="543.0" spacing="20.0">
          <children>
             <CheckBox fx:id="projector" mnemonicParsing="false" text="Projector" />
             <CheckBox fx:id="ubuntu" mnemonicParsing="false" text="Ubuntu" />
@@ -47,15 +46,11 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="113.0" layoutY="115.0" prefHeight="27.0" prefWidth="149.0" spacing="20.0">
          <children>
-            <RadioButton mnemonicParsing="false" text="Q1">
-               <toggleGroup>
-                  <ToggleGroup fx:id="quatri_group" />
-               </toggleGroup>
-            </RadioButton>
-            <RadioButton mnemonicParsing="false" text="Q2" toggleGroup="$quatri_group" />
+            <CheckBox fx:id="q1" mnemonicParsing="false" text="Q1" />
+            <CheckBox fx:id="q2" mnemonicParsing="false" text="Q2" />
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="113.0" layoutY="172.0" prefHeight="37.0" prefWidth="149.0" spacing="20.0">
+      <HBox alignment="CENTER" layoutX="113.0" layoutY="217.0" prefHeight="27.0" prefWidth="149.0" spacing="20.0">
          <children>
             <RadioButton fx:id="yes_radio" mnemonicParsing="false" text="Sí">
                <toggleGroup>
@@ -63,6 +58,18 @@
                </toggleGroup>
             </RadioButton>
             <RadioButton fx:id="no_radio" mnemonicParsing="false" text="No" toggleGroup="$projector_group" />
+         </children>
+      </HBox>
+      <Label fx:id="nivell_label" layoutX="25.0" layoutY="150.0" text="Nivell, fase a la que pertany dins del pla d'estudis:" />
+      <HBox alignment="CENTER" layoutX="50.0" layoutY="167.0" prefHeight="27.0" prefWidth="300.0" spacing="20.0">
+         <children>
+            <RadioButton mnemonicParsing="false" text="Inicial">
+               <toggleGroup>
+                  <ToggleGroup fx:id="nivell_group" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Obligatoria" toggleGroup="$nivell_group" />
+            <RadioButton mnemonicParsing="false" text="Especialitat" toggleGroup="$nivell_group" />
          </children>
       </HBox>
    </children>

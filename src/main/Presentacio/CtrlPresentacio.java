@@ -32,7 +32,7 @@ public class CtrlPresentacio extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        primaryStage.getIcons().add(new Image(getClass().getResource("/icon2.png").toExternalForm()));
+        primaryStage.getIcons().add(new Image(getClass().getResource("/icon4.png").toExternalForm()));
         this.primaryStage = primaryStage;
         controladorDomini = new CtrDomini();
         FXMLLoader loader = new FXMLLoader();
@@ -122,6 +122,19 @@ public class CtrlPresentacio extends Application{
         AnchorPane a = loader.load(getClass().getResource("/ViewAules.fxml").openStream()); //change
         ViewAules aulesController = loader.getController(); // change
         aulesController.setViewController(this); // change
+        baseController.getGestioView().getChildren().setAll(a);
+    }
+
+    /**
+     * Canviar la vista de gestions a la de Crear Aula.
+     *
+     * @throws IOException excepcio d'entrada/sortida.
+     */
+    public void showAulesCrear () throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane a = loader.load(getClass().getResource("/ViewAulesCrear.fxml").openStream()); //change
+        ViewAulesCrear crearController = loader.getController(); // change
+        crearController.setViewController(this); // change
         baseController.getGestioView().getChildren().setAll(a);
     }
 

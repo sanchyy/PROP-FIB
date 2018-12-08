@@ -5,6 +5,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 
+import java.io.IOException;
+
 public class ViewAules {
     @FXML private Button crearAula, carregarAula;
     @FXML private TextArea debbuging;
@@ -24,10 +26,12 @@ public class ViewAules {
     // Botons nova Aula
     /**
      * S'ha clicat el botó Crear aula.
+     *
+     * @throws IOException excepcio d'entrada/sortida.
      */
     @FXML
-    public void oncrearAula_pressed () {
-        debbuging.appendText("pressed crear\n");
+    public void oncrearAula_pressed () throws IOException {
+        ctrlPresentacio.showAulesCrear();
     }
 
     /**
