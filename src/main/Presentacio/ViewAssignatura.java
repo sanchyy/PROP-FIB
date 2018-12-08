@@ -5,6 +5,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 
+import java.io.IOException;
+
 public class ViewAssignatura {
     @FXML private Button crearAssig, carregarAssig;
     @FXML private TextArea debbuging;
@@ -24,10 +26,13 @@ public class ViewAssignatura {
     // Botons nova Assignatura
     /**
      * S'ha clicat el botó Crear assignatura.
+     *
+     * @throws IOException excepcio d'entrada/sortida.
      */
     @FXML
-    public void oncrearAssig_pressed () {
-        debbuging.appendText("pressed crear\n");
+    public void oncrearAssig_pressed () throws IOException {
+        //debbuging.appendText("pressed crear\n");
+        ctrlPresentacio.showAssigCrear();
     }
 
     /**

@@ -12,11 +12,26 @@
   <items>
       <VBox fx:id="baseView" alignment="CENTER" prefHeight="398.0" prefWidth="140.0" spacing="20.0">
          <children>
-            <Button fx:id="PlaE" mnemonicParsing="false" onAction="#onPlaE_pressed" text="Plans d'estudi" />
-            <Button fx:id="Assig" mnemonicParsing="false" onAction="#onAssig_pressed" text="Assignatures" />
-            <Button fx:id="Aules" mnemonicParsing="false" onAction="#onAules_pressed" text="Aules" />
-            <Button fx:id="GenerarH" mnemonicParsing="false" onAction="#onGenerarH_pressed" text="Generar Horari" />
-            <Button fx:id="Sortir" mnemonicParsing="false" onAction="#onSortir_pressed" text="Sortir" />
+            <Button fx:id="PlaE" mnemonicParsing="false" onAction="#onPlaE_pressed" text="Plans d'estudi">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="Assig" mnemonicParsing="false" onAction="#onAssig_pressed" text="Assignatures">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="Aules" mnemonicParsing="false" onAction="#onAules_pressed" text="Aules">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="GenerarH" mnemonicParsing="false" onAction="#onGenerarH_pressed" text="Generar Horari">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="Sortir" mnemonicParsing="false" onAction="#onSortir_pressed" text="Sortir">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
          </children>
       </VBox>
     <AnchorPane fx:id="gestioView" minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="396.0" />

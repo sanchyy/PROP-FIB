@@ -19,8 +19,6 @@ public class ViewPlaEstudis {
     @FXML private TableView taulaPE;
 
     private CtrlPresentacio ctrlPresentacio;
-    private BaseView baseV;
-    //private SingletonPresentacio singleP = SingletonPresentacio.getInstance(); // pels botons de canvi de gestió
 
     /**
      * Assignar controlador de presentació.
@@ -31,17 +29,16 @@ public class ViewPlaEstudis {
         this.ctrlPresentacio = ctrlPresentacio;
     }
 
-    public void setBaseV (BaseView baseV) {
-        this.baseV = baseV;
-    }
-
     // Botons nou pla
     /**
      * S'ha clicat el botó Crear pla d'estudis.
+     *
+     * @throws IOException excepcio d'entrada/sortida.
      */
     @FXML
-    public void oncrearPE_pressed () {
-        debbuging.appendText("pressed crear\n");
+    public void oncrearPE_pressed () throws IOException {
+        //debbuging.appendText("pressed crear\n");
+        ctrlPresentacio.showPlaCrear();
     }
 
     /**

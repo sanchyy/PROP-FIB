@@ -1,10 +1,16 @@
 package Presentacio;
 
+import Domini.PlaEstudis;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -36,7 +42,9 @@ public class BaseView {
         plaController = loader.getController(); // change
         plaController.setViewController(ctrlPresentacio); // change
         gestioView.getChildren().setAll(a);*/
-        ctrlPresentacio.showPlaView();
+        //PlaE.setBackground(new Background(new BackgroundFill(Color.rgb(128, 169, 255), CornerRadii.EMPTY, Insets.EMPTY)));
+        btn_backgroundColor("pla");
+        ctrlPresentacio.showPlaEstudis();
     }
 
     /**
@@ -49,6 +57,8 @@ public class BaseView {
         ViewAssignatura assigController = loader.getController(); // change
         assigController.setViewController(ctrlPresentacio); // change
         gestioView.getChildren().setAll(a);*/
+        //Assig.setBackground(new Background(new BackgroundFill(Color.rgb(139, 255, 158), CornerRadii.EMPTY, Insets.EMPTY)));
+        btn_backgroundColor("assig");
         ctrlPresentacio.showAssignatures();
     }
 
@@ -64,6 +74,8 @@ public class BaseView {
         ViewAules aulesController = loader.getController(); // change
         aulesController.setViewController(ctrlPresentacio); // change
         gestioView.getChildren().setAll(a);*/
+        //Aules.setBackground(new Background(new BackgroundFill(Color.rgb(255, 229, 144), CornerRadii.EMPTY, Insets.EMPTY)));
+        btn_backgroundColor("aules");
         ctrlPresentacio.showAules();
     }
 
@@ -79,9 +91,11 @@ public class BaseView {
         ViewGenerarH horariController = loader.getController(); // change
         horariController.setViewController(ctrlPresentacio); // change
         gestioView.getChildren().setAll(a);*/
+        btn_backgroundColor("generar");
         ctrlPresentacio.showGenerarH();
     }
 
+    // exit btn
     /**
      * S'ha clicat el botó Sortir.
      *
@@ -89,22 +103,27 @@ public class BaseView {
      */
     @FXML
     public void onSortir_pressed () throws IOException {
-        // get a handle to the stage
-        //Stage stage = (Stage) Sortir.getScene().getWindow();
-        // do what you have to do
-        //stage.close();
         ctrlPresentacio.exit_app(Sortir);
     }
 
+    public void btn_backgroundColor (String btn) {
+        Background selected = new Background(new BackgroundFill(Color.rgb(139, 255, 158), CornerRadii.EMPTY, Insets.EMPTY));
+        Background not_selected = new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY));
+        if (btn.equals("pla")) PlaE.setBackground(selected);
+        else PlaE.setBackground(not_selected);
 
-    // Return buttons
+        if (btn.equals("assig")) Assig.setBackground(selected);
+        else Assig.setBackground(not_selected);
 
-    public void return_pressed (String view) {
-        switch (view) {
-            case "PlaEstudis":
-                ;
-        }
+        if (btn.equals("aules")) Aules.setBackground(selected);
+        else Aules.setBackground(not_selected);
+
+        if (btn.equals("generar")) GenerarH.setBackground(selected);
+        else GenerarH.setBackground(not_selected);
+
     }
+
+
 
 
 }

@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -31,7 +32,7 @@ public class CtrlPresentacio extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        //primaryStage.getIcons().add(new Image(getClass().getResource("/startIcon.png").toExternalForm()));
+        primaryStage.getIcons().add(new Image(getClass().getResource("/icon2.png").toExternalForm()));
         this.primaryStage = primaryStage;
         controladorDomini = new CtrDomini();
         FXMLLoader loader = new FXMLLoader();
@@ -45,6 +46,7 @@ public class CtrlPresentacio extends Application{
         primaryStage.setScene(baseView);
         primaryStage.show();
     }
+
     /**
      * Punt d'entrada de l'aplicació.
      *
@@ -53,26 +55,14 @@ public class CtrlPresentacio extends Application{
     public static void main(String[] args) {
         launch(args);
     }
-/*
-    /**
-     * Veure la vista de gestió de plans d'estudi.
-     *
-     * @throws IOException Excepcio Entrada/Sortida.
-     */
-    /*public void view_gestioPlaEstudis () throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        Pane p = loader.load(getClass().getResource("/ViewPlaEstudis.fxml").openStream());
-        ViewPlaEstudis PEcontroller = loader.getController();
-        PEcontroller.setViewController(this);
-    }*/
 
     /**
-     * Canviar la vista de gestions a la de Plans d'estudi.
+     * Canviar la vista de gestions a la de Gestió de Plans d'estudi.
      *
-     * @throws IOException
+     * @throws IOException excepcio d'entrada/sortida.
      */
 
-    public void showPlaView () throws IOException{
+    public void showPlaEstudis () throws IOException{
         FXMLLoader loader = new FXMLLoader();
         AnchorPane a = loader.load(getClass().getResource("/ViewPlaEstudis.fxml").openStream()); //change
         ViewPlaEstudis plaController = loader.getController(); // change
@@ -81,9 +71,23 @@ public class CtrlPresentacio extends Application{
     }
 
     /**
-     * Canviar la vista de gestions a la d'Assignatures.
+     * Canviar la vista de gestions a la de Crear Pla d'estudi.
      *
-     * @throws IOException
+     * @throws IOException excepcio d'entrada/sortida.
+     */
+
+    public void showPlaCrear () throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane a = loader.load(getClass().getResource("/ViewPlaCrear.fxml").openStream()); //change
+        ViewPlaCrear crearController = loader.getController(); // change
+        crearController.setViewController(this); // change
+        baseController.getGestioView().getChildren().setAll(a);
+    }
+
+    /**
+     * Canviar la vista de gestions a la de Gestió d'Assignatures.
+     *
+     * @throws IOException excepcio d'entrada/sortida.
      */
 
     public void showAssignatures () throws IOException{
@@ -95,9 +99,22 @@ public class CtrlPresentacio extends Application{
     }
 
     /**
+     * Canviar la vista de gestions a la de Crear Assignatura.
+     *
+     * @throws IOException excepcio d'entrada/sortida.
+     */
+    public void showAssigCrear () throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane a = loader.load(getClass().getResource("/ViewAssigCrear.fxml").openStream()); //change
+        ViewAssigCrear crearController = loader.getController(); // change
+        crearController.setViewController(this); // change
+        baseController.getGestioView().getChildren().setAll(a);
+    }
+
+    /**
      * Canviar la vista de gestions a la d'Aules.
      *
-     * @throws IOException
+     * @throws IOException excepcio d'entrada/sortida.
      */
 
     public void showAules () throws IOException{
@@ -111,7 +128,7 @@ public class CtrlPresentacio extends Application{
     /**
      * Canviar la vista de gestions a la d'Aules.
      *
-     * @throws IOException
+     * @throws IOException excepcio d'entrada/sortida.
      */
 
     public void showGenerarH () throws IOException{
@@ -122,19 +139,19 @@ public class CtrlPresentacio extends Application{
         baseController.getGestioView().getChildren().setAll(a);
     }
 
+
+    // exit
     /**
      * Tancar l'apliació.
      * @throws IOException excepció d'entrada/sortida.
      */
-    @FXML
+
     public void exit_app (Button btn) throws IOException {
         // get a handle to the stage
         Stage stage = (Stage) btn.getScene().getWindow();
         // do what you have to do
         stage.close();
     }
-
-
 
 
 
