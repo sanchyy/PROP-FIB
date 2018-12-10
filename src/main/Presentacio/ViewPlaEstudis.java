@@ -37,6 +37,7 @@ public class ViewPlaEstudis {
      */
     @FXML
     public void oncrearPE_pressed () throws IOException {
+
         ctrlPresentacio.showPlaCrear();
     }
 

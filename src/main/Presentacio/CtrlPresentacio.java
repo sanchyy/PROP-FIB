@@ -112,6 +112,21 @@ public class CtrlPresentacio extends Application{
     }
 
     /**
+     * Canviar la vista de gestions a la de Modificar Assignatura.
+     *
+     * @throws IOException excepcio d'entrada/sortida.
+     */
+    public void showAssigMod () throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane a = loader.load(getClass().getResource("/ViewAssigCrear.fxml").openStream()); //change
+        ViewAssigMod modController = loader.getController(); // change
+        modController.setViewController(this); // change
+        baseController.getGestioView().getChildren().setAll(a);
+        modController.inicialitzar(); // si no funciona mirar aixo, mirar l'ordre
+
+    }
+
+    /**
      * Canviar la vista de gestions a la d'Aules.
      *
      * @throws IOException excepcio d'entrada/sortida.

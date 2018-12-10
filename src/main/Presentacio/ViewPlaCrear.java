@@ -2,13 +2,16 @@ package Presentacio;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 
 public class ViewPlaCrear {
     @FXML private Button tornar, crear;
-    @FXML private TextField name;
+    @FXML private TextField name_input;
+    @FXML private Label name_label;
 
     private CtrlPresentacio ctrlPresentacio;
 
@@ -30,6 +33,17 @@ public class ViewPlaCrear {
      */
     public void onCrear_pressed() throws IOException {
         //ctrlPresentacio.showPlaView();
-        name.appendText("crear pressed");
+        boolean error = false;
+        if (name_input.getText() == null || name_input.getText().isEmpty()) {
+            error = true;
+            name_label.setTextFill(Color.RED);
+        }
+        else name_label.setTextFill(Color.BLACK);
+        // TODO: comprovar que no existeix ja
+        if (!error)  {
+            name_input.getText();
+            // TODO: passar a domini
+            ctrlPresentacio.showPlaEstudis();
+        }
     }
 }

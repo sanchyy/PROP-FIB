@@ -8,15 +8,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ViewAssigCrear {
-    @FXML private Button tornar, crear;
+public class ViewAssigMod {
+    @FXML private Button tornar, modificar;
     @FXML private Label name_label, quatri_label, teo_label, nivell_label;
     @FXML private TextField name_input;
     @FXML private RadioButton yes_radio, no_radio;
     @FXML private ToggleGroup projector_group, nivell_group;
     @FXML private CheckBox projector, ubuntu, LW, fisica, embeded, xarxes, q1, q2;
+    @FXML private RadioButton inicial, obligatoria, especialitat;
 
     private CtrlPresentacio ctrlPresentacio;
+    private String name_before;
 
     /**
      * Assignar controlador de presentació.
@@ -25,6 +27,39 @@ public class ViewAssigCrear {
      */
     public void setViewController(CtrlPresentacio ctrlPresentacio) {
         this.ctrlPresentacio = ctrlPresentacio;
+    }
+
+    public void inicialitzar () {
+        // TODO: agafar dades, demanar a domini
+        // per name input, agafar
+        String name = name_before; // agafar nom, demanar domini 
+        name_input.setPromptText(name);
+
+        Integer quatris = 1; // agafar quatris
+        if (quatris.equals(3) || quatris.equals(1)) {
+            q1.setSelected(true);
+        }
+        else if (quatris.equals(3) || quatris.equals(2)) {
+            q2.setSelected(true);
+        }
+
+        Integer nivell = 1; // agafar nivell
+        if (nivell.equals(1)) inicial.setSelected(true);
+        else if (nivell.equals(2)) obligatoria.setSelected(true);
+        else especialitat.setSelected(true);
+
+        boolean projector_teo = true; // agafar carac teo
+        if (projector_teo) yes_radio.setSelected(true);
+        else no_radio.setSelected(true);
+
+        Boolean carac_lab[] = {true, false, false, true, false, false}; // agafar carac lab
+        if (carac_lab[0]) projector.setSelected(true);
+        if (carac_lab[1]) ubuntu.setSelected(true);
+        if (carac_lab[2]) LW.setSelected(true);
+        if (carac_lab[3]) fisica.setSelected(true);
+        if (carac_lab[4]) embeded.setSelected(true);
+        if (carac_lab[5]) xarxes.setSelected(true);
+
     }
 
     // buttons
@@ -37,10 +72,10 @@ public class ViewAssigCrear {
     }
 
     /**
-     * S'ha clicat el botó Crear, captura els valors dels camps d'entrada, els valida i els envia al controlador de domini.
+     * S'ha clicat el botó Crear, captura els valors dels camps d'entrada, els valida i els envia a la capa de Domini.
      * @throws IOException excepcio d'entrada/sortida.
      */
-    public void onCrear_pressed() throws IOException {
+    public void onModificar_pressed() throws IOException {
         ArrayList<Boolean> errors = new ArrayList<Boolean>();
         for (Integer i = 0; i < 4; i++) {
             errors.add(false);
@@ -48,6 +83,10 @@ public class ViewAssigCrear {
         // String error_text = new String(); // en cas d'uitlitzar finestra d'errors
         if (name_input.getText() == null || name_input.getText().isEmpty()) {
             errors.set(0, true);
+        }
+        else if (name_before != name_input.getText()) {
+            // TODO: comprovar si ja existeix l'assig amb aquell nom
+            // si ja existia errors.set(0, true);    
         }
         // TODO: comprovar si ja existeix l'assig amb aquell nom
         setLabelColor(name_label, errors, 0);

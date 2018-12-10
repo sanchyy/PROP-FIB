@@ -7,9 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.ViewAssigCrear">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.ViewAssigMod">
    <children>
-      <Label layoutX="54.0" layoutY="39.0" text="CREAR ASSIGNATURA" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
+      <Label layoutX="54.0" layoutY="39.0" text="MODIFICAR ASSIGNATURA" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -19,12 +19,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="crear" layoutX="513.0" layoutY="343.0" mnemonicParsing="false" onAction="#onCrear_pressed" text="Crear" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="42.0">
+      <Button fx:id="modificar" layoutX="513.0" layoutY="343.0" mnemonicParsing="false" onAction="#onModificar_pressed" text="Modificar" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="42.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label layoutX="25.0" layoutY="52.0" text="Introdueix els següents camps:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="52.0">
+      <Label layoutX="25.0" layoutY="52.0" text="Pots modificar els següents camps:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="52.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -63,13 +63,13 @@
       <Label fx:id="nivell_label" layoutX="25.0" layoutY="150.0" text="Nivell, fase a la que pertany dins del pla d'estudis:" AnchorPane.leftAnchor="25.0" />
       <HBox alignment="CENTER" layoutX="50.0" layoutY="167.0" prefHeight="27.0" prefWidth="300.0" spacing="20.0">
          <children>
-            <RadioButton mnemonicParsing="false" text="Inicial">
+            <RadioButton fx:id="inicial" mnemonicParsing="false" text="Inicial">
                <toggleGroup>
                   <ToggleGroup fx:id="nivell_group" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton mnemonicParsing="false" text="Obligatoria" toggleGroup="$nivell_group" />
-            <RadioButton mnemonicParsing="false" text="Especialitat" toggleGroup="$nivell_group" />
+            <RadioButton fx:id="obligatoria" mnemonicParsing="false" text="Obligatoria" toggleGroup="$nivell_group" />
+            <RadioButton fx:id="especialitat" mnemonicParsing="false" text="Especialitat" toggleGroup="$nivell_group" />
          </children>
       </HBox>
    </children>
