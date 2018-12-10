@@ -27,11 +27,8 @@ public class CtrlPresentacio extends Application{
 
     private BaseView baseController;
 
-    /*private VistaSecundaria vistaSecundaria;
-    private VistaLEEME vistaLEEME;*/
-
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         primaryStage.getIcons().add(new Image(getClass().getResource("/icon4.png").toExternalForm()));
         this.primaryStage = primaryStage;
         controladorDomini = new CtrDomini();
