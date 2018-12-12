@@ -44,4 +44,15 @@ public class ViewAssignatura {
     public void oncarregarAssig_pressed () {
         singletonCarregar.oncarregar_pressed("Assignatura");
     }
+
+    /**
+     * S'ha clicat consultar una assignatura
+     * @throws IOException
+     */
+
+    @FXML
+    public void onConsultar_pressed() throws IOException {
+        ctrlPresentacio.showAssigConsultar();
+    }
+
 }

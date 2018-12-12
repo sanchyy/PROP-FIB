@@ -27,7 +27,10 @@ public class SingletonCarregar {
         return singleCarregar;
     }
 
-
+    /**
+     * Obre un diàleg per poder seleccionar un GSON obrint una finestre selectora de fitxer, i carregar-lo, només permet carregar si hi ha algun fitxer seleccionat.
+     * @param type indica des de quina vista es crida, amb la finalitat de canviar alguns camps descriptius.
+     */
     @FXML
     public void oncarregar_pressed (String type) {
         Dialog<String> load_dialog = new Dialog<>();

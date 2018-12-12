@@ -108,6 +108,16 @@ public class CtrlPresentacio extends Application{
         baseController.getGestioView().getChildren().setAll(a);
     }
 
+
+    public void showAssigConsultar () throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane a = loader.load(getClass().getResource("/ViewAssigConsultar.fxml").openStream()); //change
+        ViewAssigConsultar consultarController = loader.getController(); // change
+        consultarController.setViewController(this); // change
+        consultarController.init_labels(); // per poder agafar les dades i ja tenirles preparades a l'escena
+        baseController.getGestioView().getChildren().setAll(a);
+    }
+
     /**
      * Canviar la vista de gestions a la de Modificar Assignatura.
      *

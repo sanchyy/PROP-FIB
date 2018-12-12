@@ -26,5 +26,6 @@
       <Button fx:id="carregarAssig" layoutX="380.0" layoutY="74.0" mnemonicParsing="false" onAction="#oncarregarAssig_pressed" text="Carregar assignatura" />
       <TextArea fx:id="debbuging" layoutX="230.0" layoutY="86.0" prefHeight="68.0" prefWidth="110.0" />
       <Label layoutX="25.0" layoutY="158.0" text="Assignatures creades" />
+      <Button layoutX="47.0" layoutY="120.0" mnemonicParsing="false" onAction="#onConsultar_pressed" text="debug consultar" />
    </children>
 </AnchorPane>
