@@ -1,8 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
 
-import
-
 public class GestorAssignatura {
     public ArrayList<String> carrega(String carpeta, String nomFitxer) throws FileNotFoundException, IOException {
         //Carpeta pot ser: Assignatura, Pla Estudis, Aula
