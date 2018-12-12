@@ -7,52 +7,37 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Optional;
 
-public class ViewAules {
-    @FXML private Button crearAula, carregarAula;
-    @FXML private TextArea debbuging;
-    @FXML private TableView taulaAula;
+public class SingletonCarregar {
 
-    private CtrlPresentacio ctrlPresentacio;
-    private SingletonCarregar singletonCarregar = SingletonCarregar.getInstance();
+    private static SingletonCarregar singleCarregar = new SingletonCarregar();
 
-    /**
-     * Assignar controlador de presentació.
-     *
-     * @param ctrlPresentacio el controlador de la capa de presentació.
-     */
-    public void setViewController(CtrlPresentacio ctrlPresentacio) {
-        this.ctrlPresentacio = ctrlPresentacio;
+    private SingletonCarregar ()  {
+        ;
     }
 
-    // Botons nova Aula
-    /**
-     * S'ha clicat el botó Crear aula.
-     *
-     * @throws IOException excepcio d'entrada/sortida.
-     */
-    @FXML
-    public void oncrearAula_pressed () throws IOException {
-        ctrlPresentacio.showAulesCrear();
+    public static SingletonCarregar getInstance() {
+        return singleCarregar;
     }
 
-    /**
-     * S'ha clicat el botó Carregar aula.
-     */
+
     @FXML
-    public void oncarregarAula_pressed () {
-        singletonCarregar.oncarregar_pressed("Aula");
-/*        Dialog<String> load_dialog = new Dialog<>();
-        load_dialog.setTitle("Carregar Aula");
-        load_dialog.setHeaderText("Selecciona el fitxer a carregar amb l'aula/es");
-        //load_dialog.setGraphic(new ImageView(this.getClass().getResource("/icon4.png").toString(), 100, 100, false, false));
+    public void oncarregar_pressed (String type) {
+        Dialog<String> load_dialog = new Dialog<>();
+        load_dialog.setTitle("Carregar " + type);
+        String header = new String("Selecciona el fitxer a carregar amb ");
+        if (type.equals("Aula")) header += "l'aula/es.";
+        else if (type.equals("Pla Estudis")) header += "el pla/ns d'estudis";
+        else if (type.equals("Assignatura")) header += "l'assignatura/es";
+        load_dialog.setHeaderText(header);
+        //load_dialog.setGraphic(new ImageView(getClass().getResource("/icon4.png").toString(), 100, 100, false, false));
 
         //botons
         ButtonType load_buttonType = new ButtonType("Carregar", ButtonBar.ButtonData.OK_DONE);
@@ -69,12 +54,14 @@ public class ViewAules {
         select_button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                debbuging.appendText("seleccionar pressed");
+                //debbuging.appendText("seleccionar pressed");
                 FileChooser fileChooser = new FileChooser();
                 fileChooser.setTitle("Obrir el fitxer font");
                 fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text files", "*.txt"));
                 Node node = (Node) event.getSource();
                 File selectedFile = fileChooser.showOpenDialog(node.getScene().getWindow());
+
+                path_input.clear();
                 path_input.appendText(selectedFile.getName());
 
             }
@@ -105,20 +92,10 @@ public class ViewAules {
         Optional<String> path = load_dialog.showAndWait();
 
         path.ifPresent(filePath -> {
-            System.out.println(filePath); // canviar per enviar capa domini
-        });*/
+            System.out.println(filePath); // debbuging purposes
+            // TODO: send file to domain controller; enviar path o file?
+        });
 
 
     }
-
-    /*public void onSeleccionar_pressed(ActionEvent event) {
-        debbuging.appendText("seleccionar pressed");
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Obrir el fitxer font");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text files", "*.txt"));
-        Node node = (Node) event.getSource();
-        File selectedFile = fileChooser.showOpenDialog(node.getScene().getWindow());
-        //if (selectedFile != null)
-
-    }*/
 }

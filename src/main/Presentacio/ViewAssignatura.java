@@ -13,6 +13,8 @@ public class ViewAssignatura {
     @FXML private TableView taulaAssig;
 
     private CtrlPresentacio ctrlPresentacio;
+    private SingletonCarregar singletonCarregar = SingletonCarregar.getInstance();
+
 
     /**
      * Assignar controlador de presentació.
@@ -40,6 +42,6 @@ public class ViewAssignatura {
      */
     @FXML
     public void oncarregarAssig_pressed () {
-        debbuging.appendText("pressed carregar\n");
+        singletonCarregar.oncarregar_pressed("Assignatura");
     }
 }

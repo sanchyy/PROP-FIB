@@ -19,6 +19,8 @@ public class ViewPlaEstudis {
     @FXML private TableView taulaPE;
 
     private CtrlPresentacio ctrlPresentacio;
+    private SingletonCarregar singletonCarregar = SingletonCarregar.getInstance();
+
 
     /**
      * Assignar controlador de presentació.
@@ -46,7 +48,7 @@ public class ViewPlaEstudis {
      */
     @FXML
     public void oncarregarPE_pressed () {
-        debbuging.appendText("pressed carregar\n");
+        singletonCarregar.oncarregar_pressed("Pla Estudis");
     }
 
 }

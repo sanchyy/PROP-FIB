@@ -179,5 +179,7 @@ public class CtrlPresentacio extends Application{
     }
 
 
+    public void testFileChooser () {
 
+    }
 }
