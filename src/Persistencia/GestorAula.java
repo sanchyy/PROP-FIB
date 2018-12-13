@@ -1,36 +1,25 @@
+package Persistencia;
 import java.io.*;
-import java.util.ArrayList;
 
 
 public class GestorAula {
-    public ArrayList<String> carrega(String carpeta, String nomFitxer) throws FileNotFoundException, IOException {
+
+    public String carrega(String carpeta, String nomFitxer) throws IOException {
         //Carpeta pot ser: Assignatura, Pla Estudis, Aula
-        FileReader fr = new FileReader("../../static/Aula/"+ nomFitxer + ".txt");
-        ArrayList<String> res = new ArrayList<String>();
+        FileReader fr = new FileReader("../../DB/Aula/"+ nomFitxer + ".txt");
         BufferedReader br = new BufferedReader(fr);
-        String line = br.readLine();
-        while (line != null) {
-            res.add(line);
-            line = br.readLine();
-        }
-        return res;
+        return  br.readLine();
     }
 
+    public void guarda(String carpeta, String nomFitxer, String json) throws IOException {
 
-    public void guarda(String carpeta, String nomFitxer, ArrayList<String> objectes) throws FileNotFoundException, IOException {
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter("../../static/" + carpeta + "/"+ nomFitxer + ".txt"));
-        writer.write("");
-
-        for (String s : objectes) {
-            writer.append(s);
-            writer.append("\n");
-        }
+        BufferedWriter writer = new BufferedWriter(new FileWriter("../../DB/Aula/"+ nomFitxer + ".txt"));
+        writer.write(json);
         writer.close();
     }
 
-    public boolean esborra (String carpeta, String nomFitxer) {
-        File file = new File("../../static/" + carpeta + "/"+ nomFitxer + ".txt");
+    public boolean esborra (String nomFitxer) {
+        File file = new File("../../DB/Aula/"+ nomFitxer + ".txt");
         return file.delete();
     }
 }
