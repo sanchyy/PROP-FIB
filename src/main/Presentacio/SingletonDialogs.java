@@ -7,35 +7,38 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.util.Optional;
 
-public class SingletonCarregar {
+public class SingletonDialogs {
 
-    private static SingletonCarregar singleCarregar = new SingletonCarregar();
+    private static SingletonDialogs singleCarregar = new SingletonDialogs();
+    //private CtrlPresentacio ctrlPresentacio;
 
-    private SingletonCarregar ()  {
+    private SingletonDialogs()  {
         ;
     }
 
-    public static SingletonCarregar getInstance() {
+    public static SingletonDialogs getInstance() {
         return singleCarregar;
     }
 
+   /* public void setViewController(CtrlPresentacio ctrlPresentacio) {
+        this.ctrlPresentacio = ctrlPresentacio;
+    }
+*/
     /**
      * Obre un diàleg per poder seleccionar un GSON obrint una finestre selectora de fitxer, i carregar-lo, només permet carregar si hi ha algun fitxer seleccionat.
      * @param type indica des de quina vista es crida, amb la finalitat de canviar alguns camps descriptius.
      */
     @FXML
-    public void oncarregar_pressed (String type) {
+    public void display_carregar (String type) {
         Dialog<String> load_dialog = new Dialog<>();
         load_dialog.setTitle("Carregar " + type);
-        String header = new String("Selecciona el fitxer a carregar amb ");
+        String header = "Selecciona el fitxer a carregar amb ";
         if (type.equals("Aula")) header += "l'aula/es.";
         else if (type.equals("Pla Estudis")) header += "el pla/ns d'estudis";
         else if (type.equals("Assignatura")) header += "l'assignatura/es";
@@ -83,7 +86,6 @@ public class SingletonCarregar {
             pathButton.setDisable(newValue.trim().isEmpty());
         });
 
-
         load_dialog.getDialogPane().setContent(grid);
 
         load_dialog.setResultConverter(dialogButton -> {
@@ -98,6 +100,21 @@ public class SingletonCarregar {
             System.out.println(filePath); // debbuging purposes
             // TODO: send file to domain controller; enviar path o file?
         });
+    }
+
+    @FXML
+    public void display_delete (String name) {
+        Alert delete_alert = new Alert(Alert.AlertType.CONFIRMATION);
+        delete_alert.setTitle("Confirmar l'eliminació " + name);
+        delete_alert.setHeaderText("Eliminar permanentment " + name);
+        delete_alert.setContentText("Estàs a punt d'eliminar " + name +
+                ". És un canvi irreversible, vols eliminar-ho?");
+
+        Optional<ButtonType> result = delete_alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            // TODO: dir que sha eliminat a capa domini i ella a persitencia
+        }
+
 
 
     }

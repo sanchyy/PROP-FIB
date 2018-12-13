@@ -1,19 +1,9 @@
 package Presentacio;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.stage.FileChooser;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.Optional;
 
 public class ViewAules {
     @FXML private Button crearAula, carregarAula;
@@ -21,7 +11,7 @@ public class ViewAules {
     @FXML private TableView taulaAula;
 
     private CtrlPresentacio ctrlPresentacio;
-    private SingletonCarregar singletonCarregar = SingletonCarregar.getInstance();
+    private SingletonDialogs singletonDialogs = SingletonDialogs.getInstance();
 
     /**
      * Assignar controlador de presentació.
@@ -48,7 +38,7 @@ public class ViewAules {
      */
     @FXML
     public void oncarregarAula_pressed () {
-        singletonCarregar.oncarregar_pressed("Aula");
+        singletonDialogs.display_carregar("Aula");
 /*        Dialog<String> load_dialog = new Dialog<>();
         load_dialog.setTitle("Carregar Aula");
         load_dialog.setHeaderText("Selecciona el fitxer a carregar amb l'aula/es");
@@ -121,4 +111,8 @@ public class ViewAules {
         //if (selectedFile != null)
 
     }*/
+
+    public void onEliminar_pressed() {
+        singletonDialogs.display_delete(""); // TODO: pillar aula a eliminar
+    }
 }

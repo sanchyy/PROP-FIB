@@ -1,17 +1,9 @@
 package Presentacio;
 
 import javafx.fxml.FXML;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Optional;
-import java.util.logging.Level;
 
 public class ViewPlaEstudis {
     @FXML private Button crearPE, carregarPE;
@@ -19,7 +11,7 @@ public class ViewPlaEstudis {
     @FXML private TableView taulaPE;
 
     private CtrlPresentacio ctrlPresentacio;
-    private SingletonCarregar singletonCarregar = SingletonCarregar.getInstance();
+    private SingletonDialogs singletonDialogs = SingletonDialogs.getInstance();
 
 
     /**
@@ -48,7 +40,12 @@ public class ViewPlaEstudis {
      */
     @FXML
     public void oncarregarPE_pressed () {
-        singletonCarregar.oncarregar_pressed("Pla Estudis");
+        singletonDialogs.display_carregar("Pla Estudis");
+    }
+
+    @FXML
+    public void onEliminar_pressed() {
+        singletonDialogs.display_delete(""); // TODO: pillar pla a eliminar
     }
 
 }

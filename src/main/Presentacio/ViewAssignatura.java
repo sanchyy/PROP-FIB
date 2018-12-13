@@ -13,7 +13,7 @@ public class ViewAssignatura {
     @FXML private TableView taulaAssig;
 
     private CtrlPresentacio ctrlPresentacio;
-    private SingletonCarregar singletonCarregar = SingletonCarregar.getInstance();
+    private SingletonDialogs singletonDialogs = SingletonDialogs.getInstance();
 
 
     /**
@@ -42,7 +42,7 @@ public class ViewAssignatura {
      */
     @FXML
     public void oncarregarAssig_pressed () {
-        singletonCarregar.oncarregar_pressed("Assignatura");
+        singletonDialogs.display_carregar("Assignatura");
     }
 
     /**
@@ -53,6 +53,11 @@ public class ViewAssignatura {
     @FXML
     public void onConsultar_pressed() throws IOException {
         ctrlPresentacio.showAssigConsultar();
+    }
+
+    @FXML
+    public void onEliminar_pressed() {
+        singletonDialogs.display_delete("xd"); // TODO: pillar l'assig a eliminar
     }
 
 }

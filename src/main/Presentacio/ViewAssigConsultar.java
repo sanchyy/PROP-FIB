@@ -48,10 +48,8 @@ public class ViewAssigConsultar {
         if (tmp_array[3]) lab += "Física\n";
         if (tmp_array[4]) lab += "Embeded\n";
         if (tmp_array[5]) lab += "Xarxes\n";
-        //lab_output.setWrapText(true);
+        // lab_output.setWrapText(true);
         lab_output.setText(lab);
-
-
     }
 
     /**
