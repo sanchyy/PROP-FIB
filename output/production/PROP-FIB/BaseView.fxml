@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.BaseView">
+  <items>
+      <VBox fx:id="baseView" alignment="CENTER" prefHeight="398.0" prefWidth="140.0" spacing="20.0">
+         <children>
+            <Button fx:id="PlaE" mnemonicParsing="false" onAction="#onPlaE_pressed" text="Plans d'estudis">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="Assig" mnemonicParsing="false" onAction="#onAssig_pressed" text="Assignatures">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="Aules" mnemonicParsing="false" onAction="#onAules_pressed" text="Aules">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="GenerarH" mnemonicParsing="false" onAction="#onGenerarH_pressed" text="Generar Horari">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="Sortir" mnemonicParsing="false" onAction="#onSortir_pressed" text="Sortir">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children>
+      </VBox>
+    <AnchorPane fx:id="gestioView" minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="396.0" />
+  </items>
+</SplitPane>

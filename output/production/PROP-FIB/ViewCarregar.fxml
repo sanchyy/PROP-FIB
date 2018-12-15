@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.ViewCarregar">
+   <children>
+      <Label fx:id="titol_label" layoutX="83.0" layoutY="46.0" text="CARREGAR X" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="52.0" text="Selecciona el fitxer a carregar:" />
+      <Button fx:id="carregar" layoutX="26.0" layoutY="343.0" mnemonicParsing="false" onAction="#onCarregar_pressed" text="Carregar" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="42.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="tornar" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTornar_pressed" text="&lt; Tornar" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="25.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.MainView">
+   <children>
+      <VBox alignment="CENTER" layoutX="200.0" layoutY="50.0" prefHeight="300.0" prefWidth="200.0" spacing="20.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <Button fx:id="PlaE" mnemonicParsing="false" onAction="#onGestioPE_pressed" text="Gestió Plans d'estudi" />
+            <Button fx:id="Assig" mnemonicParsing="false" onAction="#onGestioAssig_pressed" text="Gestió Assignatures" />
+            <Button fx:id="Aules" mnemonicParsing="false" onAction="#onGestioAu_pressed" text="Gestionar Aules" />
+            <Button fx:id="GenerarH" mnemonicParsing="false" onAction="#onGenerarH_pressed" text="Generar horari" />
+            <Button fx:id="Sortir" mnemonicParsing="false" onAction="#onSortir_pressed" text="Sortir" />
+         </children>
+      </VBox>
+      <TextArea fx:id="debbuging" layoutX="14.0" layoutY="78.0" prefHeight="114.0" prefWidth="121.0" />
+   </children>
+</AnchorPane>

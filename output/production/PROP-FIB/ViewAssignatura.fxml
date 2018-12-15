@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.ViewAssignatura">
+   <children>
+      <TableView fx:id="taulaAssig" layoutX="14.0" layoutY="180.0" prefHeight="200.0" prefWidth="548.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0">
+         <columns>
+            <TableColumn fx:id="name" prefWidth="359.0" text="Nom" />
+            <TableColumn fx:id="consultar" prefWidth="63.0" resizable="false" text="Consultar" />
+            <TableColumn fx:id="modificar" prefWidth="63.0" resizable="false" text="Modificar" />
+            <TableColumn fx:id="eliminar" maxWidth="173.0" prefWidth="63.0" resizable="false" text="Eliminar" />
+         </columns>
+      </TableView>
+      <Label layoutX="25.0" layoutY="28.0" text="GESTIÓ D'ASSIGNATURES" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="crearAssig" layoutX="73.0" layoutY="74.0" mnemonicParsing="false" onAction="#oncrearAssig_pressed" text="Crear assignatura" />
+      <Button fx:id="carregarAssig" layoutX="380.0" layoutY="74.0" mnemonicParsing="false" onAction="#oncarregarAssig_pressed" text="Carregar assignatura" />
+      <TextArea fx:id="debbuging" layoutX="230.0" layoutY="86.0" prefHeight="68.0" prefWidth="110.0" />
+      <Label layoutX="25.0" layoutY="158.0" text="Assignatures creades" />
+      <Button layoutX="47.0" layoutY="120.0" mnemonicParsing="false" onAction="#onConsultar_pressed" text="debug consultar" />
+      <Button layoutX="417.0" layoutY="120.0" mnemonicParsing="false" onAction="#onEliminar_pressed" text="debug eliminar" />
+   </children>
+</AnchorPane>

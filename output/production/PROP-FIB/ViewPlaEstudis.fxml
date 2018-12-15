@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.ViewPlaEstudis">
+   <children>
+      <Label layoutX="25.0" layoutY="163.0" text="Plans d'estudi creats" />
+      <TextArea fx:id="debbuging" layoutX="245.0" layoutY="103.0" prefHeight="68.0" prefWidth="110.0" />
+      <Button fx:id="carregarPE" layoutX="399.0" layoutY="78.0" mnemonicParsing="false" onAction="#oncarregarPE_pressed" text="Carregar pla d'estudis" />
+      <Button fx:id="crearPE" layoutX="87.0" layoutY="78.0" mnemonicParsing="false" onAction="#oncrearPE_pressed" text="Crear pla d'estudis" />
+      <Label layoutX="25.0" layoutY="25.0" text="GESTIÓ DE PLANS D'ESTUDIS" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TableView fx:id="taulaPE" layoutX="24.0" layoutY="180.0" prefHeight="200.0" prefWidth="548.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
+         <columns>
+            <TableColumn fx:id="name" prefWidth="359.0" text="Nom" />
+            <TableColumn fx:id="consultar" prefWidth="63.0" resizable="false" text="Consultar" />
+            <TableColumn fx:id="modificar" prefWidth="63.0" resizable="false" text="Modificar" />
+            <TableColumn fx:id="eliminar" maxWidth="173.0" prefWidth="63.0" resizable="false" text="Eliminar" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

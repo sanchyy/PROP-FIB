@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.ViewPla">
+   <children>
+      <Button fx:id="crearPE" layoutX="166.0" layoutY="108.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="carregarPE" layoutX="341.0" layoutY="200.0" mnemonicParsing="false" text="Button" />
+      <TextArea fx:id="debbuging" layoutX="32.0" layoutY="155.0" prefHeight="200.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>
