@@ -75,9 +75,37 @@ public class CtrlPresentacio extends Application{
 
     public void showPlaCrear () throws IOException{
         FXMLLoader loader = new FXMLLoader();
-        AnchorPane a = loader.load(getClass().getResource("/ViewPlaCrear.fxml").openStream()); //change
-        ViewPlaCrear crearController = loader.getController(); // change
+        AnchorPane a = loader.load(getClass().getResource("/ViewPlaConcret.fxml").openStream()); //change
+        ViewPlaConcret crearController = loader.getController(); // change
         crearController.setViewController(this); // change
+        baseController.getGestioView().getChildren().setAll(a);
+    }
+
+    /**
+     * Canviar la vista de gestions a la de Consultar Pla d'estudis.
+     *
+     * @throws IOException excepcio d'entrada/sortida.
+     */
+    public void showPlaConsultar () throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane a = loader.load(getClass().getResource("/ViewPlaConcret.fxml").openStream()); //change
+        ViewPlaConcret consultarController = loader.getController(); // change
+        consultarController.setViewController(this); // change
+        consultarController.init_Consultar(); // per preparar a l'escena en mode consultar
+        baseController.getGestioView().getChildren().setAll(a);
+    }
+
+    /**
+     * Canviar la vista de gestions a la de Modificar Assignatura.
+     *
+     * @throws IOException excepcio d'entrada/sortida.
+     */
+    public void showPlaMod () throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane a = loader.load(getClass().getResource("/ViewPlaConcret.fxml").openStream()); //change
+        ViewPlaConcret modController = loader.getController(); // change
+        modController.setViewController(this); // change
+        modController.init_Mod(false); // si no funciona mirar aixo, mirar l'ordre
         baseController.getGestioView().getChildren().setAll(a);
     }
 
@@ -102,19 +130,23 @@ public class CtrlPresentacio extends Application{
      */
     public void showAssigCrear () throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        AnchorPane a = loader.load(getClass().getResource("/ViewAssigCrear.fxml").openStream()); //change
-        ViewAssigCrear crearController = loader.getController(); // change
+        AnchorPane a = loader.load(getClass().getResource("/ViewAssigConcreta.fxml").openStream()); //change
+        ViewAssigConcreta crearController = loader.getController(); // change
         crearController.setViewController(this); // change
         baseController.getGestioView().getChildren().setAll(a);
     }
 
-
+    /**
+     * Canviar la vista de gestions a la de Consultar Assignatura.
+     *
+     * @throws IOException excepcio d'entrada/sortida.
+     */
     public void showAssigConsultar () throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        AnchorPane a = loader.load(getClass().getResource("/ViewAssigConsultar.fxml").openStream()); //change
-        ViewAssigConsultar consultarController = loader.getController(); // change
+        AnchorPane a = loader.load(getClass().getResource("/ViewAssigConcreta.fxml").openStream()); //change
+        ViewAssigConcreta consultarController = loader.getController(); // change
         consultarController.setViewController(this); // change
-        consultarController.init_labels(); // per poder agafar les dades i ja tenirles preparades a l'escena
+        consultarController.init_Consultar(); // per preparar a l'escena en mode consultar
         baseController.getGestioView().getChildren().setAll(a);
     }
 
@@ -125,11 +157,11 @@ public class CtrlPresentacio extends Application{
      */
     public void showAssigMod () throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        AnchorPane a = loader.load(getClass().getResource("/ViewAssigCrear.fxml").openStream()); //change
-        ViewAssigMod modController = loader.getController(); // change
+        AnchorPane a = loader.load(getClass().getResource("/ViewAssigConcreta.fxml").openStream()); //change
+        ViewAssigConcreta modController = loader.getController(); // change
         modController.setViewController(this); // change
+        modController.init_Mod(false); // si no funciona mirar aixo, mirar l'ordre
         baseController.getGestioView().getChildren().setAll(a);
-        modController.inicialitzar(); // si no funciona mirar aixo, mirar l'ordre
 
     }
 
@@ -153,11 +185,45 @@ public class CtrlPresentacio extends Application{
      * @throws IOException excepcio d'entrada/sortida.
      */
     public void showAulesCrear () throws IOException {
-        FXMLLoader loader = new FXMLLoader();
+        /*FXMLLoader loader = new FXMLLoader();
         AnchorPane a = loader.load(getClass().getResource("/ViewAulesCrear.fxml").openStream()); //change
         ViewAulesCrear crearController = loader.getController(); // change
         crearController.setViewController(this); // change
+        baseController.getGestioView().getChildren().setAll(a);*/
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane a = loader.load(getClass().getResource("/ViewAulesConcreta.fxml").openStream()); //change
+        ViewAulaConcreta crearController = loader.getController(); // change
+        crearController.setViewController(this); // change
         baseController.getGestioView().getChildren().setAll(a);
+    }
+
+    /**
+     * Canviar la vista de gestions a la de Consultar una certa aula.
+     *
+     * @throws IOException excepcio d'entrada/sortida.
+     */
+    public void showAulaConsultar () throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane a = loader.load(getClass().getResource("/ViewAulaConcreta.fxml").openStream()); //change
+        ViewAulaConcreta consultarController = loader.getController(); // change
+        consultarController.setViewController(this); // change
+        consultarController.init_Consultar(); // per preparar a l'escena en mode consultar
+        baseController.getGestioView().getChildren().setAll(a);
+    }
+
+    /**
+     * Canviar la vista de gestions a la de Modificar Aula.
+     *
+     * @throws IOException excepcio d'entrada/sortida.
+     */
+    public void showAulaMod () throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane a = loader.load(getClass().getResource("/ViewAulaConcreta.fxml").openStream()); //change
+        ViewAulaConcreta modController = loader.getController(); // change
+        modController.setViewController(this); // change
+        modController.init_Mod(false); // si no funciona mirar aixo, mirar l'ordre
+        baseController.getGestioView().getChildren().setAll(a);
+
     }
 
     /**
@@ -187,10 +253,5 @@ public class CtrlPresentacio extends Application{
         Stage stage = (Stage) btn.getScene().getWindow();
         // do what you have to do
         stage.close();
-    }
-
-
-    public void testFileChooser () {
-
     }
 }

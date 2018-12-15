@@ -48,4 +48,10 @@ public class ViewPlaEstudis {
         singletonDialogs.display_delete(""); // TODO: pillar pla a eliminar
     }
 
+    public void onConsultar_pressed() throws IOException {
+        ctrlPresentacio.showPlaConsultar();
+    }
+    public void onModificar_pressed() throws IOException {
+        ctrlPresentacio.showPlaMod();
+    }
 }

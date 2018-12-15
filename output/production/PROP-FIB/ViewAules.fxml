@@ -7,7 +7,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.ViewAules">
    <children>
       <Label layoutX="25.0" layoutY="158.0" text="Aules creades" />
@@ -27,5 +26,8 @@
             <TableColumn fx:id="eliminar" maxWidth="173.0" prefWidth="63.0" resizable="false" text="Eliminar" />
          </columns>
       </TableView>
+      <Button layoutX="25.0" layoutY="93.0" mnemonicParsing="false" onAction="#onConsultar_pressed" text="debug Consultar" />
+      <Button layoutX="25.0" layoutY="118.0" mnemonicParsing="false" onAction="#onModificar_pressed" text="debug Modificar" />
+      <Button layoutX="434.0" layoutY="103.0" mnemonicParsing="false" onAction="#onEliminar_pressed" text="debug eliminar" />
    </children>
 </AnchorPane>

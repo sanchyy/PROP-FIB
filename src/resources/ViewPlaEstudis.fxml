@@ -24,5 +24,8 @@
             <TableColumn fx:id="eliminar" maxWidth="173.0" prefWidth="63.0" resizable="false" text="Eliminar" />
          </columns>
       </TableView>
+      <Button layoutX="399.0" layoutY="103.0" mnemonicParsing="false" onAction="#onEliminar_pressed" text="debug eliminar" />
+      <Button layoutX="27.0" layoutY="125.0" mnemonicParsing="false" onAction="#onModificar_pressed" text="debug Modificar" />
+      <Button layoutX="27.0" layoutY="103.0" mnemonicParsing="false" onAction="#onConsultar_pressed" text="debug Consultar" />
    </children>
 </AnchorPane>
