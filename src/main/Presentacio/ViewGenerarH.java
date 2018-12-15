@@ -24,6 +24,7 @@ public class ViewGenerarH {
      */
     @FXML
     public void oncrearHorari_pressed () {
+
         debbuging.appendText("pressed crear\n");
     }
 }
