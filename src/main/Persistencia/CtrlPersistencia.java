@@ -1,4 +1,4 @@
-package Persistencia;
+package main.Persistencia;
 
 public class CtrlPersistencia {
     GestorAssignatura gAs;
