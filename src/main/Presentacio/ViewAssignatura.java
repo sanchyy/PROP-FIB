@@ -60,4 +60,9 @@ public class ViewAssignatura {
         singletonDialogs.display_delete("xd"); // TODO: pillar l'assig a eliminar
     }
 
+    @FXML
+    public void onModificar_pressed() throws IOException {
+        ctrlPresentacio.showAssigMod();
+    }
+
 }

@@ -29,7 +29,7 @@ public class ViewAssigMod {
         this.ctrlPresentacio = ctrlPresentacio;
     }
 
-    public void inicialitzar () {
+   /* public void inicialitzar () {
         // TODO: agafar dades, demanar a domini
         // per name input, agafar
         String name = name_before; // agafar nom, demanar domini 
@@ -60,7 +60,7 @@ public class ViewAssigMod {
         if (carac_lab[4]) embeded.setSelected(true);
         if (carac_lab[5]) xarxes.setSelected(true);
 
-    }
+    }*/
 
     // buttons
     /**
@@ -76,7 +76,7 @@ public class ViewAssigMod {
      * @throws IOException excepcio d'entrada/sortida.
      */
     public void onModificar_pressed() throws IOException {
-        ArrayList<Boolean> errors = new ArrayList<Boolean>();
+        /*ArrayList<Boolean> errors = new ArrayList<Boolean>();
         for (Integer i = 0; i < 4; i++) {
             errors.add(false);
         }
@@ -141,7 +141,7 @@ public class ViewAssigMod {
             // TODO: passar tot la domini
             // maybe posar finestra no bloquejant de que hsa creat correctament l'assignatura
             ctrlPresentacio.showAssignatures();
-        }
+        }*/
         // else something like introdueix els camps remanents
     }
 

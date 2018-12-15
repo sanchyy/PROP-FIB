@@ -43,7 +43,7 @@ public class ViewAulesCrear {
      *  @throws IOException excepció d'entrada/sortida.
     */
     public void onCrear_pressed () throws NumberFormatException, IOException {
-        ArrayList<Boolean> errors = new ArrayList<Boolean>();
+        /*ArrayList<Boolean> errors = new ArrayList<Boolean>();
         for (Integer i = 0; i < 3; i++) {
             errors.add(false);
         }
@@ -64,17 +64,6 @@ public class ViewAulesCrear {
         }
         setLabelColor(capacity_label, errors, 1);
 
-        /*Boolean carac[] = new Boolean[6];
-        carac[0] = projector.isSelected();
-        carac[1] = ubuntu.isSelected();
-        carac[2] = LW.isSelected();
-        carac[3] = fisica.isSelected();
-        carac[4] = embeded.isSelected();
-        carac[5] = xarxes.isSelected();
-        Boolean some_carac_selected = false;
-        for (Integer i = 0; i < 6 && (!some_carac_selected); i++) {
-            if (carac[i]) some_carac_selected = true;
-        }*/
         ArrayList<Boolean> carac = new ArrayList<Boolean>();
         carac.add(projector.isSelected());
         carac.add(ubuntu.isSelected());
@@ -94,7 +83,7 @@ public class ViewAulesCrear {
             // TODO: passar tot a domini + carac[]
             // maybe posar finestra no bloquejant de que hsa creat correctament l'aula
             ctrlPresentacio.showAules();
-        }
+        }*/
 
     }
     private void setLabelColor (Label l, ArrayList<Boolean> error, int i) {
