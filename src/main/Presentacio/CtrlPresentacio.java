@@ -182,6 +182,7 @@ public class CtrlPresentacio extends Application{
      */
 
     public void exit_app (Button btn) throws IOException {
+        // TODO: enviar ordre de guardar tot a disc
         // get a handle to the stage
         Stage stage = (Stage) btn.getScene().getWindow();
         // do what you have to do
