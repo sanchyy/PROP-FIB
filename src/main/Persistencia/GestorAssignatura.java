@@ -1,5 +1,6 @@
 package main.Persistencia;
 import java.io.*;
+import java.util.ArrayList;
 
 public class GestorAssignatura {
 
@@ -21,4 +22,15 @@ public class GestorAssignatura {
         File file = new File("../../DB/Assignatura/"+ nomFitxer + ".txt");
         return file.delete();
     }
+
+    public ArrayList<String> llistaAssignatures() throws NullPointerException {
+        ArrayList<String> res = new ArrayList<String>();
+        final File folder = new File ("../../../DB/Assignatura");
+
+        for (File f : folder.listFiles()) {
+            res.add(f.getName());
+        }
+        return res;
+    }
+
 }
