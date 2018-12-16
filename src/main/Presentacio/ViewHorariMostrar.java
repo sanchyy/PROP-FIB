@@ -1,16 +1,16 @@
 package Presentacio;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
+import javafx.scene.layout.GridPane;
+import javafx.scene.input.DragEvent;
 
 import java.io.IOException;
 
-public class ViewGenerarH {
-    @FXML private Button crearHorari;
-    @FXML private TextArea debbuging;
+public class ViewHorariMostrar {
+    @FXML private GridPane horaro_grid;
 
     private CtrlPresentacio ctrlPresentacio;
+    private boolean modified = false; // 0 crear, 1 consultar, 2 modificar
 
     /**
      * Assignar controlador de presentació.
@@ -22,19 +22,19 @@ public class ViewGenerarH {
     }
 
     /**
-     * S'ha clicat el botó Crear horari.
-     * @throws IOException
-     */
-    @FXML
-    public void oncrearHorari_pressed () throws IOException {
-        ctrlPresentacio.showHorariMostrar();
-    }
-
-    /**
      * S'ha clicat el botó Tornar.
      * @throws IOException excepcio d'entrada/sortida.
      */
     public void onTornar_pressed() throws IOException {
-        ctrlPresentacio.showPlaEstudis();
+        ctrlPresentacio.showGenerarH();
     }
+
+    public void onModRestric_pressed () {
+
+    }
+
+    public void onGuardar_pressed() {
+
+    }
+
 }

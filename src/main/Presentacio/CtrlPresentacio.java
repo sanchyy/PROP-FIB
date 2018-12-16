@@ -240,11 +240,23 @@ public class CtrlPresentacio extends Application{
      *
      * @throws IOException excepcio d'entrada/sortida.
      */
-
     public void showGenerarH () throws IOException{
         FXMLLoader loader = new FXMLLoader();
         AnchorPane a = loader.load(getClass().getResource("/ViewGenerarH.fxml").openStream()); //change
         ViewGenerarH horariController = loader.getController(); // change
+        horariController.setViewController(this); // change
+        baseController.getGestioView().getChildren().setAll(a);
+    }
+
+    /**
+     * Canviar la vista de gestions a la d'Aules.
+     *
+     * @throws IOException excepcio d'entrada/sortida.
+     */
+    public void showHorariMostrar () throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane a = loader.load(getClass().getResource("/ViewHorariMostrar.fxml").openStream()); //change
+        ViewHorariMostrar horariController = loader.getController(); // change
         horariController.setViewController(this); // change
         baseController.getGestioView().getChildren().setAll(a);
     }
