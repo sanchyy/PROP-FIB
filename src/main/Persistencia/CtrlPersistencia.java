@@ -9,5 +9,11 @@ public class CtrlPersistencia {
     GestorRestriccio  gRe;
     GestorHorari      gHo;
 
+    public CtrlPersistencia() {
+        gPe = new GestorPlaEstudis();
+    }
 
+    public ArrayList<Domini.PlaEstudis> getPlansEstudis() {
+        return gPe.agafa();
+    }
 }

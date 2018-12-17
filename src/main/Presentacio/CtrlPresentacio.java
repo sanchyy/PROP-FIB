@@ -13,14 +13,18 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import Domini.CtrDomini;
+import main.Persistencia.CtrlPersistencia;
+
 /**
  * Tipus controlador de presentació.
  */
 public class CtrlPresentacio extends Application{
 
     private CtrDomini controladorDomini;
+    private CtrlPersistencia controladorPersistencia;
     private Stage primaryStage;
     private Scene mainView, baseView;
     private Scene viewPlaEstudis;
@@ -32,6 +36,7 @@ public class CtrlPresentacio extends Application{
         primaryStage.getIcons().add(new Image(getClass().getResource("/icon4.png").toExternalForm()));
         this.primaryStage = primaryStage;
         controladorDomini = new CtrDomini();
+        controladorPersistencia = new CtrlPersistencia();
         FXMLLoader loader = new FXMLLoader();
         SplitPane p = loader.load(getClass().getResource("/BaseView.fxml").openStream()); // Change when the main view is done
         baseController = loader.getController();   // change when the main view is done
@@ -42,6 +47,8 @@ public class CtrlPresentacio extends Application{
         //viewPla.getStylesheets().add("/mainMenuStyle.css"); // add it if we have a css
         primaryStage.setScene(baseView);
         primaryStage.show();
+
+        ArrayList<Domini.PlaEstudis> pe = controladorPersistencia.getPlansEstudis();
     }
 
     /**
