@@ -1,5 +1,6 @@
 package main.Persistencia;
 import java.io.*;
+import java.util.ArrayList;
 
 public class GestorRestriccio {
 
@@ -20,5 +21,17 @@ public class GestorRestriccio {
     public boolean esborra (String nomFitxer) {
         File file = new File("DB/Restriccio/" + nomFitxer + ".txt");
         return file.delete();
+    }
+
+    public ArrayList<String> llistaRestriccio() {
+        ArrayList<String> res = new ArrayList<String>();
+        final File folder = new File ("../../../DB/Restriccio");
+
+        File[] fold = folder.listFiles();
+        if (fold == null) throw new NullPointerException();
+        for (int i = 0; i < fold.length; ++i) {
+            res.add(fold[i].getName());
+        }
+        return res;
     }
 }

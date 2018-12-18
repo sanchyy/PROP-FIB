@@ -1,6 +1,7 @@
 package main.Persistencia;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class GestorHorari {
     public String carrega(String nomFitxer) throws IOException {
@@ -19,5 +20,15 @@ public class GestorHorari {
     public boolean esborra (String nomFitxer) {
         File file = new File("DB/Horari/" + nomFitxer + ".txt");
         return file.delete();
+    }
+
+    public ArrayList<String> llistaHorari() throws NullPointerException {
+        ArrayList<String> res = new ArrayList<String>();
+        final File folder = new File ("../../../DB/Horari");
+
+        for (File f : folder.listFiles()) {
+            res.add(f.getName());
+        }
+        return res;
     }
 }

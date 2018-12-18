@@ -14,16 +14,13 @@ public class GestorPlaEstudis {
         return line;
     }
 
-    public ArrayList<Domini.PlaEstudis> agafa() {
-        try {
-            String linea = carrega("", "pe");
-            return new ArrayList<>();
-        } catch (IOException e) {
-            return new ArrayList<>();
-        }
+    public ArrayList<Domini.PlaEstudis> agafa() throws IOException {
+
+        String linea = carrega("", "pe");
+        return new ArrayList<>();
     }
 
-    public void guarda(String carpeta, String nomFitxer, String json) throws IOException {
+    public void guarda(String nomFitxer, String json) throws IOException {
 
         BufferedWriter writer = new BufferedWriter(new FileWriter("PlaEstudis/" + nomFitxer + ".txt"));
         writer.write(json);
@@ -33,5 +30,17 @@ public class GestorPlaEstudis {
     public boolean esborra (String nomFitxer) {
         File file = new File("PlaEstudis/" + nomFitxer + ".txt");
         return file.delete();
+    }
+
+    public ArrayList<String> llistaPlaEstudis() {
+        ArrayList<String> res = new ArrayList<String>();
+        final File folder = new File ("../../../DB/PlaEstudis");
+
+        File[] fold = folder.listFiles();
+        if (fold == null) throw new NullPointerException();
+        for (int i = 0; i < fold.length; ++i) {
+            res.add(fold[i].getName());
+        }
+        return res;
     }
 }

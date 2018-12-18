@@ -23,12 +23,14 @@ public class GestorAssignatura {
         return file.delete();
     }
 
-    public ArrayList<String> llistaAssignatures() throws NullPointerException {
+    public ArrayList<String> llistaAssignatura() {
         ArrayList<String> res = new ArrayList<String>();
         final File folder = new File ("../../../DB/Assignatura");
 
-        for (File f : folder.listFiles()) {
-            res.add(f.getName());
+        File[] fold = folder.listFiles();
+        if (fold == null) throw new NullPointerException();
+        for (int i = 0; i < fold.length; ++i) {
+            res.add(fold[i].getName());
         }
         return res;
     }

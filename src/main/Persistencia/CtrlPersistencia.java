@@ -1,5 +1,6 @@
 package main.Persistencia;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class CtrlPersistencia {
@@ -13,7 +14,12 @@ public class CtrlPersistencia {
         gPe = new GestorPlaEstudis();
     }
 
-    public ArrayList<Domini.PlaEstudis> getPlansEstudis() {
+    /*public ArrayList<Domini.PlaEstudis> getPlansEstudis() throws IOException{
+
         return gPe.agafa();
+    }*/
+
+    public void guarda() throws IOException {
+        gPe.guarda("FIB 2018", "HOLIII");
     }
 }
