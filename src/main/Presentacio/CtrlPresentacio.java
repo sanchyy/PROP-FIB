@@ -26,6 +26,7 @@ public class CtrlPresentacio extends Application{
 
     private CtrDomini controladorDomini;
     private CtrPersistencia controladorPersistencia;
+    private CtrDomini ctrDomini;
     private Stage primaryStage;
     private Scene mainView, baseView;
     private Scene viewPlaEstudis;
@@ -39,6 +40,7 @@ public class CtrlPresentacio extends Application{
         this.primaryStage = primaryStage;
         controladorDomini = new CtrDomini();
         controladorPersistencia = new CtrPersistencia();
+        ctrDomini = new CtrDomini();
         FXMLLoader loader = new FXMLLoader();
         SplitPane p = loader.load(getClass().getResource("/BaseView.fxml").openStream()); // Change when the main view is done
         baseController = loader.getController();   // change when the main view is done
@@ -291,5 +293,61 @@ public class CtrlPresentacio extends Application{
             //FER ALGUN POPUP
         }
     }
+
+    // load values
+ /*   public void load_AssigConcreta(String name, Integer quatris, Integer nivell, boolean projector, Boolean carac_lab[]) {
+        // TODO: demanar que domini em deixi les dades
+        *//* BERNI no se com faras per tornar pero a la capcelera tens el que necessito i en principi mels has de deixar alla
+         tot i que no estic segura que aixo funcioni del tot, pots canviar com enviarli a load values d'assig
+         pero els tipus no plis*//*
+        // el name es de quina assig carregar
+        // ctrDomini.something();
+    }
+
+    public void load_AulaConcreta (String name, Integer capacitat, Boolean carac_lab[]) {
+        // TODO: demanar a domini dades d'aula
+        *//* berni el mateix que per assig*//*
+        // el name es de quina aula
+    }
+
+    public void load_PlaConcreta (String name) {
+        // TODO: demanar a domini dades de pla d'estudi
+
+    }*/
+
+    // save values
+    /*public void save_AssigConcreta (String name, Integer quatris, Integer nivell, boolean projector, Boolean carac_lab[]) {
+        // TODO: tenvio les dades aixi
+        // proposta de com podria ser, pero no tinc npi
+        // ctrDomini.send_AssigConcreta(name, quatris, nivell, projector, carac_lab);
+    }
+
+    public void save_AulaConcreta (String name, Integer capacitat, ArrayList<Boolean> carac) {
+        // TODO: tencio les dades aixi
+        // proposta
+        // ctrDomini.send_AulaConcreta(name, capacitat, carac_lab);
+    }
+
+    public void save_PlaConcret (String name) {
+        // TODO: dades
+        // pueh com lo dabans
+
+    }*/
+
+    // check exitencies
+    /*public boolean exists_AssigConcreta (String name) {
+        // TODO: tenvio el nom de lassig i mirar si ja existeix (sí: true, no: false)
+        return false;
+    }
+
+    public boolean exists_AulaConcreta (String name) {
+        // TODO: tenvio el nom de l'aula i mirar si ja existeix (sí: true, no: false)
+        return false;
+    }
+
+    public boolean exists_PlaConcret (String name) {
+        // TODO: tenvio el nom del pla i mirar si ja existeix (sí: true, no: false)
+        return false;
+    }*/
 
 }
