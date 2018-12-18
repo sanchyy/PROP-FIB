@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public class GestorAssignatura {
 
-    public String carrega(String carpeta, String nomFitxer) throws IOException {
+    public String carrega(String nomFitxer) throws IOException {
         //Carpeta pot ser: Assignatura, Pla Estudis, Aula
         FileReader fr = new FileReader("DB/Assignatura/" + nomFitxer + ".txt");
         BufferedReader br = new BufferedReader(fr);
         return  br.readLine();
     }
 
-    public void guarda(String carpeta, String nomFitxer, String json) throws IOException {
+    public void guarda(String nomFitxer, String json) throws IOException {
 
         BufferedWriter writer = new BufferedWriter(new FileWriter("DB/Assignatura/" + nomFitxer + ".txt"));
         writer.write(json);

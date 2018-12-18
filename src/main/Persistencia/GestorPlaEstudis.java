@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class GestorPlaEstudis {
 
-    public String carrega(String carpeta, String nomFitxer) throws IOException {
+    public String carrega(String nomFitxer) throws IOException {
         //Carpeta pot ser: Assignatura, Pla Estudis, Aula
         FileReader fr = new FileReader("./DB/PlaEstudis/"+ nomFitxer + ".txt");
         BufferedReader br = new BufferedReader(fr);
@@ -16,7 +16,7 @@ public class GestorPlaEstudis {
 
     public ArrayList<Domini.PlaEstudis> agafa() throws IOException {
 
-        String linea = carrega("", "pe");
+        String linea = carrega("pe");
         return new ArrayList<>();
     }
 
