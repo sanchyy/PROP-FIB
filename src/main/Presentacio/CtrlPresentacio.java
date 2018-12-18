@@ -1,7 +1,6 @@
 package Presentacio;
 
 
-import com.google.gson.Gson;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,20 +16,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import Domini.CtrDomini;
-import main.Persistencia.CtrPersistencia;
-import main.Persistencia.CtrlPersistencia;
-
 /**
  * Tipus controlador de presentació.
  */
 public class CtrlPresentacio extends Application{
 
-    private CtrDomini controladorDomini;
-    private CtrPersistencia controladorPersistencia;
+    private CtrDomini ctrDomini;
     private Stage primaryStage;
     private Scene mainView, baseView;
     private Scene viewPlaEstudis;
-    private Gson gson = new Gson();
 
     private BaseView baseController;
 
@@ -38,8 +32,7 @@ public class CtrlPresentacio extends Application{
     public void start(Stage primaryStage) throws Exception {
         primaryStage.getIcons().add(new Image(getClass().getResource("/icon4.png").toExternalForm()));
         this.primaryStage = primaryStage;
-        controladorDomini = new CtrDomini();
-        controladorPersistencia = new CtrPersistencia();
+        ctrDomini = new CtrDomini();
         FXMLLoader loader = new FXMLLoader();
         SplitPane p = loader.load(getClass().getResource("/BaseView.fxml").openStream()); // Change when the main view is done
         baseController = loader.getController();   // change when the main view is done
@@ -50,8 +43,6 @@ public class CtrlPresentacio extends Application{
         //viewPla.getStylesheets().add("/mainMenuStyle.css"); // add it if we have a css
         primaryStage.setScene(baseView);
         primaryStage.show();
-
-        ArrayList<String> ud = controladorPersistencia.getUnitatDocent();
     }
 
     /**
@@ -85,9 +76,37 @@ public class CtrlPresentacio extends Application{
 
     public void showPlaCrear () throws IOException{
         FXMLLoader loader = new FXMLLoader();
-        AnchorPane a = loader.load(getClass().getResource("/ViewPlaCrear.fxml").openStream()); //change
-        ViewPlaCrear crearController = loader.getController(); // change
+        AnchorPane a = loader.load(getClass().getResource("/ViewPlaConcret.fxml").openStream()); //change
+        ViewPlaConcret crearController = loader.getController(); // change
         crearController.setViewController(this); // change
+        baseController.getGestioView().getChildren().setAll(a);
+    }
+
+    /**
+     * Canviar la vista de gestions a la de Consultar Pla d'estudis.
+     *
+     * @throws IOException excepcio d'entrada/sortida.
+     */
+    public void showPlaConsultar () throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane a = loader.load(getClass().getResource("/ViewPlaConcret.fxml").openStream()); //change
+        ViewPlaConcret consultarController = loader.getController(); // change
+        consultarController.setViewController(this); // change
+        consultarController.init_Consultar(); // per preparar a l'escena en mode consultar
+        baseController.getGestioView().getChildren().setAll(a);
+    }
+
+    /**
+     * Canviar la vista de gestions a la de Modificar Assignatura.
+     *
+     * @throws IOException excepcio d'entrada/sortida.
+     */
+    public void showPlaMod () throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane a = loader.load(getClass().getResource("/ViewPlaConcret.fxml").openStream()); //change
+        ViewPlaConcret modController = loader.getController(); // change
+        modController.setViewController(this); // change
+        modController.init_Mod(false); // si no funciona mirar aixo, mirar l'ordre
         baseController.getGestioView().getChildren().setAll(a);
     }
 
@@ -112,19 +131,23 @@ public class CtrlPresentacio extends Application{
      */
     public void showAssigCrear () throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        AnchorPane a = loader.load(getClass().getResource("/ViewAssigCrear.fxml").openStream()); //change
-        ViewAssigCrear crearController = loader.getController(); // change
+        AnchorPane a = loader.load(getClass().getResource("/ViewAssigConcreta.fxml").openStream()); //change
+        ViewAssigConcreta crearController = loader.getController(); // change
         crearController.setViewController(this); // change
         baseController.getGestioView().getChildren().setAll(a);
     }
 
-
+    /**
+     * Canviar la vista de gestions a la de Consultar Assignatura.
+     *
+     * @throws IOException excepcio d'entrada/sortida.
+     */
     public void showAssigConsultar () throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        AnchorPane a = loader.load(getClass().getResource("/ViewAssigConsultar.fxml").openStream()); //change
-        ViewAssigConsultar consultarController = loader.getController(); // change
+        AnchorPane a = loader.load(getClass().getResource("/ViewAssigConcreta.fxml").openStream()); //change
+        ViewAssigConcreta consultarController = loader.getController(); // change
         consultarController.setViewController(this); // change
-        consultarController.init_labels(); // per poder agafar les dades i ja tenirles preparades a l'escena
+        consultarController.init_Consultar(); // per preparar a l'escena en mode consultar
         baseController.getGestioView().getChildren().setAll(a);
     }
 
@@ -135,11 +158,11 @@ public class CtrlPresentacio extends Application{
      */
     public void showAssigMod () throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        AnchorPane a = loader.load(getClass().getResource("/ViewAssigCrear.fxml").openStream()); //change
-        ViewAssigMod modController = loader.getController(); // change
+        AnchorPane a = loader.load(getClass().getResource("/ViewAssigConcreta.fxml").openStream()); //change
+        ViewAssigConcreta modController = loader.getController(); // change
         modController.setViewController(this); // change
+        modController.init_Mod(false); // si no funciona mirar aixo, mirar l'ordre
         baseController.getGestioView().getChildren().setAll(a);
-        modController.inicialitzar(); // si no funciona mirar aixo, mirar l'ordre
 
     }
 
@@ -163,10 +186,57 @@ public class CtrlPresentacio extends Application{
      * @throws IOException excepcio d'entrada/sortida.
      */
     public void showAulesCrear () throws IOException {
-        FXMLLoader loader = new FXMLLoader();
+        /*FXMLLoader loader = new FXMLLoader();
         AnchorPane a = loader.load(getClass().getResource("/ViewAulesCrear.fxml").openStream()); //change
         ViewAulesCrear crearController = loader.getController(); // change
         crearController.setViewController(this); // change
+        baseController.getGestioView().getChildren().setAll(a);*/
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane a = loader.load(getClass().getResource("/ViewAulesConcreta.fxml").openStream()); //change
+        ViewAulaConcreta crearController = loader.getController(); // change
+        crearController.setViewController(this); // change
+        baseController.getGestioView().getChildren().setAll(a);
+    }
+
+    /**
+     * Canviar la vista de gestions a la de Consultar una certa aula.
+     *
+     * @throws IOException excepcio d'entrada/sortida.
+     */
+    public void showAulaConsultar () throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane a = loader.load(getClass().getResource("/ViewAulaConcreta.fxml").openStream()); //change
+        ViewAulaConcreta consultarController = loader.getController(); // change
+        consultarController.setViewController(this); // change
+        consultarController.init_Consultar(); // per preparar a l'escena en mode consultar
+        baseController.getGestioView().getChildren().setAll(a);
+    }
+
+    /**
+     * Canviar la vista de gestions a la de Modificar Aula.
+     *
+     * @throws IOException excepcio d'entrada/sortida.
+     */
+    public void showAulaMod () throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane a = loader.load(getClass().getResource("/ViewAulaConcreta.fxml").openStream()); //change
+        ViewAulaConcreta modController = loader.getController(); // change
+        modController.setViewController(this); // change
+        modController.init_Mod(false); // si no funciona mirar aixo, mirar l'ordre
+        baseController.getGestioView().getChildren().setAll(a);
+
+    }
+
+    /**
+     * Canviar la vista de gestions a la d'Aules.
+     *
+     * @throws IOException excepcio d'entrada/sortida.
+     */
+    public void showGenerarH () throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane a = loader.load(getClass().getResource("/ViewGenerarH.fxml").openStream()); //change
+        ViewGenerarH horariController = loader.getController(); // change
+        horariController.setViewController(this); // change
         baseController.getGestioView().getChildren().setAll(a);
     }
 
@@ -175,11 +245,10 @@ public class CtrlPresentacio extends Application{
      *
      * @throws IOException excepcio d'entrada/sortida.
      */
-
-    public void showGenerarH () throws IOException{
+    public void showHorariMostrar () throws IOException{
         FXMLLoader loader = new FXMLLoader();
-        AnchorPane a = loader.load(getClass().getResource("/ViewGenerarH.fxml").openStream()); //change
-        ViewGenerarH horariController = loader.getController(); // change
+        AnchorPane a = loader.load(getClass().getResource("/ViewHorariMostrar.fxml").openStream()); //change
+        ViewHorariMostrar horariController = loader.getController(); // change
         horariController.setViewController(this); // change
         baseController.getGestioView().getChildren().setAll(a);
     }
@@ -200,21 +269,60 @@ public class CtrlPresentacio extends Application{
     }
 
 
-    public void testFileChooser () {
-
+    // load values
+ /*   public void load_AssigConcreta(String name, Integer quatris, Integer nivell, boolean projector, Boolean carac_lab[]) {
+        // TODO: demanar que domini em deixi les dades
+        *//* BERNI no se com faras per tornar pero a la capcelera tens el que necessito i en principi mels has de deixar alla
+         tot i que no estic segura que aixo funcioni del tot, pots canviar com enviarli a load values d'assig
+         pero els tipus no plis*//*
+        // el name es de quina assig carregar
+        // ctrDomini.something();
     }
 
-    public void guardarPlaEstudis(String nom, Domini.PlaEstudis pe) {
-        String peString = gson.toJson(pe);
-        try {
-            controladorDomini.guardarPlaEstudis(nom, peString);
-        }
-
-        catch (IOException e){
-            System.out.println("Error" + e);
-            //FER ALGUN POPUP
-        }
+    public void load_AulaConcreta (String name, Integer capacitat, Boolean carac_lab[]) {
+        // TODO: demanar a domini dades d'aula
+        *//* berni el mateix que per assig*//*
+        // el name es de quina aula
     }
 
+    public void load_PlaConcreta (String name) {
+        // TODO: demanar a domini dades de pla d'estudi
+
+    }*/
+
+    // save values
+    /*public void save_AssigConcreta (String name, Integer quatris, Integer nivell, boolean projector, Boolean carac_lab[]) {
+        // TODO: tenvio les dades aixi
+        // proposta de com podria ser, pero no tinc npi
+        // ctrDomini.send_AssigConcreta(name, quatris, nivell, projector, carac_lab);
+    }
+
+    public void save_AulaConcreta (String name, Integer capacitat, ArrayList<Boolean> carac) {
+        // TODO: tencio les dades aixi
+        // proposta
+        // ctrDomini.send_AulaConcreta(name, capacitat, carac_lab);
+    }
+
+    public void save_PlaConcret (String name) {
+        // TODO: dades
+        // pueh com lo dabans
+
+    }*/
+
+    // check exitencies
+    /*public boolean exists_AssigConcreta (String name) {
+        // TODO: tenvio el nom de lassig i mirar si ja existeix (sí: true, no: false)
+        return false;
+    }
+
+    public boolean exists_AulaConcreta (String name) {
+        // TODO: tenvio el nom de l'aula i mirar si ja existeix (sí: true, no: false)
+        return false;
+    }
+
+    public boolean exists_PlaConcret (String name) {
+        // TODO: tenvio el nom del pla i mirar si ja existeix (sí: true, no: false)
+        return false;
+    }*/
 
 }

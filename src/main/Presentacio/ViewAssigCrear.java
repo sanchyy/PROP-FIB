@@ -41,7 +41,7 @@ public class ViewAssigCrear {
      * @throws IOException excepcio d'entrada/sortida.
      */
     public void onCrear_pressed() throws IOException {
-        ArrayList<Boolean> errors = new ArrayList<Boolean>();
+        /*ArrayList<Boolean> errors = new ArrayList<Boolean>();
         for (Integer i = 0; i < 4; i++) {
             errors.add(false);
         }
@@ -103,7 +103,7 @@ public class ViewAssigCrear {
             // maybe posar finestra no bloquejant de que hsa creat correctament l'assignatura
             ctrlPresentacio.showAssignatures();
         }
-        // else something like introdueix els camps remanents
+        // else something like introdueix els camps remanents*/
     }
 
     private void setLabelColor (Label l, ArrayList<Boolean> error, int i) {

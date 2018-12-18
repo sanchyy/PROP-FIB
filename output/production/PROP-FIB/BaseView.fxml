@@ -16,15 +16,15 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="Assig" mnemonicParsing="false" onAction="#onAssig_pressed" text="Assignatures">
+            <Button fx:id="Assig" mnemonicParsing="false" onAction="#onAssig_pressed" prefWidth="95.0" text="Assignatures">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="Aules" mnemonicParsing="false" onAction="#onAules_pressed" text="Aules">
+            <Button fx:id="Aules" mnemonicParsing="false" onAction="#onAules_pressed" prefWidth="95.0" text="Aules">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="GenerarH" mnemonicParsing="false" onAction="#onGenerarH_pressed" text="Generar Horari">
+            <Button fx:id="GenerarH" mnemonicParsing="false" onAction="#onGenerarH_pressed" prefWidth="95.0" text="Generar Horari">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>

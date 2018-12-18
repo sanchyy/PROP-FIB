@@ -14,7 +14,7 @@ public class CtrPersistencia {
         // String peString = gson.toJson(pe);
         ArrayList<String> plansEstudis = new ArrayList<>();
         try {
-            plansEstudis = ud.carrega("PlaEstudis", "plansEstudis");
+            plansEstudis = ud.carrega("PlaEstudi", "plansEstudis");
         } catch (IOException e){
             System.out.println("Error" + e);
         }
