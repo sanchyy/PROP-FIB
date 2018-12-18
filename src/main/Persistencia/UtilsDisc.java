@@ -20,4 +20,11 @@ public class UtilsDisc {
         return lineas;
     }
 
+    public void guarda(String carpeta, String fitxer, String json) throws IOException {
+        FileWriter fw = new FileWriter(database + carpeta + "/"+ fitxer + ".txt", true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write(json + "\n");
+        bw.close();
+    }
+
 }

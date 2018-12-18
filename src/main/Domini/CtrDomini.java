@@ -1,26 +1,28 @@
 package Domini;
 
-import main.Persistencia.CtrlPersistencia;
+import com.google.gson.Gson;
+import main.Persistencia.CtrPersistencia;
 
-import java.io.IOException;
+import javax.rmi.ssl.SslRMIClientSocketFactory;
 import java.util.ArrayList;
 
 public class CtrDomini {
 
     private CjtUnitatDocent unitatsDocents = CjtUnitatDocent.getInstance();
 
+    private Gson gson = new Gson();
+
     private Integer unitatDocentSeleccionada;
     private Integer plaEstudisSeleccionat;
     private Integer quadrimestreSeleccionat;
     private CjtRestriccions restriccions;
-    private CtrlPersistencia ctrlPersistencia;
+    private CtrPersistencia ctrPersistencia;
 
     public CtrDomini(Integer lvl) {
         if (lvl == 0) {
             this.unitatDocentSeleccionada = null;
             this.plaEstudisSeleccionat    = null;
             this.quadrimestreSeleccionat  = null;
-            this.restriccions             = new CjtRestriccions();
         } else {
             if (lvl > 0) afegirUnitatDocent("FIB");
             if (lvl > 1) afegirPlaEstudis("FIB_2010");
@@ -28,8 +30,9 @@ public class CtrDomini {
             if (lvl > 3) afegirAssignaturaPlaEstudis("PROP", 3, 2, "FIB", new ArrayList<>(), new ArrayList<>());
             if (lvl > 4) afegirAulaUnitatDocent("A6203", 30, new ArrayList<>());
             if (lvl > 5) afegirSessioQuadrimestre(11, "PROP");
-            this.restriccions = new CjtRestriccions();
         }
+        this.restriccions = new CjtRestriccions();
+        this.ctrPersistencia = new CtrPersistencia();
     }
 
     public CtrDomini() {
@@ -37,6 +40,20 @@ public class CtrDomini {
         this.plaEstudisSeleccionat    = null;
         this.quadrimestreSeleccionat  = null;
         this.restriccions             = new CjtRestriccions();
+        this.ctrPersistencia         = new CtrPersistencia();
+    }
+
+    public void carregarDades() {
+        ArrayList<String> pes = ctrPersistencia.getPlansEstudis();
+        for (String pe : pes) {
+            Domini.UnitatDocent p = gson.fromJson(pe, Domini.UnitatDocent.class);
+            afegirUnitatDocent(p.getNom());
+        }
+    }
+
+    public void guardarDades() {
+        String ud = gson.toJson(getUnitatDocent());
+        ctrPersistencia.guardaPlansEstudis(ud);
     }
 
     public CjtUnitatDocent getUnitatsDocents() {
@@ -261,7 +278,4 @@ public class CtrDomini {
         }
     }
 
-    public void guardarPlaEstudis (String nom, String pe) throws IOException {
-        ctrlPersistencia.guardaPlaEstudis(nom,pe);
-    }
 }

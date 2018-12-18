@@ -11,14 +11,21 @@ public class CtrPersistencia {
     }
 
     public ArrayList<String> getPlansEstudis() {
-        // String peString = gson.toJson(pe);
         ArrayList<String> plansEstudis = new ArrayList<>();
         try {
             plansEstudis = ud.carrega("PlaEstudi", "plansEstudis");
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("Error" + e);
         }
         return plansEstudis;
+    }
+
+    public void guardaPlansEstudis(String plansEstudis) {
+        try {
+            ud.guarda("PlaEstudi", "plansEstudis", plansEstudis);
+        } catch (IOException e) {
+            System.out.println("Error" + e);
+        }
     }
 
 }
