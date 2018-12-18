@@ -1,7 +1,6 @@
 package Presentacio;
 
 
-import com.google.gson.Gson;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,20 +16,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import Domini.CtrDomini;
-import main.Persistencia.CtrPersistencia;
-
 /**
  * Tipus controlador de presentació.
  */
 public class CtrlPresentacio extends Application{
 
-    private CtrDomini controladorDomini;
-    private CtrPersistencia controladorPersistencia;
     private CtrDomini ctrDomini;
     private Stage primaryStage;
     private Scene mainView, baseView;
     private Scene viewPlaEstudis;
-    private Gson gson = new Gson();
 
     private BaseView baseController;
 
@@ -38,8 +32,6 @@ public class CtrlPresentacio extends Application{
     public void start(Stage primaryStage) throws Exception {
         primaryStage.getIcons().add(new Image(getClass().getResource("/icon4.png").toExternalForm()));
         this.primaryStage = primaryStage;
-        controladorDomini = new CtrDomini();
-        controladorPersistencia = new CtrPersistencia();
         ctrDomini = new CtrDomini();
         FXMLLoader loader = new FXMLLoader();
         SplitPane p = loader.load(getClass().getResource("/BaseView.fxml").openStream()); // Change when the main view is done
@@ -51,8 +43,6 @@ public class CtrlPresentacio extends Application{
         //viewPla.getStylesheets().add("/mainMenuStyle.css"); // add it if we have a css
         primaryStage.setScene(baseView);
         primaryStage.show();
-
-        ArrayList<String> ud = controladorPersistencia.getPlansEstudis();
     }
 
     /**
@@ -278,21 +268,6 @@ public class CtrlPresentacio extends Application{
         stage.close();
     }
 
-    public void testFileChooser () {
-
-    }
-
-    public void guardarPlaEstudis(String nom, Domini.PlaEstudis pe) {
-        String peString = gson.toJson(pe);
-        try {
-            controladorDomini.guardarPlaEstudis(nom, peString);
-        }
-
-        catch (IOException e){
-            System.out.println("Error" + e);
-            //FER ALGUN POPUP
-        }
-    }
 
     // load values
  /*   public void load_AssigConcreta(String name, Integer quatris, Integer nivell, boolean projector, Boolean carac_lab[]) {
