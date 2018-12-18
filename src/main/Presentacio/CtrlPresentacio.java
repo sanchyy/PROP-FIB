@@ -327,7 +327,6 @@ public class CtrlPresentacio extends Application{
         return false;
     }*/
 
-<<<<<<< HEAD
     // carregar
     public void send_path(String path) {
         // TODO: per carregar un fitxer de luser per crear una a
@@ -363,6 +362,3 @@ public class CtrlPresentacio extends Application{
     }
 
 }
-=======
-}
->>>>>>> fe57a2bcf04e8f37f15722482f698a9634de1228
