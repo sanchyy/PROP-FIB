@@ -1,5 +1,8 @@
 package Domini;
 
+import main.Persistencia.CtrlPersistencia;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class CtrDomini {
@@ -10,6 +13,7 @@ public class CtrDomini {
     private Integer plaEstudisSeleccionat;
     private Integer quadrimestreSeleccionat;
     private CjtRestriccions restriccions;
+    private CtrlPersistencia ctrlPersistencia;
 
     public CtrDomini(Integer lvl) {
         if (lvl == 0) {
@@ -255,5 +259,9 @@ public class CtrDomini {
         for (Aula a : getUnitatDocent().getAulesDisponibles()) {
             System.out.println("["+(i++)+"] " + a.getNom());
         }
+    }
+
+    public void guardarPlaEstudis (String nom, String pe) throws IOException {
+        ctrlPersistencia.guardaPlaEstudis(String nom,pe);
     }
 }

@@ -1,6 +1,7 @@
 package Presentacio;
 
 
+import com.google.gson.Gson;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,6 +29,7 @@ public class CtrlPresentacio extends Application{
     private Stage primaryStage;
     private Scene mainView, baseView;
     private Scene viewPlaEstudis;
+    private Gson gson = new Gson();
 
     private BaseView baseController;
 
@@ -200,4 +202,18 @@ public class CtrlPresentacio extends Application{
     public void testFileChooser () {
 
     }
+
+    public void guardarPlaEstudis(String nom, Domini.PlaEstudis pe) {
+        String peString = gson.toJson(pe);
+        try {
+            controladorDomini.guardarPlaEstudis(String nom, peString);
+        }
+
+        catch (IOException e){
+            System.out.println("Error" + e);
+            //FER ALGUN POPUP
+        }
+    }
+
+
 }
