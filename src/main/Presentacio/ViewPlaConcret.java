@@ -87,17 +87,18 @@ public class ViewPlaConcret {
             errors.add(false);
         }
         String error_text = new String(); // en cas d'uitlitzar finestra d'errors
-        if (name_input.getText() == null || name_input.getText().isEmpty()) {
+        String name = name_input.getText();
+        if (name == null || name.isEmpty()) {
             errors.set(0, true);
         }
         // TODO: comprovar si ja existeix l'assig amb aquell nom
+        //else errors.set(0, ctrlPresentacio.exists_PlaConcret(name));
         setLabelColor(name_label, errors, 0);
 
         if (!errors.contains(true)) {
-            String name = name_input.getText();
-
             // TODO: passar tot a domini + carac[]
             // maybe posar finestra no bloquejant de que hsa creat correctament l'aula
+            //ctrlPresentacio.save_PlaConcret(name);
             ctrlPresentacio.showPlaEstudis();
         }
 

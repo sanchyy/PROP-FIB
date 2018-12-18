@@ -125,11 +125,18 @@ public class ViewAssigConcreta {
      */
     private void load_values () {
         // TODO: agafar dades, demanar a domini
-        // per name input, agafar
         String name = "jaja"; // agafar nom, demanar domini
+        Integer quatris = 1; // agafar quatris
+        Integer nivell = 1; // agafar nivell
+        boolean projector_teo = true; // agafar carac teo
+        Boolean carac_lab[] = {true, false, false, true, false, false}; // agafar carac lab
+        // Berni: ara estan inicialitzats pero era per testejar,
+        // tambe pot servir per comprovar si va be el pas per referencia
+
+        //ctrlPresentacio.load_AssigConcreta(name, quatris, nivell, projector_teo, carac_lab);
+
         name_input.setText(name);
 
-        Integer quatris = 1; // agafar quatris
         if (quatris.equals(3) || quatris.equals(1)) {
             q1.setSelected(true);
         }
@@ -137,16 +144,13 @@ public class ViewAssigConcreta {
             q2.setSelected(true);
         }
 
-        Integer nivell = 1; // agafar nivell
         if (nivell.equals(1)) init_rad.setSelected(true);
         else if (nivell.equals(2)) obli_rad.setSelected(true);
         else esp_rad.setSelected(true);
 
-        boolean projector_teo = true; // agafar carac teo
         if (projector_teo) yes_radio.setSelected(true);
         else no_radio.setSelected(true);
 
-        Boolean carac_lab[] = {true, false, false, true, false, false}; // agafar carac lab
         if (carac_lab[0]) projector.setSelected(true);
         if (carac_lab[1]) ubuntu.setSelected(true);
         if (carac_lab[2]) LW.setSelected(true);
@@ -169,6 +173,7 @@ public class ViewAssigConcreta {
             errors.set(0, true);
         }
         // TODO: comprovar si ja existeix l'assig amb aquell nom
+        //else ctrlPresentacio.exists_AssigConcreta(name_input.getText());
         setLabelColor(name_label, errors, 0);
 
         //quatri
@@ -220,6 +225,7 @@ public class ViewAssigConcreta {
 
             // TODO: passar tot la domini
             // maybe posar finestra no bloquejant de que hsa creat correctament l'assignatura
+            //ctrlPresentacio.save_AssigConcreta(name, quatri, nivell, projector_teo, lab_carac);
             ctrlPresentacio.showAssignatures();
         }
         // else something like introdueix els camps remanents

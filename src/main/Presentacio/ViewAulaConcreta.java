@@ -115,6 +115,7 @@ public class ViewAulaConcreta {
             errors.set(0, true);
         }
         // TODO: comprovar si ja existeix l'assig amb aquell nom
+        //else errors.set(0, ctrlPresentacio.exists_AulaConcreta(name_input.getText()));
         setLabelColor(name_label, errors, 0);
 
         if (capacity_input.getText() == null || capacity_input.getText().isEmpty()) {
@@ -145,6 +146,7 @@ public class ViewAulaConcreta {
             Integer capacity = Integer.parseInt(capacity_input.getText());
 
             // TODO: passar tot a domini + carac[]
+            //ctrlPresentacio.save_AulaConcreta(name, capacity, carac);
             // maybe posar finestra no bloquejant de que hsa creat correctament l'aula
             ctrlPresentacio.showAules();
         }
@@ -162,12 +164,13 @@ public class ViewAulaConcreta {
         // TODO: agafar dades, demanar a domini
         // per name input, agafar
         String name = "jaja"; // agafar nom, demanar domini
-        name_input.setText(name);
-
         Integer capacitat = 50;
+        Boolean carac_lab[] = {true, false, false, true, false, false}; // agafar carac lab
+        //ctrlPresentacio.load_AulaConcreta(name, capacitat, carac_lab);
+
+        name_input.setText(name);
         capacity_input.setText(capacitat.toString());
 
-        Boolean carac_lab[] = {true, false, false, true, false, false}; // agafar carac lab
         if (carac_lab[0]) projector.setSelected(true);
         if (carac_lab[1]) ubuntu.setSelected(true);
         if (carac_lab[2]) LW.setSelected(true);
