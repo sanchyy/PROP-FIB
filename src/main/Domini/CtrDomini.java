@@ -262,6 +262,6 @@ public class CtrDomini {
     }
 
     public void guardarPlaEstudis (String nom, String pe) throws IOException {
-        ctrlPersistencia.guardaPlaEstudis(String nom,pe);
+        ctrlPersistencia.guardaPlaEstudis(nom,pe);
     }
 }

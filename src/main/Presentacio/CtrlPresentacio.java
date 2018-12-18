@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import Domini.CtrDomini;
+import main.Persistencia.CtrPersistencia;
 import main.Persistencia.CtrlPersistencia;
 
 /**
@@ -25,7 +26,7 @@ import main.Persistencia.CtrlPersistencia;
 public class CtrlPresentacio extends Application{
 
     private CtrDomini controladorDomini;
-    private CtrlPersistencia controladorPersistencia;
+    private CtrPersistencia controladorPersistencia;
     private Stage primaryStage;
     private Scene mainView, baseView;
     private Scene viewPlaEstudis;
@@ -38,7 +39,7 @@ public class CtrlPresentacio extends Application{
         primaryStage.getIcons().add(new Image(getClass().getResource("/icon4.png").toExternalForm()));
         this.primaryStage = primaryStage;
         controladorDomini = new CtrDomini();
-        controladorPersistencia = new CtrlPersistencia();
+        controladorPersistencia = new CtrPersistencia();
         FXMLLoader loader = new FXMLLoader();
         SplitPane p = loader.load(getClass().getResource("/BaseView.fxml").openStream()); // Change when the main view is done
         baseController = loader.getController();   // change when the main view is done
@@ -50,7 +51,7 @@ public class CtrlPresentacio extends Application{
         primaryStage.setScene(baseView);
         primaryStage.show();
 
-        ArrayList<Domini.PlaEstudis> pe = controladorPersistencia.getPlansEstudis();
+        ArrayList<String> ud = controladorPersistencia.getUnitatDocent();
     }
 
     /**
@@ -206,7 +207,7 @@ public class CtrlPresentacio extends Application{
     public void guardarPlaEstudis(String nom, Domini.PlaEstudis pe) {
         String peString = gson.toJson(pe);
         try {
-            controladorDomini.guardarPlaEstudis(String nom, peString);
+            controladorDomini.guardarPlaEstudis(nom, peString);
         }
 
         catch (IOException e){
