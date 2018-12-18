@@ -41,7 +41,7 @@ public class ViewAules {
     }
 
     public void onEliminar_pressed() {
-        singletonDialogs.display_delete(""); // TODO: pillar aula a eliminar
+        singletonDialogs.display_delete("", 0); // TODO: pillar aula a eliminar
     }
 
     public void onConsultar_pressed() throws IOException {

@@ -17,6 +17,8 @@ public class SingletonDialogs {
 
     private static SingletonDialogs singleCarregar = new SingletonDialogs();
     //private CtrlPresentacio ctrlPresentacio;
+    private static Integer called_by; // 0 aula, 1 pla, 2 asig
+    private CtrlPresentacio ctrlPresentacio;
 
     private SingletonDialogs()  {
         ;
@@ -24,6 +26,18 @@ public class SingletonDialogs {
 
     public static SingletonDialogs getInstance() {
         return singleCarregar;
+    }
+
+/*    public void setCalled_by (Integer called_by) {
+        this.called_by = called_by;
+        System.out.println(called_by);
+    }*/
+    public static Integer getCalledby () {
+        return called_by;
+    }
+
+    public void setCtrlPresentacio (CtrlPresentacio ctrlPresentacio) {
+        this.ctrlPresentacio = ctrlPresentacio;
     }
 
    /* public void setViewController(CtrlPresentacio ctrlPresentacio) {
@@ -39,9 +53,18 @@ public class SingletonDialogs {
         Dialog<String> load_dialog = new Dialog<>();
         load_dialog.setTitle("Carregar " + type);
         String header = "Selecciona el fitxer a carregar amb ";
-        if (type.equals("Aula")) header += "l'aula/es.";
-        else if (type.equals("Pla Estudis")) header += "el pla/ns d'estudis";
-        else if (type.equals("Assignatura")) header += "l'assignatura/es";
+        if (type.equals("Aula")) {
+            header += "l'aula/es.";
+            called_by = 0;
+        }
+        else if (type.equals("Pla Estudis")) {
+            header += "el pla/ns d'estudis";
+            called_by = 1;
+        }
+        else if (type.equals("Assignatura")) {
+            header += "l'assignatura/es";
+            called_by = 2;
+        }
         load_dialog.setHeaderText(header);
         //load_dialog.setGraphic(new ImageView(getClass().getResource("/icon4.png").toString(), 100, 100, false, false));
 
@@ -55,6 +78,7 @@ public class SingletonDialogs {
         grid.setPadding(new Insets(20, 200, 20, 10));
 
         TextField path_input = new TextField();
+        path_input.setPrefWidth(250);
         path_input.setPromptText("Choose a file");
         Button select_button = new Button("Seleccionar");
         select_button.setOnAction(new EventHandler<ActionEvent>() {
@@ -67,8 +91,9 @@ public class SingletonDialogs {
                 Node node = (Node) event.getSource();
                 File selectedFile = fileChooser.showOpenDialog(node.getScene().getWindow());
 
+                //System.out.println(selectedFile.getAbsolutePath());
                 path_input.clear();
-                path_input.appendText(selectedFile.getName());
+                path_input.appendText(selectedFile.getAbsolutePath());
 
             }
         });
@@ -97,13 +122,15 @@ public class SingletonDialogs {
         Optional<String> path = load_dialog.showAndWait();
 
         path.ifPresent(filePath -> {
-            System.out.println(filePath); // debbuging purposes
+            ctrlPresentacio.send_path(filePath);
+            //System.out.println(filePath); // debbuging purposes
             // TODO: send file to domain controller; enviar path o file?
         });
     }
 
     @FXML
-    public void display_delete (String name) {
+    public void display_delete (String name, Integer type) {
+        called_by = type;
         Alert delete_alert = new Alert(Alert.AlertType.CONFIRMATION);
         delete_alert.setTitle("Confirmar l'eliminació " + name);
         delete_alert.setHeaderText("Eliminar permanentment " + name);
@@ -113,6 +140,7 @@ public class SingletonDialogs {
         Optional<ButtonType> result = delete_alert.showAndWait();
         if (result.get() == ButtonType.OK) {
             // TODO: dir que sha eliminat a capa domini i ella a persitencia
+            ctrlPresentacio.delete_concreta(name);
         }
 
 

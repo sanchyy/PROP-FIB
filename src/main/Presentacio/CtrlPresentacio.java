@@ -27,12 +27,14 @@ public class CtrlPresentacio extends Application{
     private Scene viewPlaEstudis;
 
     private BaseView baseController;
+    private SingletonDialogs singletonDialogs = SingletonDialogs.getInstance();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.getIcons().add(new Image(getClass().getResource("/icon4.png").toExternalForm()));
         this.primaryStage = primaryStage;
         ctrDomini = new CtrDomini();
+        singletonDialogs.setCtrlPresentacio(this);
         FXMLLoader loader = new FXMLLoader();
         SplitPane p = loader.load(getClass().getResource("/BaseView.fxml").openStream()); // Change when the main view is done
         baseController = loader.getController();   // change when the main view is done
@@ -272,16 +274,16 @@ public class CtrlPresentacio extends Application{
     // load values
  /*   public void load_AssigConcreta(String name, Integer quatris, Integer nivell, boolean projector, Boolean carac_lab[]) {
         // TODO: demanar que domini em deixi les dades
-        *//* BERNI no se com faras per tornar pero a la capcelera tens el que necessito i en principi mels has de deixar alla
-         tot i que no estic segura que aixo funcioni del tot, pots canviar com enviarli a load values d'assig
-         pero els tipus no plis*//*
+        // BERNI no se com faras per tornar pero a la capcelera tens el que necessito i en principi mels has de deixar alla
+        // tot i que no estic segura que aixo funcioni del tot, pots canviar com enviarli a load values d'assig
+        // pero els tipus no plis
         // el name es de quina assig carregar
         // ctrDomini.something();
     }
 
     public void load_AulaConcreta (String name, Integer capacitat, Boolean carac_lab[]) {
         // TODO: demanar a domini dades d'aula
-        *//* berni el mateix que per assig*//*
+        // berni el mateix que per assig
         // el name es de quina aula
     }
 
@@ -324,5 +326,39 @@ public class CtrlPresentacio extends Application{
         // TODO: tenvio el nom del pla i mirar si ja existeix (sí: true, no: false)
         return false;
     }*/
+
+    // carregar
+    public void send_path(String path) {
+        // TODO: per carregar un fitxer de luser per crear una a
+        // 0 aula, 1 pla, 2 asig
+        Integer type = singletonDialogs.getCalledby();
+        if (type.equals(0)) {
+            // ctrDomini.carregarAula(path) o joquese ajajja
+        }
+        else if (type.equals(1)) {
+            //ctrDomini.carr...(path);
+        }
+        else {
+            //ctrDomni.crr...(path);
+        }
+
+    }
+
+    // eliminiar
+    public void delete_concreta (String name) {
+        // TODO: per carregar un fitxer de luser per crear una a
+        // 0 aula, 1 pla, 2 asig
+        Integer type = singletonDialogs.getCalledby();
+        if (type.equals(0)) {
+            // ctrDomini.eliminarAula(name) o joquese ajajja
+        }
+        else if (type.equals(1)) {
+            //ctrDomini.eliminarPla(name);
+        }
+        else {
+            //ctrDomni.eliminarAssig(name);
+        }
+
+    }
 
 }
