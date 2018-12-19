@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.ViewAules">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Presentacio.ViewAules">
    <children>
       <Label layoutX="25.0" layoutY="158.0" text="Aules creades" />
       <TextArea fx:id="debbuging" layoutX="244.0" layoutY="81.0" prefHeight="68.0" prefWidth="110.0" />

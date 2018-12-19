@@ -1,4 +1,4 @@
-package Presentacio;
+package main.Presentacio;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

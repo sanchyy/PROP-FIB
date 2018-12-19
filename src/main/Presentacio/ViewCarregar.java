@@ -1,4 +1,4 @@
-package Presentacio;
+package main.Presentacio;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
