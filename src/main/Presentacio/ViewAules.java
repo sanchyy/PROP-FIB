@@ -1,4 +1,4 @@
-package main.Presentacio;
+package Presentacio;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;

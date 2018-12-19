@@ -1,4 +1,4 @@
-package main.Presentacio;
+package Presentacio;
 
 
 import javafx.application.Application;
@@ -17,8 +17,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import main.Domini.CtrDomini;
-import main.Domini.Pair;
+import Domini.CtrDomini;
+import Domini.Pair;
 
 /**
  * Tipus controlador de presentació.
@@ -34,10 +34,12 @@ public class CtrlPresentacio extends Application{
     private ObservableList<Aula_presentacio> aulaData = FXCollections.observableArrayList();
 
     public CtrlPresentacio () {
-        ArrayList<Pair<String, Pair<Integer, Boolean[]>>> aules = ctrDomini.getAules();
+
+      /*  ArrayList<Pair<String, Pair<Integer, Boolean[]> > > aules;
+        aules = ctrDomini.getAules();
         for (Pair<String, Pair<Integer, Boolean[]>> aula : aules) {
             aulaData.add(new Aula_presentacio(aula.getFirst(), aula.getSecond().getFirst(), aula.getSecond().getSecond()));
-        }
+        }*/
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -212,7 +214,7 @@ public class CtrlPresentacio extends Application{
         crearController.setViewController(this); // change
         baseController.getGestioView().getChildren().setAll(a);*/
         FXMLLoader loader = new FXMLLoader();
-        AnchorPane a = loader.load(getClass().getResource("/ViewAulesConcreta.fxml").openStream()); //change
+        AnchorPane a = loader.load(getClass().getResource("/ViewAulaConcreta.fxml").openStream()); //change
         ViewAulaConcreta crearController = loader.getController(); // change
         crearController.setViewController(this); // change
         baseController.getGestioView().getChildren().setAll(a);

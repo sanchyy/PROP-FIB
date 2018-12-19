@@ -1,4 +1,4 @@
-package main.Domini;
+package Domini;
 
 public class Pair <A,B> {
 

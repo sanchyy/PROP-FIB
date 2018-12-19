@@ -1,4 +1,4 @@
-package main.Persistencia;
+package Persistencia;
 
 import com.google.gson.Gson;
 

@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Presentacio.ViewAulesMod">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.ViewAulesMod">
    <children>
       <TextField fx:id="capacity_input" prefHeight="25.0" prefWidth="45.0" promptText="00" AnchorPane.leftAnchor="113.0" AnchorPane.topAnchor="109.0" />
       <Label fx:id="capacity_label" text="Capacitat:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="113.0" />

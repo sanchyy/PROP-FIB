@@ -1,4 +1,4 @@
-package main.Presentacio;
+package Presentacio;
 
 import javafx.application.Application;
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;

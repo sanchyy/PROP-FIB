@@ -1,7 +1,7 @@
-package main.Domini;
+package Domini;
 
 import com.google.gson.Gson;
-import main.Persistencia.CtrPersistencia;
+import Persistencia.CtrPersistencia;
 
 import java.util.ArrayList;
 
