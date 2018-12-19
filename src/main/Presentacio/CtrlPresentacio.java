@@ -273,7 +273,6 @@ public class CtrlPresentacio extends Application{
         baseController.getGestioView().getChildren().setAll(a);
     }
 
-
     // exit
     /**
      * Tancar l'apliació.
@@ -288,6 +287,9 @@ public class CtrlPresentacio extends Application{
         stage.close();
     }
 
+    public void borrarAula(String nom) {
+        ctrDomini.borrarAula(nom);
+    }
 
     // load values
   /*  public void load_AssigConcreta(String name, Integer quatris, Integer nivell, boolean projector, Boolean carac_lab[]) {
@@ -300,9 +302,6 @@ public class CtrlPresentacio extends Application{
     }
     */
 
-    public Pair<String, Pair<Integer, Boolean[]>> load_AulaConcreta (String nom) {
-        return ctrDomini.getAulaConcreta(nom);
-    }
 /*
     public void load_PlaConcreta (String name) {
         // TODO: demanar a domini dades de pla d'estudi

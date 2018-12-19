@@ -40,7 +40,7 @@ public class CtrDomini {
         this.quadrimestreSeleccionat  = null;
         this.restriccions             = new CjtRestriccions();
         this.ctrPersistencia          = new CtrPersistencia();
-
+        
         // TODO: Treure quan acabem de provar presentacio
         afegirUnitatDocent("FIB");
         afegirPlaEstudis("FIB_2010");
@@ -50,13 +50,15 @@ public class CtrDomini {
         caracs.add(CaracteristiquesAula.UBUNTU);
         afegirAulaUnitatDocent("A6203", 30, caracs);
         afegirSessioQuadrimestre(11, "PROP");
+        // carregarDades();
     }
 
     public void carregarDades() {
         ArrayList<String> pes = ctrPersistencia.getPlansEstudis();
         for (String pe : pes) {
-            UnitatDocent p = gson.fromJson(pe, UnitatDocent.class);
-            afegirUnitatDocent(p.getNom());
+            UnitatDocent ud = gson.fromJson(pe, UnitatDocent.class);
+            unitatsDocents.add(ud);
+            unitatDocentSeleccionada = getUnitatsDocents().size()-1;
         }
     }
 
@@ -94,12 +96,11 @@ public class CtrDomini {
         return p1;
     }
 
-    public Pair<String, Pair<Integer, Boolean[]>> getAulaConcreta(String nom) {
+    public Aula getAulaConcreta(String nom) {
         ArrayList<Aula> aulesD = getUnitatDocent().getAulesDisponibles();
         for (Aula a : aulesD) {
             if (a.getNom().equals(nom)) {
-                System.out.println("holas");
-                return parseAula(a);
+                return a;
             }
         }
         return null;
@@ -112,6 +113,10 @@ public class CtrDomini {
             aules.add(parseAula(a));
         }
         return aules;
+    }
+
+    public void borrarAula(String nom) {
+        getUnitatDocent().borrarAula(getAulaConcreta(nom));
     }
 
     public CjtUnitatDocent getUnitatsDocents() {

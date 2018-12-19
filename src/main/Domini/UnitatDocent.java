@@ -58,4 +58,7 @@ public class UnitatDocent {
     public void borrarAula(Integer b) {
         aulesDisponibles.remove(b-1);
     }
+    public void borrarAula(Aula a) {
+        aulesDisponibles.remove(a);
+    }
 }
