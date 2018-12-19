@@ -166,7 +166,6 @@ public class ViewAulaConcreta {
         String name = aula.getName();
         Integer capacitat = aula.getCapacity();
         Boolean[] carac_lab = aula.getCarac();
-        System.out.println(aula.getCarac().length);
 
         name_input.setText(name);
         capacity_input.setText(capacitat.toString());

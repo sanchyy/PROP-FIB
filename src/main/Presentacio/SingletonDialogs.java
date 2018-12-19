@@ -94,7 +94,6 @@ public class SingletonDialogs {
                 //System.out.println(selectedFile.getAbsolutePath());
                 path_input.clear();
                 path_input.appendText(selectedFile.getAbsolutePath());
-
             }
         });
 
@@ -123,8 +122,6 @@ public class SingletonDialogs {
 
         path.ifPresent(filePath -> {
             ctrlPresentacio.send_path(filePath);
-            //System.out.println(filePath); // debbuging purposes
-            // TODO: send file to domain controller; enviar path o file?
         });
     }
 

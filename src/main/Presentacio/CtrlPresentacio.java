@@ -25,7 +25,7 @@ import main.Domini.Pair;
  */
 public class CtrlPresentacio extends Application{
 
-    private CtrDomini ctrDomini = new CtrDomini();;
+    private CtrDomini ctrDomini = new CtrDomini();
     private Stage primaryStage;
     private Scene baseView;
 
@@ -52,7 +52,7 @@ public class CtrlPresentacio extends Application{
 
         primaryStage.setTitle("Generador d'horaris");
         baseView = new Scene(p,740,400); // change when the main view is done
-        //viewPla.getStylesheets().add("/mainMenuStyle.css"); // add it if we have a css
+        // viewPla.getStylesheets().add("/mainMenuStyle.css"); // add it if we have a css
         primaryStage.setScene(baseView);
         primaryStage.show();
     }
@@ -349,7 +349,12 @@ public class CtrlPresentacio extends Application{
         // 0 aula, 1 pla, 2 asig
         Integer type = singletonDialogs.getCalledby();
         if (type.equals(0)) {
-            // ctrDomini.carregarAula(path) o joquese ajajja
+            ctrDomini.carregaAules();
+            aulaData.clear();
+            ArrayList<Pair<String, Pair<Integer, Boolean[]>>> aules = ctrDomini.getAules();
+            for (Pair<String, Pair<Integer, Boolean[]>> aula : aules) {
+                aulaData.add(new Aula_presentacio(aula.getFirst(), aula.getSecond().getFirst(), aula.getSecond().getSecond()));
+            }
         }
         else if (type.equals(1)) {
             //ctrDomini.carr...(path);

@@ -1,0 +1,4 @@
+{"nom":"A6203","capacitat":30,"caracteristiques":["UBUNTU"]}
+{"nom":"A6203","capacitat":30,"caracteristiques":["UBUNTU"]}
+{"nom":"A6203","capacitat":30,"caracteristiques":["UBUNTU"]}
+{"nom":"A6203","capacitat":30,"caracteristiques":["UBUNTU"]}

@@ -28,4 +28,24 @@ public class CtrPersistencia {
         }
     }
 
+    // AULES
+
+    public ArrayList<String> getAules() {
+        ArrayList<String> aules= new ArrayList<>();
+        try {
+            aules = ud.carrega("Aules", "aules");
+        } catch (IOException e) {
+            System.out.println("Error" + e);
+        }
+        return aules;
+    }
+
+    public void guardaAules(ArrayList<String> aules) {
+        try {
+            ud.guardaMultiple("Aules", "aules", aules);
+        } catch (IOException e) {
+            System.out.println("Error" + e);
+        }
+    }
+
 }

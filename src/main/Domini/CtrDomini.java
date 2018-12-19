@@ -40,16 +40,16 @@ public class CtrDomini {
         this.quadrimestreSeleccionat  = null;
         this.restriccions             = new CjtRestriccions();
         this.ctrPersistencia          = new CtrPersistencia();
-        
+
         // TODO: Treure quan acabem de provar presentacio
         afegirUnitatDocent("FIB");
-        afegirPlaEstudis("FIB_2010");
+/*        afegirPlaEstudis("FIB_2010");
         afegirQuadrimestre();
         afegirAssignaturaPlaEstudis("PROP", 3, 2, "FIB", new ArrayList<>(), new ArrayList<>());
         ArrayList<CaracteristiquesAula> caracs = new ArrayList<>();
         caracs.add(CaracteristiquesAula.UBUNTU);
         afegirAulaUnitatDocent("A6203", 30, caracs);
-        afegirSessioQuadrimestre(11, "PROP");
+        afegirSessioQuadrimestre(11, "PROP");*/
         // carregarDades();
     }
 
@@ -62,9 +62,22 @@ public class CtrDomini {
         }
     }
 
+    public void carregaAules() {
+        getUnitatDocent().borrarAules();
+        ArrayList<String> aules = ctrPersistencia.getAules();
+        for (String a : aules) {
+            getUnitatDocent().afegirAulaDisponible(gson.fromJson(a, Aula.class));
+        }
+    }
+
     public void guardarDades() {
         String ud = gson.toJson(getUnitatDocent());
         ctrPersistencia.guardaPlansEstudis(ud);
+        ArrayList<String> aules = new ArrayList<>();
+        for (Aula a : getUnitatDocent().getAulesDisponibles()) {
+            aules.add(gson.toJson(a));
+        }
+        ctrPersistencia.guardaAules(aules);
     }
 
     public Pair<String, Pair<Integer, Boolean[]>> parseAula(Aula a) {
