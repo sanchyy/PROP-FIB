@@ -21,9 +21,18 @@ public class UtilsDisc {
     }
 
     public void guarda(String carpeta, String fitxer, String json) throws IOException {
-        FileWriter fw = new FileWriter(database + carpeta + "/"+ fitxer + ".txt", true);
+        FileWriter fw = new FileWriter(database + carpeta + "/"+ fitxer + ".txt");
         BufferedWriter bw = new BufferedWriter(fw);
-        bw.write(json + "\n");
+        bw.write(json);
+        bw.close();
+    }
+
+    public void guardaMultiple(String carpeta, String fitxer, ArrayList<String> jsons) throws IOException {
+        FileWriter fw = new FileWriter(database + carpeta + "/"+ fitxer + ".txt");
+        BufferedWriter bw = new BufferedWriter(fw);
+        for (String json : jsons) {
+            bw.write(json);
+        }
         bw.close();
     }
 

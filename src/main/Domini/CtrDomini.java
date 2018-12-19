@@ -41,53 +41,95 @@ public class CtrDomini {
         this.restriccions             = new CjtRestriccions();
         this.ctrPersistencia          = new CtrPersistencia();
 
+        // TODO: Treure quan acabem de provar presentacio
         afegirUnitatDocent("FIB");
-        afegirPlaEstudis("FIB_2010");
+/*        afegirPlaEstudis("FIB_2010");
         afegirQuadrimestre();
         afegirAssignaturaPlaEstudis("PROP", 3, 2, "FIB", new ArrayList<>(), new ArrayList<>());
-        afegirAulaUnitatDocent("A6203", 30, new ArrayList<>());
-        afegirSessioQuadrimestre(11, "PROP");
+        ArrayList<CaracteristiquesAula> caracs = new ArrayList<>();
+        caracs.add(CaracteristiquesAula.UBUNTU);
+        afegirAulaUnitatDocent("A6203", 30, caracs);
+        afegirSessioQuadrimestre(11, "PROP");*/
+        // carregarDades();
     }
 
     public void carregarDades() {
         ArrayList<String> pes = ctrPersistencia.getPlansEstudis();
         for (String pe : pes) {
-            UnitatDocent p = gson.fromJson(pe, UnitatDocent.class);
-            afegirUnitatDocent(p.getNom());
+            UnitatDocent ud = gson.fromJson(pe, UnitatDocent.class);
+            unitatsDocents.add(ud);
+            unitatDocentSeleccionada = getUnitatsDocents().size()-1;
+        }
+    }
+
+    public void carregaAules() {
+        getUnitatDocent().borrarAules();
+        ArrayList<String> aules = ctrPersistencia.getAules();
+        for (String a : aules) {
+            getUnitatDocent().afegirAulaDisponible(gson.fromJson(a, Aula.class));
         }
     }
 
     public void guardarDades() {
         String ud = gson.toJson(getUnitatDocent());
         ctrPersistencia.guardaPlansEstudis(ud);
+        ArrayList<String> aules = new ArrayList<>();
+        for (Aula a : getUnitatDocent().getAulesDisponibles()) {
+            aules.add(gson.toJson(a));
+        }
+        ctrPersistencia.guardaAules(aules);
+    }
+
+    public Pair<String, Pair<Integer, Boolean[]>> parseAula(Aula a) {
+        Boolean[] caracteristiques = new Boolean[6];
+        caracteristiques[0] = false;
+        caracteristiques[1] = false;
+        caracteristiques[2] = false;
+        caracteristiques[3] = false;
+        caracteristiques[4] = false;
+        caracteristiques[5] = false;
+        ArrayList<CaracteristiquesAula> carac = a.getCaracteristiques();
+        for (CaracteristiquesAula ca : carac) {
+            if (ca == CaracteristiquesAula.PROJECTOR) {
+                caracteristiques[0] = true;
+            } else if (ca == CaracteristiquesAula.UBUNTU) {
+                caracteristiques[1] = true;
+            } else if (ca == CaracteristiquesAula.FISICA) {
+                caracteristiques[2] = true;
+            } else if (ca == CaracteristiquesAula.EMBEDED) {
+                caracteristiques[3] = true;
+            } else if (ca == CaracteristiquesAula.XARXES) {
+                caracteristiques[4] = true;
+            } else if (ca == CaracteristiquesAula.LINUX_WINDOWS) {
+                caracteristiques[5] = true;
+            }
+        }
+        Pair<Integer, Boolean[]> p2 = new Pair<>(a.getCapacitat(), caracteristiques);
+        Pair<String, Pair<Integer, Boolean[]>> p1 = new Pair<>(a.getNom(), p2);
+        return p1;
+    }
+
+    public Aula getAulaConcreta(String nom) {
+        ArrayList<Aula> aulesD = getUnitatDocent().getAulesDisponibles();
+        for (Aula a : aulesD) {
+            if (a.getNom().equals(nom)) {
+                return a;
+            }
+        }
+        return null;
     }
 
     public ArrayList<Pair<String, Pair<Integer, Boolean[]>>> getAules() {
         ArrayList<Aula> aulesD = getUnitatDocent().getAulesDisponibles();
         ArrayList<Pair<String, Pair<Integer, Boolean[]>>> aules = new ArrayList<>();
         for (Aula a : aulesD) {
-            Boolean[] caracteristiques = new Boolean[6];
-            ArrayList<CaracteristiquesAula> carac = a.getCaracteristiques();
-            for (CaracteristiquesAula ca : carac) {
-                if (ca == CaracteristiquesAula.PROJECTOR) {
-                    caracteristiques[0] = true;
-                } else if (ca == CaracteristiquesAula.UBUNTU) {
-                    caracteristiques[1] = true;
-                } else if (ca == CaracteristiquesAula.FISICA) {
-                    caracteristiques[2] = true;
-                } else if (ca == CaracteristiquesAula.EMBEDED) {
-                    caracteristiques[3] = true;
-                } else if (ca == CaracteristiquesAula.XARXES) {
-                    caracteristiques[4] = true;
-                } else if (ca == CaracteristiquesAula.LINUX_WINDOWS) {
-                    caracteristiques[5] = true;
-                }
-            }
-            Pair<Integer, Boolean[]> p2 = new Pair<>(a.getCapacitat(), caracteristiques);
-            Pair<String, Pair<Integer, Boolean[]>> p1 = new Pair<>(a.getNom(), p2);
-            aules.add(p1);
+            aules.add(parseAula(a));
         }
         return aules;
+    }
+
+    public void borrarAula(String nom) {
+        getUnitatDocent().borrarAula(getAulaConcreta(nom));
     }
 
     public CjtUnitatDocent getUnitatsDocents() {

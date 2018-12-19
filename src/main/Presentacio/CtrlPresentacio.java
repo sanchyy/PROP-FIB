@@ -25,7 +25,7 @@ import main.Domini.Pair;
  */
 public class CtrlPresentacio extends Application{
 
-    private CtrDomini ctrDomini = new CtrDomini();;
+    private CtrDomini ctrDomini = new CtrDomini();
     private Stage primaryStage;
     private Scene baseView;
 
@@ -34,8 +34,6 @@ public class CtrlPresentacio extends Application{
     private ObservableList<Aula_presentacio> aulaData = FXCollections.observableArrayList();
 
     public CtrlPresentacio () {
-        Boolean tmp[] = new Boolean[]{true, false, true, false, true, false};
-        // TODO: passam una llista de nose, algo que tingui string, int i Boolean[]
         ArrayList<Pair<String, Pair<Integer, Boolean[]>>> aules = ctrDomini.getAules();
         for (Pair<String, Pair<Integer, Boolean[]>> aula : aules) {
             aulaData.add(new Aula_presentacio(aula.getFirst(), aula.getSecond().getFirst(), aula.getSecond().getSecond()));
@@ -54,7 +52,7 @@ public class CtrlPresentacio extends Application{
 
         primaryStage.setTitle("Generador d'horaris");
         baseView = new Scene(p,740,400); // change when the main view is done
-        //viewPla.getStylesheets().add("/mainMenuStyle.css"); // add it if we have a css
+        // viewPla.getStylesheets().add("/mainMenuStyle.css"); // add it if we have a css
         primaryStage.setScene(baseView);
         primaryStage.show();
     }
@@ -225,12 +223,12 @@ public class CtrlPresentacio extends Application{
      *
      * @throws IOException excepcio d'entrada/sortida.
      */
-    public void showAulaConsultar () throws IOException {
+    public void showAulaConsultar (Aula_presentacio aula) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         AnchorPane a = loader.load(getClass().getResource("/ViewAulaConcreta.fxml").openStream()); //change
         ViewAulaConcreta consultarController = loader.getController(); // change
         consultarController.setViewController(this); // change
-        consultarController.init_Consultar(); // per preparar a l'escena en mode consultar
+        consultarController.init_Consultar(aula); // per preparar a l'escena en mode consultar
         baseController.getGestioView().getChildren().setAll(a);
     }
 
@@ -275,7 +273,6 @@ public class CtrlPresentacio extends Application{
         baseController.getGestioView().getChildren().setAll(a);
     }
 
-
     // exit
     /**
      * Tancar l'apliació.
@@ -283,16 +280,19 @@ public class CtrlPresentacio extends Application{
      */
 
     public void exit_app (Button btn) throws IOException {
-        // TODO: enviar ordre de guardar tot a disc
+        ctrDomini.guardarDades();
         // get a handle to the stage
         Stage stage = (Stage) btn.getScene().getWindow();
         // do what you have to do
         stage.close();
     }
 
+    public void borrarAula(String nom) {
+        ctrDomini.borrarAula(nom);
+    }
 
     // load values
- /*   public void load_AssigConcreta(String name, Integer quatris, Integer nivell, boolean projector, Boolean carac_lab[]) {
+  /*  public void load_AssigConcreta(String name, Integer quatris, Integer nivell, boolean projector, Boolean carac_lab[]) {
         // TODO: demanar que domini em deixi les dades
         // BERNI no se com faras per tornar pero a la capcelera tens el que necessito i en principi mels has de deixar alla
         // tot i que no estic segura que aixo funcioni del tot, pots canviar com enviarli a load values d'assig
@@ -300,17 +300,13 @@ public class CtrlPresentacio extends Application{
         // el name es de quina assig carregar
         // ctrDomini.something();
     }
+    */
 
-    public void load_AulaConcreta (String name, Integer capacitat, Boolean carac_lab[]) {
-        // TODO: demanar a domini dades d'aula
-        // berni el mateix que per assig
-        // el name es de quina aula
-    }
-
+/*
     public void load_PlaConcreta (String name) {
         // TODO: demanar a domini dades de pla d'estudi
 
-    }*/
+    }
 
     // save values
     /*public void save_AssigConcreta (String name, Integer quatris, Integer nivell, boolean projector, Boolean carac_lab[]) {
@@ -353,7 +349,12 @@ public class CtrlPresentacio extends Application{
         // 0 aula, 1 pla, 2 asig
         Integer type = singletonDialogs.getCalledby();
         if (type.equals(0)) {
-            // ctrDomini.carregarAula(path) o joquese ajajja
+            ctrDomini.carregaAules();
+            aulaData.clear();
+            ArrayList<Pair<String, Pair<Integer, Boolean[]>>> aules = ctrDomini.getAules();
+            for (Pair<String, Pair<Integer, Boolean[]>> aula : aules) {
+                aulaData.add(new Aula_presentacio(aula.getFirst(), aula.getSecond().getFirst(), aula.getSecond().getSecond()));
+            }
         }
         else if (type.equals(1)) {
             //ctrDomini.carr...(path);
