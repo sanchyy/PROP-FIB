@@ -1,8 +1,8 @@
 package Drivers;
 
-import Domini.CaracteristiquesAula;
-import Domini.CtrDomini;
-import Domini.RestriccioCaracteristicaAula;
+import main.Domini.CaracteristiquesAula;
+import main.Domini.CtrDomini;
+import main.Domini.RestriccioCaracteristicaAula;
 
 import java.util.ArrayList;
 import java.util.Arrays;

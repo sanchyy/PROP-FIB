@@ -1,7 +1,7 @@
 package Drivers;
 
-import Domini.CtrDomini;
-import Domini.RestriccioTardes;
+import main.Domini.CtrDomini;
+import main.Domini.RestriccioTardes;
 
 import java.util.ArrayList;
 import java.util.Scanner;

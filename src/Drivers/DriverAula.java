@@ -1,9 +1,8 @@
 package Drivers;
 
-import Domini.CaracteristiquesAula;
-import Domini.CtrDomini;
-import Domini.PlaEstudis;
-import Domini.UnitatDocent;
+import main.Domini.CaracteristiquesAula;
+import main.Domini.CtrDomini;
+import main.Domini.UnitatDocent;
 
 import java.util.ArrayList;
 import java.util.Arrays;

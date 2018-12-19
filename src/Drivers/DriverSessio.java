@@ -1,8 +1,7 @@
 package Drivers;
 
-import Domini.CtrDomini;
-import Domini.Quadrimestre;
-import Domini.UnitatDocent;
+import main.Domini.CtrDomini;
+import main.Domini.Quadrimestre;
 
 import java.util.Scanner;
 

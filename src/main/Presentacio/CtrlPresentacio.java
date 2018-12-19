@@ -17,13 +17,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import Domini.CtrDomini;
+import main.Domini.CtrDomini;
+import main.Domini.Pair;
+
 /**
  * Tipus controlador de presentació.
  */
 public class CtrlPresentacio extends Application{
 
-    private CtrDomini ctrDomini;
+    private CtrDomini ctrDomini = new CtrDomini();;
     private Stage primaryStage;
     private Scene baseView;
 
@@ -34,14 +36,19 @@ public class CtrlPresentacio extends Application{
     public CtrlPresentacio () {
         Boolean tmp[] = new Boolean[]{true, false, true, false, true, false};
         // TODO: passam una llista de nose, algo que tingui string, int i Boolean[]
-        // x = ctrDomini.
-        aulaData.add(new Aula_presentacio("A2", 40,tmp));
+        ArrayList<Pair<String, Pair<Integer, Boolean[]>>> aules = ctrDomini.getAules();
+        for (Pair<String, Pair<Integer, Boolean[]>> aula : aules) {
+            System.out.println(aula.getFirst());
+            System.out.println(aula.getSecond().getFirst());
+            System.out.println(aula.getSecond().getSecond());
+        }
+        aulaData.add(new Aula_presentacio("A2", 40, tmp));
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.getIcons().add(new Image(getClass().getResource("/icon4.png").toExternalForm()));
         this.primaryStage = primaryStage;
-        ctrDomini = new CtrDomini();
+        // ctrDomini = new CtrDomini();
         singletonDialogs.setCtrlPresentacio(this);
         FXMLLoader loader = new FXMLLoader();
         SplitPane p = loader.load(getClass().getResource("/BaseView.fxml").openStream()); // Change when the main view is done

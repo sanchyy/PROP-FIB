@@ -1,5 +1,7 @@
 package main.Persistencia;
 
+import main.Domini.PlaEstudis;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -20,8 +22,7 @@ public class CtrlPersistencia {
     }
 
 
-    public ArrayList<Domini.PlaEstudis> getPlansEstudis() throws IOException{
-
+    public ArrayList<PlaEstudis> getPlansEstudis() throws IOException{
         return gPe.agafa();
     }
 

@@ -1,9 +1,7 @@
 package Drivers;
 
-import Domini.CaracteristiquesAula;
-import Domini.CtrDomini;
-import Domini.RestriccioSolapar;
-import Domini.UnitatDocent;
+import main.Domini.CtrDomini;
+import main.Domini.RestriccioSolapar;
 
 import java.util.ArrayList;
 import java.util.Scanner;

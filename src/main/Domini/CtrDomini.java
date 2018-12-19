@@ -1,9 +1,8 @@
-package Domini;
+package main.Domini;
 
 import com.google.gson.Gson;
 import main.Persistencia.CtrPersistencia;
 
-import javax.rmi.ssl.SslRMIClientSocketFactory;
 import java.util.ArrayList;
 
 public class CtrDomini {
@@ -33,6 +32,14 @@ public class CtrDomini {
         }
         this.restriccions = new CjtRestriccions();
         this.ctrPersistencia = new CtrPersistencia();
+        /*
+        afegirUnitatDocent("FIB");
+        afegirPlaEstudis("FIB_2010");
+        afegirQuadrimestre();
+        afegirAssignaturaPlaEstudis("PROP", 3, 2, "FIB", new ArrayList<>(), new ArrayList<>());
+        afegirAulaUnitatDocent("A6203", 30, new ArrayList<>());
+        afegirSessioQuadrimestre(11, "PROP");
+        */
     }
 
     public CtrDomini() {
@@ -46,7 +53,7 @@ public class CtrDomini {
     public void carregarDades() {
         ArrayList<String> pes = ctrPersistencia.getPlansEstudis();
         for (String pe : pes) {
-            Domini.UnitatDocent p = gson.fromJson(pe, Domini.UnitatDocent.class);
+            UnitatDocent p = gson.fromJson(pe, UnitatDocent.class);
             afegirUnitatDocent(p.getNom());
         }
     }
@@ -54,6 +61,34 @@ public class CtrDomini {
     public void guardarDades() {
         String ud = gson.toJson(getUnitatDocent());
         ctrPersistencia.guardaPlansEstudis(ud);
+    }
+
+    public ArrayList<Pair<String, Pair<Integer, Boolean[]>>> getAules() {
+        ArrayList<Aula> aulesD = getUnitatDocent().getAulesDisponibles();
+        ArrayList<Pair<String, Pair<Integer, Boolean[]>>> aules = new ArrayList<>();
+        for (Aula a : aulesD) {
+            Boolean[] caracteristiques = new Boolean[6];
+            ArrayList<CaracteristiquesAula> carac = a.getCaracteristiques();
+            for (CaracteristiquesAula ca : carac) {
+                if (ca == CaracteristiquesAula.PROJECTOR) {
+                    caracteristiques[0] = true;
+                } else if (ca == CaracteristiquesAula.UBUNTU) {
+                    caracteristiques[1] = true;
+                } else if (ca == CaracteristiquesAula.FISICA) {
+                    caracteristiques[2] = true;
+                } else if (ca == CaracteristiquesAula.EMBEDED) {
+                    caracteristiques[3] = true;
+                } else if (ca == CaracteristiquesAula.XARXES) {
+                    caracteristiques[4] = true;
+                } else if (ca == CaracteristiquesAula.LINUX_WINDOWS) {
+                    caracteristiques[5] = true;
+                }
+            }
+            Pair<Integer, Boolean[]> p2 = new Pair<Integer, Boolean[]>(a.getCapacitat(), caracteristiques);
+            Pair<String, Pair<Integer, Boolean[]>> p1 = new Pair<String, Pair<Integer, Boolean[]>>(a.getNom(), p2);
+            aules.add(p1);
+        }
+        return aules;
     }
 
     public CjtUnitatDocent getUnitatsDocents() {

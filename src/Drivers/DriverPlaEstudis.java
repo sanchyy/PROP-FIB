@@ -1,6 +1,6 @@
 package Drivers;
 
-import Domini.CtrDomini;
+import main.Domini.CtrDomini;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package Domini;
+package main.Domini;
 
 public enum CaracteristiquesAula {
     PROJECTOR,

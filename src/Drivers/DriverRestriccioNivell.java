@@ -1,7 +1,7 @@
 package Drivers;
 
-import Domini.CtrDomini;
-import Domini.RestriccioNivell;
+import main.Domini.CtrDomini;
+import main.Domini.RestriccioNivell;
 
 import java.util.ArrayList;
 import java.util.Scanner;

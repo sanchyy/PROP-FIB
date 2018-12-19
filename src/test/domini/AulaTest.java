@@ -1,7 +1,7 @@
 package test.domini;
 
-import Domini.Aula;
-import Domini.CaracteristiquesAula;
+import main.Domini.Aula;
+import main.Domini.CaracteristiquesAula;
 import org.junit.Assert;
 import org.junit.Test;
 

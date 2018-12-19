@@ -1,6 +1,5 @@
 package Presentacio;
 
-import Domini.PlaEstudis;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;

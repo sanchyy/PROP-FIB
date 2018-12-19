@@ -1,9 +1,8 @@
 package Drivers;
 
-import Domini.CaracteristiquesAula;
-import Domini.CtrDomini;
-import Domini.PlaEstudis;
-
+import main.Domini.CaracteristiquesAula;
+import main.Domini.CtrDomini;
+import main.Domini.PlaEstudis;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -78,8 +77,11 @@ public class DriverAssignatura {
             if (s.equals("S") || s.equals("s")) ctrDomini.llistaAssignatures();
             System.out.println("Quina Assignatura vols borrar?");
             Integer b = llegirNumero();
-            try {PlaEstudis pe = ctrDomini.getPlaEstudis(); pe.borrarAssignatura(b);}
-            catch (Exception e) {System.out.println("No existeix aquesta assignatura");}
+            try {
+                PlaEstudis pe = ctrDomini.getPlaEstudis(); pe.borrarAssignatura(b);}
+            catch (Exception e) {
+                System.out.println("No existeix aquesta assignatura");
+            }
         } else {
             System.out.println("No hi ha cap acció disponible");
         }

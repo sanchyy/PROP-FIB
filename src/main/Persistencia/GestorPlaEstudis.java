@@ -1,4 +1,6 @@
 package main.Persistencia;
+import main.Domini.PlaEstudis;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -14,7 +16,7 @@ public class GestorPlaEstudis {
         return line;
     }
 
-    public ArrayList<Domini.PlaEstudis> agafa() throws IOException {
+    public ArrayList<PlaEstudis> agafa() throws IOException {
 
         String linea = carrega("pe");
         return new ArrayList<>();

@@ -1,7 +1,7 @@
 package Drivers;
 
-import Domini.CtrDomini;
-import Domini.PlaEstudis;
+import main.Domini.CtrDomini;
+import main.Domini.PlaEstudis;
 
 import java.util.Scanner;
 
