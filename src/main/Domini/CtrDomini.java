@@ -41,11 +41,14 @@ public class CtrDomini {
         this.restriccions             = new CjtRestriccions();
         this.ctrPersistencia          = new CtrPersistencia();
 
+        // TODO: Treure quan acabem de provar presentacio
         afegirUnitatDocent("FIB");
         afegirPlaEstudis("FIB_2010");
         afegirQuadrimestre();
         afegirAssignaturaPlaEstudis("PROP", 3, 2, "FIB", new ArrayList<>(), new ArrayList<>());
-        afegirAulaUnitatDocent("A6203", 30, new ArrayList<>());
+        ArrayList<CaracteristiquesAula> caracs = new ArrayList<>();
+        caracs.add(CaracteristiquesAula.UBUNTU);
+        afegirAulaUnitatDocent("A6203", 30, caracs);
         afegirSessioQuadrimestre(11, "PROP");
     }
 
@@ -62,30 +65,51 @@ public class CtrDomini {
         ctrPersistencia.guardaPlansEstudis(ud);
     }
 
+    public Pair<String, Pair<Integer, Boolean[]>> parseAula(Aula a) {
+        Boolean[] caracteristiques = new Boolean[6];
+        caracteristiques[0] = false;
+        caracteristiques[1] = false;
+        caracteristiques[2] = false;
+        caracteristiques[3] = false;
+        caracteristiques[4] = false;
+        caracteristiques[5] = false;
+        ArrayList<CaracteristiquesAula> carac = a.getCaracteristiques();
+        for (CaracteristiquesAula ca : carac) {
+            if (ca == CaracteristiquesAula.PROJECTOR) {
+                caracteristiques[0] = true;
+            } else if (ca == CaracteristiquesAula.UBUNTU) {
+                caracteristiques[1] = true;
+            } else if (ca == CaracteristiquesAula.FISICA) {
+                caracteristiques[2] = true;
+            } else if (ca == CaracteristiquesAula.EMBEDED) {
+                caracteristiques[3] = true;
+            } else if (ca == CaracteristiquesAula.XARXES) {
+                caracteristiques[4] = true;
+            } else if (ca == CaracteristiquesAula.LINUX_WINDOWS) {
+                caracteristiques[5] = true;
+            }
+        }
+        Pair<Integer, Boolean[]> p2 = new Pair<>(a.getCapacitat(), caracteristiques);
+        Pair<String, Pair<Integer, Boolean[]>> p1 = new Pair<>(a.getNom(), p2);
+        return p1;
+    }
+
+    public Pair<String, Pair<Integer, Boolean[]>> getAulaConcreta(String nom) {
+        ArrayList<Aula> aulesD = getUnitatDocent().getAulesDisponibles();
+        for (Aula a : aulesD) {
+            if (a.getNom().equals(nom)) {
+                System.out.println("holas");
+                return parseAula(a);
+            }
+        }
+        return null;
+    }
+
     public ArrayList<Pair<String, Pair<Integer, Boolean[]>>> getAules() {
         ArrayList<Aula> aulesD = getUnitatDocent().getAulesDisponibles();
         ArrayList<Pair<String, Pair<Integer, Boolean[]>>> aules = new ArrayList<>();
         for (Aula a : aulesD) {
-            Boolean[] caracteristiques = new Boolean[6];
-            ArrayList<CaracteristiquesAula> carac = a.getCaracteristiques();
-            for (CaracteristiquesAula ca : carac) {
-                if (ca == CaracteristiquesAula.PROJECTOR) {
-                    caracteristiques[0] = true;
-                } else if (ca == CaracteristiquesAula.UBUNTU) {
-                    caracteristiques[1] = true;
-                } else if (ca == CaracteristiquesAula.FISICA) {
-                    caracteristiques[2] = true;
-                } else if (ca == CaracteristiquesAula.EMBEDED) {
-                    caracteristiques[3] = true;
-                } else if (ca == CaracteristiquesAula.XARXES) {
-                    caracteristiques[4] = true;
-                } else if (ca == CaracteristiquesAula.LINUX_WINDOWS) {
-                    caracteristiques[5] = true;
-                }
-            }
-            Pair<Integer, Boolean[]> p2 = new Pair<>(a.getCapacitat(), caracteristiques);
-            Pair<String, Pair<Integer, Boolean[]>> p1 = new Pair<>(a.getNom(), p2);
-            aules.add(p1);
+            aules.add(parseAula(a));
         }
         return aules;
     }

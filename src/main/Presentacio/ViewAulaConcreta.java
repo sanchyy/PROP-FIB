@@ -6,6 +6,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import main.Domini.Pair;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class ViewAulaConcreta {
         title_label.setText("MODIFICAR AULA");
         description_label.setText("Pots modificar els següents camps:");
         if (pre_consultar) init_properties(true);
-        else load_values();
+        else load_values(new Aula_presentacio());
         mode_btn.setText("Guardar canvis");
         actual_mode = 2;
     }
@@ -42,10 +43,10 @@ public class ViewAulaConcreta {
      * Inicialitzar els atributs de l'assignatura i modificar el títol a consultar i el botó específic a "Modificar"
      */
     @FXML
-    public void init_Consultar () {
+    public void init_Consultar (Aula_presentacio aula) {
         title_label.setText("CONSULTAR AULA");
         description_label.setText("Conté la següent informació:");
-        load_values();
+        load_values(aula);
         init_properties(false);
         mode_btn.setText("Modificar");
         actual_mode = 1;
@@ -160,13 +161,12 @@ public class ViewAulaConcreta {
     /**
      * Carrega els valors dels atributs de l'assignatura seleccionada i els mostra.
      */
-    private void load_values () {
-        // TODO: agafar dades, demanar a domini
+    private void load_values (Aula_presentacio aula) {
         // per name input, agafar
-        String name = "jaja"; // agafar nom, demanar domini
-        Integer capacitat = 50;
-        Boolean carac_lab[] = {true, false, false, true, false, false}; // agafar carac lab
-        //ctrlPresentacio.load_AulaConcreta(name, capacitat, carac_lab);
+        String name = aula.getName();
+        Integer capacitat = aula.getCapacity();
+        Boolean[] carac_lab = aula.getCarac();
+        System.out.println(aula.getCarac().length);
 
         name_input.setText(name);
         capacity_input.setText(capacitat.toString());

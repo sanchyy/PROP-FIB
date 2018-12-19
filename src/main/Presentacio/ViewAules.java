@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.util.Observable;
 
 public class ViewAules {
     @FXML private Button crearAula, carregarAula;
@@ -65,7 +66,8 @@ public class ViewAules {
     public void onConsultar_pressed() throws IOException {
         int selectedIndex = taulaAula.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
-            ctrlPresentacio.showAulaConsultar();
+            Aula_presentacio aula = taulaAula.getItems().get(selectedIndex);
+            ctrlPresentacio.showAulaConsultar(aula);
         } else {
             // Nothing selected.
             singletonDialogs.display_warningTable(0);
