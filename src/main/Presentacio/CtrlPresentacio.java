@@ -38,11 +38,8 @@ public class CtrlPresentacio extends Application{
         // TODO: passam una llista de nose, algo que tingui string, int i Boolean[]
         ArrayList<Pair<String, Pair<Integer, Boolean[]>>> aules = ctrDomini.getAules();
         for (Pair<String, Pair<Integer, Boolean[]>> aula : aules) {
-            System.out.println(aula.getFirst());
-            System.out.println(aula.getSecond().getFirst());
-            System.out.println(aula.getSecond().getSecond());
+            aulaData.add(new Aula_presentacio(aula.getFirst(), aula.getSecond().getFirst(), aula.getSecond().getSecond()));
         }
-        aulaData.add(new Aula_presentacio("A2", 40, tmp));
     }
     @Override
     public void start(Stage primaryStage) throws Exception {

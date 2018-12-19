@@ -32,14 +32,6 @@ public class CtrDomini {
         }
         this.restriccions = new CjtRestriccions();
         this.ctrPersistencia = new CtrPersistencia();
-        /*
-        afegirUnitatDocent("FIB");
-        afegirPlaEstudis("FIB_2010");
-        afegirQuadrimestre();
-        afegirAssignaturaPlaEstudis("PROP", 3, 2, "FIB", new ArrayList<>(), new ArrayList<>());
-        afegirAulaUnitatDocent("A6203", 30, new ArrayList<>());
-        afegirSessioQuadrimestre(11, "PROP");
-        */
     }
 
     public CtrDomini() {
@@ -47,7 +39,14 @@ public class CtrDomini {
         this.plaEstudisSeleccionat    = null;
         this.quadrimestreSeleccionat  = null;
         this.restriccions             = new CjtRestriccions();
-        this.ctrPersistencia         = new CtrPersistencia();
+        this.ctrPersistencia          = new CtrPersistencia();
+
+        afegirUnitatDocent("FIB");
+        afegirPlaEstudis("FIB_2010");
+        afegirQuadrimestre();
+        afegirAssignaturaPlaEstudis("PROP", 3, 2, "FIB", new ArrayList<>(), new ArrayList<>());
+        afegirAulaUnitatDocent("A6203", 30, new ArrayList<>());
+        afegirSessioQuadrimestre(11, "PROP");
     }
 
     public void carregarDades() {
@@ -84,8 +83,8 @@ public class CtrDomini {
                     caracteristiques[5] = true;
                 }
             }
-            Pair<Integer, Boolean[]> p2 = new Pair<Integer, Boolean[]>(a.getCapacitat(), caracteristiques);
-            Pair<String, Pair<Integer, Boolean[]>> p1 = new Pair<String, Pair<Integer, Boolean[]>>(a.getNom(), p2);
+            Pair<Integer, Boolean[]> p2 = new Pair<>(a.getCapacitat(), caracteristiques);
+            Pair<String, Pair<Integer, Boolean[]>> p1 = new Pair<>(a.getNom(), p2);
             aules.add(p1);
         }
         return aules;
