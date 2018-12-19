@@ -28,7 +28,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="Sortir" mnemonicParsing="false" onAction="#onSortir_pressed" text="Sortir">
+            <Button fx:id="Sortir" mnemonicParsing="false" onAction="#onSortir_pressed" style="-fx-background-color: white;" text="Sortir">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>

@@ -57,7 +57,7 @@ public class ViewAssignatura {
 
     @FXML
     public void onEliminar_pressed() {
-        singletonDialogs.display_delete("xd"); // TODO: pillar l'assig a eliminar
+        singletonDialogs.display_delete("xd", 2); // TODO: pillar l'assig a eliminar
     }
 
     @FXML

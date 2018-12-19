@@ -83,7 +83,7 @@ public class ViewAulaConcreta {
      * @throws IOException excepcio d'entrada/sortida.
      */
     public void onTornar_pressed() throws IOException {
-        ctrlPresentacio.showAssignatures();
+        ctrlPresentacio.showAules();
     }
 
     /**

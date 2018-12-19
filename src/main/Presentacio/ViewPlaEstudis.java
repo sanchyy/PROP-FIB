@@ -45,7 +45,7 @@ public class ViewPlaEstudis {
 
     @FXML
     public void onEliminar_pressed() {
-        singletonDialogs.display_delete(""); // TODO: pillar pla a eliminar
+        singletonDialogs.display_delete("", 1); // TODO: pillar pla a eliminar
     }
 
     public void onConsultar_pressed() throws IOException {
