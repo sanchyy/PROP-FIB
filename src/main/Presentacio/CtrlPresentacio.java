@@ -2,6 +2,8 @@ package Presentacio;
 
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,12 +25,18 @@ public class CtrlPresentacio extends Application{
 
     private CtrDomini ctrDomini;
     private Stage primaryStage;
-    private Scene mainView, baseView;
-    private Scene viewPlaEstudis;
+    private Scene baseView;
 
     private BaseView baseController;
     private SingletonDialogs singletonDialogs = SingletonDialogs.getInstance();
+    private ObservableList<Aula_presentacio> aulaData = FXCollections.observableArrayList();
 
+    public CtrlPresentacio () {
+        Boolean tmp[] = new Boolean[]{true, false, true, false, true, false};
+        // TODO: passam una llista de nose, algo que tingui string, int i Boolean[]
+        // x = ctrDomini.
+        aulaData.add(new Aula_presentacio("A2", 40,tmp));
+    }
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.getIcons().add(new Image(getClass().getResource("/icon4.png").toExternalForm()));
@@ -54,6 +62,14 @@ public class CtrlPresentacio extends Application{
      */
     public static void main(String[] args) {
         launch(args);
+    }
+
+    /**
+     * Returns the data as an observable list of Persons.
+     * @return
+     */
+    public ObservableList<Aula_presentacio> getAulaData() {
+        return aulaData;
     }
 
     /**

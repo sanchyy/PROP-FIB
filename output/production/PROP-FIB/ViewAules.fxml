@@ -18,16 +18,16 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="taulaAula" layoutX="14.0" layoutY="177.0" prefHeight="200.0" prefWidth="548.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0">
+      <TableView fx:id="taulaAula" layoutX="14.0" layoutY="177.0" prefHeight="200.0" prefWidth="464.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0">
          <columns>
-            <TableColumn fx:id="name" prefWidth="359.0" text="Nom" />
-            <TableColumn fx:id="consultar" prefWidth="63.0" resizable="false" text="Consultar" />
-            <TableColumn fx:id="modificar" prefWidth="63.0" resizable="false" text="Modificar" />
-            <TableColumn fx:id="eliminar" maxWidth="173.0" prefWidth="63.0" resizable="false" text="Eliminar" />
+            <TableColumn fx:id="name_col" prefWidth="359.0" text="Nom" />
+            <TableColumn fx:id="consultar_col" prefWidth="37.0" resizable="false" text="Consultar" />
+            <TableColumn fx:id="modificar_col" prefWidth="43.0" resizable="false" text="Modificar" />
+            <TableColumn fx:id="eliminar_col" maxWidth="173.0" prefWidth="33.0" resizable="false" text="Eliminar" />
          </columns>
       </TableView>
-      <Button layoutX="25.0" layoutY="93.0" mnemonicParsing="false" onAction="#onConsultar_pressed" text="debug Consultar" />
-      <Button layoutX="25.0" layoutY="118.0" mnemonicParsing="false" onAction="#onModificar_pressed" text="debug Modificar" />
-      <Button layoutX="434.0" layoutY="103.0" mnemonicParsing="false" onAction="#onEliminar_pressed" text="debug eliminar" />
+      <Button fx:id="consultar_btn" layoutX="417.0" layoutY="131.0" mnemonicParsing="false" onAction="#onConsultar_pressed" text="debug Consultar" />
+      <Button fx:id="modificar_btn" layoutX="25.0" layoutY="118.0" mnemonicParsing="false" onAction="#onModificar_pressed" text="debug Modificar" />
+      <Button fx:id="eliminar_btn" layoutX="434.0" layoutY="103.0" mnemonicParsing="false" onAction="#onEliminar_pressed" text="debug eliminar" />
    </children>
 </AnchorPane>

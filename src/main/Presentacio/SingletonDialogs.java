@@ -129,7 +129,7 @@ public class SingletonDialogs {
     }
 
     @FXML
-    public void display_delete (String name, Integer type) {
+    public boolean display_delete (String name, Integer type) {
         called_by = type;
         Alert delete_alert = new Alert(Alert.AlertType.CONFIRMATION);
         delete_alert.setTitle("Confirmar l'eliminació " + name);
@@ -141,9 +141,21 @@ public class SingletonDialogs {
         if (result.get() == ButtonType.OK) {
             // TODO: dir que sha eliminat a capa domini i ella a persitencia
             ctrlPresentacio.delete_concreta(name);
+            return true;
         }
+        else return false;
+    }
 
+    @FXML public void display_warningTable(Integer type) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Res seleccionat");
+        String write;
+        if (type == 0) write = "Cap aula seleccionada";
+        else if (type == 1) write = "Cap pla d'estudis seleccionat";
+        else write = "Cap assignatura seleccionada";
+        alert.setHeaderText(write);
+        alert.setContentText("Selecciona un element de la taula");
 
-
+        alert.showAndWait();
     }
 }
