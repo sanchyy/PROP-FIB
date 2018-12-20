@@ -1,5 +1,6 @@
 package Presentacio;
 
+import Domini.Aula;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -18,7 +19,9 @@ public class ViewAulaConcreta {
     @FXML private CheckBox projector, ubuntu, LW, fisica, embeded, xarxes;
 
     private CtrlPresentacio ctrlPresentacio;
-    private int actual_mode = 0;
+    private int actual_mode = 0; // 0 crear, 1 consultar, 2 modififcar
+    private String old_name;
+    private Aula_presentacio aula;
 
     /**
      * Assignar controlador de presentació.
@@ -29,12 +32,16 @@ public class ViewAulaConcreta {
         this.ctrlPresentacio = ctrlPresentacio;
     }
 
+    public void setAula (Aula_presentacio a) {
+        aula = a;
+    }
+
     @FXML
     public void init_Mod (boolean pre_consultar) throws IOException {
         title_label.setText("MODIFICAR AULA");
         description_label.setText("Pots modificar els següents camps:");
         if (pre_consultar) init_properties(true);
-        else load_values(new Aula_presentacio());
+        else load_values(aula);
         mode_btn.setText("Guardar canvis");
         actual_mode = 2;
     }
@@ -43,7 +50,7 @@ public class ViewAulaConcreta {
      * Inicialitzar els atributs de l'assignatura i modificar el títol a consultar i el botó específic a "Modificar"
      */
     @FXML
-    public void init_Consultar (Aula_presentacio aula) {
+    public void init_Consultar () {
         title_label.setText("CONSULTAR AULA");
         description_label.setText("Conté la següent informació:");
         load_values(aula);
@@ -108,15 +115,21 @@ public class ViewAulaConcreta {
      */
     private void save_values () throws NumberFormatException, IOException {
         ArrayList<Boolean> errors = new ArrayList<Boolean>();
-        for (Integer i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             errors.add(false);
         }
         String error_text = new String(); // en cas d'uitlitzar finestra d'errors
-        if (name_input.getText() == null || name_input.getText().isEmpty()) {
+        String name = name_input.getText();
+        if (name == null || name.isEmpty()) {
             errors.set(0, true);
         }
         // TODO: comprovar si ja existeix l'assig amb aquell nom
-        //else errors.set(0, ctrlPresentacio.exists_AulaConcreta(name_input.getText()));
+        else if (actual_mode == 2 && !aula.getName().equals(name) && ctrlPresentacio.exists_AulaConcreta(name)) {
+            errors.set(0, true);
+        }
+        else if(actual_mode == 0) {
+            errors.set(0, ctrlPresentacio.exists_AulaConcreta(name));
+        }
         setLabelColor(name_label, errors, 0);
 
         if (capacity_input.getText() == null || capacity_input.getText().isEmpty()) {
@@ -142,8 +155,6 @@ public class ViewAulaConcreta {
         setLabelColor(carac_label, errors, 2);
 
         if (!errors.contains(true)) {
-            String name = name_input.getText();
-
             Integer capacity = Integer.parseInt(capacity_input.getText());
 
             // TODO: passar tot a domini + carac[]
@@ -151,7 +162,8 @@ public class ViewAulaConcreta {
             for (int i = 0; i < carac.size(); i++) {
                 carac_lab[i] = carac.get(i);
             }
-            ctrlPresentacio.save_AulaConcreta(name, capacity, carac_lab);
+            if (actual_mode == 0) ctrlPresentacio.save_AulaNew(name, capacity, carac_lab);
+            else ctrlPresentacio.save_AulaConcreta(aula.getName(), name, capacity, carac_lab);
             // maybe posar finestra no bloquejant de que hsa creat correctament l'aula
 
             ctrlPresentacio.showAules();

@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import Domini.CtrDomini;
 import Domini.Pair;
@@ -25,7 +26,7 @@ import Domini.Pair;
  */
 public class CtrlPresentacio extends Application{
 
-    private CtrDomini ctrDomini = new CtrDomini();
+    private CtrDomini ctrDomini;
     private Stage primaryStage;
     private Scene baseView;
 
@@ -38,16 +39,16 @@ public class CtrlPresentacio extends Application{
     public CtrlPresentacio () {
 
         ArrayList<Pair<String, Pair<Integer, Boolean[]> > > aules;
-        aules = ctrDomini.getAules();
-        for (Pair<String, Pair<Integer, Boolean[]>> aula : aules) {
+        // PETA aules = ctrDomini.getAules();
+        /*for (Pair<String, Pair<Integer, Boolean[]>> aula : aules) {
             aulaData.add(new Aula_presentacio(aula.getFirst(), aula.getSecond().getFirst(), aula.getSecond().getSecond()));
-        }
+        }*/
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.getIcons().add(new Image(getClass().getResource("/icon4.png").toExternalForm()));
         this.primaryStage = primaryStage;
-        // ctrDomini = new CtrDomini();
+        ctrDomini = new CtrDomini();
         singletonDialogs.setCtrlPresentacio(this);
         FXMLLoader loader = new FXMLLoader();
         SplitPane p = loader.load(getClass().getResource("/BaseView.fxml").openStream()); // Change when the main view is done
@@ -232,7 +233,8 @@ public class CtrlPresentacio extends Application{
         AnchorPane a = loader.load(getClass().getResource("/ViewAulaConcreta.fxml").openStream()); //change
         ViewAulaConcreta consultarController = loader.getController(); // change
         consultarController.setViewController(this); // change
-        consultarController.init_Consultar(aula); // per preparar a l'escena en mode consultar
+        consultarController.setAula(aula);
+        consultarController.init_Consultar(); // per preparar a l'escena en mode consultar
         baseController.getGestioView().getChildren().setAll(a);
     }
 
@@ -319,12 +321,16 @@ public class CtrlPresentacio extends Application{
         // ctrDomini.send_AssigConcreta(name, quatris, nivell, projector, carac_lab);
     }*/
 
-    public void save_AulaConcreta (String name, Integer capacitat, Boolean[] carac) {
+    public void save_AulaConcreta (String old_name, String name, Integer capacitat, Boolean[] carac) {
         // TODO: tencio les dades aixi
         // proposta
         // ctrDomini.send_AulaConcreta(name, capacitat, carac_lab);
-        
+
         aulaData.add(new Aula_presentacio(name, capacitat, carac));
+    }
+
+    public void save_AulaNew(String name, Integer capacitat, Boolean[] carac) {
+
     }
 /*
     public void save_PlaConcret (String name) {
@@ -336,14 +342,15 @@ public class CtrlPresentacio extends Application{
     // check exitencies
     /*public boolean exists_AssigConcreta (String name) {
         // TODO: tenvio el nom de lassig i mirar si ja existeix (sí: true, no: false)
+        // ctrDomini.exists_Aula(name);
         return false;
-    }
+    }*/
 
     public boolean exists_AulaConcreta (String name) {
         // TODO: tenvio el nom de l'aula i mirar si ja existeix (sí: true, no: false)
         return false;
     }
-
+/*
     public boolean exists_PlaConcret (String name) {
         // TODO: tenvio el nom del pla i mirar si ja existeix (sí: true, no: false)
         return false;
@@ -388,4 +395,9 @@ public class CtrlPresentacio extends Application{
 
     }
 
+
+    // demanar dades
+    public List<Aula_presentacio> getAulesLliures() {
+        // TODO: que em retornis una llista d'aules l
+    }
 }
