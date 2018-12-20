@@ -8,14 +8,17 @@ import javafx.scene.input.*;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import Domini.Pair;
 
 public class ViewHorariMostrar {
-    @FXML private GridPane horaro_grid;
+    @FXML private GridPane horari_grid;
     @FXML private TextArea debug;
     @FXML private Label source;
 
     private CtrlPresentacio ctrlPresentacio;
     private boolean modified = false; // 0 crear, 1 consultar, 2 modificar
+    private ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> horari;
 
     /**
      * Assignar controlador de presentació.
@@ -26,6 +29,22 @@ public class ViewHorariMostrar {
         this.ctrlPresentacio = ctrlPresentacio;
     }
 
+    public void initialize () {
+        // horari = ctrlPresentacio.getHorari();
+        // TODO: posar horari
+        int ii, jj;
+        ii = jj = 0;
+        for (ArrayList<ArrayList<Pair<String, Integer>>> i : horari) {
+            for (ArrayList<Pair<String, Integer>> j : i) {
+                for (Pair<String, Integer> sessio : j) {
+                    Label l = new Label(sessio.getFirst());
+                    horari_grid.add(l, jj+1, ii+1);
+                }
+                jj++;
+            }
+            ii++;
+        }
+    }
     /**
      * S'ha clicat el botó Tornar.
      * @throws IOException excepcio d'entrada/sortida.
