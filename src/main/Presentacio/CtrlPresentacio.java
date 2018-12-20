@@ -32,14 +32,16 @@ public class CtrlPresentacio extends Application{
     private BaseView baseController;
     private SingletonDialogs singletonDialogs = SingletonDialogs.getInstance();
     private ObservableList<Aula_presentacio> aulaData = FXCollections.observableArrayList();
+    private ObservableList<Assig_presentacio> assigData = FXCollections.observableArrayList();
+    private ObservableList<Pla_presentacio> plaData = FXCollections.observableArrayList();
 
     public CtrlPresentacio () {
 
-      /*  ArrayList<Pair<String, Pair<Integer, Boolean[]> > > aules;
+        ArrayList<Pair<String, Pair<Integer, Boolean[]> > > aules;
         aules = ctrDomini.getAules();
         for (Pair<String, Pair<Integer, Boolean[]>> aula : aules) {
             aulaData.add(new Aula_presentacio(aula.getFirst(), aula.getSecond().getFirst(), aula.getSecond().getSecond()));
-        }*/
+        }
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -277,7 +279,7 @@ public class CtrlPresentacio extends Application{
 
     // exit
     /**
-     * Tancar l'apliació.
+     * Tancar l'aplicació.
      * @throws IOException excepció d'entrada/sortida.
      */
 
@@ -308,21 +310,23 @@ public class CtrlPresentacio extends Application{
     public void load_PlaConcreta (String name) {
         // TODO: demanar a domini dades de pla d'estudi
 
-    }
+    }*/
 
     // save values
     /*public void save_AssigConcreta (String name, Integer quatris, Integer nivell, boolean projector, Boolean carac_lab[]) {
         // TODO: tenvio les dades aixi
         // proposta de com podria ser, pero no tinc npi
         // ctrDomini.send_AssigConcreta(name, quatris, nivell, projector, carac_lab);
-    }
+    }*/
 
-    public void save_AulaConcreta (String name, Integer capacitat, ArrayList<Boolean> carac) {
+    public void save_AulaConcreta (String name, Integer capacitat, Boolean[] carac) {
         // TODO: tencio les dades aixi
         // proposta
         // ctrDomini.send_AulaConcreta(name, capacitat, carac_lab);
+        
+        aulaData.add(new Aula_presentacio(name, capacitat, carac));
     }
-
+/*
     public void save_PlaConcret (String name) {
         // TODO: dades
         // pueh com lo dabans
@@ -373,7 +377,7 @@ public class CtrlPresentacio extends Application{
         // 0 aula, 1 pla, 2 asig
         Integer type = singletonDialogs.getCalledby();
         if (type.equals(0)) {
-            // ctrDomini.eliminarAula(name) o joquese ajajja
+            ctrDomini.borrarAula(name);
         }
         else if (type.equals(1)) {
             //ctrDomini.eliminarPla(name);

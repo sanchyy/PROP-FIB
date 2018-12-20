@@ -147,8 +147,13 @@ public class ViewAulaConcreta {
             Integer capacity = Integer.parseInt(capacity_input.getText());
 
             // TODO: passar tot a domini + carac[]
-            //ctrlPresentacio.save_AulaConcreta(name, capacity, carac);
+            Boolean[] carac_lab = new Boolean[6];
+            for (int i = 0; i < carac.size(); i++) {
+                carac_lab[i] = carac.get(i);
+            }
+            ctrlPresentacio.save_AulaConcreta(name, capacity, carac_lab);
             // maybe posar finestra no bloquejant de que hsa creat correctament l'aula
+
             ctrlPresentacio.showAules();
         }
 
