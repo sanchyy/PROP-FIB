@@ -144,7 +144,7 @@ public class SingletonDialogs {
     }
 
     @FXML public void display_warningTable(Integer type) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+        Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Res seleccionat");
         String write;
         if (type == 0) write = "Cap aula seleccionada";
@@ -153,6 +153,13 @@ public class SingletonDialogs {
         alert.setHeaderText(write);
         alert.setContentText("Selecciona un element de la taula");
 
+        alert.showAndWait();
+    }
+    @FXML
+    public void display_errorCarregar () {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error carregar");
+        alert.setHeaderText("S'ha produït un error al carregar el fitxer seleccionat");
         alert.showAndWait();
     }
 }

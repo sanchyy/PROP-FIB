@@ -365,7 +365,7 @@ public class CtrlPresentacio extends Application{
         Integer type = singletonDialogs.getCalledby();
         if (type.equals(0)) {
             boolean carregat = ctrDomini.carregaAules(path);
-            if (!carregat) System.out.println("ERROR AL CARREGAR EL FITXER");
+            if (!carregat) singletonDialogs.display_errorCarregar();
             aulaData.clear();
             ArrayList<Pair<String, Pair<Integer, Boolean[]>>> aules = ctrDomini.getAules();
             for (Pair<String, Pair<Integer, Boolean[]>> aula : aules) {
