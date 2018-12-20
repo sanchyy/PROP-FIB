@@ -26,7 +26,7 @@ public class ViewPlaAssig {
     public void initialize () {
         // TODO: demanar llista d'aules
         List<Aula_presentacio> aules_lliures = ctrlPresentacio.getAulesLliures();
-        for (Aula_presentacio a : aules) {
+        for (Aula_presentacio a : aules_lliures) {
 
         }
     }

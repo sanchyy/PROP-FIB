@@ -330,7 +330,11 @@ public class CtrlPresentacio extends Application{
     }
 
     public void save_AulaNew(String name, Integer capacitat, Boolean[] carac) {
-
+        // TODO: Berni
+        // ENVIAR A DOMINI LA AULA
+        // ctrDomini.afegirAula()
+        Aula_presentacio ap = new Aula_presentacio(name, capacitat, carac);
+        aulaData.add(ap);
     }
 /*
     public void save_PlaConcret (String name) {
@@ -399,5 +403,6 @@ public class CtrlPresentacio extends Application{
     // demanar dades
     public List<Aula_presentacio> getAulesLliures() {
         // TODO: que em retornis una llista d'aules l
+        return null;
     }
 }
