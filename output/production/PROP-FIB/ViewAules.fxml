@@ -10,8 +10,8 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.ViewAules">
    <children>
       <Label layoutX="25.0" layoutY="158.0" text="Aules creades" />
-      <Button fx:id="carregarAula" layoutX="300.0" layoutY="68.0" mnemonicParsing="false" onAction="#oncarregarAula_pressed" text="Carregar aula" />
-      <Button fx:id="crearAula" layoutX="74.0" layoutY="68.0" mnemonicParsing="false" onAction="#oncrearAula_pressed" text="Crear aula" />
+      <Button fx:id="carregarAula" layoutX="300.0" layoutY="81.0" mnemonicParsing="false" onAction="#oncarregarAula_pressed" text="Carregar aula" />
+      <Button fx:id="crearAula" layoutX="74.0" layoutY="81.0" mnemonicParsing="false" onAction="#oncrearAula_pressed" text="Crear aula" />
       <Label layoutX="25.0" layoutY="34.0" text="GESTIÓ D'AULES" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
          <font>
             <Font size="18.0" />
