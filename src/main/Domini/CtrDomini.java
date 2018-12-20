@@ -2,6 +2,7 @@ package Domini;
 
 import com.google.gson.Gson;
 import Persistencia.CtrPersistencia;
+import com.google.gson.JsonParseException;
 
 import java.util.ArrayList;
 
@@ -62,12 +63,19 @@ public class CtrDomini {
         }
     }
 
-    public void carregaAules() {
+    public boolean carregaAules(String path) {
         getUnitatDocent().borrarAules();
-        ArrayList<String> aules = ctrPersistencia.getAules();
+        ArrayList<String> aules = ctrPersistencia.getAules(path);
         for (String a : aules) {
-            getUnitatDocent().afegirAulaDisponible(gson.fromJson(a, Aula.class));
+            try {
+                Aula aula = gson.fromJson(a, Aula.class);
+                getUnitatDocent().afegirAulaDisponible(aula);
+            } catch (JsonParseException e) {
+                // ERROR AL CARREGAR FITXER
+                return false;
+            }
         }
+        return true;
     }
 
     public void guardarDades() {

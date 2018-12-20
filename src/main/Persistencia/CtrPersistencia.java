@@ -13,7 +13,7 @@ public class CtrPersistencia {
     public ArrayList<String> getPlansEstudis() {
         ArrayList<String> plansEstudis = new ArrayList<>();
         try {
-            plansEstudis = ud.carrega("PlaEstudi", "plansEstudis");
+            plansEstudis = ud.carrega("PlaEstudi");
         } catch (IOException e) {
             System.out.println("Error" + e);
         }
@@ -30,10 +30,10 @@ public class CtrPersistencia {
 
     // AULES
 
-    public ArrayList<String> getAules() {
+    public ArrayList<String> getAules(String path) {
         ArrayList<String> aules= new ArrayList<>();
         try {
-            aules = ud.carrega("Aules", "aules");
+            aules = ud.carrega(path);
         } catch (IOException e) {
             System.out.println("Error" + e);
         }

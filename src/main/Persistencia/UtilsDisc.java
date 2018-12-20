@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class UtilsDisc {
     String database = "./DB/";
 
-    public ArrayList<String> carrega(String carpeta, String fitxer) throws IOException {
-        FileReader fr = new FileReader(database + carpeta + "/"+ fitxer + ".txt");
+    public ArrayList<String> carrega(String path) throws IOException {
+        FileReader fr = new FileReader(path);
         BufferedReader br = new BufferedReader(fr);
         ArrayList<String> lineas = new ArrayList<>();
         String linea;
