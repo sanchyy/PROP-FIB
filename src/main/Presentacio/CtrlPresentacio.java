@@ -336,7 +336,7 @@ public class CtrlPresentacio extends Application{
         Aula_presentacio ap = new Aula_presentacio(name, capacitat, carac);
         aulaData.add(ap);
     }
-/*
+    /*
     public void save_PlaConcret (String name) {
         // TODO: dades
         // pueh com lo dabans
@@ -366,7 +366,8 @@ public class CtrlPresentacio extends Application{
         // 0 aula, 1 pla, 2 asig
         Integer type = singletonDialogs.getCalledby();
         if (type.equals(0)) {
-            ctrDomini.carregaAules();
+            boolean carregat = ctrDomini.carregaAules(path);
+            if (!carregat) System.out.println("ERROR AL CARREGAR EL FITXER");
             aulaData.clear();
             ArrayList<Pair<String, Pair<Integer, Boolean[]>>> aules = ctrDomini.getAules();
             for (Pair<String, Pair<Integer, Boolean[]>> aula : aules) {
