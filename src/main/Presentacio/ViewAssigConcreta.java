@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class ViewAssigConcreta {
     @FXML private Button tornar, mode_btn;
-    @FXML private Label title_label, description_label,name_label, quatri_label, teo_label, nivell_label;
+    @FXML private Label title_label, description_label,name_label, quatri_label, teo_label, nivell_label, lab_label;
     @FXML private TextField name_input;
     @FXML private RadioButton yes_radio, no_radio;
     @FXML private ToggleGroup projector_group, nivell_group;
@@ -165,7 +165,7 @@ public class ViewAssigConcreta {
      */
     public void save_values() throws IOException {
         ArrayList<Boolean> errors = new ArrayList<Boolean>();
-        for (Integer i = 0; i < 4; i++) {
+        for (Integer i = 0; i < 5; i++) {
             errors.add(false);
         }
         // String error_text = new String(); // en cas d'uitlitzar finestra d'errors
@@ -194,8 +194,19 @@ public class ViewAssigConcreta {
         }
         setLabelColor(teo_label, errors, 3);
 
+        ArrayList<Boolean> carac = new ArrayList<Boolean>();
+        carac.add(projector.isSelected());
+        carac.add(ubuntu.isSelected());
+        carac.add(LW.isSelected());
+        carac.add(fisica.isSelected());
+        carac.add(embeded.isSelected());
+        carac.add(xarxes.isSelected());
+        if (!carac.contains(true)) errors.set(4, true);
+        setLabelColor(lab_label, errors, 4);
+
         if (!errors.contains(true)) {
             String name = name_input.getText();
+
 
             boolean projector_teo;
             if (no_radio.isSelected()) projector_teo = false;

@@ -6,6 +6,7 @@ import javafx.beans.property.StringProperty;
 public class Assig_presentacio {
     private final SimpleStringProperty name;
 
+
     /**
      * Default constructor
      */
