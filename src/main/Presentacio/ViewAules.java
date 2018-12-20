@@ -71,7 +71,8 @@ public class ViewAules {
     public void onModificar_pressed() throws IOException {
         int selectedIndex = taulaAula.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
-            ctrlPresentacio.showAulaMod();
+            Aula_presentacio aula = taulaAula.getItems().get(selectedIndex);
+            ctrlPresentacio.showAulaMod(aula);
         } else {
             // Nothing selected.
             singletonDialogs.display_warningTable(0);

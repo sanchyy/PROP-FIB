@@ -37,12 +37,6 @@ public class CtrlPresentacio extends Application{
     private ObservableList<Pla_presentacio> plaData = FXCollections.observableArrayList();
 
     public CtrlPresentacio () {
-
-        ArrayList<Pair<String, Pair<Integer, Boolean[]> > > aules;
-        // PETA aules = ctrDomini.getAules();
-        /*for (Pair<String, Pair<Integer, Boolean[]>> aula : aules) {
-            aulaData.add(new Aula_presentacio(aula.getFirst(), aula.getSecond().getFirst(), aula.getSecond().getSecond()));
-        }*/
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -243,11 +237,12 @@ public class CtrlPresentacio extends Application{
      *
      * @throws IOException excepcio d'entrada/sortida.
      */
-    public void showAulaMod () throws IOException {
+    public void showAulaMod (Aula_presentacio aula) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         AnchorPane a = loader.load(getClass().getResource("/ViewAulaConcreta.fxml").openStream()); //change
         ViewAulaConcreta modController = loader.getController(); // change
         modController.setViewController(this); // change
+        modController.setAula(aula);
         modController.init_Mod(false); // si no funciona mirar aixo, mirar l'ordre
         baseController.getGestioView().getChildren().setAll(a);
 
