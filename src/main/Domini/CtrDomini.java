@@ -3,6 +3,7 @@ package Domini;
 import com.google.gson.Gson;
 import Persistencia.CtrPersistencia;
 import com.google.gson.JsonParseException;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.ArrayList;
 
@@ -52,6 +53,10 @@ public class CtrDomini {
         afegirAulaUnitatDocent("A6203", 30, caracs);
         afegirSessioQuadrimestre(11, "PROP");*/
         // carregarDades();
+    }
+
+    public void afegirAula(String nom, Integer capacitat, Boolean[] caracs) {
+        afegirAulaUnitatDocent(nom, capacitat, parseBooleansAula(caracs));
     }
 
     public void carregarDades() {
@@ -115,6 +120,24 @@ public class CtrDomini {
         Pair<Integer, Boolean[]> p2 = new Pair<>(a.getCapacitat(), caracteristiques);
         Pair<String, Pair<Integer, Boolean[]>> p1 = new Pair<>(a.getNom(), p2);
         return p1;
+    }
+
+    public ArrayList<CaracteristiquesAula> parseBooleansAula(Boolean[] ca) {
+        ArrayList<CaracteristiquesAula> caracs = new ArrayList<>();
+        if (ca[0]) {
+            caracs.add(CaracteristiquesAula.PROJECTOR);
+        } else if (ca[1]) {
+            caracs.add(CaracteristiquesAula.UBUNTU);
+        } else if (ca[2]) {
+            caracs.add(CaracteristiquesAula.FISICA);
+        } else if (ca[3]) {
+            caracs.add(CaracteristiquesAula.EMBEDED);
+        } else if (ca[4]) {
+            caracs.add(CaracteristiquesAula.XARXES);
+        } else if (ca[5]) {
+            caracs.add(CaracteristiquesAula.LINUX_WINDOWS);
+        }
+        return caracs;
     }
 
     public Aula getAulaConcreta(String nom) {

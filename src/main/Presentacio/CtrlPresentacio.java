@@ -330,9 +330,7 @@ public class CtrlPresentacio extends Application{
     }
 
     public void save_AulaNew(String name, Integer capacitat, Boolean[] carac) {
-        // TODO: Berni
-        // ENVIAR A DOMINI LA AULA
-        // ctrDomini.afegirAula()
+         ctrDomini.afegirAula(name, capacitat, carac);
         Aula_presentacio ap = new Aula_presentacio(name, capacitat, carac);
         aulaData.add(ap);
     }
