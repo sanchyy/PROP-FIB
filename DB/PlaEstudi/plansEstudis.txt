@@ -1,1 +1,1 @@
-{"nom":"FIB","plansEstudis":[],"aulesDisponibles":[{"nom":"andrea","capacitat":11,"caracteristiques":["UBUNTU"]}]}
+{"nom":"FIB","plansEstudis":[],"aulesDisponibles":[]}

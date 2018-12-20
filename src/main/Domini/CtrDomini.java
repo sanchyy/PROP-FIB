@@ -68,6 +68,19 @@ public class CtrDomini {
         }
     }
 
+    public void modificarAula(String nomAntic, String nomNou, Integer capacitat, Boolean[] caracs) {
+        ArrayList<Aula> aules = getUnitatDocent().getAulesDisponibles();
+        Aula antiga = null;
+        for (Aula aula : aules) {
+            if (aula.getNom().equals(nomAntic)) {
+                antiga = aula;
+                break;
+            }
+        }
+        Aula nova = new Aula(nomNou, capacitat, parseBooleansAula(caracs));
+        getUnitatDocent().modificarAula(antiga, nova);
+    }
+
     public boolean carregaAules(String path) {
         getUnitatDocent().borrarAules();
         ArrayList<String> aules = ctrPersistencia.getAules(path);

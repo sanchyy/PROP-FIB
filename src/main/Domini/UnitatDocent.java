@@ -17,6 +17,11 @@ public class UnitatDocent {
         return nom;
     }
 
+    public void modificarAula(Aula antiga, Aula nova) {
+        aulesDisponibles.remove(antiga);
+        aulesDisponibles.add(nova);
+    }
+
     public ArrayList<Aula> getAulesDisponibles() {
         return aulesDisponibles;
     }
