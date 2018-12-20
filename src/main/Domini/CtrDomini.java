@@ -55,10 +55,6 @@ public class CtrDomini {
         // carregarDades();
     }
 
-    public void afegirAula(String nom, Integer capacitat, Boolean[] caracs) {
-        afegirAulaUnitatDocent(nom, capacitat, parseBooleansAula(caracs));
-    }
-
     public void carregarDades() {
         ArrayList<String> pes = ctrPersistencia.getPlansEstudis();
         for (String pe : pes) {
@@ -66,6 +62,10 @@ public class CtrDomini {
             unitatsDocents.add(ud);
             unitatDocentSeleccionada = getUnitatsDocents().size()-1;
         }
+    }
+
+    public void afegirAula(String nom, Integer capacitat, Boolean[] caracs) {
+        afegirAulaUnitatDocent(nom, capacitat, parseBooleansAula(caracs));
     }
 
     public void modificarAula(String nomAntic, String nomNou, Integer capacitat, Boolean[] caracs) {

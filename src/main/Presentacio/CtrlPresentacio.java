@@ -317,11 +317,14 @@ public class CtrlPresentacio extends Application{
     }*/
 
     public void save_AulaConcreta (String old_name, String name, Integer capacitat, Boolean[] carac) {
-        // TODO: tencio les dades aixi
-        // proposta
-        // ctrDomini.send_AulaConcreta(name, capacitat, carac_lab);
-
+        for (Aula_presentacio a : aulaData) {
+            if (a.getName().equals(old_name)) {
+                aulaData.remove(a);
+                break;
+            }
+        }
         aulaData.add(new Aula_presentacio(name, capacitat, carac));
+        ctrDomini.modificarAula(old_name, name, capacitat, carac);
     }
 
     public void save_AulaNew(String name, Integer capacitat, Boolean[] carac) {
