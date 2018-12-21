@@ -394,8 +394,15 @@ public class CtrDomini {
     }
 
     public ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> sessionsHorari(ArrayList<Pair<String, Pair<Integer, Pair<Integer, Integer>>>> sessions) {
-        parseSessions("PRO1", 7, 4, 2);
-        parseSessions("IC", 7, 4, 2);
+        for (Pair<String, Pair<Integer, Pair<Integer, Integer>>> sessio : sessions) {
+            String assig = sessio.getFirst();
+            Integer grups = sessio.getSecond().getFirst();
+            Integer subgrups = sessio.getSecond().getSecond().getFirst();
+            Integer tardes = sessio.getSecond().getSecond().getSecond();
+            parseSessions(assig, grups, subgrups, tardes);
+        }
+        /*parseSessions("PRO1", 7, 4, 2);
+        parseSessions("IC", 7, 4, 2);*/
         /*parseSessions("FM", 7, 4, 2);*/
         /*parseSessions("F", 7, 4, 2);*/
         Horari generat = ferHorari(plaEstudisFromNom(plaEstudisActual), getAulesFromNoms(aulesActual));
