@@ -510,6 +510,6 @@ public class CtrlPresentacio extends Application{
     }
 
     public Boolean restriccioModificar (String name, int dia, int hora) {
-        return true;//ctrDomini.posarSessioAqui(name, x, dia, hora);
+        return ctrDomini.posarSessioAqui(name, dia, hora);
     }
 }

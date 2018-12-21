@@ -7,6 +7,8 @@ import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ViewHorariModificar {
     @FXML private Label sessio_label, dia_label, hora_label;
@@ -25,10 +27,12 @@ public class ViewHorariModificar {
     }
 
     public void init_modificacions () {
+        List<String> tmp = Arrays.asList("Dilluns", "Dimarts", "Dimecres", "Dijous", "Divendres");
         sessio_combo.getItems().addAll(sessions);
-        dia_combo.getItems().addAll("Dilluns", "Dimarts", "Dimecres", "Dijous", "Divendres");
-        hora_combo.getItems().addAll("8 - 9", "9 - 10", "10 - 11", "11 - 12", "12 - 13", "13 - 14", "14 - 15",
+        dia_combo.getItems().addAll(tmp);
+        List<String> tmp2 =Arrays.asList("8 - 9", "9 - 10", "10 - 11", "11 - 12", "12 - 13", "13 - 14", "14 - 15",
                 "15 - 16", "16 - 17", "17 - 18", "18 - 19", "19 - 20");
+        hora_combo.getItems().addAll(tmp2);
     }
     public void onTornar_pressed() throws IOException {
         ctrlPresentacio.showGenerarH();
@@ -38,23 +42,26 @@ public class ViewHorariModificar {
         System.out.println(s);
         ArrayList<Boolean> errors = new ArrayList<>();
         for (int i = 0; i < 3; i++) errors.add(false);
-        if (s == null || !s.isEmpty()) {
+
+        if (s == null || s.toString().isEmpty()) {
             errors.set(0, true);
         }
         setLabelColor(sessio_label, errors, 0);
+
         String dia = dia_combo.getValue();
-        if (dia == null || !dia.isEmpty()) {
+        if (dia == null || dia.toString().isEmpty()) {
             errors.set(1, true);
         }
-        setLabelColor(sessio_label, errors, 1);
+        setLabelColor(dia_label, errors, 1);
 
         String hora = hora_combo.getValue();
-        if (s == null || !s.isEmpty()) {
+        if (hora == null || hora.toString().isEmpty()) {
             errors.set(2, true);
         }
-        setLabelColor(sessio_label, errors, 2);
+        setLabelColor(hora_label, errors, 2);
 
         if (!errors.contains(true)) {
+            System.out.println(dia);
             int d;
             if (dia.equals("Dilluns")) d = 0;
             else if (dia.equals("Dimarts")) d = 1;
@@ -79,7 +86,7 @@ public class ViewHorariModificar {
             if(ctrlPresentacio.restriccioModificar(s, 1, 2)) {
                 singletonDialogs.display_confirmHorari();
             }
-            else singletonDialogs.display_errorCarregar();
+            else singletonDialogs.display_errorHorari();
         }
 
     }

@@ -1,5 +1,6 @@
 package Domini;
 
+import Presentacio.Assig_presentacio;
 import com.google.gson.Gson;
 import Persistencia.CtrPersistencia;
 import com.google.gson.JsonParseException;
@@ -294,9 +295,15 @@ public class CtrDomini {
 
     public boolean posarSessioAqui(String sessioStr, Integer dia, Integer hora) {
         String[] parts = sessioStr.split("-");
-        Assignatura a = getAssignatura(parts[0]);
+        Assignatura aa = null;
+        for (Assignatura a : assigPool) {
+            if (a.getNom().equals(parts[0])) {
+                aa = a;
+                break;
+            }
+        }
         parts = parts[1].split(" ");
-        Sessio sessio = new Sessio(Integer.parseInt(parts[0]), a);
+        Sessio sessio = new Sessio(Integer.parseInt(parts[0]), aa);
         Generador g = new Generador(horariActual, getUnitatDocent().buscarPlaEstudis(plaEstudisActual), sessionsActuals, restriccions);
         return g.potAnarAqui(sessio, dia, hora, horariActual);
     }

@@ -97,6 +97,7 @@ public class ViewAules {
         } else {
             // Nothing selected.
             singletonDialogs.display_warningTable(0);
+            //singletonDialogs.display_errorHorari();
         }
     }
 

@@ -169,6 +169,7 @@ public class SingletonDialogs {
         alert.setTitle("Canvi invàlid");
         alert.setHeaderText("No es pot col·locar la sessió en el slot escollit.");
         alert.setContentText("Modifica les restriccions de les sessions i/o assignatures; o selecciona un slot diferent.");
+        alert.showAndWait();
     }
 
     @FXML
@@ -176,5 +177,6 @@ public class SingletonDialogs {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Canvi vàlid");
         alert.setHeaderText("La sessió pot col·locar-se al slot horari seleccionat.");
+        alert.showAndWait();
     }
 }
