@@ -2,6 +2,7 @@ package Presentacio;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.*;
@@ -10,6 +11,7 @@ import javafx.scene.layout.GridPane;
 import java.io.IOException;
 import java.util.ArrayList;
 import Domini.Pair;
+import javafx.scene.layout.VBox;
 
 public class ViewHorariMostrar {
     @FXML private GridPane horari_grid;
@@ -44,9 +46,12 @@ public class ViewHorariMostrar {
         ii = jj = 0;
         for (ArrayList<ArrayList<Pair<String, Integer>>> i : horari) {
             for (ArrayList<Pair<String, Integer>> j : i) {
+                VBox slot = new VBox();
+                slot.setAlignment(Pos.TOP_CENTER);
+                horari_grid.add(slot, jj+1, ii+1);
                 for (Pair<String, Integer> sessio : j) {
-                    Label l = new Label(sessio.getFirst());
-                    horari_grid.add(l, jj+1, ii+1);
+                    //Label l = new Label(sessio.getFirst());
+                    slot.getChildren().add(new Label(sessio.getFirst()));
                 }
                 jj++;
             }
