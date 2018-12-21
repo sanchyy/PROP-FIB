@@ -56,6 +56,32 @@ public class CtrlPresentacio extends Application{
         // viewPla.getStylesheets().add("/mainMenuStyle.css"); // add it if we have a css
         primaryStage.setScene(baseView);
         primaryStage.show();
+
+        boolean carregat = ctrDomini.carregaAules("./DB/Aules/aules.txt");
+        if (!carregat) singletonDialogs.display_errorCarregar();
+        ArrayList<Pair<String, Pair<Integer, Boolean[]>>> aules = ctrDomini.getAules();
+        for (Pair<String, Pair<Integer, Boolean[]>> aula : aules) {
+            aulaData.add(new Aula_presentacio(aula.getFirst(), aula.getSecond().getFirst(), aula.getSecond().getSecond()));
+        }
+
+        carregat = ctrDomini.carregaPlansEstudis("./DB/PlaEstudi/plansEstudis.txt");
+        if (!carregat) singletonDialogs.display_errorCarregar();
+        ArrayList<String> plans = ctrDomini.getPlansEstudis();
+        for (String pla : plans) {
+            plaData.add(new Pla_presentacio(pla));
+        }
+
+        carregat = ctrDomini.carregaAssignatures("./DB/Assignatures/assignatures.txt");
+        if (!carregat) singletonDialogs.display_errorCarregar();
+        ArrayList<Pair<String, Pair<Integer, Pair<Integer, Pair<Boolean, Boolean[]>>>>> assigs = ctrDomini.getAssignatures();
+        for (Pair<String, Pair<Integer, Pair<Integer, Pair<Boolean, Boolean[]>>>> assig : assigs) {
+            String nom = assig.getFirst();
+            Integer quatri = assig.getSecond().getFirst();
+            Integer nivell = assig.getSecond().getSecond().getFirst();
+            Boolean projector = assig.getSecond().getSecond().getSecond().getFirst();
+            Boolean[] caracs = assig.getSecond().getSecond().getSecond().getSecond();
+            assigData.add(new Assig_presentacio(nom, quatri, nivell, projector, caracs));
+        }
     }
 
     /**
@@ -423,7 +449,6 @@ public class CtrlPresentacio extends Application{
         if (type.equals(0)) {
             boolean carregat = ctrDomini.carregaAules(path);
             if (!carregat) singletonDialogs.display_errorCarregar();
-            aulaData.clear();
             ArrayList<Pair<String, Pair<Integer, Boolean[]>>> aules = ctrDomini.getAules();
             for (Pair<String, Pair<Integer, Boolean[]>> aula : aules) {
                 aulaData.add(new Aula_presentacio(aula.getFirst(), aula.getSecond().getFirst(), aula.getSecond().getSecond()));
@@ -431,7 +456,6 @@ public class CtrlPresentacio extends Application{
         } else if (type.equals(1)) {
             boolean carregat = ctrDomini.carregaPlansEstudis(path);
             if (!carregat) singletonDialogs.display_errorCarregar();
-            plaData.clear();
             ArrayList<String> plans = ctrDomini.getPlansEstudis();
             for (String pla : plans) {
                 plaData.add(new Pla_presentacio(pla));
@@ -439,7 +463,6 @@ public class CtrlPresentacio extends Application{
         } else {
             boolean carregat = ctrDomini.carregaAssignatures(path);
             if (!carregat) singletonDialogs.display_errorCarregar();
-            assigData.clear();
             ArrayList<Pair<String, Pair<Integer, Pair<Integer, Pair<Boolean, Boolean[]>>>>> assigs = ctrDomini.getAssignatures();
             for (Pair<String, Pair<Integer, Pair<Integer, Pair<Boolean, Boolean[]>>>> assig : assigs) {
                 String nom = assig.getFirst();
