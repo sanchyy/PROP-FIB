@@ -10,35 +10,23 @@ public class CtrPersistencia {
         ud = new UtilsDisc();
     }
 
-    public ArrayList<String> getPlansEstudis(String path) {
-        ArrayList<String> plansEstudis = new ArrayList<>();
+    public ArrayList<String> agafar(String path) {
+        ArrayList<String> strings = new ArrayList<>();
         try {
-            plansEstudis = ud.carrega(path);
+            strings = ud.carrega(path);
         } catch (IOException e) {
             System.out.println("Error" + e);
         }
-        return plansEstudis;
+        return strings;
     }
 
-    public ArrayList<String> getAssignatures(String path) {
-        ArrayList<String> assignatures = new ArrayList<>();
+    public void guardar(String path, ArrayList<String> strings) {
         try {
-            assignatures = ud.carrega(path);
-        } catch (IOException e) {
-            System.out.println("Error" + e);
-        }
-        return assignatures;
-    }
-
-    public void guardaPlansEstudis(String plansEstudis) {
-        try {
-            ud.guarda("PlaEstudi", "plansEstudis", plansEstudis);
+            ud.guardaMultiple(path, strings);
         } catch (IOException e) {
             System.out.println("Error" + e);
         }
     }
-
-    // AULES
 
     public ArrayList<String> getAules(String path) {
         ArrayList<String> aules= new ArrayList<>();
@@ -48,14 +36,6 @@ public class CtrPersistencia {
             System.out.println("Error" + e);
         }
         return aules;
-    }
-
-    public void guardaAules(ArrayList<String> aules) {
-        try {
-            ud.guardaMultiple("Aules", "aules", aules);
-        } catch (IOException e) {
-            System.out.println("Error" + e);
-        }
     }
 
 }

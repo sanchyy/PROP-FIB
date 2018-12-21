@@ -73,7 +73,7 @@ public class ViewAssignatura {
             ctrlPresentacio.showAssigConsultar(assig);
         } else {
             // Nothing selected.
-            singletonDialogs.display_warningTable(0);
+            singletonDialogs.display_warningTable(2);
         }
     }
 
@@ -81,7 +81,7 @@ public class ViewAssignatura {
     public void onEliminar_pressed() {
         int selectedIndex = taulaAssig.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
-            if (singletonDialogs.display_delete(taulaAssig.getSelectionModel().getSelectedItem().getName(), 0)) {
+            if (singletonDialogs.display_delete(taulaAssig.getSelectionModel().getSelectedItem().getName(), 2)) {
                 ctrlPresentacio.delete_concreta(taulaAssig.getItems().get(selectedIndex).getName());
                 taulaAssig.getItems().remove(selectedIndex);
             }
@@ -99,7 +99,7 @@ public class ViewAssignatura {
             ctrlPresentacio.showAssigMod(assig);
         } else {
             // Nothing selected.
-            singletonDialogs.display_warningTable(0);
+            singletonDialogs.display_warningTable(2);
         }
     }
 

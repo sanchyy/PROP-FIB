@@ -37,6 +37,10 @@ public class Assignatura {
         return nivell;
     }
 
+    public Integer getQuadri() {
+        return quadri;
+    }
+
     public boolean isEqual(Assignatura a) {
         return (this.nom.equals(a.getNom()) && nivell.intValue() == a.getNivell().intValue() && this.quadri.intValue() == quadri.intValue());
     }

@@ -1,6 +1,7 @@
 package Presentacio;
 
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -347,24 +348,14 @@ public class CtrlPresentacio extends Application{
             }
         }
         assigData.add(new Assig_presentacio(name, quatris, nivell, projector, carac_lab));
-        System.out.println(old_name);
-        System.out.println(name);
-        System.out.println(quatris);
-        System.out.println(nivell);
-        System.out.println(projector);
-        System.out.println(carac_lab.length);
-        //ctrDomini.modificarAssig(old_name, name, quatris, nivell, projector, carac_lab);
+        ctrDomini.modificarAssignatura(old_name, name, quatris, nivell, projector, carac_lab);
     }
 
     public void save_AssigNew (String name, Integer quatris, Integer nivell, boolean projector, Boolean carac_lab[]) {
-        System.out.println(name);
-        System.out.println(quatris);
-        System.out.println(nivell);
-        System.out.println(projector);
-        System.out.println(carac_lab.length);
-        //ctrDomini.afegirAssig(name, quatris, nivell, projector, carac_lab);
         Assig_presentacio ap = new Assig_presentacio(name, quatris, nivell, projector, carac_lab);
         assigData.add(ap);
+        Boolean[] caracs = {projector, false, false, false, false, false};
+        ctrDomini.afegirAssignaturaPlaEstudis(name, quatris, nivell, caracs, carac_lab);
     }
 
     public void save_AulaConcreta (String old_name, String name, Integer capacitat, Boolean[] carac) {
@@ -392,16 +383,13 @@ public class CtrlPresentacio extends Application{
             }
         }
         plaData.add(new Pla_presentacio(name));
-        System.out.println(old_name);
-        System.out.println(name);
-        //ctrDomini.modificarPla(old_name, name);
+        ctrDomini.modificarPlaEstudis(old_name, name);
     }
 
     public void save_PlaNew (String name) {
-        System.out.println(name);
-        //ctrDomini.afegirPla(name);
         Pla_presentacio plap = new Pla_presentacio(name);
         plaData.add(plap);
+        ctrDomini.afegirPlaEstudis(name);
     }
 
     // check exitencies
@@ -424,8 +412,6 @@ public class CtrlPresentacio extends Application{
 
     // carregar
     public void send_path(String path) {
-        // TODO: per carregar un fitxer de luser per crear una a
-        // 0 aula, 1 pla, 2 asig
         Integer type = singletonDialogs.getCalledby();
         if (type.equals(0)) {
             boolean carregat = ctrDomini.carregaAules(path);
@@ -435,33 +421,41 @@ public class CtrlPresentacio extends Application{
             for (Pair<String, Pair<Integer, Boolean[]>> aula : aules) {
                 aulaData.add(new Aula_presentacio(aula.getFirst(), aula.getSecond().getFirst(), aula.getSecond().getSecond()));
             }
+        } else if (type.equals(1)) {
+            boolean carregat = ctrDomini.carregaPlansEstudis(path);
+            if (!carregat) singletonDialogs.display_errorCarregar();
+            plaData.clear();
+            ArrayList<String> plans = ctrDomini.getPlansEstudis();
+            for (String pla : plans) {
+                plaData.add(new Pla_presentacio(pla));
+            }
+        } else {
+            boolean carregat = ctrDomini.carregaAssignatures(path);
+            if (!carregat) singletonDialogs.display_errorCarregar();
+            assigData.clear();
+            ArrayList<Pair<String, Pair<Integer, Pair<Integer, Pair<Boolean, Boolean[]>>>>> assigs = ctrDomini.getAssignatures();
+            for (Pair<String, Pair<Integer, Pair<Integer, Pair<Boolean, Boolean[]>>>> assig : assigs) {
+                String nom = assig.getFirst();
+                Integer quatri = assig.getSecond().getFirst();
+                Integer nivell = assig.getSecond().getSecond().getFirst();
+                Boolean projector = assig.getSecond().getSecond().getSecond().getFirst();
+                Boolean[] caracs = assig.getSecond().getSecond().getSecond().getSecond();
+                assigData.add(new Assig_presentacio(nom, quatri, nivell, projector, caracs));
+            }
         }
-        else if (type.equals(1)) {
-            //ctrDomini.carr...(path);
-        }
-        else {
-            //ctrDomni.crr...(path);
-        }
-
     }
 
-    // eliminiar
     public void delete_concreta (String name) {
-        // TODO: per carregar un fitxer de luser per crear una a
-        // 0 aula, 1 pla, 2 asig
         Integer type = singletonDialogs.getCalledby();
         if (type.equals(0)) {
             ctrDomini.borrarAula(name);
-        }
-        else if (type.equals(1)) {
-            //ctrDomini.eliminarPla(name);
-        }
-        else {
-            //ctrDomni.eliminarAssig(name);
+        } else if (type.equals(1)) {
+            ctrDomini.borrarPlaEstudis(name);
+        } else {
+            ctrDomini.borrarAssignatura(name);
         }
 
     }
-
 
     // demanar dades
     public List<Aula_presentacio> getAulesLliures() {

@@ -1,1 +1,2 @@
-{"nom":"FIB","plansEstudis":[],"aulesDisponibles":[]}
+{"nom":"TELECOS-UPC","quadrimestres":[],"assignatures":[]}
+{"nom":"FIBERS","quadrimestres":[],"assignatures":[]}

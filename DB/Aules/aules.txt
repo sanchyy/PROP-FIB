@@ -1,0 +1,1 @@
+{"nom":"A6205","capacitat":20,"caracteristiques":["UBUNTU","XARXES"]}
