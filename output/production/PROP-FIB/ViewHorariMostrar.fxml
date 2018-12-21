@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Presentacio.ViewHorariMostrar">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.ViewHorariMostrar">
    <children>
       <Label fx:id="title_label" layoutX="41.0" layoutY="33.0" text="MOSTRAR HORARI" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
          <font>
@@ -26,7 +26,7 @@
               </columnConstraints>
               <rowConstraints>
                   <RowConstraints maxHeight="1.7976931348623157E308" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="1.7976931348623157E308" minHeight="20.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="1.7976931348623157E308" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="1.7976931348623157E308" minHeight="20.0" prefHeight="38.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="1.7976931348623157E308" minHeight="20.0" prefHeight="215.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="1.7976931348623157E308" minHeight="20.0" prefHeight="215.0" vgrow="SOMETIMES" />
@@ -57,11 +57,7 @@
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="17 - 18" GridPane.rowIndex="10" />
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="18 -19" GridPane.rowIndex="11" />
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="19 -20" GridPane.rowIndex="12" />
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <children>
-                        <Label fx:id="source" text="debug1" />
-                     </children>
-                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </content>
@@ -76,7 +72,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="guardar_btn" disable="true" layoutX="368.0" layoutY="388.0" mnemonicParsing="false" onAction="#onGuardar_pressed" text="Guardar canvis" visible="false" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="175.0">
+      <Button fx:id="guardar_btn" disable="true" layoutX="368.0" layoutY="388.0" mnemonicParsing="false" onAction="#onGuardar_pressed" text="Guardar canvis" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="175.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

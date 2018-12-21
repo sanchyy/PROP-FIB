@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.ViewAssigConsultar">
+   <children>
+      <Label fx:id="nivell_label" text="Nivell, fase a la que pertany dins del pla d'estudis:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="158.0" />
+      <Label fx:id="lab_label" text="Característiques del laboratori:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="234.0" />
+      <Label fx:id="teo_label" layoutX="25.0" layoutY="183.0" text="Projector per les teories?" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="196.0" />
+      <Label fx:id="quatri_label" text="Quatrimestre:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="120.0" />
+      <Label fx:id="name_label" text="Nom:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="82.0" />
+      <Label text="Conté la següent informació:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="52.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label text="CONSULTAR ASSIGNATURA" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="name_output" layoutX="123.0" layoutY="82.0" text="Label" AnchorPane.leftAnchor="113.0" AnchorPane.topAnchor="82.0" />
+      <Label fx:id="quatri_output" layoutX="113.0" layoutY="120.0" text="Label" AnchorPane.leftAnchor="113.0" AnchorPane.topAnchor="120.0" />
+      <Label fx:id="nivell_output" layoutX="316.0" layoutY="158.0" text="Label" AnchorPane.leftAnchor="304.0" AnchorPane.topAnchor="158.0" />
+      <Label fx:id="teo_output" layoutX="196.0" layoutY="196.0" text="Label" AnchorPane.leftAnchor="203.0" />
+      <Label fx:id="lab_output" layoutX="203.0" layoutY="234.0" maxWidth="113.0" text="Label" AnchorPane.leftAnchor="203.0" AnchorPane.topAnchor="234.0" />
+      <Button fx:id="tornar" layoutX="28.0" layoutY="339.0" mnemonicParsing="false" onAction="#onTornar_pressed" text="&lt; Tornar" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="25.0" />
+      <Button fx:id="modificar" layoutX="467.0" layoutY="343.0" mnemonicParsing="false" onAction="#onModificar_pressed" text="Modificar" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="42.0" />
+   </children>
+</AnchorPane>

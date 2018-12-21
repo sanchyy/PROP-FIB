@@ -7,27 +7,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Presentacio.ViewAules">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.ViewAules">
    <children>
       <Label layoutX="25.0" layoutY="158.0" text="Aules creades" />
-      <TextArea fx:id="debbuging" layoutX="244.0" layoutY="81.0" prefHeight="68.0" prefWidth="110.0" />
-      <Button fx:id="carregarAula" layoutX="434.0" layoutY="68.0" mnemonicParsing="false" onAction="#oncarregarAula_pressed" text="Carregar aula" />
-      <Button fx:id="crearAula" layoutX="74.0" layoutY="68.0" mnemonicParsing="false" onAction="#oncrearAula_pressed" text="Crear aula" />
+      <Button fx:id="carregarAula" layoutX="300.0" layoutY="81.0" mnemonicParsing="false" onAction="#oncarregarAula_pressed" text="Carregar aula" />
+      <Button fx:id="crearAula" layoutX="74.0" layoutY="81.0" mnemonicParsing="false" onAction="#oncrearAula_pressed" text="Crear aula" />
       <Label layoutX="25.0" layoutY="34.0" text="GESTIÓ D'AULES" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="taulaAula" layoutX="14.0" layoutY="177.0" prefHeight="200.0" prefWidth="464.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0">
+      <TableView fx:id="taulaAula" layoutX="14.0" layoutY="177.0" prefHeight="200.0" prefWidth="385.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0">
          <columns>
-            <TableColumn fx:id="name_col" prefWidth="359.0" text="Nom" />
-            <TableColumn fx:id="consultar_col" prefWidth="37.0" resizable="false" text="Consultar" />
-            <TableColumn fx:id="modificar_col" prefWidth="43.0" resizable="false" text="Modificar" />
-            <TableColumn fx:id="eliminar_col" maxWidth="173.0" prefWidth="33.0" resizable="false" text="Eliminar" />
+            <TableColumn fx:id="name_col" prefWidth="383.0" text="Nom" />
          </columns>
       </TableView>
-      <Button fx:id="consultar_btn" layoutX="417.0" layoutY="131.0" mnemonicParsing="false" onAction="#onConsultar_pressed" text="debug Consultar" />
-      <Button fx:id="modificar_btn" layoutX="25.0" layoutY="118.0" mnemonicParsing="false" onAction="#onModificar_pressed" text="debug Modificar" />
-      <Button fx:id="eliminar_btn" layoutX="434.0" layoutY="103.0" mnemonicParsing="false" onAction="#onEliminar_pressed" text="debug eliminar" />
+      <Button fx:id="consultar_btn" layoutX="464.0" layoutY="221.0" mnemonicParsing="false" onAction="#onConsultar_pressed" text="Consultar" />
+      <Button fx:id="modificar_btn" layoutX="464.0" layoutY="263.0" mnemonicParsing="false" onAction="#onModificar_pressed" text="Modificar" />
+      <Button fx:id="eliminar_btn" layoutX="468.0" layoutY="307.0" mnemonicParsing="false" onAction="#onEliminar_pressed" text="Eliminar" />
    </children>
 </AnchorPane>

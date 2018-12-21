@@ -1,4 +1,4 @@
-package main.Presentacio;
+package Presentacio;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,11 +16,15 @@ public class ViewPlaConcret {
 
     private CtrlPresentacio ctrlPresentacio;
     private int actual_mode = 0;
+    private Pla_presentacio pla;
 
     public void setViewController (CtrlPresentacio ctrlPresentacio) {
         this.ctrlPresentacio = ctrlPresentacio;
     }
 
+    public void setPla (Pla_presentacio pla) {
+        this.pla = pla;
+    }
     @FXML
     public void init_Mod (boolean pre_consultar) throws IOException {
         title_label.setText("MODIFICAR PLA D'ESTUDIS");
@@ -92,13 +96,20 @@ public class ViewPlaConcret {
             errors.set(0, true);
         }
         // TODO: comprovar si ja existeix l'assig amb aquell nom
+        else if (actual_mode == 2 && !pla.getName().equals(name) && ctrlPresentacio.exists_PlaConcret(name)) {
+            errors.set(0, true);
+        }
+        else if(actual_mode == 0) {
+            errors.set(0, ctrlPresentacio.exists_PlaConcret(name));
+        }
         //else errors.set(0, ctrlPresentacio.exists_PlaConcret(name));
         setLabelColor(name_label, errors, 0);
 
         if (!errors.contains(true)) {
             // TODO: passar tot a domini + carac[]
-            // maybe posar finestra no bloquejant de que hsa creat correctament l'aula
-            //ctrlPresentacio.save_PlaConcret(name);
+            if (actual_mode == 0) ctrlPresentacio.save_PlaNew(name);
+            else ctrlPresentacio.save_PlaConcret(pla.getName(), name);
+
             ctrlPresentacio.showPlaEstudis();
         }
 
@@ -112,9 +123,7 @@ public class ViewPlaConcret {
      * Carrega els valors dels atributs de l'assignatura seleccionada i els mostra.
      */
     private void load_values () {
-        // TODO: agafar dades, demanar a domini
-        // per name input, agafar
-        String name = "jaja"; // agafar nom, demanar domini
+        String name = pla.getName(); // agafar nom, demanar domini
         name_input.setText(name);
     }
 }

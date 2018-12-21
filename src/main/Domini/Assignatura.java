@@ -1,4 +1,4 @@
-package main.Domini;
+package Domini;
 
 import java.util.ArrayList;
 
@@ -35,6 +35,14 @@ public class Assignatura {
 
     public Integer getNivell() {
         return nivell;
+    }
+
+    public Integer getQuadri() {
+        return quadri;
+    }
+
+    public String getPlaEstudis() {
+        return plaEstudis;
     }
 
     public boolean isEqual(Assignatura a) {

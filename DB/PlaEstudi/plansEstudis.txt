@@ -1,1 +1,2 @@
-{"nom":"FIB","plansEstudis":[],"aulesDisponibles":[{"nom":"A6203","capacitat":30,"caracteristiques":["UBUNTU"]}]}
+{"nom":"TELECOS-UPC","quadrimestres":[],"assignatures":[]}
+{"nom":"FIBERS","quadrimestres":[],"assignatures":[]}

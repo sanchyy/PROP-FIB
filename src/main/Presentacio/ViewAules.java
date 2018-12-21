@@ -1,4 +1,4 @@
-package main.Presentacio;
+package Presentacio;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -8,7 +8,6 @@ import java.util.Observable;
 
 public class ViewAules {
     @FXML private Button crearAula, carregarAula;
-    @FXML private TextArea debbuging;
     @FXML private TableView<Aula_presentacio> taulaAula;
     @FXML private TableColumn<Aula_presentacio, String> name_col;
     @FXML private Button consultar_btn, modificar_btn, eliminar_btn;
@@ -72,7 +71,8 @@ public class ViewAules {
     public void onModificar_pressed() throws IOException {
         int selectedIndex = taulaAula.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
-            ctrlPresentacio.showAulaMod();
+            Aula_presentacio aula = taulaAula.getItems().get(selectedIndex);
+            ctrlPresentacio.showAulaMod(aula);
         } else {
             // Nothing selected.
             singletonDialogs.display_warningTable(0);
@@ -91,7 +91,7 @@ public class ViewAules {
         int selectedIndex = taulaAula.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             if (singletonDialogs.display_delete(taulaAula.getSelectionModel().getSelectedItem().getName(), 0)) {
-                ctrlPresentacio.borrarAula(taulaAula.getItems().get(selectedIndex).getName());
+                ctrlPresentacio.delete_concreta(taulaAula.getItems().get(selectedIndex).getName());
                 taulaAula.getItems().remove(selectedIndex);
             }
         } else {

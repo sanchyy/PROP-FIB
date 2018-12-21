@@ -1,4 +1,4 @@
-package main.Presentacio;
+package Presentacio;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class ViewAssigConcreta {
     @FXML private Button tornar, mode_btn;
-    @FXML private Label title_label, description_label,name_label, quatri_label, teo_label, nivell_label;
+    @FXML private Label title_label, description_label,name_label, quatri_label, teo_label, nivell_label, lab_label;
     @FXML private TextField name_input;
     @FXML private RadioButton yes_radio, no_radio;
     @FXML private ToggleGroup projector_group, nivell_group;
@@ -20,6 +20,7 @@ public class ViewAssigConcreta {
 
     private CtrlPresentacio ctrlPresentacio;
     private int actual_mode = 0; // 0 crear, 1 consultar, 2 modificar
+    private Assig_presentacio assig;
 
     /**
      * Assignar controlador de presentació.
@@ -30,9 +31,10 @@ public class ViewAssigConcreta {
         this.ctrlPresentacio = ctrlPresentacio;
     }
 
-    // desbloquejar camps dinput si abans estava en consultar
+    public void setAssig (Assig_presentacio assig) {
+        this.assig = assig;
+    }
 
-    // desbloquejar camps input + carregar info
     @FXML
     public void init_Mod (boolean pre_consultar) throws IOException {
         title_label.setText("MODIFICAR ASSIGNATURA");
@@ -125,11 +127,11 @@ public class ViewAssigConcreta {
      */
     private void load_values () {
         // TODO: agafar dades, demanar a domini
-        String name = "jaja"; // agafar nom, demanar domini
-        Integer quatris = 1; // agafar quatris
-        Integer nivell = 1; // agafar nivell
-        boolean projector_teo = true; // agafar carac teo
-        Boolean carac_lab[] = {true, false, false, true, false, false}; // agafar carac lab
+        String name = assig.getName(); // agafar nom, demanar domini
+        Integer quatris = assig.getQuatri(); // agafar quatris
+        Integer nivell = assig.getNivell(); // agafar nivell
+        Boolean projector_teo = assig.getProjector(); // agafar carac teo
+        Boolean carac_lab[] = assig.getCarac(); // agafar carac lab
         // Berni: ara estan inicialitzats pero era per testejar,
         // tambe pot servir per comprovar si va be el pas per referencia
 
@@ -165,15 +167,21 @@ public class ViewAssigConcreta {
      */
     public void save_values() throws IOException {
         ArrayList<Boolean> errors = new ArrayList<Boolean>();
-        for (Integer i = 0; i < 4; i++) {
+        for (Integer i = 0; i < 5; i++) {
             errors.add(false);
         }
         // String error_text = new String(); // en cas d'uitlitzar finestra d'errors
-        if (name_input.getText() == null || name_input.getText().isEmpty()) {
+        String name = name_input.getText();
+        if (name == null || name.isEmpty()) {
             errors.set(0, true);
         }
         // TODO: comprovar si ja existeix l'assig amb aquell nom
-        //else ctrlPresentacio.exists_AssigConcreta(name_input.getText());
+        else if (actual_mode == 2 && !assig.getName().equals(name) && ctrlPresentacio.exists_AssigConcreta(name)) {
+            errors.set(0, true);
+        }
+        else if(actual_mode == 0) {
+            errors.set(0, ctrlPresentacio.exists_AssigConcreta(name));
+        }
         setLabelColor(name_label, errors, 0);
 
         //quatri
@@ -194,9 +202,17 @@ public class ViewAssigConcreta {
         }
         setLabelColor(teo_label, errors, 3);
 
-        if (!errors.contains(true)) {
-            String name = name_input.getText();
+        ArrayList<Boolean> carac = new ArrayList<Boolean>();
+        carac.add(projector.isSelected());
+        carac.add(ubuntu.isSelected());
+        carac.add(LW.isSelected());
+        carac.add(fisica.isSelected());
+        carac.add(embeded.isSelected());
+        carac.add(xarxes.isSelected());
+        if (!carac.contains(true)) errors.set(4, true);
+        setLabelColor(lab_label, errors, 4);
 
+        if (!errors.contains(true)) {
             boolean projector_teo;
             if (no_radio.isSelected()) projector_teo = false;
             else projector_teo = true;
@@ -215,17 +231,13 @@ public class ViewAssigConcreta {
                 nivell = 2;
             else nivell = 3;
 
-            Boolean lab_carac[] = new Boolean[6];
-            lab_carac[0] = projector.isSelected();
-            lab_carac[1] = ubuntu.isSelected();
-            lab_carac[2] = LW.isSelected();
-            lab_carac[3] = fisica.isSelected();
-            lab_carac[4] = embeded.isSelected();
-            lab_carac[5] = xarxes.isSelected();
+            Boolean[] carac_lab = new Boolean[6];
+            for (int i = 0; i < carac.size(); i++) {
+                carac_lab[i] = carac.get(i);
+            }
 
-            // TODO: passar tot la domini
-            // maybe posar finestra no bloquejant de que hsa creat correctament l'assignatura
-            //ctrlPresentacio.save_AssigConcreta(name, quatri, nivell, projector_teo, lab_carac);
+            if (actual_mode == 0) ctrlPresentacio.save_AssigNew(name, quatri, nivell, projector_teo, carac_lab);
+            else ctrlPresentacio.save_AssigConcreta(assig.getName(), name, quatri, nivell, projector_teo, carac_lab);
             ctrlPresentacio.showAssignatures();
         }
         // else something like introdueix els camps remanents

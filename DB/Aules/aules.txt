@@ -1,1 +1,1 @@
-{"nom":"A6203","capacitat":30,"caracteristiques":["UBUNTU"]}
+{"nom":"A6205","capacitat":20,"caracteristiques":["UBUNTU","XARXES"]}

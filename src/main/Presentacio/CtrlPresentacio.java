@@ -1,6 +1,7 @@
-package main.Presentacio;
+package Presentacio;
 
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,34 +17,34 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
-import main.Domini.CtrDomini;
-import main.Domini.Pair;
+import Domini.CtrDomini;
+import Domini.Pair;
 
 /**
  * Tipus controlador de presentació.
  */
 public class CtrlPresentacio extends Application{
 
-    private CtrDomini ctrDomini = new CtrDomini();
+    private CtrDomini ctrDomini;
     private Stage primaryStage;
     private Scene baseView;
 
     private BaseView baseController;
     private SingletonDialogs singletonDialogs = SingletonDialogs.getInstance();
+
     private ObservableList<Aula_presentacio> aulaData = FXCollections.observableArrayList();
+    private ObservableList<Assig_presentacio> assigData = FXCollections.observableArrayList();
+    private ObservableList<Pla_presentacio> plaData = FXCollections.observableArrayList();
 
     public CtrlPresentacio () {
-        ArrayList<Pair<String, Pair<Integer, Boolean[]>>> aules = ctrDomini.getAules();
-        for (Pair<String, Pair<Integer, Boolean[]>> aula : aules) {
-            aulaData.add(new Aula_presentacio(aula.getFirst(), aula.getSecond().getFirst(), aula.getSecond().getSecond()));
-        }
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.getIcons().add(new Image(getClass().getResource("/icon4.png").toExternalForm()));
         this.primaryStage = primaryStage;
-        // ctrDomini = new CtrDomini();
+        ctrDomini = new CtrDomini();
         singletonDialogs.setCtrlPresentacio(this);
         FXMLLoader loader = new FXMLLoader();
         SplitPane p = loader.load(getClass().getResource("/BaseView.fxml").openStream()); // Change when the main view is done
@@ -67,11 +68,31 @@ public class CtrlPresentacio extends Application{
     }
 
     /**
-     * Returns the data as an observable list of Persons.
-     * @return
+     * Returns the data as an observable list of Aules.
+     * @return ObservableList d'aula presentació
      */
     public ObservableList<Aula_presentacio> getAulaData() {
         return aulaData;
+    }
+
+    /**
+     * Returns the data as an observable list of Assignatures.
+     * @return ObservableList d'assignatura presentació
+     */
+    public ObservableList<Assig_presentacio> getAssigData () {
+        return assigData;
+    }
+
+    /**
+     * Returns the data as an observable list of Plans d'estudis.
+     * @return ObservableList de pla d'estudis presentació
+     */
+    public ObservableList<Pla_presentacio> getPlaData () {
+        return plaData;
+    }
+
+    public String prova () {
+        return "xd";
     }
 
     /**
@@ -107,11 +128,12 @@ public class CtrlPresentacio extends Application{
      *
      * @throws IOException excepcio d'entrada/sortida.
      */
-    public void showPlaConsultar () throws IOException {
+    public void showPlaConsultar (Pla_presentacio pla) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         AnchorPane a = loader.load(getClass().getResource("/ViewPlaConcret.fxml").openStream()); //change
         ViewPlaConcret consultarController = loader.getController(); // change
         consultarController.setViewController(this); // change
+        consultarController.setPla(pla);
         consultarController.init_Consultar(); // per preparar a l'escena en mode consultar
         baseController.getGestioView().getChildren().setAll(a);
     }
@@ -121,11 +143,12 @@ public class CtrlPresentacio extends Application{
      *
      * @throws IOException excepcio d'entrada/sortida.
      */
-    public void showPlaMod () throws IOException {
+    public void showPlaMod (Pla_presentacio pla) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         AnchorPane a = loader.load(getClass().getResource("/ViewPlaConcret.fxml").openStream()); //change
         ViewPlaConcret modController = loader.getController(); // change
         modController.setViewController(this); // change
+        modController.setPla(pla);
         modController.init_Mod(false); // si no funciona mirar aixo, mirar l'ordre
         baseController.getGestioView().getChildren().setAll(a);
     }
@@ -162,11 +185,12 @@ public class CtrlPresentacio extends Application{
      *
      * @throws IOException excepcio d'entrada/sortida.
      */
-    public void showAssigConsultar () throws IOException {
+    public void showAssigConsultar (Assig_presentacio assig) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         AnchorPane a = loader.load(getClass().getResource("/ViewAssigConcreta.fxml").openStream()); //change
         ViewAssigConcreta consultarController = loader.getController(); // change
         consultarController.setViewController(this); // change
+        consultarController.setAssig(assig);
         consultarController.init_Consultar(); // per preparar a l'escena en mode consultar
         baseController.getGestioView().getChildren().setAll(a);
     }
@@ -176,11 +200,12 @@ public class CtrlPresentacio extends Application{
      *
      * @throws IOException excepcio d'entrada/sortida.
      */
-    public void showAssigMod () throws IOException {
+    public void showAssigMod (Assig_presentacio assig) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         AnchorPane a = loader.load(getClass().getResource("/ViewAssigConcreta.fxml").openStream()); //change
         ViewAssigConcreta modController = loader.getController(); // change
         modController.setViewController(this); // change
+        modController.setAssig(assig);
         modController.init_Mod(false); // si no funciona mirar aixo, mirar l'ordre
         baseController.getGestioView().getChildren().setAll(a);
 
@@ -212,7 +237,7 @@ public class CtrlPresentacio extends Application{
         crearController.setViewController(this); // change
         baseController.getGestioView().getChildren().setAll(a);*/
         FXMLLoader loader = new FXMLLoader();
-        AnchorPane a = loader.load(getClass().getResource("/ViewAulesConcreta.fxml").openStream()); //change
+        AnchorPane a = loader.load(getClass().getResource("/ViewAulaConcreta.fxml").openStream()); //change
         ViewAulaConcreta crearController = loader.getController(); // change
         crearController.setViewController(this); // change
         baseController.getGestioView().getChildren().setAll(a);
@@ -228,7 +253,8 @@ public class CtrlPresentacio extends Application{
         AnchorPane a = loader.load(getClass().getResource("/ViewAulaConcreta.fxml").openStream()); //change
         ViewAulaConcreta consultarController = loader.getController(); // change
         consultarController.setViewController(this); // change
-        consultarController.init_Consultar(aula); // per preparar a l'escena en mode consultar
+        consultarController.setAula(aula);
+        consultarController.init_Consultar(); // per preparar a l'escena en mode consultar
         baseController.getGestioView().getChildren().setAll(a);
     }
 
@@ -237,11 +263,12 @@ public class CtrlPresentacio extends Application{
      *
      * @throws IOException excepcio d'entrada/sortida.
      */
-    public void showAulaMod () throws IOException {
+    public void showAulaMod (Aula_presentacio aula) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         AnchorPane a = loader.load(getClass().getResource("/ViewAulaConcreta.fxml").openStream()); //change
         ViewAulaConcreta modController = loader.getController(); // change
         modController.setViewController(this); // change
+        modController.setAula(aula);
         modController.init_Mod(false); // si no funciona mirar aixo, mirar l'ordre
         baseController.getGestioView().getChildren().setAll(a);
 
@@ -257,6 +284,7 @@ public class CtrlPresentacio extends Application{
         AnchorPane a = loader.load(getClass().getResource("/ViewGenerarH.fxml").openStream()); //change
         ViewGenerarH horariController = loader.getController(); // change
         horariController.setViewController(this); // change
+        horariController.init_scrolls();
         baseController.getGestioView().getChildren().setAll(a);
     }
 
@@ -265,17 +293,19 @@ public class CtrlPresentacio extends Application{
      *
      * @throws IOException excepcio d'entrada/sortida.
      */
-    public void showHorariMostrar () throws IOException{
+    public void showHorariMostrar (ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> items) throws IOException{
         FXMLLoader loader = new FXMLLoader();
         AnchorPane a = loader.load(getClass().getResource("/ViewHorariMostrar.fxml").openStream()); //change
         ViewHorariMostrar horariController = loader.getController(); // change
         horariController.setViewController(this); // change
+        horariController.setHorari(items);
+        horariController.init_horari();
         baseController.getGestioView().getChildren().setAll(a);
     }
 
     // exit
     /**
-     * Tancar l'apliació.
+     * Tancar l'aplicació.
      * @throws IOException excepció d'entrada/sortida.
      */
 
@@ -302,84 +332,145 @@ public class CtrlPresentacio extends Application{
     }
     */
 
-/*
-    public void load_PlaConcreta (String name) {
-        // TODO: demanar a domini dades de pla d'estudi
-
-    }
-
-    // save values
-    /*public void save_AssigConcreta (String name, Integer quatris, Integer nivell, boolean projector, Boolean carac_lab[]) {
-        // TODO: tenvio les dades aixi
-        // proposta de com podria ser, pero no tinc npi
-        // ctrDomini.send_AssigConcreta(name, quatris, nivell, projector, carac_lab);
-    }
-
-    public void save_AulaConcreta (String name, Integer capacitat, ArrayList<Boolean> carac) {
-        // TODO: tencio les dades aixi
-        // proposta
-        // ctrDomini.send_AulaConcreta(name, capacitat, carac_lab);
-    }
-
-    public void save_PlaConcret (String name) {
-        // TODO: dades
-        // pueh com lo dabans
+    /*public void load_PlaConcreta (String old_name, String name) {
+        for (Pla_presentacio a : plaData) {
+            if (a.getName().equals(old_name)) {
+                plaData.remove(a);
+                break;
+            }
+        }
+        plaData.add(new Pla_presentacio(name));
+        //ctrDomini.modificarPla(old_name, name);
 
     }*/
 
+   // public void load_
+
+    // save values
+    public void save_AssigConcreta (String old_name, String name, Integer quatris, Integer nivell, boolean projector, Boolean carac_lab[]) {
+        for (Assig_presentacio a : assigData) {
+            if (a.getName().equals(old_name)) {
+                assigData.remove(a);
+                break;
+            }
+        }
+        assigData.add(new Assig_presentacio(name, quatris, nivell, projector, carac_lab));
+        ctrDomini.modificarAssignatura(old_name, name, quatris, nivell, projector, carac_lab);
+    }
+
+    public void save_AssigNew (String name, Integer quatris, Integer nivell, boolean projector, Boolean carac_lab[]) {
+        Assig_presentacio ap = new Assig_presentacio(name, quatris, nivell, projector, carac_lab);
+        assigData.add(ap);
+        Boolean[] caracs = {projector, false, false, false, false, false};
+        ctrDomini.afegirAssignaturaPlaEstudis(name, quatris, nivell, caracs, carac_lab);
+    }
+
+    public void save_AulaConcreta (String old_name, String name, Integer capacitat, Boolean[] carac) {
+        for (Aula_presentacio a : aulaData) {
+            if (a.getName().equals(old_name)) {
+                aulaData.remove(a);
+                break;
+            }
+        }
+        aulaData.add(new Aula_presentacio(name, capacitat, carac));
+        ctrDomini.modificarAula(old_name, name, capacitat, carac);
+    }
+
+    public void save_AulaNew(String name, Integer capacitat, Boolean[] carac) {
+        ctrDomini.afegirAula(name, capacitat, carac);
+        Aula_presentacio ap = new Aula_presentacio(name, capacitat, carac);
+        aulaData.add(ap);
+    }
+
+    public void save_PlaConcret (String old_name, String name) {
+        for (Pla_presentacio a : plaData) {
+            if (a.getName().equals(old_name)) {
+                plaData.remove(a);
+                break;
+            }
+        }
+        plaData.add(new Pla_presentacio(name));
+        ctrDomini.modificarPlaEstudis(old_name, name);
+    }
+
+    public void save_PlaNew (String name) {
+        Pla_presentacio plap = new Pla_presentacio(name);
+        plaData.add(plap);
+        ctrDomini.afegirPlaEstudis(name);
+    }
+
     // check exitencies
-    /*public boolean exists_AssigConcreta (String name) {
+    public boolean exists_AssigConcreta (String name) {
         // TODO: tenvio el nom de lassig i mirar si ja existeix (sí: true, no: false)
+        // ctrDomini.exists_Aula(name);
         return false;
     }
 
     public boolean exists_AulaConcreta (String name) {
         // TODO: tenvio el nom de l'aula i mirar si ja existeix (sí: true, no: false)
+
         return false;
     }
 
     public boolean exists_PlaConcret (String name) {
         // TODO: tenvio el nom del pla i mirar si ja existeix (sí: true, no: false)
         return false;
-    }*/
+    }
 
     // carregar
     public void send_path(String path) {
-        // TODO: per carregar un fitxer de luser per crear una a
-        // 0 aula, 1 pla, 2 asig
         Integer type = singletonDialogs.getCalledby();
         if (type.equals(0)) {
-            ctrDomini.carregaAules();
+            boolean carregat = ctrDomini.carregaAules(path);
+            if (!carregat) singletonDialogs.display_errorCarregar();
             aulaData.clear();
             ArrayList<Pair<String, Pair<Integer, Boolean[]>>> aules = ctrDomini.getAules();
             for (Pair<String, Pair<Integer, Boolean[]>> aula : aules) {
                 aulaData.add(new Aula_presentacio(aula.getFirst(), aula.getSecond().getFirst(), aula.getSecond().getSecond()));
             }
+        } else if (type.equals(1)) {
+            boolean carregat = ctrDomini.carregaPlansEstudis(path);
+            if (!carregat) singletonDialogs.display_errorCarregar();
+            plaData.clear();
+            ArrayList<String> plans = ctrDomini.getPlansEstudis();
+            for (String pla : plans) {
+                plaData.add(new Pla_presentacio(pla));
+            }
+        } else {
+            boolean carregat = ctrDomini.carregaAssignatures(path);
+            if (!carregat) singletonDialogs.display_errorCarregar();
+            assigData.clear();
+            ArrayList<Pair<String, Pair<Integer, Pair<Integer, Pair<Boolean, Boolean[]>>>>> assigs = ctrDomini.getAssignatures();
+            for (Pair<String, Pair<Integer, Pair<Integer, Pair<Boolean, Boolean[]>>>> assig : assigs) {
+                String nom = assig.getFirst();
+                Integer quatri = assig.getSecond().getFirst();
+                Integer nivell = assig.getSecond().getSecond().getFirst();
+                Boolean projector = assig.getSecond().getSecond().getSecond().getFirst();
+                Boolean[] caracs = assig.getSecond().getSecond().getSecond().getSecond();
+                assigData.add(new Assig_presentacio(nom, quatri, nivell, projector, caracs));
+            }
         }
-        else if (type.equals(1)) {
-            //ctrDomini.carr...(path);
-        }
-        else {
-            //ctrDomni.crr...(path);
-        }
-
     }
 
-    // eliminiar
     public void delete_concreta (String name) {
-        // TODO: per carregar un fitxer de luser per crear una a
-        // 0 aula, 1 pla, 2 asig
         Integer type = singletonDialogs.getCalledby();
         if (type.equals(0)) {
-            // ctrDomini.eliminarAula(name) o joquese ajajja
-        }
-        else if (type.equals(1)) {
-            //ctrDomini.eliminarPla(name);
-        }
-        else {
-            //ctrDomni.eliminarAssig(name);
+            ctrDomini.borrarAula(name);
+        } else if (type.equals(1)) {
+            ctrDomini.borrarPlaEstudis(name);
+        } else {
+            ctrDomini.borrarAssignatura(name);
         }
 
     }
 
+    // demanar dades
+    public List<Aula_presentacio> getAulesLliures() {
+        // TODO: que em retornis una llista d'aules l
+        return null;
+    }
+
+    public ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> send_inputHorari (String pla, ArrayList<String> aules) {
+        return ctrDomini.itemsHorari(pla, aules);
+    }
 }

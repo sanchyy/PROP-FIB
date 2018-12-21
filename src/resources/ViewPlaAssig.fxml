@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.ViewPlaAssig">
+   <children>
+      <Label fx:id="description_label" text="Selecciona les assignatures que formin part del pla d'estudis" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="52.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="assig_btn" mnemonicParsing="false" onAction="#onMode_pressed" text="Assignar" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="42.0" />
+      <Label fx:id="assig_label" text="Assignatures disponibles:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="82.0" />
+      <Button fx:id="tornar" mnemonicParsing="false" onAction="#onTornar_pressed" text="&lt; Tornar" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="25.0" />
+      <Label fx:id="title_label" text="ASSIGNAR ASSIGNATURES" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ScrollPane fx:id="assig_scroll" layoutX="25.0" layoutY="100.0" prefHeight="230.0" prefWidth="484.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="100.0">
+         <content>
+            <GridPane fx:id="assig_grid" prefHeight="227.0" prefWidth="482.0">
+              <columnConstraints>
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <CheckBox mnemonicParsing="false" text="CheckBox" />
+               </children>
+            </GridPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

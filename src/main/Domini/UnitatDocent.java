@@ -1,4 +1,4 @@
-package main.Domini;
+package Domini;
 
 import java.util.ArrayList;
 
@@ -15,6 +15,15 @@ public class UnitatDocent {
 
     public String getNom() {
         return nom;
+    }
+
+    public void modificarAula(Aula antiga, Aula nova) {
+        aulesDisponibles.remove(antiga);
+        aulesDisponibles.add(nova);
+    }
+    public void modificarPlaEstudis(PlaEstudis antic, PlaEstudis nou) {
+        plansEstudis.remove(antic);
+        plansEstudis.add(nou);
     }
 
     public ArrayList<Aula> getAulesDisponibles() {
@@ -64,4 +73,6 @@ public class UnitatDocent {
     public void borrarAules() {
         aulesDisponibles.clear();
     }
+    public void borrarPlaEstudis(PlaEstudis pe) { plansEstudis.remove(pe); }
+    public void borrarPlansEstudis() { plansEstudis.clear(); }
 }

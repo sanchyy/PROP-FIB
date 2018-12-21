@@ -1,4 +1,4 @@
-package main.Persistencia;
+package Persistencia;
 
 import com.google.gson.Gson;
 
@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class UtilsDisc {
     String database = "./DB/";
 
-    public ArrayList<String> carrega(String carpeta, String fitxer) throws IOException {
-        FileReader fr = new FileReader(database + carpeta + "/"+ fitxer + ".txt");
+    public ArrayList<String> carrega(String path) throws IOException {
+        FileReader fr = new FileReader(path);
         BufferedReader br = new BufferedReader(fr);
         ArrayList<String> lineas = new ArrayList<>();
         String linea;
@@ -27,11 +27,11 @@ public class UtilsDisc {
         bw.close();
     }
 
-    public void guardaMultiple(String carpeta, String fitxer, ArrayList<String> jsons) throws IOException {
-        FileWriter fw = new FileWriter(database + carpeta + "/"+ fitxer + ".txt");
+    public void guardaMultiple(String path, ArrayList<String> jsons) throws IOException {
+        FileWriter fw = new FileWriter(path);
         BufferedWriter bw = new BufferedWriter(fw);
         for (String json : jsons) {
-            bw.write(json);
+            bw.write(json + "\n");
         }
         bw.close();
     }
