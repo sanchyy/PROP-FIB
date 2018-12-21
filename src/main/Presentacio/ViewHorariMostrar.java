@@ -30,8 +30,16 @@ public class ViewHorariMostrar {
     }
 
     public void initialize () {
-        // horari = ctrlPresentacio.getHorari();
         // TODO: posar horari
+        // horari = ctrlPresentacio.getHorari();
+        ArrayList<Pair<String, Integer>> hores = new ArrayList<>();
+        hores.add(new Pair<>("LP-12 A5203", 123));
+        hores.add(new Pair<>("SO-14 A6102", 123));
+        ArrayList<ArrayList<Pair<String, Integer>>> dia = new ArrayList<>();
+        dia.add(hores);
+        horari = new ArrayList<>();
+        horari.add(dia);
+        // TODO
         int ii, jj;
         ii = jj = 0;
         for (ArrayList<ArrayList<Pair<String, Integer>>> i : horari) {
