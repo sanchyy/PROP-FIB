@@ -284,6 +284,7 @@ public class CtrlPresentacio extends Application{
         AnchorPane a = loader.load(getClass().getResource("/ViewGenerarH.fxml").openStream()); //change
         ViewGenerarH horariController = loader.getController(); // change
         horariController.setViewController(this); // change
+        horariController.init_scrolls();
         baseController.getGestioView().getChildren().setAll(a);
     }
 
