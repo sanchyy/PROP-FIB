@@ -361,7 +361,10 @@ public class CtrDomini {
     }
 
     public ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> itemsHorari(String plaEstudis, ArrayList<String> aules) {
-        Horari generat = ferHorari(plaEstudisFromNom(plaEstudis), getAulesFromNoms(aules), new ArrayList<>());
+        ArrayList<Sessio> sessions = new ArrayList<>();
+        sessions.add(new Sessio(11, assigPool.get(0)));
+        sessions.add(new Sessio(12, assigPool.get(1)));
+        Horari generat = ferHorari(plaEstudisFromNom(plaEstudis), getAulesFromNoms(aules), sessions);
         generat.mostrarHorari();
         ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> items = new ArrayList<>();
         for (int i = 0; i < generat.columnes; ++i) {
@@ -383,7 +386,6 @@ public class CtrDomini {
         Generador bt = new Generador(horariActual, plaEstudis, sessions, restriccions);
         bt.generarHorari(aules);
         horariActual = bt.getHorari();
-        horariActual.mostrarHorari();
         return horariActual;
     }
 

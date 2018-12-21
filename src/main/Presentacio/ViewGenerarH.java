@@ -1,5 +1,6 @@
 package Presentacio;
 
+import Domini.Pair;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
@@ -34,20 +35,12 @@ public class ViewGenerarH {
         plans_list = new ArrayList<>();
         //final ToggleGroup pla_group = new ToggleGroup();
 
-        pla_grid.add(new CheckBox("FIB"), 0, 0);
-
         int i = 0;
 
         for (Pla_presentacio p : ctrlPresentacio.getPlaData()) {
-            /*RadioButton radio = new RadioButton(p.getName());
-            radio.setToggleGroup(pla_group);
-            plans_list.add(new RadioButton(p.getName()));
-            pla_grid.add(new RadioButton(p.getName()), i%3, i/3);
-*/
             CheckBox tmp = new CheckBox(p.getName());
-            plans_list.add(i, tmp);
-            //plans_list.add(new CheckBox(p.getName()));
-            pla_grid.add(new CheckBox(p.getName()), i%3, i/3);
+            plans_list.add(tmp);
+            pla_grid.add(tmp, i%3, i/3);
             i++;
         }
 
@@ -55,9 +48,8 @@ public class ViewGenerarH {
         i = 0;
         for (Aula_presentacio a : ctrlPresentacio.getAulaData()) {
             CheckBox tmp = new CheckBox(a.getName());
-            aules_list.add(i, tmp);
-            //aules_list.add(new CheckBox(a.getName()));
-            aules_grid.add(new CheckBox(a.getName()), i%3, i/3);
+            aules_list.add(tmp);
+            aules_grid.add(tmp, i%3, i/3);
             i++;
         }
     }
@@ -70,49 +62,28 @@ public class ViewGenerarH {
         ArrayList<Boolean> errors = new ArrayList<>();
         errors.add(true);
         errors.add(true);
-        String pla_selected = "xd";
-        /*final ToggleGroup pla_group = plans_list.get(0).getToggleGroup();
-        if (pla_group.getSelectedToggle() == null) errors.set(0, true);
-        setLabelColor(pla_label, errors, 0);*/
-        /*for (CheckBox ca : plans_list) {
-            debbuging.appendText("entro for");
-            if (ca.isSelected()) {
-                debbuging.appendText("1");
-                if (errors.get(0)) errors.set(0, false);
-                //aules_selected.add(ca.getUserData().toString());
-                pla_selected = ca.getUserData().toString();
-                debbuging.appendText(ca.getUserData().toString());
-            }
-        }*/
+        String pla_selected = null;
+
         for (int i = 0; i < plans_list.size(); i++) {
-            for (int j = 0; j < 3; j++) {
-                CheckBox ca = plans_list.get(i*3+j);
-                if (ca.isSelected()) {
-                    debbuging.appendText("1");
-                    if (errors.get(0)) errors.set(0, false);
-                    //aules_selected.add(ca.getUserData().toString());
-                    pla_selected = ca.getUserData().toString();
-                    debbuging.appendText(ca.getUserData().toString());
-                }
+            CheckBox ca = plans_list.get(i);
+            if (ca.isSelected()) {
+                if (errors.get(0)) errors.set(0, false);
+                pla_selected = ca.getText();
             }
         }
         setLabelColor(pla_label, errors, 0);
         ArrayList<String> aules_selected = new ArrayList<>();
-        debbuging.appendText("pre");
         for (CheckBox ca : aules_list) {
-            debbuging.appendText("entro for2");
             if (ca.isSelected()){
                 if (errors.get(1)) errors.set(1, false);
-                aules_selected.add(ca.getUserData().toString());
-                System.out.println(ca.getUserData().toString());
+                aules_selected.add(ca.getText());
             }
         }
         setLabelColor(aules_label, errors, 1);
-        if (!errors.contains(true)) {
-            //pla_selected = pla_group.getSelectedToggle().toString();
 
-            ctrlPresentacio.send_inputHorari(pla_selected, aules_selected);
-            ctrlPresentacio.showHorariMostrar();
+        if (!errors.contains(true)) {
+            ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> items = ctrlPresentacio.send_inputHorari(pla_selected, aules_selected);
+            ctrlPresentacio.showHorariMostrar(items);
         }
     }
 

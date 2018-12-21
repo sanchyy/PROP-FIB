@@ -293,11 +293,13 @@ public class CtrlPresentacio extends Application{
      *
      * @throws IOException excepcio d'entrada/sortida.
      */
-    public void showHorariMostrar () throws IOException{
+    public void showHorariMostrar (ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> items) throws IOException{
         FXMLLoader loader = new FXMLLoader();
         AnchorPane a = loader.load(getClass().getResource("/ViewHorariMostrar.fxml").openStream()); //change
         ViewHorariMostrar horariController = loader.getController(); // change
         horariController.setViewController(this); // change
+        horariController.setHorari(items);
+        horariController.init_horari();
         baseController.getGestioView().getChildren().setAll(a);
     }
 
@@ -468,8 +470,7 @@ public class CtrlPresentacio extends Application{
         return null;
     }
 
-    public void send_inputHorari (String pla, ArrayList<String> aules) {
-        // TODO: enviar dades a capa domnini per saber de quin pla i amb quines aules generar horari
-
+    public ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> send_inputHorari (String pla, ArrayList<String> aules) {
+        return ctrDomini.itemsHorari(pla, aules);
     }
 }
