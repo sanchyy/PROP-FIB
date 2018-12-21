@@ -1,1 +1,1 @@
-{"nom":"AC","quadri":1,"nivell":1,"caracteristiquesTeoria":[],"caracteristiquesLabo":["PROJECTOR"]}
+{"nom":"LP","quadri":3,"nivell":1,"caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["UBUNTU","EMBEDED","XARXES","LINUX_WINDOWS"]}

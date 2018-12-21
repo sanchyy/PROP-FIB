@@ -1,7 +1,5 @@
 package Persistencia;
 
-import com.google.gson.Gson;
-
 import java.io.*;
 import java.util.ArrayList;
 
@@ -20,15 +18,8 @@ public class UtilsDisc {
         return lineas;
     }
 
-    public void guarda(String carpeta, String fitxer, String json) throws IOException {
-        FileWriter fw = new FileWriter(database + carpeta + "/"+ fitxer + ".txt");
-        BufferedWriter bw = new BufferedWriter(fw);
-        bw.write(json);
-        bw.close();
-    }
-
     public void guardaMultiple(String path, ArrayList<String> jsons) throws IOException {
-        FileWriter fw = new FileWriter(path);
+        FileWriter fw = new FileWriter(database + path);
         BufferedWriter bw = new BufferedWriter(fw);
         for (String json : jsons) {
             bw.write(json + "\n");

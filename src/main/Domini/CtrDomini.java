@@ -20,10 +20,6 @@ public class CtrDomini {
     private CtrPersistencia ctrPersistencia;
     private ArrayList<Assignatura> assigPool;
 
-    private String PlansEstudisPath = null;
-    private String AssignaturesPath = null;
-    private String AulesPath = null;
-
     public CtrDomini(Integer lvl) {
         if (lvl == 0) {
             this.unitatDocentSeleccionada = null;
@@ -49,40 +45,25 @@ public class CtrDomini {
         this.restriccions             = new CjtRestriccions();
         this.ctrPersistencia          = new CtrPersistencia();
         this.assigPool                = new ArrayList<>();
-
-        // TODO: Treure quan acabem de provar presentacio
         afegirUnitatDocent("FIB");
-        /*afegirPlaEstudis("FIB_2010");
-        afegirQuadrimestre();
-        afegirAssignaturaPlaEstudis("PROP", 3, 2, "FIB", new ArrayList<>(), new ArrayList<>());
-        ArrayList<CaracteristiquesAula> caracs = new ArrayList<>();
-        caracs.add(CaracteristiquesAula.UBUNTU);
-        afegirAulaUnitatDocent("A6203", 30, caracs);
-        afegirSessioQuadrimestre(11, "PROP");*/
     }
 
     public void guardarDades() {
-        if (PlansEstudisPath != null) {
-            ArrayList<String> plans = new ArrayList<>();
-            for (PlaEstudis pe : getUnitatDocent().getPlansEstudis()) {
-                plans.add(gson.toJson(pe));
-            }
-            ctrPersistencia.guardar(PlansEstudisPath, plans);
+        ArrayList<String> plans = new ArrayList<>();
+        for (PlaEstudis pe : getUnitatDocent().getPlansEstudis()) {
+            plans.add(gson.toJson(pe));
         }
-        if (AssignaturesPath != null) {
-            ArrayList<String> assignatures = new ArrayList<>();
-            for (Assignatura a : assigPool) {
-                assignatures.add(gson.toJson(a));
-            }
-            ctrPersistencia.guardar(AssignaturesPath, assignatures);
+        ctrPersistencia.guardar(0, plans);
+        ArrayList<String> assignatures = new ArrayList<>();
+        for (Assignatura a : assigPool) {
+            assignatures.add(gson.toJson(a));
         }
-        if (AulesPath != null) {
-            ArrayList<String> aules = new ArrayList<>();
-            for (Aula a : getUnitatDocent().getAulesDisponibles()) {
-                aules.add(gson.toJson(a));
-            }
-            ctrPersistencia.guardar(AulesPath, aules);
+        ctrPersistencia.guardar(1, assignatures);
+        ArrayList<String> aules = new ArrayList<>();
+        for (Aula a : getUnitatDocent().getAulesDisponibles()) {
+            aules.add(gson.toJson(a));
         }
+        ctrPersistencia.guardar(2, aules);
     }
 
     ////////
@@ -105,10 +86,7 @@ public class CtrDomini {
     }
 
     public boolean carregaAules(String path) {
-        AulesPath = path;
-        getUnitatDocent().borrarAules();
-        ArrayList<String> aules = ctrPersistencia.getAules(path);
-        for (String a : aules) {
+        for (String a : ctrPersistencia.getAules(path)) {
             try {
                 Aula aula = gson.fromJson(a, Aula.class);
                 getUnitatDocent().afegirAulaDisponible(aula);
@@ -233,7 +211,6 @@ public class CtrDomini {
     }
 
     public boolean carregaPlansEstudis(String path) {
-        PlansEstudisPath = path;
         getUnitatDocent().borrarPlansEstudis();
         ArrayList<String> pes = ctrPersistencia.agafar(path);
         for (String p : pes) {
@@ -288,7 +265,6 @@ public class CtrDomini {
     }
 
     public boolean carregaAssignatures(String path) {
-        AssignaturesPath = path;
         assigPool.clear();
         ArrayList<String> ass = ctrPersistencia.agafar(path);
         for (String p : ass) {
