@@ -41,6 +41,10 @@ public class Assignatura {
         return quadri;
     }
 
+    public String getPlaEstudis() {
+        return plaEstudis;
+    }
+
     public boolean isEqual(Assignatura a) {
         return (this.nom.equals(a.getNom()) && nivell.intValue() == a.getNivell().intValue() && this.quadri.intValue() == quadri.intValue());
     }

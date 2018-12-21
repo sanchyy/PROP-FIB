@@ -329,6 +329,66 @@ public class CtrDomini {
 
     ////////
 
+    public ArrayList<Assignatura> assignaturesFromPla(String plaEstudis) {
+        ArrayList<Assignatura> assigs = new ArrayList<>();
+        for (Assignatura a : assigPool) {
+            if (a.getPlaEstudis().equals(plaEstudis)) {
+                assigs.add(a);
+            }
+        }
+        return assigs;
+    }
+
+    public PlaEstudis plaEstudisFromNom(String nom) {
+        for (PlaEstudis pe : getUnitatDocent().getPlansEstudis()) {
+            if (pe.getNom().equals(nom)) {
+                return pe;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Aula> getAulesFromNoms(ArrayList<String> noms) {
+        ArrayList<Aula> aules = new ArrayList<>();
+        for (Aula a : getUnitatDocent().getAulesDisponibles()) {
+            for (String nom : noms) {
+                if (a.getNom().equals(nom)) {
+                    aules.add(a);
+                }
+            }
+        }
+        return aules;
+    }
+
+    public ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> itemsHorari(String plaEstudis, ArrayList<String> aules) {
+        Horari generat = ferHorari(plaEstudisFromNom(plaEstudis), getAulesFromNoms(aules), new ArrayList<>());
+        generat.mostrarHorari();
+        ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> items = new ArrayList<>();
+        for (int i = 0; i < generat.columnes; ++i) {
+            ArrayList<ArrayList<Pair<String, Integer>>> dia = new ArrayList<>();
+            for (int j = 0; j < generat.files; ++j) {
+                ArrayList<Pair<String, Integer>> hora = new ArrayList<>();
+                for (Sessio s : generat.getAtoms(i, j)) {
+                    hora.add(new Pair<>(s.mostrarSessio(), 125));
+                }
+                dia.add(hora);
+            }
+            items.add(dia);
+        }
+        return items;
+    }
+
+    public Horari ferHorari(PlaEstudis plaEstudis, ArrayList<Aula> aules, ArrayList<Sessio> sessions) {
+        Horari horariActual = new Horari();
+        Generador bt = new Generador(horariActual, plaEstudis, sessions, restriccions);
+        bt.generarHorari(aules);
+        horariActual = bt.getHorari();
+        horariActual.mostrarHorari();
+        return horariActual;
+    }
+
+    ////////
+
     public CjtUnitatDocent getUnitatsDocents() {
         return unitatsDocents;
     }
