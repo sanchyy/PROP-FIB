@@ -1,2 +1,1 @@
-{"nom":"TELECOS-UPC","quadrimestres":[],"assignatures":[]}
-{"nom":"FIBERS","quadrimestres":[],"assignatures":[]}
+{"nom":"FIBA","quadrimestres":[],"assignatures":[]}

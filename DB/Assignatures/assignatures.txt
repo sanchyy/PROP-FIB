@@ -1,1 +1,5 @@
-{"nom":"AC","quadri":1,"nivell":1,"caracteristiquesTeoria":[],"caracteristiquesLabo":["PROJECTOR"]}
+{"nom":"LP","quadri":3,"nivell":2,"caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["FISICA","LINUX_WINDOWS"]}
+{"nom":"F","quadri":3,"nivell":2,"caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR","UBUNTU","FISICA","EMBEDED","XARXES","LINUX_WINDOWS"]}
+{"nom":"IC","quadri":3,"nivell":2,"caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["XARXES"]}
+{"nom":"FM","quadri":3,"nivell":2,"caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR"]}
+{"nom":"PRO1","quadri":3,"nivell":2,"caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR"]}

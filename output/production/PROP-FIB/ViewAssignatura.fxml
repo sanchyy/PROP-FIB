@@ -20,8 +20,7 @@
          </font>
       </Label>
       <Button fx:id="crearAssig" layoutX="73.0" layoutY="74.0" mnemonicParsing="false" onAction="#oncrearAssig_pressed" text="Crear assignatura" />
-      <Button fx:id="carregarAssig" layoutX="380.0" layoutY="74.0" mnemonicParsing="false" onAction="#oncarregarAssig_pressed" text="Carregar assignatura" />
-      <TextArea fx:id="debbuging" layoutX="230.0" layoutY="86.0" prefHeight="68.0" prefWidth="110.0" />
+      <Button fx:id="carregarAssig" layoutX="410.0" layoutY="74.0" mnemonicParsing="false" onAction="#oncarregarAssig_pressed" text="Carregar assignatura" />
       <Label layoutX="25.0" layoutY="158.0" text="Assignatures creades" />
       <Button fx:id="consultar_btn" layoutX="465.0" layoutY="214.0" mnemonicParsing="false" onAction="#onConsultar_pressed" text="Consultar" />
       <Button fx:id="eliminar_btn" layoutX="469.0" layoutY="315.0" mnemonicParsing="false" onAction="#onEliminar_pressed" text="Eliminar" />

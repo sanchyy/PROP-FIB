@@ -19,10 +19,7 @@ public class CtrDomini {
     private CjtRestriccions restriccions;
     private CtrPersistencia ctrPersistencia;
     private ArrayList<Assignatura> assigPool;
-
-    private String PlansEstudisPath = null;
-    private String AssignaturesPath = null;
-    private String AulesPath = null;
+    private ArrayList<Sessio> sessionsActuals;
 
     public CtrDomini(Integer lvl) {
         if (lvl == 0) {
@@ -40,6 +37,7 @@ public class CtrDomini {
         this.restriccions = new CjtRestriccions();
         this.ctrPersistencia = new CtrPersistencia();
         this.assigPool = new ArrayList<>();
+        this.sessionsActuals = new ArrayList<>();
     }
 
     public CtrDomini() {
@@ -49,40 +47,26 @@ public class CtrDomini {
         this.restriccions             = new CjtRestriccions();
         this.ctrPersistencia          = new CtrPersistencia();
         this.assigPool                = new ArrayList<>();
-
-        // TODO: Treure quan acabem de provar presentacio
+        this.sessionsActuals          = new ArrayList<>();
         afegirUnitatDocent("FIB");
-        /*afegirPlaEstudis("FIB_2010");
-        afegirQuadrimestre();
-        afegirAssignaturaPlaEstudis("PROP", 3, 2, "FIB", new ArrayList<>(), new ArrayList<>());
-        ArrayList<CaracteristiquesAula> caracs = new ArrayList<>();
-        caracs.add(CaracteristiquesAula.UBUNTU);
-        afegirAulaUnitatDocent("A6203", 30, caracs);
-        afegirSessioQuadrimestre(11, "PROP");*/
     }
 
     public void guardarDades() {
-        if (PlansEstudisPath != null) {
-            ArrayList<String> plans = new ArrayList<>();
-            for (PlaEstudis pe : getUnitatDocent().getPlansEstudis()) {
-                plans.add(gson.toJson(pe));
-            }
-            ctrPersistencia.guardar(PlansEstudisPath, plans);
+        ArrayList<String> plans = new ArrayList<>();
+        for (PlaEstudis pe : getUnitatDocent().getPlansEstudis()) {
+            plans.add(gson.toJson(pe));
         }
-        if (AssignaturesPath != null) {
-            ArrayList<String> assignatures = new ArrayList<>();
-            for (Assignatura a : assigPool) {
-                assignatures.add(gson.toJson(a));
-            }
-            ctrPersistencia.guardar(AssignaturesPath, assignatures);
+        ctrPersistencia.guardar(0, plans);
+        ArrayList<String> assignatures = new ArrayList<>();
+        for (Assignatura a : assigPool) {
+            assignatures.add(gson.toJson(a));
         }
-        if (AulesPath != null) {
-            ArrayList<String> aules = new ArrayList<>();
-            for (Aula a : getUnitatDocent().getAulesDisponibles()) {
-                aules.add(gson.toJson(a));
-            }
-            ctrPersistencia.guardar(AulesPath, aules);
+        ctrPersistencia.guardar(1, assignatures);
+        ArrayList<String> aules = new ArrayList<>();
+        for (Aula a : getUnitatDocent().getAulesDisponibles()) {
+            aules.add(gson.toJson(a));
         }
+        ctrPersistencia.guardar(2, aules);
     }
 
     ////////
@@ -105,10 +89,7 @@ public class CtrDomini {
     }
 
     public boolean carregaAules(String path) {
-        AulesPath = path;
-        getUnitatDocent().borrarAules();
-        ArrayList<String> aules = ctrPersistencia.getAules(path);
-        for (String a : aules) {
+        for (String a : ctrPersistencia.getAules(path)) {
             try {
                 Aula aula = gson.fromJson(a, Aula.class);
                 getUnitatDocent().afegirAulaDisponible(aula);
@@ -233,7 +214,6 @@ public class CtrDomini {
     }
 
     public boolean carregaPlansEstudis(String path) {
-        PlansEstudisPath = path;
         getUnitatDocent().borrarPlansEstudis();
         ArrayList<String> pes = ctrPersistencia.agafar(path);
         for (String p : pes) {
@@ -288,7 +268,6 @@ public class CtrDomini {
     }
 
     public boolean carregaAssignatures(String path) {
-        AssignaturesPath = path;
         assigPool.clear();
         ArrayList<String> ass = ctrPersistencia.agafar(path);
         for (String p : ass) {
@@ -360,11 +339,59 @@ public class CtrDomini {
         return aules;
     }
 
+    public Assignatura getAssFromPool(String nom) {
+        for (Assignatura a : assigPool) {
+            if (a.getNom().equals(nom)) {
+                return a;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<CaracteristiquesAula> getLlistaCaracteristiquesTeoriaPool(String nom) {
+        Assignatura a = getAssFromPool(nom);
+        if (a == null) return new ArrayList<>();
+        else return a.getCaracteristiquesTeoria();
+    }
+
+    public ArrayList<CaracteristiquesAula> getLlistaCaracteristiquesLabPool(String nom) {
+        Assignatura a = getAssFromPool(nom);
+        if (a == null) return new ArrayList<>();
+        else return a.getCaracteristiquesLabo();
+    }
+
+    public void parseSessions(String nomAssignatura, Integer grups, Integer subgrups, Integer tardes) {
+        for (int i=0; i<grups; ++i) {
+            Integer grup = i*10 + 10;
+            sessionsActuals.add(new Sessio(grup, getAssFromPool(nomAssignatura)));
+            Integer numSessio = sessionsActuals.size()-1;
+            if (i > (grups-tardes-1)) {
+                crearRestriccioTardes2(numSessio);
+            } else {
+                crearRestriccioMatins2(numSessio);
+            }
+            crearRestriccioCaracteristicaAula2(numSessio, getLlistaCaracteristiquesTeoriaPool(nomAssignatura));
+            for (int j=0; j<subgrups; ++j) {
+                Integer subGrup = grup + j+1;
+                sessionsActuals.add(new Sessio(subGrup, getAssFromPool(nomAssignatura)));
+                Integer numSessioS = sessionsActuals.size()-1;
+                crearRestriccioSolapar2(numSessio, numSessioS);
+                if (i > (grups-tardes-1)) {
+                    crearRestriccioTardes2(numSessioS);
+                } else {
+                    crearRestriccioMatins2(numSessioS);
+                }
+                crearRestriccioCaracteristicaAula2(numSessioS, getLlistaCaracteristiquesLabPool(nomAssignatura));
+            }
+        }
+    }
+
     public ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> itemsHorari(String plaEstudis, ArrayList<String> aules) {
-        ArrayList<Sessio> sessions = new ArrayList<>();
-        sessions.add(new Sessio(11, assigPool.get(0)));
-        sessions.add(new Sessio(12, assigPool.get(1)));
-        Horari generat = ferHorari(plaEstudisFromNom(plaEstudis), getAulesFromNoms(aules), sessions);
+        parseSessions("PRO1", 7, 4, 2);
+        parseSessions("IC", 7, 4, 2);
+        /*parseSessions("FM", 7, 4, 2);*/
+        /*parseSessions("F", 7, 4, 2);*/
+        Horari generat = ferHorari(plaEstudisFromNom(plaEstudis), getAulesFromNoms(aules));
         generat.mostrarHorari();
         ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> items = new ArrayList<>();
         for (int i = 0; i < generat.columnes; ++i) {
@@ -381,9 +408,9 @@ public class CtrDomini {
         return items;
     }
 
-    public Horari ferHorari(PlaEstudis plaEstudis, ArrayList<Aula> aules, ArrayList<Sessio> sessions) {
+    public Horari ferHorari(PlaEstudis plaEstudis, ArrayList<Aula> aules) {
         Horari horariActual = new Horari();
-        Generador bt = new Generador(horariActual, plaEstudis, sessions, restriccions);
+        Generador bt = new Generador(horariActual, plaEstudis, sessionsActuals, restriccions);
         bt.generarHorari(aules);
         horariActual = bt.getHorari();
         return horariActual;
@@ -514,6 +541,13 @@ public class CtrDomini {
         restriccions.addRestriccioSolapar(r);
     }
 
+    public void crearRestriccioSolapar2(Integer a, Integer b) {
+        Sessio sa = sessionsActuals.get(a);
+        Sessio sb = sessionsActuals.get(b);
+        RestriccioSolapar r = new RestriccioSolapar(sa, sb);
+        restriccions.addRestriccioSolapar(r);
+    }
+
     public void crearRestriccioCorrequisit(Integer a, Integer b) {
         Sessio A = getQuadrimestre().getSessions().get(a);
         Sessio B = getQuadrimestre().getSessions().get(b);
@@ -536,14 +570,32 @@ public class CtrDomini {
         restriccions.addRestriccioCaracteristicaAula(r);
     }
 
+    public void crearRestriccioCaracteristicaAula2(Integer a, ArrayList<CaracteristiquesAula> caracteristiques) {
+        Sessio sessio = sessionsActuals.get(a);
+        RestriccioCaracteristicaAula r = new RestriccioCaracteristicaAula(sessio, caracteristiques);
+        restriccions.addRestriccioCaracteristicaAula(r);
+    }
+
     public void crearRestriccioTardes(Integer a) {
         Sessio sessio = getQuadrimestre().getSessions().get(a);
         RestriccioTardes r = new RestriccioTardes(sessio);
         restriccions.addRestriccioTardes(r);
     }
 
+    public void crearRestriccioTardes2(Integer a) {
+        Sessio sessio = sessionsActuals.get(a);
+        RestriccioTardes r = new RestriccioTardes(sessio);
+        restriccions.addRestriccioTardes(r);
+    }
+
     public void crearRestriccioMatins(Integer a) {
         Sessio sessio = getQuadrimestre().getSessions().get(a);
+        RestriccioMatins r = new RestriccioMatins(sessio);
+        restriccions.addRestriccioMatins(r);
+    }
+
+    public void crearRestriccioMatins2(Integer a) {
+        Sessio sessio = sessionsActuals.get(a);
         RestriccioMatins r = new RestriccioMatins(sessio);
         restriccions.addRestriccioMatins(r);
     }

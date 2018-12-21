@@ -15,7 +15,6 @@
          </font>
       </Label>
       <Button fx:id="crearHorari" layoutX="494.0" layoutY="348.0" mnemonicParsing="false" onAction="#oncrearHorari_pressed" text="Crear horari" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="25.0" />
-      <TextArea fx:id="debbuging" layoutX="448.0" layoutY="18.0" prefHeight="68.0" prefWidth="110.0" />
       <Label fx:id="pla_label" text="Plans d'estudis a incloure:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="82.0" />
       <Label text="Introdueix els següents camps:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="52.0">
          <font>

@@ -20,9 +20,12 @@ public class CtrPersistencia {
         return strings;
     }
 
-    public void guardar(String path, ArrayList<String> strings) {
+    public void guardar(Integer tipus, ArrayList<String> strings) {
         try {
-            ud.guardaMultiple(path, strings);
+            // Plans, Assignatures, Aules
+            if (tipus == 0) ud.guardaMultiple("PlaEstudi/plansEstudis.txt", strings);
+            else if (tipus == 1) ud.guardaMultiple("Assignatures/assignatures.txt", strings);
+            else ud.guardaMultiple("Aules/aules.txt", strings);
         } catch (IOException e) {
             System.out.println("Error" + e);
         }
