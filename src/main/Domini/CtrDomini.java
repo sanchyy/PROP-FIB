@@ -3,7 +3,6 @@ package Domini;
 import com.google.gson.Gson;
 import Persistencia.CtrPersistencia;
 import com.google.gson.JsonParseException;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.ArrayList;
 
@@ -18,6 +17,7 @@ public class CtrDomini {
     private Integer quadrimestreSeleccionat;
     private CjtRestriccions restriccions;
     private CtrPersistencia ctrPersistencia;
+    private ArrayList<Assignatura> assigPool;
 
     public CtrDomini(Integer lvl) {
         if (lvl == 0) {
@@ -34,6 +34,7 @@ public class CtrDomini {
         }
         this.restriccions = new CjtRestriccions();
         this.ctrPersistencia = new CtrPersistencia();
+        this.assigPool = new ArrayList<>();
     }
 
     public CtrDomini() {
@@ -42,27 +43,30 @@ public class CtrDomini {
         this.quadrimestreSeleccionat  = null;
         this.restriccions             = new CjtRestriccions();
         this.ctrPersistencia          = new CtrPersistencia();
+        this.assigPool                = new ArrayList<>();
 
         // TODO: Treure quan acabem de provar presentacio
         afegirUnitatDocent("FIB");
-/*        afegirPlaEstudis("FIB_2010");
+        /*afegirPlaEstudis("FIB_2010");
         afegirQuadrimestre();
         afegirAssignaturaPlaEstudis("PROP", 3, 2, "FIB", new ArrayList<>(), new ArrayList<>());
         ArrayList<CaracteristiquesAula> caracs = new ArrayList<>();
         caracs.add(CaracteristiquesAula.UBUNTU);
         afegirAulaUnitatDocent("A6203", 30, caracs);
         afegirSessioQuadrimestre(11, "PROP");*/
-        // carregarDades();
     }
 
-    public void carregarDades() {
-        ArrayList<String> pes = ctrPersistencia.getPlansEstudis();
-        for (String pe : pes) {
-            UnitatDocent ud = gson.fromJson(pe, UnitatDocent.class);
-            unitatsDocents.add(ud);
-            unitatDocentSeleccionada = getUnitatsDocents().size()-1;
+    public void guardarDades() {
+        String ud = gson.toJson(getUnitatDocent());
+        ctrPersistencia.guardaPlansEstudis(ud);
+        ArrayList<String> aules = new ArrayList<>();
+        for (Aula a : getUnitatDocent().getAulesDisponibles()) {
+            aules.add(gson.toJson(a));
         }
+        ctrPersistencia.guardaAules(aules);
     }
+
+    ////////
 
     public void afegirAula(String nom, Integer capacitat, Boolean[] caracs) {
         afegirAulaUnitatDocent(nom, capacitat, parseBooleansAula(caracs));
@@ -89,21 +93,10 @@ public class CtrDomini {
                 Aula aula = gson.fromJson(a, Aula.class);
                 getUnitatDocent().afegirAulaDisponible(aula);
             } catch (JsonParseException e) {
-                // ERROR AL CARREGAR FITXER
                 return false;
             }
         }
         return true;
-    }
-
-    public void guardarDades() {
-        String ud = gson.toJson(getUnitatDocent());
-        ctrPersistencia.guardaPlansEstudis(ud);
-        ArrayList<String> aules = new ArrayList<>();
-        for (Aula a : getUnitatDocent().getAulesDisponibles()) {
-            aules.add(gson.toJson(a));
-        }
-        ctrPersistencia.guardaAules(aules);
     }
 
     public Pair<String, Pair<Integer, Boolean[]>> parseAula(Aula a) {
@@ -139,15 +132,20 @@ public class CtrDomini {
         ArrayList<CaracteristiquesAula> caracs = new ArrayList<>();
         if (ca[0]) {
             caracs.add(CaracteristiquesAula.PROJECTOR);
-        } else if (ca[1]) {
+        }
+        if (ca[1]) {
             caracs.add(CaracteristiquesAula.UBUNTU);
-        } else if (ca[2]) {
+        }
+        if (ca[2]) {
             caracs.add(CaracteristiquesAula.FISICA);
-        } else if (ca[3]) {
+        }
+        if (ca[3]) {
             caracs.add(CaracteristiquesAula.EMBEDED);
-        } else if (ca[4]) {
+        }
+        if (ca[4]) {
             caracs.add(CaracteristiquesAula.XARXES);
-        } else if (ca[5]) {
+        }
+        if (ca[5]) {
             caracs.add(CaracteristiquesAula.LINUX_WINDOWS);
         }
         return caracs;
@@ -175,6 +173,110 @@ public class CtrDomini {
     public void borrarAula(String nom) {
         getUnitatDocent().borrarAula(getAulaConcreta(nom));
     }
+
+    ////////
+
+    public void modificarPlaEstudis(String nomAntic, String nomNou) {
+        ArrayList<PlaEstudis> pes = getUnitatDocent().getPlansEstudis();
+        PlaEstudis antic = null;
+        for (PlaEstudis pe : pes) {
+            if (pe.getNom().equals(nomAntic)) {
+                antic = pe;
+                break;
+            }
+        }
+        PlaEstudis nou = new PlaEstudis(nomNou);
+        getUnitatDocent().modificarPlaEstudis(antic, nou);
+    }
+
+    public boolean carregaPlansEstudis(String path) {
+        getUnitatDocent().borrarPlansEstudis();
+        ArrayList<String> pes = ctrPersistencia.getPlansEstudis(path);
+        for (String p : pes) {
+            try {
+                PlaEstudis pe = gson.fromJson(p, PlaEstudis.class);
+                getUnitatDocent().afegirPlaEstudis(pe);
+            } catch (JsonParseException e) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public PlaEstudis getPlaEstudisConcret(String nom) {
+        ArrayList<PlaEstudis> plaEstudis = getUnitatDocent().getPlansEstudis();
+        for (PlaEstudis pe : plaEstudis) {
+            if (pe.getNom().equals(nom)) {
+                return pe;
+            }
+        }
+        return null;
+    }
+    
+    public ArrayList<String> getPlansEstudis() {
+        ArrayList<PlaEstudis> plansEstudis = getUnitatDocent().getPlansEstudis();
+        ArrayList<String> pes = new ArrayList<>();
+        for (PlaEstudis pe : plansEstudis) {
+            pes.add(pe.getNom());
+        }
+        return pes;
+    }
+
+    public void borrarPlaEstudis(String nom) {
+        getUnitatDocent().borrarPlaEstudis(getPlaEstudisConcret(nom));
+    }
+
+    ////////
+
+    public void modificarAssignatura(String nomAntiga, String nomNova) {
+        Assignatura antiga = null;
+        for (Assignatura as : assigPool) {
+            if (as.getNom().equals(nomAntiga)) {
+                antiga = as;
+                break;
+            }
+        }
+        Assignatura nova = new Assignatura("PROP", 3, 2, "FIB", new ArrayList<>(), new ArrayList<>());
+        assigPool.remove(antiga);
+        assigPool.add(nova);
+    }
+
+    public boolean carregaAssignatures(String path) {
+        assigPool.clear();
+        ArrayList<String> ass = ctrPersistencia.getAssignatures(path);
+        for (String p : ass) {
+            try {
+                Assignatura as = gson.fromJson(p, Assignatura.class);
+                assigPool.add(as);
+            } catch (JsonParseException e) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public Assignatura getAssignaturaConcreta(String nom) {
+        for (Assignatura a : assigPool) {
+            if (a.getNom().equals(nom)) {
+                return a;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<String> getAssignatures() {
+        ArrayList<String> ass = new ArrayList<>();
+        for (Assignatura a : assigPool) {
+            ass.add(a.getNom());
+        }
+        return ass;
+    }
+
+    public void borrarAssignatura(String nom) {
+        assigPool.remove(getAssignaturaConcreta(nom));
+    }
+
+    ////////
 
     public CjtUnitatDocent getUnitatsDocents() {
         return unitatsDocents;

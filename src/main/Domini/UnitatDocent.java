@@ -21,6 +21,10 @@ public class UnitatDocent {
         aulesDisponibles.remove(antiga);
         aulesDisponibles.add(nova);
     }
+    public void modificarPlaEstudis(PlaEstudis antic, PlaEstudis nou) {
+        plansEstudis.remove(antic);
+        plansEstudis.add(nou);
+    }
 
     public ArrayList<Aula> getAulesDisponibles() {
         return aulesDisponibles;
@@ -69,4 +73,6 @@ public class UnitatDocent {
     public void borrarAules() {
         aulesDisponibles.clear();
     }
+    public void borrarPlaEstudis(PlaEstudis pe) { plansEstudis.remove(pe); }
+    public void borrarPlansEstudis() { plansEstudis.clear(); }
 }

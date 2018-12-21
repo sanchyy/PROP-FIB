@@ -4,20 +4,30 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class CtrPersistencia {
-    UtilsDisc ud;
+    private UtilsDisc ud;
 
     public CtrPersistencia() {
         ud = new UtilsDisc();
     }
 
-    public ArrayList<String> getPlansEstudis() {
+    public ArrayList<String> getPlansEstudis(String path) {
         ArrayList<String> plansEstudis = new ArrayList<>();
         try {
-            plansEstudis = ud.carrega("PlaEstudi");
+            plansEstudis = ud.carrega(path);
         } catch (IOException e) {
             System.out.println("Error" + e);
         }
         return plansEstudis;
+    }
+
+    public ArrayList<String> getAssignatures(String path) {
+        ArrayList<String> assignatures = new ArrayList<>();
+        try {
+            assignatures = ud.carrega(path);
+        } catch (IOException e) {
+            System.out.println("Error" + e);
+        }
+        return assignatures;
     }
 
     public void guardaPlansEstudis(String plansEstudis) {
