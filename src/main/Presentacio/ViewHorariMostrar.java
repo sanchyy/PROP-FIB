@@ -36,28 +36,20 @@ public class ViewHorariMostrar {
     }
 
     public void init_horari () {
-        // TODO: posar horari
-        // horari = ctrlPresentacio.getHorari();
-        /*ArrayList<Pair<String, Integer>> hores = new ArrayList<>();
-        hores.add(new Pair<>("LP-12 A5203", 123));
-        hores.add(new Pair<>("SO-14 A6102", 123));
-        ArrayList<ArrayList<Pair<String, Integer>>> dia = new ArrayList<>();
-        dia.add(hores);
-        horari = new ArrayList<>();
-        horari.add(dia);*/
-        // TODO
-        // TODO: per cada pla diferent, color diferent
         int ii, jj;
-        ii = jj = 1;
+        ii = 1;
         for (ArrayList<ArrayList<Pair<String, Integer>>> i : horari) {
+            jj = 1;
             for (ArrayList<Pair<String, Integer>> j : i) {
                 VBox slot = new VBox();
                 slot.setAlignment(Pos.TOP_CENTER);
+                System.out.println(ii);
+                System.out.println(jj);
                 for (Pair<String, Integer> sessio : j) {
                     //Label l = new Label(sessio.getFirst());
                     slot.getChildren().add(new Label(sessio.getFirst()));
                 }
-                horari_grid.add(slot, jj, ii);
+                horari_grid.add(slot, ii, jj);
                 jj++;
             }
             ii++;
@@ -74,10 +66,6 @@ public class ViewHorariMostrar {
     public void onModRestric_pressed () {
 
     }
-
-    public void onGuardar_pressed() {
-
-    }
-
+    
 
 }
