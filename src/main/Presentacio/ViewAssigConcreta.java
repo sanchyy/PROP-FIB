@@ -142,7 +142,7 @@ public class ViewAssigConcreta {
         if (quatris.equals(3) || quatris.equals(1)) {
             q1.setSelected(true);
         }
-        else if (quatris.equals(3) || quatris.equals(2)) {
+        if (quatris.equals(3) || quatris.equals(2)) {
             q2.setSelected(true);
         }
 
@@ -155,10 +155,10 @@ public class ViewAssigConcreta {
 
         if (carac_lab[0]) projector.setSelected(true);
         if (carac_lab[1]) ubuntu.setSelected(true);
-        if (carac_lab[2]) LW.setSelected(true);
+        if (carac_lab[5]) LW.setSelected(true);
         if (carac_lab[3]) fisica.setSelected(true);
         if (carac_lab[4]) embeded.setSelected(true);
-        if (carac_lab[5]) xarxes.setSelected(true);
+        if (carac_lab[2]) xarxes.setSelected(true);
     }
 
     /**
@@ -205,10 +205,10 @@ public class ViewAssigConcreta {
         ArrayList<Boolean> carac = new ArrayList<Boolean>();
         carac.add(projector.isSelected());
         carac.add(ubuntu.isSelected());
-        carac.add(LW.isSelected());
         carac.add(fisica.isSelected());
         carac.add(embeded.isSelected());
         carac.add(xarxes.isSelected());
+        carac.add(LW.isSelected());
         if (!carac.contains(true)) errors.set(4, true);
         setLabelColor(lab_label, errors, 4);
 

@@ -38,7 +38,7 @@ public class ViewPlaEstudis {
         // Listen for selection changes and show the person details when changed.
         taulaPE.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> dosomething());
-        taulaPE.setPlaceholder(new Label("Cap aula creada"));
+        taulaPE.setPlaceholder(new Label("Cap pla d'estudis creat"));
     }
 
     // Botons nou pla

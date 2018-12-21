@@ -123,8 +123,14 @@ public class ViewAulaConcreta {
             errors.set(0, true);
         }
         // TODO: comprovar si ja existeix l'assig amb aquell nom
-        else if (actual_mode == 2 && !aula.getName().equals(name) && ctrlPresentacio.exists_AulaConcreta(name)) {
-            errors.set(0, true);
+        else if (actual_mode == 2) {
+            if (!aula.getName().equals(name) && ctrlPresentacio.exists_AulaConcreta(name)) {
+                errors.set(0, true);
+                error_text = "Aula ja existent amb aquest nom.";
+            }
+            else if (!check_format(name)) {
+
+            }
         }
         else if(actual_mode == 0) {
             errors.set(0, ctrlPresentacio.exists_AulaConcreta(name));
@@ -145,10 +151,10 @@ public class ViewAulaConcreta {
         ArrayList<Boolean> carac = new ArrayList<Boolean>();
         carac.add(projector.isSelected());
         carac.add(ubuntu.isSelected());
-        carac.add(LW.isSelected());
         carac.add(fisica.isSelected());
         carac.add(embeded.isSelected());
         carac.add(xarxes.isSelected());
+        carac.add(LW.isSelected());
 
         if (!carac.contains(true)) errors.set(2, true);
         setLabelColor(carac_label, errors, 2);
@@ -167,6 +173,11 @@ public class ViewAulaConcreta {
             ctrlPresentacio.showAules();
         }
 
+    }
+    private boolean check_format (String name) {
+        //System.out.println(name.);
+        //if (name)
+        return true;
     }
     private void setLabelColor (Label l, ArrayList<Boolean> error, int i) {
         if (error.get(i)) l.setTextFill(Color.RED);
@@ -187,9 +198,9 @@ public class ViewAulaConcreta {
 
         if (carac_lab[0]) projector.setSelected(true);
         if (carac_lab[1]) ubuntu.setSelected(true);
-        if (carac_lab[2]) LW.setSelected(true);
+        if (carac_lab[5]) LW.setSelected(true);
         if (carac_lab[3]) fisica.setSelected(true);
         if (carac_lab[4]) embeded.setSelected(true);
-        if (carac_lab[5]) xarxes.setSelected(true);
+        if (carac_lab[2]) xarxes.setSelected(true);
     }
 }
