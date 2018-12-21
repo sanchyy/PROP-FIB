@@ -91,6 +91,10 @@ public class CtrlPresentacio extends Application{
         return plaData;
     }
 
+    public String prova () {
+        return "xd";
+    }
+
     /**
      * Canviar la vista de gestions a la de Gestió de Plans d'estudi.
      *
@@ -461,5 +465,10 @@ public class CtrlPresentacio extends Application{
     public List<Aula_presentacio> getAulesLliures() {
         // TODO: que em retornis una llista d'aules l
         return null;
+    }
+
+    public void send_inputHorari (String pla, ArrayList<String> aules) {
+        // TODO: enviar dades a capa domnini per saber de quin pla i amb quines aules generar horari
+
     }
 }

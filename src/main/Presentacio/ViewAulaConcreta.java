@@ -156,7 +156,6 @@ public class ViewAulaConcreta {
         if (!errors.contains(true)) {
             Integer capacity = Integer.parseInt(capacity_input.getText());
 
-            // TODO: passar tot a domini + carac[]
             Boolean[] carac_lab = new Boolean[6];
             for (int i = 0; i < carac.size(); i++) {
                 carac_lab[i] = carac.get(i);

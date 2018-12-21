@@ -42,13 +42,14 @@ public class ViewHorariMostrar {
         horari = new ArrayList<>();
         horari.add(dia);
         // TODO
+        // TODO: per cada pla diferent, color diferent
         int ii, jj;
-        ii = jj = 0;
+        ii = jj = 1;
         for (ArrayList<ArrayList<Pair<String, Integer>>> i : horari) {
             for (ArrayList<Pair<String, Integer>> j : i) {
                 VBox slot = new VBox();
                 slot.setAlignment(Pos.TOP_CENTER);
-                horari_grid.add(slot, jj+1, ii+1);
+                horari_grid.add(slot, jj, ii);
                 for (Pair<String, Integer> sessio : j) {
                     //Label l = new Label(sessio.getFirst());
                     slot.getChildren().add(new Label(sessio.getFirst()));
