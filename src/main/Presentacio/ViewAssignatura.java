@@ -38,7 +38,7 @@ public class ViewAssignatura {
         // Listen for selection changes and show the person details when changed.
         taulaAssig.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> dosomething());
-        taulaAssig.setPlaceholder(new Label("Cap aula creada"));
+        taulaAssig.setPlaceholder(new Label("Cap assignatura creada"));
     }
 
     // Botons nova Assignatura

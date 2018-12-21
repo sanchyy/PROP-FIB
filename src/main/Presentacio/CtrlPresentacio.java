@@ -329,6 +329,15 @@ public class CtrlPresentacio extends Application{
         baseController.getGestioView().getChildren().setAll(a);
     }
 
+    public void showHorariSessions () throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane a = loader.load(getClass().getResource("/ViewHorariSessions.fxml").openStream()); //change
+        ViewHorariSessions horariController = loader.getController(); // change
+        horariController.setViewController(this); // change
+        horariController.init_table();
+        baseController.getGestioView().getChildren().setAll(a);
+    }
+
     // exit
     /**
      * Tancar l'aplicació.

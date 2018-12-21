@@ -79,21 +79,5 @@ public class ViewHorariMostrar {
 
     }
 
-    public void init_drag () {
-        source.setOnDragDetected(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent event) {
-                /* drag was detected, start a drag-and-drop gesture*/
-                /* allow any transfer mode */
-                Dragboard db = source.startDragAndDrop(TransferMode.MOVE);
-
-                /* Put a string on a dragboard */
-                ClipboardContent content = new ClipboardContent();
-                content.putString(source.getText());
-                db.setContent(content);
-
-                event.consume();
-            }
-        });
-    }
 
 }
