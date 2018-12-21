@@ -36,7 +36,6 @@ public class ViewHorariMostrar {
     }
 
     public void init_horari () {
-        // TODO: per cada pla diferent, color diferent
         int ii, jj;
         ii = 1;
         for (ArrayList<ArrayList<Pair<String, Integer>>> i : horari) {
@@ -67,10 +66,6 @@ public class ViewHorariMostrar {
     public void onModRestric_pressed () {
 
     }
-
-    public void onGuardar_pressed() {
-
-    }
-
+    
 
 }

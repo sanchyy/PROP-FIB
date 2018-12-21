@@ -23,5 +23,7 @@
             <Font size="14.0" />
          </font>
       </Label>
+      <Label fx:id="assig_label" layoutX="26.0" layoutY="124.0" text="Assignatures:" />
+      <Label fx:id="assigPla_label" layoutX="114.0" layoutY="124.0" text="Label" />
    </children>
 </AnchorPane>
