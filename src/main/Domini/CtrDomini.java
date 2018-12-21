@@ -22,6 +22,7 @@ public class CtrDomini {
     private ArrayList<Sessio> sessionsActuals;
     private String plaEstudisActual;
     private ArrayList<String> aulesActual;
+    private Horari horariActual;
 
     public CtrDomini(Integer lvl) {
         if (lvl == 0) {
@@ -309,14 +310,23 @@ public class CtrDomini {
 
     ////////
 
-    public ArrayList<Assignatura> assignaturesFromPla(String plaEstudis) {
-        ArrayList<Assignatura> assigs = new ArrayList<>();
+    public ArrayList<String> assignaturesFromPla(String plaEstudis) {
+        ArrayList<String> assigs = new ArrayList<>();
         for (Assignatura a : assigPool) {
             if (a.getPlaEstudis().equals(plaEstudis)) {
-                assigs.add(a);
+                assigs.add(a.getNom());
             }
         }
         return assigs;
+    }
+
+    public boolean posarSessioAqui(String nomAssig, Integer numGrup, Integer dia, Integer hora) {
+        Sessio sessio = new Sessio();
+        ArrayList<Aula> aules = getAulesFromNoms(aulesActual);
+        // Generador g = new Generador(aules);
+        // Generador bt = new Generador(horariActual, plaEstudis, sessionsActuals, restriccions);
+        //return g.potAnarAqui(sessio, dia, hora, horariActual);
+        return false;
     }
 
     public ArrayList<String> assignaturesLliures() {
@@ -422,6 +432,7 @@ public class CtrDomini {
             parseSessions(assig, grups, subgrups, tardes);
         }
         Horari generat = ferHorari(plaEstudisFromNom(plaEstudisActual), getAulesFromNoms(aulesActual));
+        horariActual = generat;
         generat.mostrarHorari();
         ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> items = new ArrayList<>();
         for (int i = 0; i < generat.columnes; ++i) {

@@ -51,7 +51,7 @@ public class Generador {
         return novaLlista;
     }
 
-    private boolean potAnarAqui(Sessio sessio, Integer dia, Integer hora, Horari hor) {
+    public boolean potAnarAqui(Sessio sessio, Integer dia, Integer hora, Horari hor) {
         return restriccions.comprovarRestriccionsColocar(sessio, hor.getAtoms(dia, hora), dia, hora, hor);
     }
 
