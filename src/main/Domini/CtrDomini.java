@@ -313,7 +313,7 @@ public class CtrDomini {
     public ArrayList<String> assignaturesFromPla(String plaEstudis) {
         ArrayList<String> assigs = new ArrayList<>();
         for (Assignatura a : assigPool) {
-            if (a.getPlaEstudis().equals(plaEstudis)) {
+            if (a.getPlaEstudis() != null && a.getPlaEstudis().equals(plaEstudis)) {
                 assigs.add(a.getNom());
             }
         }
