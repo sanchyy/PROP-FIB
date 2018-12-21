@@ -83,7 +83,7 @@ public class ViewGenerarH {
 
         if (!errors.contains(true)) {
             ctrlPresentacio.send_inputHorari(pla_selected, aules_selected);
-            ctrlPresentacio.showHorariSessions();
+            ctrlPresentacio.showHorariSessions(pla_selected);
         }
     }
 

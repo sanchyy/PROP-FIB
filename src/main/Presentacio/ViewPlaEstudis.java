@@ -94,6 +94,16 @@ public class ViewPlaEstudis {
             singletonDialogs.display_warningTable(1);
         }
     }
+    public void onAssig_pressed() throws IOException {
+        int selectedIndex = taulaPE.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            Pla_presentacio pla = taulaPE.getItems().get(selectedIndex);
+            ctrlPresentacio.showPlaAssig(pla);
+        } else {
+            // Nothing selected.
+            singletonDialogs.display_warningTable(1);
+        }
+    }
 
     private void dosomething () {
 

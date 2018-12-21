@@ -12,7 +12,8 @@ import java.util.ArrayList;
 public class ViewPlaConcret {
     @FXML private Button tornar, mode_btn;
     @FXML private TextField name_input;
-    @FXML private Label title_label, description_label, name_label;
+    @FXML private Label title_label, description_label, name_label, assig_label;
+
 
     private CtrlPresentacio ctrlPresentacio;
     private int actual_mode = 0;
@@ -126,4 +127,6 @@ public class ViewPlaConcret {
         String name = pla.getName(); // agafar nom, demanar domini
         name_input.setText(name);
     }
+
+
 }

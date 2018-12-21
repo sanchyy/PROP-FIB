@@ -2,6 +2,7 @@ package Presentacio;
 
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
+import com.sun.xml.internal.fastinfoset.util.CharArrayString;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -179,6 +180,16 @@ public class CtrlPresentacio extends Application{
         baseController.getGestioView().getChildren().setAll(a);
     }
 
+    public void showPlaAssig (Pla_presentacio pla) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane a = loader.load(getClass().getResource("/ViewPlaAssig.fxml").openStream()); //change
+        ViewPlaAssig modController = loader.getController(); // change
+        modController.setViewController(this); // change
+        modController.setPla(pla);
+        modController.init_pla();
+        baseController.getGestioView().getChildren().setAll(a);
+    }
+
     /**
      * Canviar la vista de gestions a la de Gestió d'Assignatures.
      *
@@ -329,12 +340,12 @@ public class CtrlPresentacio extends Application{
         baseController.getGestioView().getChildren().setAll(a);
     }
 
-    public void showHorariSessions () throws IOException {
+    public void showHorariSessions (String name) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         AnchorPane a = loader.load(getClass().getResource("/ViewHorariSessions.fxml").openStream()); //change
         ViewHorariSessions horariController = loader.getController(); // change
         horariController.setViewController(this); // change
-        horariController.init_table();
+        horariController.init_table(name);
         baseController.getGestioView().getChildren().setAll(a);
     }
 
@@ -496,11 +507,6 @@ public class CtrlPresentacio extends Application{
 
     }
 
-    // demanar dades
-    public List<Aula_presentacio> getAulesLliures() {
-        // TODO: que em retornis una llista d'aules l
-        return null;
-    }
 
     public void send_inputHorari (String pla, ArrayList<String> aules) {
         ctrDomini.itemsHorari(pla, aules);
@@ -508,5 +514,17 @@ public class CtrlPresentacio extends Application{
 
     public ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> send_sessionsHorari (ArrayList<Pair<String, Pair<Integer, Pair<Integer, Integer>>>> sessions) {
         return ctrDomini.sessionsHorari(sessions);
+    }
+
+    public void send_AssigPla (String pla, ArrayList<String> assig) {
+        ctrDomini.assignarAssignatures(pla, assig);
+    }
+
+    public ArrayList<String> getAulesLliures () {
+        return ctrDomini.assignaturesLliures();
+    }
+
+    public ArrayList<String> getAssigPla(String name) {
+        return ctrDomini.assignaturesFromPla(name);
     }
 }

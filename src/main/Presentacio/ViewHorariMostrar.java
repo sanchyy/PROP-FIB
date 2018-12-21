@@ -53,11 +53,11 @@ public class ViewHorariMostrar {
             for (ArrayList<Pair<String, Integer>> j : i) {
                 VBox slot = new VBox();
                 slot.setAlignment(Pos.TOP_CENTER);
-                horari_grid.add(slot, jj, ii);
                 for (Pair<String, Integer> sessio : j) {
                     //Label l = new Label(sessio.getFirst());
                     slot.getChildren().add(new Label(sessio.getFirst()));
                 }
+                horari_grid.add(slot, jj, ii);
                 jj++;
             }
             ii++;

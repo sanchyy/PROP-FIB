@@ -20,8 +20,9 @@
             <TableColumn fx:id="name_col" prefWidth="383.0" text="Nom" />
          </columns>
       </TableView>
-      <Button fx:id="eliminar_btn" layoutX="462.0" layoutY="318.0" mnemonicParsing="false" onAction="#onEliminar_pressed" text="Eliminar" />
-      <Button fx:id="modificar_btn" layoutX="458.0" layoutY="268.0" mnemonicParsing="false" onAction="#onModificar_pressed" text="Modificar" />
-      <Button fx:id="consultar_btn" layoutX="458.0" layoutY="216.0" mnemonicParsing="false" onAction="#onConsultar_pressed" text="Consultar" />
+      <Button fx:id="eliminar_btn" layoutX="462.0" layoutY="355.0" mnemonicParsing="false" onAction="#onEliminar_pressed" text="Eliminar" />
+      <Button fx:id="modificar_btn" layoutX="458.0" layoutY="307.0" mnemonicParsing="false" onAction="#onModificar_pressed" text="Modificar" />
+      <Button fx:id="consultar_btn" layoutX="458.0" layoutY="255.0" mnemonicParsing="false" onAction="#onConsultar_pressed" text="Consultar" />
+      <Button layoutX="427.0" layoutY="209.0" mnemonicParsing="false" onAction="#onAssig_pressed" text="Assignar assignatures" />
    </children>
 </AnchorPane>

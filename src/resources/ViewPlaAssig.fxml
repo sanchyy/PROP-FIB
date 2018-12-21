@@ -7,7 +7,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.ViewPlaAssig">
    <children>
       <Label fx:id="description_label" text="Selecciona les assignatures que formin part del pla d'estudis" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="52.0">
@@ -15,7 +14,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="assig_btn" mnemonicParsing="false" onAction="#onMode_pressed" text="Assignar" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="42.0" />
+      <Button fx:id="assig_btn" mnemonicParsing="false" onAction="#onAssignar_pressed" text="Assignar" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="42.0" />
       <Label fx:id="assig_label" text="Assignatures disponibles:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="82.0" />
       <Button fx:id="tornar" mnemonicParsing="false" onAction="#onTornar_pressed" text="&lt; Tornar" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="25.0" />
       <Label fx:id="title_label" text="ASSIGNAR ASSIGNATURES" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
@@ -37,9 +36,6 @@
                 <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
-               <children>
-                  <CheckBox mnemonicParsing="false" text="CheckBox" />
-               </children>
             </GridPane>
          </content>
       </ScrollPane>

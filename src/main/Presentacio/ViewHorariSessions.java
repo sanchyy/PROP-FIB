@@ -26,12 +26,12 @@ public class ViewHorariSessions {
         this.ctrlPresentacio = ctrlPresentacio;
     }
 
-    public void init_table() {
+    public void init_table(String name) {
         assig_list = new ArrayList<>();
         text_list = new ArrayList<>();
         int i = 1;
-        for (Assig_presentacio a : ctrlPresentacio.getAssigData()) {
-            Label tmp = new Label(a.getName());
+        for (String a : ctrlPresentacio.getAssigPla(name)) {
+            Label tmp = new Label(a);
             System.out.println(tmp.getText());
             assig_list.add(tmp);
             sessions_grid.add(tmp, 0, i);
