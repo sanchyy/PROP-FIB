@@ -64,6 +64,7 @@ public class ViewHorariSessions {
             Pair<String, Pair<Integer, Pair<Integer, Integer>>> tmp3 = new Pair(assig_list.get(i).getText(), tmp2);
             sessions.add(tmp3);
             if (g < 0 || s < 0 || t < 0) errors.add(true);
+            if (g < 0 || s < 0 || t < 0) errors.add(true);
             else errors.add(false);
 
         }

@@ -162,4 +162,19 @@ public class SingletonDialogs {
         alert.setHeaderText("S'ha produït un error al carregar el fitxer seleccionat");
         alert.showAndWait();
     }
+
+    @FXML
+    public void display_errorHorari () {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Canvi invàlid");
+        alert.setHeaderText("No es pot col·locar la sessió en el slot escollit.");
+        alert.setContentText("Modifica les restriccions de les sessions i/o assignatures; o selecciona un slot diferent.");
+    }
+
+    @FXML
+    public void display_confirmHorari () {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Canvi vàlid");
+        alert.setHeaderText("La sessió pot col·locar-se al slot horari seleccionat.");
+    }
 }

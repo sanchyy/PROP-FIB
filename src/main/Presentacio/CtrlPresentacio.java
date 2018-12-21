@@ -39,8 +39,6 @@ public class CtrlPresentacio extends Application{
     private ObservableList<Assig_presentacio> assigData = FXCollections.observableArrayList();
     private ObservableList<Pla_presentacio> plaData = FXCollections.observableArrayList();
 
-    public CtrlPresentacio () {
-    }
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.getIcons().add(new Image(getClass().getResource("/icon4.png").toExternalForm()));
@@ -55,9 +53,14 @@ public class CtrlPresentacio extends Application{
         primaryStage.setTitle("Generador d'horaris");
         baseView = new Scene(p,740,400); // change when the main view is done
         // viewPla.getStylesheets().add("/mainMenuStyle.css"); // add it if we have a css
+        load_data();
         primaryStage.setScene(baseView);
+        showPlaEstudis();
         primaryStage.show();
 
+
+    }
+    public void load_data () {
         boolean carregat = ctrDomini.carregaAules("./DB/Aules/aules.txt");
         if (!carregat) singletonDialogs.display_errorCarregar();
         ArrayList<Pair<String, Pair<Integer, Boolean[]>>> aules = ctrDomini.getAules();
@@ -349,6 +352,15 @@ public class CtrlPresentacio extends Application{
         baseController.getGestioView().getChildren().setAll(a);
     }
 
+    public void showHorariModificar (ArrayList<String> sessions) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        AnchorPane a = loader.load(getClass().getResource("/ViewHorariModificar.fxml").openStream()); //change
+        ViewHorariModificar horariController = loader.getController(); // change
+        horariController.setViewController(this); // change
+        horariController.setSessions(sessions);
+        horariController.init_modificacions();
+        baseController.getGestioView().getChildren().setAll(a);
+    }
     // exit
     /**
      * Tancar l'aplicació.
@@ -362,35 +374,6 @@ public class CtrlPresentacio extends Application{
         // do what you have to do
         stage.close();
     }
-
-    public void borrarAula(String nom) {
-        ctrDomini.borrarAula(nom);
-    }
-
-    // load values
-  /*  public void load_AssigConcreta(String name, Integer quatris, Integer nivell, boolean projector, Boolean carac_lab[]) {
-        // TODO: demanar que domini em deixi les dades
-        // BERNI no se com faras per tornar pero a la capcelera tens el que necessito i en principi mels has de deixar alla
-        // tot i que no estic segura que aixo funcioni del tot, pots canviar com enviarli a load values d'assig
-        // pero els tipus no plis
-        // el name es de quina assig carregar
-        // ctrDomini.something();
-    }
-    */
-
-    /*public void load_PlaConcreta (String old_name, String name) {
-        for (Pla_presentacio a : plaData) {
-            if (a.getName().equals(old_name)) {
-                plaData.remove(a);
-                break;
-            }
-        }
-        plaData.add(new Pla_presentacio(name));
-        //ctrDomini.modificarPla(old_name, name);
-
-    }*/
-
-   // public void load_
 
     // save values
     public void save_AssigConcreta (String old_name, String name, Integer quatris, Integer nivell, boolean projector, Boolean carac_lab[]) {
@@ -504,9 +487,7 @@ public class CtrlPresentacio extends Application{
         } else {
             ctrDomini.borrarAssignatura(name);
         }
-
     }
-
 
     public void send_inputHorari (String pla, ArrayList<String> aules) {
         ctrDomini.itemsHorari(pla, aules);
@@ -526,5 +507,9 @@ public class CtrlPresentacio extends Application{
 
     public ArrayList<String> getAssigPla(String name) {
         return ctrDomini.assignaturesFromPla(name);
+    }
+
+    public Boolean restriccioModificar (String name, int dia, int hora) {
+        return true;//ctrDomini.posarSessioAqui(name, x, dia, hora);
     }
 }

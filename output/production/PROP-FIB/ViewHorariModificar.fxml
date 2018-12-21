@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Presentacio.ViewHorariModificar"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.ViewHorariModificar">
+   <children>
+      <Label fx:id="title_label" layoutX="34.0" layoutY="56.0" text="MODIFICAR HORARI" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="tornar" layoutX="35.0" layoutY="334.0" mnemonicParsing="false" onAction="#onTornar_pressed" text="&lt; Tornar" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="25.0" />
+      <Button fx:id="assig_btn" layoutX="36.0" layoutY="116.0" mnemonicParsing="false" onAction="#onAssignar_pressed" text="Modificar" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="42.0" />
+      <Label fx:id="description_label" layoutX="34.0" layoutY="96.0" text="Selecciona quina sessió vols modificar del slot horari:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="52.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="sessio_combo" layoutX="88.0" layoutY="106.0" prefWidth="150.0" />
+      <Label fx:id="sessio_label" layoutX="25.0" layoutY="110.0" text="Sessió" AnchorPane.leftAnchor="25.0" />
+   </children>
 </AnchorPane>
