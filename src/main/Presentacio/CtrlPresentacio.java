@@ -502,7 +502,11 @@ public class CtrlPresentacio extends Application{
         return null;
     }
 
-    public ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> send_inputHorari (String pla, ArrayList<String> aules) {
-        return ctrDomini.itemsHorari(pla, aules);
+    public void send_inputHorari (String pla, ArrayList<String> aules) {
+        ctrDomini.itemsHorari(pla, aules);
+    }
+
+    public ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> send_sessionsHorari (ArrayList<Pair<String, Pair<Integer, Pair<Integer, Integer>>>> sessions) {
+        return ctrDomini.sessionsHorari(sessions);
     }
 }

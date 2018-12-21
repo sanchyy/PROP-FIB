@@ -82,10 +82,8 @@ public class ViewGenerarH {
         setLabelColor(aules_label, errors, 1);
 
         if (!errors.contains(true)) {
-            //ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> items = ctrlPresentacio.send_inputHorari(pla_selected, aules_selected);
-            //ctrlPresentacio.showHorariMostrar(items);
+            ctrlPresentacio.send_inputHorari(pla_selected, aules_selected);
             ctrlPresentacio.showHorariSessions();
-
         }
     }
 

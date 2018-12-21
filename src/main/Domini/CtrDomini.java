@@ -20,6 +20,8 @@ public class CtrDomini {
     private CtrPersistencia ctrPersistencia;
     private ArrayList<Assignatura> assigPool;
     private ArrayList<Sessio> sessionsActuals;
+    private String plaEstudisActual;
+    private ArrayList<String> aulesActual;
 
     public CtrDomini(Integer lvl) {
         if (lvl == 0) {
@@ -386,12 +388,17 @@ public class CtrDomini {
         }
     }
 
-    public ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> itemsHorari(String plaEstudis, ArrayList<String> aules) {
+    public void itemsHorari(String plaEstudis, ArrayList<String> aules) {
+        this.plaEstudisActual = plaEstudis;
+        this.aulesActual = aules;
+    }
+
+    public ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> sessionsHorari(ArrayList<Pair<String, Pair<Integer, Pair<Integer, Integer>>>> sessions) {
         parseSessions("PRO1", 7, 4, 2);
         parseSessions("IC", 7, 4, 2);
         /*parseSessions("FM", 7, 4, 2);*/
         /*parseSessions("F", 7, 4, 2);*/
-        Horari generat = ferHorari(plaEstudisFromNom(plaEstudis), getAulesFromNoms(aules));
+        Horari generat = ferHorari(plaEstudisFromNom(plaEstudisActual), getAulesFromNoms(aulesActual));
         generat.mostrarHorari();
         ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> items = new ArrayList<>();
         for (int i = 0; i < generat.columnes; ++i) {

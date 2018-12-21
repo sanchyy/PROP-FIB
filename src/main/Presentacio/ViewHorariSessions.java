@@ -67,18 +67,15 @@ public class ViewHorariSessions {
             else errors.add(false);
 
         }
-
         if (errors.contains(true)) {
             for (int i = 0; i < errors.size(); i++)
                 setLabelColor(assig_list.get(i), errors, i);
+        } else {
+            try {
+                ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> items = ctrlPresentacio.send_sessionsHorari(sessions);
+                ctrlPresentacio.showHorariMostrar(items);
+            } catch(IOException ex) {}
         }
-        else {
-
-        }
-
-        // errors i pillar dades
-        //ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> items = //ctrlPresentacio.send_inputHorari(pla_selected, aules_selected);
-        //ctrlPresentacio.showHorariMostrar(items);
     }
 
     private void setLabelColor (Label l, ArrayList<Boolean> error, int i) {
