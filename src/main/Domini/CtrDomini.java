@@ -270,7 +270,6 @@ public class CtrDomini {
     }
 
     public boolean carregaAssignatures(String path) {
-        assigPool.clear();
         ArrayList<String> ass = ctrPersistencia.agafar(path);
         for (String p : ass) {
             try {
@@ -318,6 +317,26 @@ public class CtrDomini {
             }
         }
         return assigs;
+    }
+
+    public ArrayList<String> assignaturesLliures() {
+        ArrayList<String> assigs = new ArrayList<>();
+        for (Assignatura a : assigPool) {
+            if (a.getPlaEstudis() == null) {
+                assigs.add(a.getNom());
+            }
+        }
+        return assigs;
+    }
+
+    public void assignarAssignatures(String plaEstudis, ArrayList<String> assigs) {
+        for (Assignatura a : assigPool) {
+            for (String nom : assigs) {
+                if (a.getNom().equals(nom)) {
+                    a.setPlaEstudis(plaEstudis);
+                }
+            }
+        }
     }
 
     public PlaEstudis plaEstudisFromNom(String nom) {
@@ -394,6 +413,7 @@ public class CtrDomini {
     }
 
     public ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> sessionsHorari(ArrayList<Pair<String, Pair<Integer, Pair<Integer, Integer>>>> sessions) {
+        sessionsActuals.clear();
         for (Pair<String, Pair<Integer, Pair<Integer, Integer>>> sessio : sessions) {
             String assig = sessio.getFirst();
             Integer grups = sessio.getSecond().getFirst();
@@ -401,10 +421,6 @@ public class CtrDomini {
             Integer tardes = sessio.getSecond().getSecond().getSecond();
             parseSessions(assig, grups, subgrups, tardes);
         }
-        /*parseSessions("PRO1", 7, 4, 2);
-        parseSessions("IC", 7, 4, 2);*/
-        /*parseSessions("FM", 7, 4, 2);*/
-        /*parseSessions("F", 7, 4, 2);*/
         Horari generat = ferHorari(plaEstudisFromNom(plaEstudisActual), getAulesFromNoms(aulesActual));
         generat.mostrarHorari();
         ArrayList<ArrayList<ArrayList<Pair<String, Integer>>>> items = new ArrayList<>();

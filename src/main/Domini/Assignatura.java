@@ -56,4 +56,8 @@ public class Assignatura {
     public ArrayList<CaracteristiquesAula> getCaracteristiquesTeoria() {
         return caracteristiquesTeoria;
     }
+
+    public void setPlaEstudis(String plaEstudis) {
+        this.plaEstudis = plaEstudis;
+    }
 }
