@@ -24,5 +24,9 @@
       </Label>
       <ComboBox fx:id="sessio_combo" layoutX="88.0" layoutY="106.0" prefWidth="150.0" />
       <Label fx:id="sessio_label" layoutX="25.0" layoutY="110.0" text="Sessió" AnchorPane.leftAnchor="25.0" />
+      <Label fx:id="dia_label" layoutX="28.0" layoutY="192.0" text="Dia:" />
+      <ChoiceBox fx:id="dia_combo" layoutX="88.0" layoutY="188.0" prefWidth="150.0" />
+      <Label fx:id="hora_label" layoutX="338.0" layoutY="192.0" text="Hora:" />
+      <ComboBox fx:id="hora_combo" layoutX="408.0" layoutY="188.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
