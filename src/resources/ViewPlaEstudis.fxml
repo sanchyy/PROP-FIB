@@ -16,16 +16,13 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="taulaPE" layoutX="24.0" layoutY="180.0" prefHeight="200.0" prefWidth="548.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
+      <TableView fx:id="taulaPE" layoutX="24.0" layoutY="180.0" prefHeight="200.0" prefWidth="385.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="190.0">
          <columns>
-            <TableColumn fx:id="name" prefWidth="359.0" text="Nom" />
-            <TableColumn fx:id="consultar" prefWidth="63.0" resizable="false" text="Consultar" />
-            <TableColumn fx:id="modificar" prefWidth="63.0" resizable="false" text="Modificar" />
-            <TableColumn fx:id="eliminar" maxWidth="173.0" prefWidth="63.0" resizable="false" text="Eliminar" />
+            <TableColumn fx:id="name_col" prefWidth="383.0" text="Nom" />
          </columns>
       </TableView>
-      <Button layoutX="399.0" layoutY="103.0" mnemonicParsing="false" onAction="#onEliminar_pressed" text="debug eliminar" />
-      <Button layoutX="27.0" layoutY="125.0" mnemonicParsing="false" onAction="#onModificar_pressed" text="debug Modificar" />
-      <Button layoutX="27.0" layoutY="103.0" mnemonicParsing="false" onAction="#onConsultar_pressed" text="debug Consultar" />
+      <Button fx:id="eliminar_btn" layoutX="462.0" layoutY="318.0" mnemonicParsing="false" onAction="#onEliminar_pressed" text="Eliminar" />
+      <Button fx:id="modificar_btn" layoutX="458.0" layoutY="268.0" mnemonicParsing="false" onAction="#onModificar_pressed" text="Modificar" />
+      <Button fx:id="consultar_btn" layoutX="458.0" layoutY="216.0" mnemonicParsing="false" onAction="#onConsultar_pressed" text="Consultar" />
    </children>
 </AnchorPane>

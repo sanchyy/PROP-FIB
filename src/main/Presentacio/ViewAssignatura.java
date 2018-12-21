@@ -1,16 +1,16 @@
 package Presentacio;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 
 public class ViewAssignatura {
     @FXML private Button crearAssig, carregarAssig;
     @FXML private TextArea debbuging;
-    @FXML private TableView taulaAssig;
+    @FXML private TableView<Assig_presentacio> taulaAssig;
+    @FXML private TableColumn<Assig_presentacio, String> name_col;
+    @FXML private Button consultar_btn, modificar_btn, eliminar_btn;
 
     private CtrlPresentacio ctrlPresentacio;
     private SingletonDialogs singletonDialogs = SingletonDialogs.getInstance();
@@ -23,6 +23,22 @@ public class ViewAssignatura {
      */
     public void setViewController(CtrlPresentacio ctrlPresentacio) {
         this.ctrlPresentacio = ctrlPresentacio;
+        taulaAssig.setItems(ctrlPresentacio.getAssigData());
+    }
+
+    /**
+     * Initializes the controller class. This method is automatically called
+     * after the fxml file has been loaded.
+     */
+    @FXML
+    private void initialize() {
+        // Initialize the person table with the two columns.
+        name_col.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+
+        // Listen for selection changes and show the person details when changed.
+        taulaAssig.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> dosomething());
+        taulaAssig.setPlaceholder(new Label("Cap aula creada"));
     }
 
     // Botons nova Assignatura
@@ -33,7 +49,6 @@ public class ViewAssignatura {
      */
     @FXML
     public void oncrearAssig_pressed () throws IOException {
-        //debbuging.appendText("pressed crear\n");
         ctrlPresentacio.showAssigCrear();
     }
 
@@ -52,17 +67,44 @@ public class ViewAssignatura {
 
     @FXML
     public void onConsultar_pressed() throws IOException {
-        ctrlPresentacio.showAssigConsultar();
+        int selectedIndex = taulaAssig.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            Assig_presentacio assig = taulaAssig.getItems().get(selectedIndex);
+            ctrlPresentacio.showAssigConsultar(assig);
+        } else {
+            // Nothing selected.
+            singletonDialogs.display_warningTable(0);
+        }
     }
 
     @FXML
     public void onEliminar_pressed() {
-        singletonDialogs.display_delete("xd", 2); // TODO: pillar l'assig a eliminar
+        int selectedIndex = taulaAssig.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            if (singletonDialogs.display_delete(taulaAssig.getSelectionModel().getSelectedItem().getName(), 0)) {
+                ctrlPresentacio.delete_concreta(taulaAssig.getItems().get(selectedIndex).getName());
+                taulaAssig.getItems().remove(selectedIndex);
+            }
+        } else {
+            // Nothing selected.
+            singletonDialogs.display_warningTable(2);
+        }
     }
 
     @FXML
     public void onModificar_pressed() throws IOException {
-        ctrlPresentacio.showAssigMod();
+        int selectedIndex = taulaAssig.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            Assig_presentacio assig = taulaAssig.getItems().get(selectedIndex);
+            ctrlPresentacio.showAssigMod(assig);
+        } else {
+            // Nothing selected.
+            singletonDialogs.display_warningTable(0);
+        }
+    }
+
+    private void dosomething () {
+
     }
 
 }
