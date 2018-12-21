@@ -91,7 +91,6 @@ public class ViewAules {
         int selectedIndex = taulaAula.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             if (singletonDialogs.display_delete(taulaAula.getSelectionModel().getSelectedItem().getName(), 0)) {
-                //ctrlPresentacio.borrarAula(taulaAula.getItems().get(selectedIndex).getName());
                 ctrlPresentacio.delete_concreta(taulaAula.getItems().get(selectedIndex).getName());
                 taulaAula.getItems().remove(selectedIndex);
             }

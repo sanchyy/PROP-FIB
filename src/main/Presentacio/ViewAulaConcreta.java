@@ -20,7 +20,6 @@ public class ViewAulaConcreta {
 
     private CtrlPresentacio ctrlPresentacio;
     private int actual_mode = 0; // 0 crear, 1 consultar, 2 modififcar
-    private String old_name;
     private Aula_presentacio aula;
 
     /**
@@ -41,7 +40,7 @@ public class ViewAulaConcreta {
         title_label.setText("MODIFICAR AULA");
         description_label.setText("Pots modificar els següents camps:");
         if (pre_consultar) init_properties(true);
-        else load_values(aula);
+        else load_values();
         mode_btn.setText("Guardar canvis");
         actual_mode = 2;
     }
@@ -53,7 +52,7 @@ public class ViewAulaConcreta {
     public void init_Consultar () {
         title_label.setText("CONSULTAR AULA");
         description_label.setText("Conté la següent informació:");
-        load_values(aula);
+        load_values();
         init_properties(false);
         mode_btn.setText("Modificar");
         actual_mode = 1;
@@ -178,7 +177,7 @@ public class ViewAulaConcreta {
     /**
      * Carrega els valors dels atributs de l'assignatura seleccionada i els mostra.
      */
-    private void load_values (Aula_presentacio aula) {
+    private void load_values () {
         // per name input, agafar
         String name = aula.getName();
         Integer capacitat = aula.getCapacity();

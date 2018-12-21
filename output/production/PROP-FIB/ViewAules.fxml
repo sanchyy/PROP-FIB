@@ -17,13 +17,13 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="taulaAula" layoutX="14.0" layoutY="177.0" prefHeight="200.0" prefWidth="361.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0">
+      <TableView fx:id="taulaAula" layoutX="14.0" layoutY="177.0" prefHeight="200.0" prefWidth="385.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0">
          <columns>
-            <TableColumn fx:id="name_col" prefWidth="359.0" text="Nom" />
+            <TableColumn fx:id="name_col" prefWidth="383.0" text="Nom" />
          </columns>
       </TableView>
-      <Button fx:id="consultar_btn" layoutX="449.0" layoutY="221.0" mnemonicParsing="false" onAction="#onConsultar_pressed" text="Consultar" />
-      <Button fx:id="modificar_btn" layoutX="449.0" layoutY="263.0" mnemonicParsing="false" onAction="#onModificar_pressed" text="Modificar" />
-      <Button fx:id="eliminar_btn" layoutX="453.0" layoutY="308.0" mnemonicParsing="false" onAction="#onEliminar_pressed" text="Eliminar" />
+      <Button fx:id="consultar_btn" layoutX="464.0" layoutY="221.0" mnemonicParsing="false" onAction="#onConsultar_pressed" text="Consultar" />
+      <Button fx:id="modificar_btn" layoutX="464.0" layoutY="263.0" mnemonicParsing="false" onAction="#onModificar_pressed" text="Modificar" />
+      <Button fx:id="eliminar_btn" layoutX="468.0" layoutY="307.0" mnemonicParsing="false" onAction="#onEliminar_pressed" text="Eliminar" />
    </children>
 </AnchorPane>

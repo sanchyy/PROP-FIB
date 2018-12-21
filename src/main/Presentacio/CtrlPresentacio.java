@@ -32,6 +32,7 @@ public class CtrlPresentacio extends Application{
 
     private BaseView baseController;
     private SingletonDialogs singletonDialogs = SingletonDialogs.getInstance();
+
     private ObservableList<Aula_presentacio> aulaData = FXCollections.observableArrayList();
     private ObservableList<Assig_presentacio> assigData = FXCollections.observableArrayList();
     private ObservableList<Pla_presentacio> plaData = FXCollections.observableArrayList();
@@ -66,11 +67,27 @@ public class CtrlPresentacio extends Application{
     }
 
     /**
-     * Returns the data as an observable list of Persons.
-     * @return
+     * Returns the data as an observable list of Aules.
+     * @return ObservableList d'aula presentació
      */
     public ObservableList<Aula_presentacio> getAulaData() {
         return aulaData;
+    }
+
+    /**
+     * Returns the data as an observable list of Assignatures.
+     * @return ObservableList d'assignatura presentació
+     */
+    public ObservableList<Assig_presentacio> getAssigData () {
+        return assigData;
+    }
+
+    /**
+     * Returns the data as an observable list of Plans d'estudis.
+     * @return ObservableList de pla d'estudis presentació
+     */
+    public ObservableList<Pla_presentacio> getPlaData () {
+        return plaData;
     }
 
     /**
@@ -106,11 +123,12 @@ public class CtrlPresentacio extends Application{
      *
      * @throws IOException excepcio d'entrada/sortida.
      */
-    public void showPlaConsultar () throws IOException {
+    public void showPlaConsultar (Pla_presentacio pla) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         AnchorPane a = loader.load(getClass().getResource("/ViewPlaConcret.fxml").openStream()); //change
         ViewPlaConcret consultarController = loader.getController(); // change
         consultarController.setViewController(this); // change
+        consultarController.setPla(pla);
         consultarController.init_Consultar(); // per preparar a l'escena en mode consultar
         baseController.getGestioView().getChildren().setAll(a);
     }
@@ -120,11 +138,12 @@ public class CtrlPresentacio extends Application{
      *
      * @throws IOException excepcio d'entrada/sortida.
      */
-    public void showPlaMod () throws IOException {
+    public void showPlaMod (Pla_presentacio pla) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         AnchorPane a = loader.load(getClass().getResource("/ViewPlaConcret.fxml").openStream()); //change
         ViewPlaConcret modController = loader.getController(); // change
         modController.setViewController(this); // change
+        modController.setPla(pla);
         modController.init_Mod(false); // si no funciona mirar aixo, mirar l'ordre
         baseController.getGestioView().getChildren().setAll(a);
     }
@@ -161,11 +180,12 @@ public class CtrlPresentacio extends Application{
      *
      * @throws IOException excepcio d'entrada/sortida.
      */
-    public void showAssigConsultar () throws IOException {
+    public void showAssigConsultar (Assig_presentacio assig) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         AnchorPane a = loader.load(getClass().getResource("/ViewAssigConcreta.fxml").openStream()); //change
         ViewAssigConcreta consultarController = loader.getController(); // change
         consultarController.setViewController(this); // change
+        consultarController.setAssig(assig);
         consultarController.init_Consultar(); // per preparar a l'escena en mode consultar
         baseController.getGestioView().getChildren().setAll(a);
     }
@@ -175,11 +195,12 @@ public class CtrlPresentacio extends Application{
      *
      * @throws IOException excepcio d'entrada/sortida.
      */
-    public void showAssigMod () throws IOException {
+    public void showAssigMod (Assig_presentacio assig) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         AnchorPane a = loader.load(getClass().getResource("/ViewAssigConcreta.fxml").openStream()); //change
         ViewAssigConcreta modController = loader.getController(); // change
         modController.setViewController(this); // change
+        modController.setAssig(assig);
         modController.init_Mod(false); // si no funciona mirar aixo, mirar l'ordre
         baseController.getGestioView().getChildren().setAll(a);
 
@@ -303,18 +324,48 @@ public class CtrlPresentacio extends Application{
     }
     */
 
-/*
-    public void load_PlaConcreta (String name) {
-        // TODO: demanar a domini dades de pla d'estudi
+    /*public void load_PlaConcreta (String old_name, String name) {
+        for (Pla_presentacio a : plaData) {
+            if (a.getName().equals(old_name)) {
+                plaData.remove(a);
+                break;
+            }
+        }
+        plaData.add(new Pla_presentacio(name));
+        //ctrDomini.modificarPla(old_name, name);
 
     }*/
+
+   // public void load_
 
     // save values
-    /*public void save_AssigConcreta (String name, Integer quatris, Integer nivell, boolean projector, Boolean carac_lab[]) {
-        // TODO: tenvio les dades aixi
-        // proposta de com podria ser, pero no tinc npi
-        // ctrDomini.send_AssigConcreta(name, quatris, nivell, projector, carac_lab);
-    }*/
+    public void save_AssigConcreta (String old_name, String name, Integer quatris, Integer nivell, boolean projector, Boolean carac_lab[]) {
+        for (Assig_presentacio a : assigData) {
+            if (a.getName().equals(old_name)) {
+                assigData.remove(a);
+                break;
+            }
+        }
+        assigData.add(new Assig_presentacio(name, quatris, nivell, projector, carac_lab));
+        System.out.println(old_name);
+        System.out.println(name);
+        System.out.println(quatris);
+        System.out.println(nivell);
+        System.out.println(projector);
+        System.out.println(carac_lab.length);
+        //ctrDomini.modificarAssig(old_name, name, quatris, nivell, projector, carac_lab);
+    }
+
+    public void save_AssigNew (String name, Integer quatris, Integer nivell, boolean projector, Boolean carac_lab[]) {
+        System.out.println(name);
+        System.out.println(quatris);
+        System.out.println(nivell);
+        System.out.println(projector);
+        System.out.println(carac_lab.length);
+        //ctrDomini.afegirAssig(name, quatris, nivell, projector, carac_lab);
+        Assig_presentacio ap = new Assig_presentacio(name, quatris, nivell, projector, carac_lab);
+        assigData.add(ap);
+    }
 
     public void save_AulaConcreta (String old_name, String name, Integer capacitat, Boolean[] carac) {
         for (Aula_presentacio a : aulaData) {
@@ -328,33 +379,48 @@ public class CtrlPresentacio extends Application{
     }
 
     public void save_AulaNew(String name, Integer capacitat, Boolean[] carac) {
-         ctrDomini.afegirAula(name, capacitat, carac);
+        ctrDomini.afegirAula(name, capacitat, carac);
         Aula_presentacio ap = new Aula_presentacio(name, capacitat, carac);
         aulaData.add(ap);
     }
-    /*
-    public void save_PlaConcret (String name) {
-        // TODO: dades
-        // pueh com lo dabans
 
-    }*/
+    public void save_PlaConcret (String old_name, String name) {
+        for (Pla_presentacio a : plaData) {
+            if (a.getName().equals(old_name)) {
+                plaData.remove(a);
+                break;
+            }
+        }
+        plaData.add(new Pla_presentacio(name));
+        System.out.println(old_name);
+        System.out.println(name);
+        //ctrDomini.modificarPla(old_name, name);
+    }
+
+    public void save_PlaNew (String name) {
+        System.out.println(name);
+        //ctrDomini.afegirPla(name);
+        Pla_presentacio plap = new Pla_presentacio(name);
+        plaData.add(plap);
+    }
 
     // check exitencies
-    /*public boolean exists_AssigConcreta (String name) {
+    public boolean exists_AssigConcreta (String name) {
         // TODO: tenvio el nom de lassig i mirar si ja existeix (sí: true, no: false)
         // ctrDomini.exists_Aula(name);
         return false;
-    }*/
+    }
 
     public boolean exists_AulaConcreta (String name) {
         // TODO: tenvio el nom de l'aula i mirar si ja existeix (sí: true, no: false)
+
         return false;
     }
-/*
+
     public boolean exists_PlaConcret (String name) {
         // TODO: tenvio el nom del pla i mirar si ja existeix (sí: true, no: false)
         return false;
-    }*/
+    }
 
     // carregar
     public void send_path(String path) {
