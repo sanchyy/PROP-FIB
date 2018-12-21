@@ -3,6 +3,7 @@ package Domini;
 import com.google.gson.Gson;
 import Persistencia.CtrPersistencia;
 import com.google.gson.JsonParseException;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,25 @@ public class CtrDomini {
     private String plaEstudisActual;
     private ArrayList<String> aulesActual;
     private Horari horariActual;
+
+    public CtrDomini(Integer lvl) {
+        if (lvl == 0) {
+            this.unitatDocentSeleccionada = null;
+            this.plaEstudisSeleccionat    = null;
+            this.quadrimestreSeleccionat  = null;
+        } else {
+            if (lvl > 0) afegirUnitatDocent("FIB");
+            if (lvl > 1) afegirPlaEstudis("FIB_2010");
+            if (lvl > 2) afegirQuadrimestre();
+            if (lvl > 3) afegirAssignaturaPlaEstudis("PROP", 3, 2, "FIB", new ArrayList<>(), new ArrayList<>());
+            if (lvl > 4) afegirAulaUnitatDocent("A6203", 30, new ArrayList<>());
+            if (lvl > 5) afegirSessioQuadrimestre(11, "PROP");
+        }
+        this.restriccions = new CjtRestriccions();
+        this.ctrPersistencia = new CtrPersistencia();
+        this.assigPool = new ArrayList<>();
+        this.sessionsActuals = new ArrayList<>();
+    }
 
     public CtrDomini() {
         this.unitatDocentSeleccionada = null;
@@ -51,6 +71,8 @@ public class CtrDomini {
         }
         ctrPersistencia.guardar(2, aules);
     }
+
+    ////////
 
     public void afegirAula(String nom, Integer capacitat, Boolean[] caracs) {
         afegirAulaUnitatDocent(nom, capacitat, parseBooleansAula(caracs));
@@ -179,6 +201,8 @@ public class CtrDomini {
         getUnitatDocent().borrarAula(getAulaConcreta(nom));
     }
 
+    ////////
+
     public void modificarPlaEstudis(String nomAntic, String nomNou) {
         ArrayList<PlaEstudis> pes = getUnitatDocent().getPlansEstudis();
         PlaEstudis antic = null;
@@ -228,6 +252,8 @@ public class CtrDomini {
     public void borrarPlaEstudis(String nom) {
         getUnitatDocent().borrarPlaEstudis(getPlaEstudisConcret(nom));
     }
+
+    ////////
 
     public void modificarAssignatura(String nomAntiga, String nom, Integer quatri, Integer nivell, Boolean projector, Boolean[] caracs) {
         Assignatura antiga = null;
@@ -282,6 +308,8 @@ public class CtrDomini {
         assigPool.remove(getAssignaturaConcreta(nom));
     }
 
+    ////////
+
     public ArrayList<String> assignaturesFromPla(String plaEstudis) {
         ArrayList<String> assigs = new ArrayList<>();
         for (Assignatura a : assigPool) {
@@ -312,10 +340,10 @@ public class CtrDomini {
     }
 
     public void assignarAssignatures(String plaEstudis, ArrayList<String> assigs) {
-        for (int i = 0; i < assigPool.size(); ++i) {
+        for (Assignatura a : assigPool) {
             for (String nom : assigs) {
-                if (assigPool.get(i).getNom().equals(nom)) {
-                    assigPool.get(i).setPlaEstudis(plaEstudis);
+                if (a.getNom().equals(nom)) {
+                    a.setPlaEstudis(plaEstudis);
                 }
             }
         }
@@ -429,11 +457,37 @@ public class CtrDomini {
         return horariActual;
     }
 
+    ////////
+
     public CjtUnitatDocent getUnitatsDocents() {
         return unitatsDocents;
     }
 
+    public Integer getPlaEstudisSeleccionat() {
+        return plaEstudisSeleccionat;
+    }
+
+    public Integer getQuadrimestreSeleccionat() {
+        return quadrimestreSeleccionat;
+    }
+
+    public Integer getUnitatDocentSeleccionada() {
+        return unitatDocentSeleccionada;
+    }
+
     public CjtRestriccions getRestriccions() { return restriccions; }
+
+    public void setPlaEstudisSeleccionat(Integer plaEstudisSeleccionat) {
+        this.plaEstudisSeleccionat = plaEstudisSeleccionat;
+    }
+
+    public void setQuadrimestreSeleccionat(Integer quadrimestreSeleccionat) {
+        this.quadrimestreSeleccionat = quadrimestreSeleccionat;
+    }
+
+    public void setUnitatDocentSeleccionada(Integer unitatDocentSeleccionada) {
+        this.unitatDocentSeleccionada = unitatDocentSeleccionada;
+    }
 
     public UnitatDocent getUnitatDocent() {
         return unitatsDocents.get(unitatDocentSeleccionada);
@@ -468,8 +522,22 @@ public class CtrDomini {
         getQuadrimestre().afegirSessio(s);
     }
 
+    public boolean existeixPlaEstudis(String nom) {
+        PlaEstudis p = getUnitatDocent().buscarPlaEstudis(nom);
+        return p != null;
+    }
+
+    public boolean existeixAssignatura(String nom) {
+        Assignatura a = getAssignatura(nom);
+        return a != null;
+    }
+
     public Assignatura getAssignatura(String nom) {
         return getPlaEstudis().getAssignatura(nom);
+    }
+
+    public Assignatura getAssignatura(Integer i) {
+        return getPlaEstudis().getAssignatura(i);
     }
 
     public void afegirPlaEstudis(String nom) {
@@ -488,6 +556,30 @@ public class CtrDomini {
         Quadrimestre q = new Quadrimestre();
         getPlaEstudis().afegirQuadrimestre(q);
         quadrimestreSeleccionat = getPlaEstudis().getQuadrimestres().size()-1;
+    }
+
+    public void borrarUnitatDocent(Integer i) {
+        UnitatDocent ud = unitatsDocents.get(i);
+        unitatsDocents.del(ud);
+        this.unitatDocentSeleccionada = null;
+    }
+
+    public String llistaSessions() {
+        Integer i = 1;
+        String sessions = "";
+        for (Sessio s : getQuadrimestre().getSessions()) {
+            sessions += "[" + i++ + "] " + s.getAssignatura().getNom() + "-" + s.getGrup() + "\n";
+        }
+        return sessions;
+    }
+
+    //------ RESTRICCIONS ------
+
+    public void crearRestriccioSolapar(Integer a, Integer b) {
+        Sessio sa = getQuadrimestre().getSessions().get(a);
+        Sessio sb = getQuadrimestre().getSessions().get(b);
+        RestriccioSolapar r = new RestriccioSolapar(sa, sb);
+        restriccions.addRestriccioSolapar(r);
     }
 
     public void crearRestriccioSolapar2(Integer a, Integer b) {
@@ -512,10 +604,23 @@ public class CtrDomini {
         RestriccioNivell r = new RestriccioNivell(A,B);
         restriccions.addRestriccioNivell(r);
     }
+
+    public void crearRestriccioCaracteristicaAula(Integer a, ArrayList<CaracteristiquesAula> caracteristiques) {
+        Sessio sessio = getQuadrimestre().getSessions().get(a);
+        RestriccioCaracteristicaAula r = new RestriccioCaracteristicaAula(sessio, caracteristiques);
+        restriccions.addRestriccioCaracteristicaAula(r);
+    }
+
     public void crearRestriccioCaracteristicaAula2(Integer a, ArrayList<CaracteristiquesAula> caracteristiques) {
         Sessio sessio = sessionsActuals.get(a);
         RestriccioCaracteristicaAula r = new RestriccioCaracteristicaAula(sessio, caracteristiques);
         restriccions.addRestriccioCaracteristicaAula(r);
+    }
+
+    public void crearRestriccioTardes(Integer a) {
+        Sessio sessio = getQuadrimestre().getSessions().get(a);
+        RestriccioTardes r = new RestriccioTardes(sessio);
+        restriccions.addRestriccioTardes(r);
     }
 
     public void crearRestriccioTardes2(Integer a) {
@@ -524,10 +629,81 @@ public class CtrDomini {
         restriccions.addRestriccioTardes(r);
     }
 
+    public void crearRestriccioMatins(Integer a) {
+        Sessio sessio = getQuadrimestre().getSessions().get(a);
+        RestriccioMatins r = new RestriccioMatins(sessio);
+        restriccions.addRestriccioMatins(r);
+    }
+
     public void crearRestriccioMatins2(Integer a) {
         Sessio sessio = sessionsActuals.get(a);
         RestriccioMatins r = new RestriccioMatins(sessio);
         restriccions.addRestriccioMatins(r);
+    }
+
+    public void generarHorari() {
+        Horari horariActual = new Horari();
+        Generador bt = new Generador(horariActual, getPlaEstudis(), getQuadrimestre().getSessions(), restriccions);
+        bt.generarHorari(getUnitatDocent().getAulesDisponibles());
+        horariActual = bt.getHorari();
+        horariActual.mostrarHorari();
+    }
+
+    public void llistaUnitatsDocents() {
+        Integer i = 1;
+        for (UnitatDocent ud : unitatsDocents.getUnitatsDocents()) {
+            System.out.println("[" + i++ + "] " + ud.getNom());
+        }
+    }
+
+    public ArrayList<CaracteristiquesAula> getLlistaCaracteristiquesTeoria(String nom) {
+        Assignatura a = getPlaEstudis().getAssignatura(nom);
+        if (a == null) return new ArrayList<>();
+        else return a.getCaracteristiquesTeoria();
+    }
+
+    public ArrayList<CaracteristiquesAula> getLlistaCaracteristiquesLab(String nom) {
+        Assignatura a = getPlaEstudis().getAssignatura(nom);
+        if (a == null) return new ArrayList<>();
+        else return a.getCaracteristiquesLabo();
+    }
+
+    public Integer midaUnitatsDocents() {
+        return getUnitatsDocents().size();
+    }
+
+    public void llistaAssignatures() {
+        int i = 1;
+        for (Assignatura a : getPlaEstudis().getAssignatures()) {
+            System.out.println("["+(i++)+"] " + a.getNom());
+        }
+    }
+
+    public void llistaPlaEstudi() {
+        int i = 1;
+        for (PlaEstudis pe : getUnitatDocent().getPlansEstudis()) {
+            System.out.println("["+(i++)+"] " + pe.getNom());
+        }
+    }
+
+    public void borrarPlaEstudis(Integer b) {
+        getUnitatDocent().getPlansEstudis().remove(getUnitatDocent().getPlansEstudis().get(b-1));
+    }
+
+
+
+    public void llistaQuadrimestres() {
+        int i = 1;
+        for (Quadrimestre q : getPlaEstudis().getQuadrimestres()) {
+            System.out.println("["+i+"] Q"+i++);
+        }
+    }
+
+    public void llistaAules() {
+        int i = 1;
+        for (Aula a : getUnitatDocent().getAulesDisponibles()) {
+            System.out.println("["+(i++)+"] " + a.getNom());
+        }
     }
 
 }
