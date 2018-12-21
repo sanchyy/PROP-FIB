@@ -1,5 +1,10 @@
-{"nom":"LP","quadri":3,"nivell":2,"caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["FISICA","LINUX_WINDOWS"]}
-{"nom":"F","quadri":3,"nivell":2,"plaEstudis":"FIBA","caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR","UBUNTU","FISICA","EMBEDED","XARXES","LINUX_WINDOWS"]}
-{"nom":"IC","quadri":3,"nivell":2,"plaEstudis":"FIBA","caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["XARXES"]}
-{"nom":"FM","quadri":3,"nivell":2,"caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR"]}
-{"nom":"PRO1","quadri":3,"nivell":2,"caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR"]}
+{"nom":"LP2","quadri":3,"nivell":3,"plaEstudis":"FIB","caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR","LINUX_WINDOWS"]}
+{"nom":"LP","quadri":3,"nivell":3,"plaEstudis":"DADES","caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR","LINUX_WINDOWS"]}
+{"nom":"PROP","quadri":3,"nivell":2,"plaEstudis":"FIB","caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR"]}
+{"nom":"G","quadri":3,"nivell":3,"plaEstudis":"TELECOS","caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR","LINUX_WINDOWS"]}
+{"nom":"IC","quadri":3,"nivell":1,"plaEstudis":"TELECOS","caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR","EMBEDED","LINUX_WINDOWS"]}
+{"nom":"XC","quadri":3,"nivell":2,"plaEstudis":"FIB","caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR","XARXES","LINUX_WINDOWS"]}
+{"nom":"FM","quadri":3,"nivell":1,"plaEstudis":"FIB","caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR"]}
+{"nom":"EDA","quadri":3,"nivell":2,"plaEstudis":"TELECOS","caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR","LINUX_WINDOWS"]}
+{"nom":"PRO1","quadri":3,"nivell":1,"plaEstudis":"FIB","caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR","LINUX_WINDOWS"]}
+{"nom":"SO","quadri":3,"nivell":2,"plaEstudis":"FIB","caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR","UBUNTU"]}

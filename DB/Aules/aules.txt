@@ -6,3 +6,13 @@
 {"nom":"A5204","capacitat":20,"caracteristiques":["PROJECTOR","UBUNTU","FISICA","EMBEDED","XARXES","LINUX_WINDOWS"]}
 {"nom":"A5202","capacitat":20,"caracteristiques":["PROJECTOR","UBUNTU","FISICA","EMBEDED","XARXES","LINUX_WINDOWS"]}
 {"nom":"A6204","capacitat":20,"caracteristiques":["PROJECTOR","UBUNTU","FISICA","EMBEDED","XARXES","LINUX_WINDOWS"]}
+{"nom":"A1101","capacitat":20,"caracteristiques":["PROJECTOR","UBUNTU","FISICA","EMBEDED","XARXES","LINUX_WINDOWS"]}
+{"nom":"A1102","capacitat":20,"caracteristiques":["PROJECTOR","UBUNTU","FISICA","EMBEDED","XARXES","LINUX_WINDOWS"]}
+{"nom":"A6103","capacitat":20,"caracteristiques":["PROJECTOR","UBUNTU","FISICA","EMBEDED","XARXES","LINUX_WINDOWS"]}
+{"nom":"A6104","capacitat":20,"caracteristiques":["PROJECTOR","UBUNTU","FISICA","EMBEDED","XARXES","LINUX_WINDOWS"]}
+{"nom":"A105","capacitat":20,"caracteristiques":["PROJECTOR","UBUNTU","FISICA","EMBEDED","XARXES","LINUX_WINDOWS"]}
+{"nom":"A2101","capacitat":20,"caracteristiques":["PROJECTOR","UBUNTU","FISICA","EMBEDED","XARXES","LINUX_WINDOWS"]}
+{"nom":"A202","capacitat":20,"caracteristiques":["PROJECTOR","UBUNTU","FISICA","EMBEDED","XARXES","LINUX_WINDOWS"]}
+{"nom":"A203","capacitat":20,"caracteristiques":["PROJECTOR","UBUNTU","FISICA","EMBEDED","XARXES","LINUX_WINDOWS"]}
+{"nom":"A204","capacitat":20,"caracteristiques":["PROJECTOR","UBUNTU","FISICA","EMBEDED","XARXES","LINUX_WINDOWS"]}
+{"nom":"A2105","capacitat":20,"caracteristiques":["PROJECTOR","UBUNTU","FISICA","EMBEDED","XARXES","LINUX_WINDOWS"]}

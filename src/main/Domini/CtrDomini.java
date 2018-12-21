@@ -292,13 +292,13 @@ public class CtrDomini {
         return assigs;
     }
 
-    public boolean posarSessioAqui(String nomAssig, Integer numGrup, Integer dia, Integer hora) {
-        Sessio sessio = new Sessio();
-        ArrayList<Aula> aules = getAulesFromNoms(aulesActual);
-        // Generador g = new Generador(aules);
-        // Generador bt = new Generador(horariActual, plaEstudis, sessionsActuals, restriccions);
-        //return g.potAnarAqui(sessio, dia, hora, horariActual);
-        return false;
+    public boolean posarSessioAqui(String sessioStr, Integer dia, Integer hora) {
+        String[] parts = sessioStr.split("-");
+        Assignatura a = getAssignatura(parts[0]);
+        parts = parts[1].split(" ");
+        Sessio sessio = new Sessio(Integer.parseInt(parts[0]), a);
+        Generador g = new Generador(horariActual, getUnitatDocent().buscarPlaEstudis(plaEstudisActual), sessionsActuals, restriccions);
+        return g.potAnarAqui(sessio, dia, hora, horariActual);
     }
 
     public ArrayList<String> assignaturesLliures() {

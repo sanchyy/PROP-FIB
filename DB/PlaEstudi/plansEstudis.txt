@@ -1,1 +1,3 @@
-{"nom":"FIBA","quadrimestres":[],"assignatures":[]}
+{"nom":"FIB","quadrimestres":[],"assignatures":[]}
+{"nom":"TELECOS","quadrimestres":[],"assignatures":[]}
+{"nom":"DADES","quadrimestres":[],"assignatures":[]}

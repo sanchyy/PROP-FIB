@@ -1,0 +1,9 @@
+{"nom":"LP","quadri":3,"nivell":3,"caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR","LINUX_WINDOWS"]}
+{"nom":"PROP","quadri":3,"nivell":2,"caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR"]}
+{"nom":"G","quadri":3,"nivell":3,"caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR","LINUX_WINDOWS"]}
+{"nom":"IC","quadri":3,"nivell":1,"caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR","EMBEDED","LINUX_WINDOWS"]}
+{"nom":"XC","quadri":3,"nivell":2,"caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR","XARXES","LINUX_WINDOWS"]}
+{"nom":"FM","quadri":3,"nivell":1,"caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR"]}
+{"nom":"EDA","quadri":3,"nivell":2,"caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR","LINUX_WINDOWS"]}
+{"nom":"PRO1","quadri":3,"nivell":1,"caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR","LINUX_WINDOWS"]}
+{"nom":"SO","quadri":3,"nivell":2,"caracteristiquesTeoria":["PROJECTOR"],"caracteristiquesLabo":["PROJECTOR","UBUNTU"]}
